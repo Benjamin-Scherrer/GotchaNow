@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.github.d3tonat0r.essentials": {
+      "version": "https://github.com/D3TONAT0R/UnityPackage-Essentials.git#1.0.0-preview-3",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "15f66f10da11eb97e4bd553b7b416302dd15c339"
+    },
     "com.unity.cinemachine": {
       "version": "3.1.4",
       "depth": 0,
