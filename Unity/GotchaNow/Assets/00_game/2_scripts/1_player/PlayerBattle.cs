@@ -19,6 +19,12 @@ public class PlayerBattle : MonoBehaviour
     private Vector3 stickPosition;
     private float rotationY;
     public GameObject mainCamera;
+    public GameObject freeCam;
+    public GameObject lockOnCam;
+    private bool lockOnReady = true;
+
+    [HideInInspector] public bool lockedOn = false;
+    public GameObject lockOnTarget;
 
     //essential values
     public float maxHealth = 100;
@@ -92,6 +98,8 @@ public class PlayerBattle : MonoBehaviour
     {
         Instance = this;
 
+        mainCamera = freeCam;
+
         input = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
 
@@ -147,6 +155,14 @@ public class PlayerBattle : MonoBehaviour
                 dodgeReady = true;
             }
         }
+
+        if (!lockOnReady)
+        {
+            if (!input.Player.LockOn.IsPressed())
+            {
+                lockOnReady = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -172,16 +188,26 @@ public class PlayerBattle : MonoBehaviour
             actionInProgress = true;
         }
 
-        //rotate cam
-        if ((!actionInProgress) || dodgeActive)
-        {
-            //rotationY = (rotationY + moveVector.x * rotateSpeed) % 360f;
-
-            
-        }
-
         //movement
         moveCharacter(stickPosition);
+
+        //attack
+        if (input.Player.LockOn.IsPressed() && lockOnReady)
+        {
+            if (lockedOn == false)
+            {
+                lockedOn = true;
+                LockOn();
+            }
+            else if (lockedOn == true)
+            {
+                lockedOn = false;
+                LockOn();
+            }
+
+            lockOnReady = false;
+        }
+
 
         //when hit by enemy attack
         if (hitStun)
@@ -195,8 +221,6 @@ public class PlayerBattle : MonoBehaviour
                 hitStun = false;
             }
         }
-
-        
 
         //attack
         if (input.Player.Attack1.IsPressed() && attack1Ready && !actionInProgress && !hitStun)
@@ -226,7 +250,6 @@ public class PlayerBattle : MonoBehaviour
         {
             guardActive = true;
 
-            //start parry if ready
             if (parryReady)
             {
                 /* parryTimer = parryLength;
@@ -313,8 +336,6 @@ public class PlayerBattle : MonoBehaviour
         rotationY = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg;
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
-        //rb.MoveRotation(Quaternion.Euler(0, rotationY, 0)); //TO DO: consider camera placement
-
         float tiltStrength = direction.magnitude;
 
         if (!actionInProgress && !hitStun && direction.magnitude > 0.1f)
@@ -384,7 +405,36 @@ public class PlayerBattle : MonoBehaviour
         } */
     }
 
-    
+    private void LockOn()
+    {
+        if (mainCamera == freeCam)
+        {
+            lockOnCam.SetActive(true);
+            //lockOnCam.GetComponent<Camera>().enabled = true;
+            lockOnCam.GetComponent<LockOnCamera>().isActive = true;
+
+            mainCamera = lockOnCam;
+
+            mainCamera.transform.position = freeCam.transform.position;
+            mainCamera.transform.rotation = freeCam.transform.rotation;
+
+            freeCam.SetActive(false);
+            //freeCam.GetComponent<Camera>().enabled = false;
+        }
+        else if (mainCamera == lockOnCam)
+        {
+            freeCam.SetActive(true);
+            //freeCam.GetComponent<Camera>().enabled = true;
+            lockOnCam.GetComponent<LockOnCamera>().isActive = false;
+
+            mainCamera = freeCam;
+
+            mainCamera.GetComponent<CinemachineOrbitalFollow>().ForceCameraPosition(lockOnCam.transform.position, lockOnCam.transform.rotation);
+
+            lockOnCam.SetActive(false);
+            //lockOnCam.GetComponent<Camera>().enabled = false;
+        }
+    }
 
 
     //input system stuff for left analog movement
