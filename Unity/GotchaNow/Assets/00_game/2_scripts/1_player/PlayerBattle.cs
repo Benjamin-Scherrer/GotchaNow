@@ -5,6 +5,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
+using UnityEssentials;
 
 public class PlayerBattle : MonoBehaviour
 {
@@ -195,6 +196,8 @@ public class PlayerBattle : MonoBehaviour
             }
         }
 
+        
+
         //attack
         if (input.Player.Attack1.IsPressed() && attack1Ready && !actionInProgress && !hitStun)
         {
@@ -308,23 +311,34 @@ public class PlayerBattle : MonoBehaviour
     {
         Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
         rotationY = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg;
+        Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
-        rb.MoveRotation(Quaternion.Euler(0, rotationY, 0));
+        //rb.MoveRotation(Quaternion.Euler(0, rotationY, 0)); //TO DO: consider camera placement
 
         float tiltStrength = direction.magnitude;
-        //direction = rb.rotation * direction;
 
-        if (!actionInProgress && !hitStun)
+        if (!actionInProgress && !hitStun && direction.magnitude > 0.1f)
         {
             if (guardActive)
             {
-                rb.MovePosition(rb.position + rb.rotation * camFwd.normalized * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
+                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
             }
             else
             {
-                rb.MovePosition(rb.position + rb.rotation * camFwd.normalized * tiltStrength * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * Time.fixedDeltaTime);
             }
+
+            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
         }
+    }
+
+    private void DodgeRoll(Vector3 direction) //dodge movement
+    {
+        Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
+        rotationY = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
+
+        rb.linearVelocity = moveDir * dodgeSpeed;
     }
 
     public void SlashAttack()
@@ -370,11 +384,7 @@ public class PlayerBattle : MonoBehaviour
         } */
     }
 
-    private void DodgeRoll(Vector3 direction) //dodge movement
-    {
-        direction = rb.rotation * direction;
-        rb.linearVelocity = direction * dodgeSpeed;
-    }
+    
 
 
     //input system stuff for left analog movement
