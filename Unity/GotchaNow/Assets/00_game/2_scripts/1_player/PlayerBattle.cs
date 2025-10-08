@@ -25,6 +25,8 @@ public class PlayerBattle : MonoBehaviour
 
     [HideInInspector] public bool lockedOn = false;
     public GameObject lockOnTarget;
+    private bool switchReadyR = true;
+    private bool switchReadyL = true;
 
     //essential values
     public float maxHealth = 100;
@@ -163,6 +165,22 @@ public class PlayerBattle : MonoBehaviour
                 lockOnReady = true;
             }
         }
+
+        if (!switchReadyR)
+        {
+            if (!input.Player.LockOnR.IsPressed())
+            {
+                switchReadyR = true;
+            }
+        }
+
+        if (!switchReadyL)
+        {
+            if (!input.Player.LockOnL.IsPressed())
+            {
+                switchReadyL = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -208,6 +226,19 @@ public class PlayerBattle : MonoBehaviour
             lockOnReady = false;
         }
 
+        if (input.Player.LockOnR.IsPressed() && switchReadyR)
+            {
+                Debug.Log("switch R");
+                lockOnCam.GetComponent<LockOnCamera>().SwitchTargetR();
+                switchReadyR = false;
+            }
+
+        if (input.Player.LockOnL.IsPressed() && switchReadyL)
+            {
+                Debug.Log("switch L");
+                lockOnCam.GetComponent<LockOnCamera>().SwitchTargetL();
+                switchReadyL = false;
+            }
 
         //when hit by enemy attack
         if (hitStun)
@@ -412,6 +443,7 @@ public class PlayerBattle : MonoBehaviour
             lockOnCam.SetActive(true);
             //lockOnCam.GetComponent<Camera>().enabled = true;
             lockOnCam.GetComponent<LockOnCamera>().isActive = true;
+            lockOnCam.GetComponent<LockOnCamera>().SetTarget();
 
             mainCamera = lockOnCam;
 
@@ -421,6 +453,7 @@ public class PlayerBattle : MonoBehaviour
             freeCam.SetActive(false);
             //freeCam.GetComponent<Camera>().enabled = false;
         }
+
         else if (mainCamera == lockOnCam)
         {
             freeCam.SetActive(true);
