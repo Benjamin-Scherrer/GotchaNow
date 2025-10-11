@@ -7,11 +7,13 @@ public class Enemy : MonoBehaviour
     //public readonly static HashSet<Enemy> Pool = new HashSet<Enemy>();
 
     //essential values
-    public float health = 100;
+    public float maxHP = 100;
+    public float HP = 100;
     public float knockback = 0;
     public int proximity = 0;
     public BattleManager bm;
     public bool isLockOnTarget = false;
+    public bool isMainEnemy = false;
 
     [HideInInspector] public bool hit = false;
 
@@ -36,11 +38,26 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (health <= 0) //check if alive
+        if (HP <= 0) //check if alive
         {
             //HitBloom.gameObject.GetComponent<HitBloom>().killCheck = true;
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
+        }
+    }
+
+    public void HitByAttack(float dmg, float atkKnockback)
+    {
+        hit = true;
+        HP -= dmg;
+        knockback = atkKnockback;
+
+        //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
+
+        if (isMainEnemy)
+        {
+            StartCoroutine(bm.PlayerAttackUI());
+            StartCoroutine(bm.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
         }
     }
 }

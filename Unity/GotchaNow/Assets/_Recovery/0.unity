@@ -150,11 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   activeEnemy: []
   debugText: {fileID: 130489053}
-  playerSprite: {fileID: 129121107}
-  enemySprite: {fileID: 1551456452}
   playerHP: {fileID: 607210246}
   enemyHP: {fileID: 1565961079}
-  atkAnimationTime: 0.4
   HPdrainTime: 0.2
 --- !u!4 &47929723
 Transform:

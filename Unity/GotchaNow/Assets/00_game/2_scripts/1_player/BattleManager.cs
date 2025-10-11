@@ -1,6 +1,10 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Splines.Interpolators;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -8,24 +12,74 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance;
     public List<GameObject> activeEnemy = new List<GameObject>();
     public Text debugText;
+    public Image playerSprite;
+    private Vector3 playerSpritePos;
+    public Image enemySprite;
+    private Vector3 enemySpritePos;
+    public Image playerHP;
+    public Image enemyHP;
+    public float atkAnimationTime = 0.4f;
+    public float HPdrainTime = 0.2f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
         instance = this;
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    
+    void Start()
     {
-        debugText.text = "";
-        for (int i = 0; i < activeEnemy.Count; i++)
-        {
-            debugText.text += activeEnemy[i].name.ToString() + "\n";
-        }
+        playerSpritePos = playerSprite.rectTransform.position;
+        enemySpritePos = enemySprite.rectTransform.position;
     }
+    
+    public IEnumerator PlayerAttackUI()
+    {
+        float timer = 0;
 
-    public void AddToEnemyList(GameObject newEnemy)
+        while (timer < atkAnimationTime)
+        {
+            timer += Time.deltaTime;
+
+            if (timer < atkAnimationTime / 3)
+            {
+                playerSprite.rectTransform.position = Vector3.Lerp(playerSprite.rectTransform.position, enemySprite.rectTransform.position+ new Vector3 (-4,0,0), 0.75f);
+            }
+            else if (timer > atkAnimationTime / 2)
+            {
+                playerSprite.rectTransform.position = Vector3.Lerp(playerSprite.rectTransform.position, playerSpritePos, 0.33f);
+                enemySprite.rectTransform.position = enemySpritePos + new Vector3(0, 2 * MathF.Sin(16*Time.fixedTime),0);
+            }
+            yield return null;
+        }
+        playerSprite.rectTransform.position = playerSpritePos;
+        enemySprite.rectTransform.position = enemySpritePos;
+    }
+    
+    public IEnumerator UpdateEnemyHP(float oldHP, float newHP) //update enemy health on UI
+    {
+        float timer = 0;
+        //Vector3 originalPos = enemyHP.rectTransform.position;
+
+        enemyHP.fillAmount = oldHP;
+
+        while (timer < HPdrainTime)
+        {
+            timer += Time.deltaTime;
+            enemyHP.fillAmount = Mathf.Lerp(oldHP, newHP, timer / HPdrainTime); //HP drain animation
+            yield return null;
+
+            //enemyHP.rectTransform.position = originalPos + new Vector3(0, Mathf.Sin(4*Time.fixedTime), 0);
+        }
+
+        enemyHP.fillAmount = newHP;
+        //enemyHP.rectTransform.position = originalPos;
+        Debug.Log("fillAmount: " + enemyHP.fillAmount);
+    }
+    
+    //handle list of active enemies for lock on
+    public void AddToEnemyList(GameObject newEnemy) 
     {
         activeEnemy.Add(newEnemy);
     }

@@ -12,11 +12,12 @@ public class LockOnTarget : MonoBehaviour
         targetEnemy = null;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (targetEnemy != null)
         {
+            //target for lock-on cam, situated in the middle between player and locked on enemy
+            
             distance = targetEnemy.transform.position - player.transform.position;
             transform.position = Vector3.Lerp(transform.position, player.transform.position + distance/2,lerpSpeed);
         }

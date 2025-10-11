@@ -19,14 +19,13 @@ public class LockOnCamera : MonoBehaviour
     {
         targetVector = target.transform.position - player.transform.position;
 
+        //move cam behind player, aiming at target
         camPos = player.transform.position - new Vector3(targetVector.normalized.x, 0f, targetVector.normalized.z) * distance + new Vector3(0, height, 0);
         transform.position = Vector3.Lerp(transform.position, camPos, lerpSpeed);
 
         if (isActive)
         {
             //freeCam.GetComponent<CinemachineOrbitalFollow>().ForceCameraPosition(transform.position,transform.rotation);
-
-
         }
     }
 

@@ -40,9 +40,6 @@ public class PlayerBattle : MonoBehaviour
 
     //public so enemies can check player state
     [HideInInspector] public bool actionInProgress = false;
-    [HideInInspector] public bool slash1Active = false;
-    [HideInInspector] public bool slash2Active = false;
-    [HideInInspector] public bool slash3Active = false;
     [HideInInspector] public bool dodgeActive = false;
     [HideInInspector] public bool guardActive = false;
 
@@ -57,6 +54,7 @@ public class PlayerBattle : MonoBehaviour
     private bool slash1Queued = false;
     private bool slash2Queued = false;
     private bool slash3Queued = false;
+    private bool heavySlashReady = true;
 
     public float slashCooldown = 1f;
     public float slash1Duration = 0.5f;
@@ -65,6 +63,10 @@ public class PlayerBattle : MonoBehaviour
 
     public float slash2Window = 0.25f;
     public float slash3Window = 0.25f;
+
+    public float heavySlashChargeTime = 0.66f;
+    public float heavySlashCooldown = 1f;
+    public float heavySlashDuration = 0.5f;
     
     public float slash1fMovement = 1f;
     public float slash2fMovement = 1f;
@@ -111,8 +113,9 @@ public class PlayerBattle : MonoBehaviour
         input.Enable();
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCanceled;
-        input.Player.CameraControl.performed += OnCameraPerformed;
-        input.Player.CameraControl.canceled += OnCameraCanceled;
+
+        /* input.Player.CameraControl.performed += OnCameraPerformed;
+        input.Player.CameraControl.canceled += OnCameraCanceled; */
     }
 
     private void OnDisable()
@@ -121,8 +124,9 @@ public class PlayerBattle : MonoBehaviour
         input.Disable();
         input.Player.Movement.performed -= OnMovementPerformed;
         input.Player.Movement.canceled -= OnMovementCanceled;
-        input.Player.CameraControl.performed -= OnCameraPerformed;
-        input.Player.CameraControl.canceled -= OnCameraCanceled;
+
+        /* input.Player.CameraControl.performed -= OnCameraPerformed; 
+        input.Player.CameraControl.canceled -= OnCameraCanceled; */
     }
 
     private void Update()
@@ -136,6 +140,14 @@ public class PlayerBattle : MonoBehaviour
             if (!input.Player.Attack1.IsPressed())
             {
                 slashReady = true;
+            }
+        }
+
+        if (!heavySlashReady)
+        {
+            if (!input.Player.Attack2.IsPressed())
+            {
+                heavySlashReady = true;
             }
         }
 
@@ -206,7 +218,7 @@ public class PlayerBattle : MonoBehaviour
         //movement
         moveCharacter(stickPosition);
 
-        //attack
+        //lock on & target switching
         if (input.Player.LockOn.IsPressed() && lockOnReady)
         {
             if (lockedOn == false)
@@ -265,51 +277,57 @@ public class PlayerBattle : MonoBehaviour
             }
         }
 
-        //attack
-        if (input.Player.Attack1.IsPressed() && slashReady && !actionInProgress && !hitStun)
+        //inputs for moveset
+        if (!actionInProgress && !hitStun)
         {
-            actionInProgress = true;
-            slashReady = false;
-            StartCoroutine(Slash1());
-        }
+            //attack
+            if (input.Player.Attack1.IsPressed() && slashReady)
+            {
+                actionInProgress = true;
+                slashReady = false;
+                StartCoroutine(Slash1());
+            }
 
-        //heavy attack
-        if (input.Player.Attack2.IsPressed() && slashReady && !actionInProgress && !hitStun)
-        {
-            /* actionInProgress = true;
-            slashReady = false;
-            StartCoroutine(HeavySlash()); */
-        }
+            //heavy attack
+            if (input.Player.Attack2.IsPressed() && heavySlashReady)
+            {
+                actionInProgress = true;
+                heavySlashReady = false;
+                StartCoroutine(HeavySlashCharge());
+            }
 
-        //input block
-        if (input.Player.Block.IsPressed() && blockReady && !actionInProgress && !hitStun)
-        {
-            guardActive = true;
-            blockReady = false;
-            blockBox.GetComponent<BlockScript>().StartBlock();
-        }
+            //block
+            if (input.Player.Block.IsPressed() && blockReady)
+            {
+                guardActive = true;
+                blockReady = false;
+                blockBox.GetComponent<BlockScript>().StartBlock();
+            }
+
+            //dodge
+            if (input.Player.Dodge.IsPressed() && dodgeReady)
+            {
+                actionInProgress = true;
+
+                dodgeDir = stickPosition;
+                dodgeActive = true;
+                dodgeReady = false;
+                dodgeTimer = dodgeCooldown;
+
+                //DodgeSFX audio;
+            }
+        } 
 
         //block active
         if (guardActive)
         {
-            if (!input.Player.Block.IsPressed())
+            //
+
+            if (!input.Player.Block.IsPressed()) //end blocking
             {
                 guardActive = false;
                 blockBox.GetComponent<BlockScript>().EndBlock();
             }
-        }
-
-        //input dodge
-        if (input.Player.Dodge.IsPressed() && dodgeReady && !actionInProgress && !hitStun)
-        {
-            actionInProgress = true;
-
-            dodgeDir = stickPosition;
-            dodgeActive = true;
-            dodgeReady = false;
-            dodgeTimer = dodgeCooldown;
-
-            //DodgeSFX audio;
         }
 
         //dodge active
@@ -352,11 +370,11 @@ public class PlayerBattle : MonoBehaviour
         rotationY = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg;
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
-        float tiltStrength = direction.magnitude;
+        float tiltStrength = direction.magnitude; //analog movement speed
 
         if (!actionInProgress && !hitStun && direction.magnitude > 0.1f)
         {
-            if (guardActive)
+            if (guardActive) //slower movement when blocking
             {
                 rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
             }
@@ -365,12 +383,12 @@ public class PlayerBattle : MonoBehaviour
                 rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * Time.fixedDeltaTime);
             }
 
-            if (lockedOn)
+            if (lockedOn) //rotate towards lock on target
             {
                 Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
             }
-            else
+            else //rotate towards movement direction
             {
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.25f));
             }
@@ -394,9 +412,12 @@ public class PlayerBattle : MonoBehaviour
         }
     }
 
+    //attack combo
     private IEnumerator Slash1()
     {
-        slash1.GetComponent<AttackScript>().StartAttack();
+        AttackScript atkScript = slash1.GetComponent<AttackScript>();
+
+        atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
         while (atkTimer < slash1Duration)
@@ -405,12 +426,12 @@ public class PlayerBattle : MonoBehaviour
 
             if (atkTimer > slash1Duration - slash2Window)
             {
-                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued)
+                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash2Queued = true;
                     slashReady = false;
                 }
-                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued)
+                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
                     dodgeQueued = true;
                     dodgeReady = false;
@@ -421,15 +442,15 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        slash1.GetComponent<AttackScript>().EndAttack();
+        atkScript.EndAttack(); //disable hitbox
 
-        if (slash2Queued)
+        if (slash2Queued) //go to combo atk
         {
             StartCoroutine(Slash2());
             slash2Queued = false;
             yield break;
         }
-        else if (dodgeQueued)
+        else if (dodgeQueued) //cancel into dodge
         {
             dodgeDir = stickPosition;
             dodgeActive = true;
@@ -439,14 +460,16 @@ public class PlayerBattle : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(slashCooldown);
+        yield return new WaitForSeconds(slashCooldown); //ending lag
 
         actionInProgress = false;
     }
 
     private IEnumerator Slash2()
     {
-        slash2.GetComponent<AttackScript>().StartAttack();
+        AttackScript atkScript = slash2.GetComponent<AttackScript>();
+
+        atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
         while (atkTimer < slash2Duration)
@@ -455,31 +478,31 @@ public class PlayerBattle : MonoBehaviour
 
             if (atkTimer > slash2Duration - slash3Window)
             {
-                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued)
+                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash3Queued = true;
                     slashReady = false;
                 }
-                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued)
+                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
                     dodgeQueued = true;
                     dodgeReady = false;
                     atkTimer *= 1.5f;
                 }
             }
-            
+
             yield return null;
         }
 
-        slash2.GetComponent<AttackScript>().EndAttack();
+        atkScript.EndAttack(); //disable hitbox
 
-        if (slash3Queued)
+        if (slash3Queued) //go to combo attack
         {
             StartCoroutine(Slash3());
             slash3Queued = false;
             yield break;
         }
-        else if (dodgeQueued)
+        else if (dodgeQueued) //cancel into dodge
         {
             dodgeDir = stickPosition;
             dodgeActive = true;
@@ -489,14 +512,16 @@ public class PlayerBattle : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitForSeconds(slashCooldown);
+        yield return new WaitForSeconds(slashCooldown); //ending lag
 
         actionInProgress = false;
     }
-
+    
     private IEnumerator Slash3()
     {
-        slash3.GetComponent<AttackScript>().StartAttack();
+        AttackScript atkScript = slash3.GetComponent<AttackScript>();
+
+        atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
         while (atkTimer < slash3Duration)
@@ -505,49 +530,103 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        slash3.GetComponent<AttackScript>().EndAttack();
+        atkScript.EndAttack(); //disable hitbox
 
-        yield return new WaitForSeconds(slashCooldown);
-        
+        yield return new WaitForSeconds(slashCooldown); //ending lag
+
         actionInProgress = false;
     }
 
+    //heavy attack
+    private IEnumerator HeavySlashCharge()
+    {
+        float chgTimer = 0;
+
+        while (chgTimer < heavySlashChargeTime)
+        {
+            chgTimer += Time.deltaTime;
+
+            if (!input.Player.Attack2.IsPressed())
+            {
+                if (chgTimer > heavySlashChargeTime / 2) //lower power attack before full charge
+                {
+                    StartCoroutine(HeavySlash(0.5f + 0.25f * (chgTimer / heavySlashChargeTime)));
+                    yield break;
+                }
+                else //cancel charge
+                {
+                    actionInProgress = false;
+                    yield break;
+                }
+            }
+
+            yield return null;
+        }
+
+        StartCoroutine(HeavySlash(1)); //full power charge attack
+    }
+
+    private IEnumerator HeavySlash(float chgAmount)
+    {
+        AttackScript atkScript = heavySlash.GetComponent<AttackScript>();
+
+        atkScript.StartAttack(); //enable hitbox
+
+        AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
+        float baseDmg = atkBox.damage;
+        atkBox.damage *= chgAmount; //calculate damage
+
+        float atkTimer = 0;
+
+        while (atkTimer < heavySlashDuration)
+        {
+            atkTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        atkBox.damage = baseDmg; //reset damage of hitbox
+        atkScript.EndAttack();
+
+        yield return new WaitForSeconds(heavySlashCooldown); //ending lag
+
+        actionInProgress = false;
+    }
+
+    //switch camera modes
     private void LockOn()
     {
-        if (mainCamera == freeCam)
+        if (mainCamera == freeCam) //switch from free cam to lockon
         {
             lockOnCam.SetActive(true);
-            //lockOnCam.GetComponent<Camera>().enabled = true;
+
             lockOnCam.GetComponent<LockOnCamera>().isActive = true;
-            lockOnCam.GetComponent<LockOnCamera>().SetTarget();
+            lockOnCam.GetComponent<LockOnCamera>().SetTarget(); //find target enemy
 
             mainCamera = lockOnCam;
 
+            //TO DO: IMPROVE CAM SWITCHING
             mainCamera.transform.position = freeCam.transform.position;
             mainCamera.transform.rotation = freeCam.transform.rotation;
 
             freeCam.SetActive(false);
-
-            //freeCam.GetComponent<Camera>().enabled = false;
         }
 
-        else if (mainCamera == lockOnCam)
+        else if (mainCamera == lockOnCam) //switch from lockon to free cam
         {
             freeCam.SetActive(true);
-            //freeCam.GetComponent<Camera>().enabled = true;
             lockOnCam.GetComponent<LockOnCamera>().isActive = false;
 
             mainCamera = freeCam;
 
+            //TO DO: IMPROVE CAM SWITCHING
             mainCamera.GetComponent<CinemachineOrbitalFollow>().ForceCameraPosition(lockOnCam.transform.position, lockOnCam.transform.rotation);
 
             lockOnCam.SetActive(false);
-            
-            //lockOnCam.GetComponent<Camera>().enabled = false;
         }
     }
 
-    private IEnumerator RotateOnTargetSwitch()
+    //rotate character towards new target when locked on
+    private IEnumerator RotateOnTargetSwitch() 
     {
         float rotationTime = 0f;
         while (rotationTime < 0.1f)
@@ -559,26 +638,23 @@ public class PlayerBattle : MonoBehaviour
         }
     }
 
-
     //input system stuff for left analog movement
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector2>();
     }
-
     private void OnMovementCanceled(InputAction.CallbackContext value)
     {
         moveVector = Vector2.zero;
     }
 
-    //input system stuff for right analog movement
-    private void OnCameraPerformed(InputAction.CallbackContext value)
+    //input system stuff for right analog movement (maybe unneeded)
+    /* private void OnCameraPerformed(InputAction.CallbackContext value)
     {
         camVector = value.ReadValue<Vector2>();
     }
-
     private void OnCameraCanceled(InputAction.CallbackContext value)
     {
         camVector = Vector2.zero;
-    }
+    } */
 }

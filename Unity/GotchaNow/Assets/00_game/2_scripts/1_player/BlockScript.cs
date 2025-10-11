@@ -13,7 +13,7 @@ public class BlockScript : MonoBehaviour
     {
         hitbox.SetActive(true);
 
-        if(!parryRefreshing)
+        if(!parryRefreshing) //enable parry window if not spamming button
         {
             StartCoroutine(ParryWindow());
         }
@@ -21,12 +21,12 @@ public class BlockScript : MonoBehaviour
 
     public void EndBlock()
     {
-        if (parryActive)
+        if (parryActive) //end parry early
         {
-            StopCoroutine(ParryWindow());
+            StopCoroutine(ParryWindow()); 
 
             parryActive = false;
-            hitbox.GetComponent<Renderer>().material.color = Color.blue;
+            hitbox.GetComponent<Renderer>().material.color = Color.blue; //debug
         }
 
         hitbox.SetActive(false);
@@ -37,7 +37,7 @@ public class BlockScript : MonoBehaviour
         parryActive = true;
         float timer = 0f;
 
-        hitbox.GetComponent<Renderer>().material.color = Color.yellow;
+        hitbox.GetComponent<Renderer>().material.color = Color.yellow; //debug
 
         while (timer < parryWindow)
         {
@@ -46,11 +46,11 @@ public class BlockScript : MonoBehaviour
         }
 
         parryActive = false;
-        hitbox.GetComponent<Renderer>().material.color = Color.blue;
+        hitbox.GetComponent<Renderer>().material.color = Color.blue; //debug
         StartCoroutine(ParryRefresh());
     }
 
-    private IEnumerator ParryRefresh()
+    private IEnumerator ParryRefresh() //cooldown timer
     {
         float timer = 0f;
         parryRefreshing = true;
