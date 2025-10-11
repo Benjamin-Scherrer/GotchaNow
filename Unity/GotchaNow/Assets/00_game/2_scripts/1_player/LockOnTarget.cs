@@ -5,6 +5,7 @@ public class LockOnTarget : MonoBehaviour
     public GameObject player;
     public GameObject targetEnemy;
     private Vector3 distance;
+    public float lerpSpeed = 0.2f;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class LockOnTarget : MonoBehaviour
         if (targetEnemy != null)
         {
             distance = targetEnemy.transform.position - player.transform.position;
-            transform.position = player.transform.position + distance/2;
+            transform.position = Vector3.Lerp(transform.position, player.transform.position + distance/2,lerpSpeed);
         }
     }
 }

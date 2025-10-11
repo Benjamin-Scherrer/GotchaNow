@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+//using System.Numerics;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.WSA;
-using UnityEssentials;
 
 public class PlayerBattle : MonoBehaviour
 {
@@ -42,56 +40,52 @@ public class PlayerBattle : MonoBehaviour
 
     //public so enemies can check player state
     [HideInInspector] public bool actionInProgress = false;
-    [HideInInspector] public bool attack1Active = false;
-    [HideInInspector] public bool combo2Active = false;
-    [HideInInspector] public bool combo3Active = false;
+    [HideInInspector] public bool slash1Active = false;
+    [HideInInspector] public bool slash2Active = false;
+    [HideInInspector] public bool slash3Active = false;
     [HideInInspector] public bool dodgeActive = false;
     [HideInInspector] public bool guardActive = false;
-    [HideInInspector] public bool parryActive = false;
 
     //hitbox objects
-    public GameObject attackStartup;
-    public GameObject attack1Box;
-    public GameObject combo2Box;
-    public GameObject combo3Box;
-    public GameObject parrySphere;
+    public GameObject slash1;
+    public GameObject slash2;
+    public GameObject slash3;
+    public GameObject heavySlash;
+    public GameObject blockBox;
 
-    private bool attack1Ready = true;
-    private bool attack1Charge = false;
-    private bool combo2Queued = false;
+    private bool slashReady = true;
+    private bool slash1Queued = false;
+    private bool slash2Queued = false;
+    private bool slash3Queued = false;
 
-    public float attack1Cooldown = 1f;
-    public float attack1StartTime = 0.5f;
-    public float attack1ActiveTime = 0.5f;
+    public float slashCooldown = 1f;
+    public float slash1Duration = 0.5f;
+    public float slash2Duration = 0.5f;
+    public float slash3Duration = 0.5f;
 
-    public float combo2ActiveTime = 0.5f;
-    public float combo3ActiveTime = 0.5f;
-
-    public float attack1fMovement = 1f;
-    public float combo2fMovement = 1f;
-    public float combo3fMovement = 1f;
+    public float slash2Window = 0.25f;
+    public float slash3Window = 0.25f;
+    
+    public float slash1fMovement = 1f;
+    public float slash2fMovement = 1f;
+    public float slash3fMovement = 1f;
     public float attackRotationInfluence = 3f;
 
     private bool dodgeReady = true;
+    private bool dodgeQueued = false;
     public float dodgeCooldown = 1f;
     private float dodgeTimer = 0f;
     private Vector3 dodgeDir;
     [HideInInspector] public bool dodgeSuccessful = false;
 
-    private bool parryReady = true;
-    public float parryLength = 0.1f;
-    public float parryCooldown = 0.3f;
-    private float parryTimer = 0f;
+    private bool blockReady = true;
     [HideInInspector] public bool parrySuccessful = false;
 
-    private Vector3 attackBoxSize;
-    private Vector3 comboBoxSize;
-
     //colors
-    public Material defaultMaterial;
+    /* public Material defaultMaterial;
     public Material dodgeMaterial;
     public Material guardMaterial;
-    public Material hitstunMaterial;
+    public Material hitstunMaterial; */
 
     /* private GameObject VFXBlur;
     private GameObject HitBloom; */
@@ -105,12 +99,7 @@ public class PlayerBattle : MonoBehaviour
         input = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
 
-        attackBoxSize = attack1Box.transform.localScale;
-        //comboBoxSize = combo2Box.transform.localScale;
-
         //GetComponent<MeshRenderer>().material = defaultMaterial;
-
-        //parrySphere.SetActive(false);
 
         //VFXBlur = GameObject.Find("VFXBlur");
         //HitBloom = GameObject.Find("VFXBloomWhite");
@@ -142,11 +131,11 @@ public class PlayerBattle : MonoBehaviour
         stickPosition = new Vector3(moveVector.x, 0, moveVector.y);
 
         //re-enable moves
-        if (!attack1Ready && !attack1Charge && !attack1Active)
+        if (!slashReady)
         {
             if (!input.Player.Attack1.IsPressed())
             {
-                attack1Ready = true;
+                slashReady = true;
             }
         }
 
@@ -179,6 +168,14 @@ public class PlayerBattle : MonoBehaviour
             if (!input.Player.LockOnL.IsPressed())
             {
                 switchReadyL = true;
+            }
+        }
+    
+        if (!blockReady)
+        {
+            if (!input.Player.Block.IsPressed())
+            {
+                blockReady = true;
             }
         }
     }
@@ -216,6 +213,11 @@ public class PlayerBattle : MonoBehaviour
             {
                 lockedOn = true;
                 LockOn();
+
+                if (!actionInProgress)
+                {
+                    StartCoroutine(RotateOnTargetSwitch());
+                }
             }
             else if (lockedOn == true)
             {
@@ -226,19 +228,29 @@ public class PlayerBattle : MonoBehaviour
             lockOnReady = false;
         }
 
-        if (input.Player.LockOnR.IsPressed() && switchReadyR)
+        if (input.Player.LockOnR.IsPressed() && switchReadyR && lockedOn)
+        {
+            lockOnCam.GetComponent<LockOnCamera>().SwitchTargetR();
+
+            if (!actionInProgress)
             {
-                Debug.Log("switch R");
-                lockOnCam.GetComponent<LockOnCamera>().SwitchTargetR();
-                switchReadyR = false;
+                StartCoroutine(RotateOnTargetSwitch());
             }
 
-        if (input.Player.LockOnL.IsPressed() && switchReadyL)
+            switchReadyR = false;
+        }
+
+        if (input.Player.LockOnL.IsPressed() && switchReadyL && lockedOn)
+        {
+            lockOnCam.GetComponent<LockOnCamera>().SwitchTargetL();
+
+            if (!actionInProgress)
             {
-                Debug.Log("switch L");
-                lockOnCam.GetComponent<LockOnCamera>().SwitchTargetL();
-                switchReadyL = false;
+                StartCoroutine(RotateOnTargetSwitch());
             }
+
+            switchReadyL = false;
+        }
 
         //when hit by enemy attack
         if (hitStun)
@@ -254,63 +266,27 @@ public class PlayerBattle : MonoBehaviour
         }
 
         //attack
-        if (input.Player.Attack1.IsPressed() && attack1Ready && !actionInProgress && !hitStun)
+        if (input.Player.Attack1.IsPressed() && slashReady && !actionInProgress && !hitStun)
         {
-            /* actionInProgress = true;
-
-            attackStartup.SetActive(true);
-            attackStartup.transform.localPosition = new Vector3(0.75f, 0, -0.25f);
-            projectileAttackCharge = true;
-            projectileAttackReady = false; */
+            actionInProgress = true;
+            slashReady = false;
+            StartCoroutine(Slash1());
         }
 
-        //parry cooldown
-        if (parryReady == false)
+        //heavy attack
+        if (input.Player.Attack2.IsPressed() && slashReady && !actionInProgress && !hitStun)
         {
-            parryCooldown -= Time.deltaTime;
-
-            //re-enable parry after cooldown & letting go of shield button
-            if (parryCooldown <= 0 && !input.Player.Block.IsPressed())
-            {
-                parryReady = true;
-            }
+            /* actionInProgress = true;
+            slashReady = false;
+            StartCoroutine(HeavySlash()); */
         }
 
         //input block
-        if (input.Player.Block.IsPressed() && !actionInProgress && !hitStun)
+        if (input.Player.Block.IsPressed() && blockReady && !actionInProgress && !hitStun)
         {
             guardActive = true;
-
-            if (parryReady)
-            {
-                /* parryTimer = parryLength;
-                parrySphere.SetActive(true);
-                parryActive = true;
-                parryReady = false;
-                parryCooldown = 0.33f; */
-            }
-        }
-
-        //parry active
-        if (parryActive)
-        {
-            parryTimer -= 1 * Time.fixedDeltaTime;
-            actionInProgress = true;
-
-            if (parrySuccessful)
-            {
-                //HitBloom.gameObject.GetComponent<HitBloom>().hitCheck = true;
-                //ParrySFX audio;
-
-                parrySuccessful = false;
-            }
-
-            if (parryTimer <= 0)
-            {
-                actionInProgress = false;
-                parryActive = false;
-                //parrySphere.SetActive(false);
-            }
+            blockReady = false;
+            blockBox.GetComponent<BlockScript>().StartBlock();
         }
 
         //block active
@@ -319,6 +295,7 @@ public class PlayerBattle : MonoBehaviour
             if (!input.Player.Block.IsPressed())
             {
                 guardActive = false;
+                blockBox.GetComponent<BlockScript>().EndBlock();
             }
         }
 
@@ -355,10 +332,18 @@ public class PlayerBattle : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 //GetComponent<MeshRenderer>().material = defaultMaterial;
 
-                actionInProgress = false;
+                if (slash1Queued)
+                {
+                    slash1Queued = false;
+                    slashReady = false;
+                    StartCoroutine(Slash1());
+                }
+                else
+                {
+                    actionInProgress = false;
+                }
             }
         }
-
     }
 
     private void moveCharacter(Vector3 direction) //movement
@@ -380,7 +365,15 @@ public class PlayerBattle : MonoBehaviour
                 rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * Time.fixedDeltaTime);
             }
 
-            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            if (lockedOn)
+            {
+                Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
+            }
+            else
+            {
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.25f));
+            }
         }
     }
 
@@ -391,49 +384,132 @@ public class PlayerBattle : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         rb.linearVelocity = moveDir * dodgeSpeed;
+        transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+
+        if (input.Player.Attack1.IsPressed() && slashReady)
+        {
+            slash1Queued = true;
+            slashReady = false;
+            dodgeTimer *= 0.5f;
+        }
     }
 
-    public void SlashAttack()
+    private IEnumerator Slash1()
     {
-        /* int repeatCount = playerStats.repeatMod + 1;
-        int spreadCount = playerStats.spreadMod + 1;
+        slash1.GetComponent<AttackScript>().StartAttack();
+        float atkTimer = 0;
 
-        playerStats.repeatMod = 0;
-        playerStats.spreadMod = 0;
-
-        for (int i = 0; i < repeatCount; i++)
+        while (atkTimer < slash1Duration)
         {
-            if (i % 2 == 0)
-            {
-                attack1Box.SetActive(true);
-                attack1Box.GetComponentInChildren<Attack1Script>().slashLvl = slashLvl;
-                attack1Box.transform.localPosition = new Vector3(0.8f, 0, 1);
-                attack1Box.transform.localScale = new Vector3(attackBoxSize.x * (1 + spreadCount / 2f), attackBoxSize.y, attackBoxSize.z * (1 + spreadCount / 4));
+            atkTimer += Time.deltaTime;
 
-                while (attack1Box.transform.localPosition.x > -0.8)
-                {
-                    attack1Box.transform.localPosition += new Vector3(-1, 0, 0) * (0.5f*repeatCount) * attack1ActiveTime * Time.fixedDeltaTime;
-                    yield return new WaitForFixedUpdate();
-                }
-                attack1Box.transform.localScale = attack1Box.GetComponentInChildren<Attack1Script>().originalSize;
-                attack1Box.SetActive(false);
-            }
-            else if (i % 2 == 1)
+            if (atkTimer > slash1Duration - slash2Window)
             {
-                combo2Box.SetActive(true);
-                combo2Box.GetComponentInChildren<Attack1Script>().slashLvl = slashLvl;
-                combo2Box.transform.localPosition = new Vector3(-0.8f, 0, 1);
-                combo2Box.transform.localScale = new Vector3(comboBoxSize.x * (1 + spreadCount / 2f) * (1 + 0.1f * slashLvl), comboBoxSize.y, comboBoxSize.z * (1 + spreadCount / 4) * (1 + 0.1f * slashLvl));
-
-                while (combo2Box.transform.localPosition.x < 0.8)
+                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued)
                 {
-                    combo2Box.transform.localPosition += new Vector3(1, 0, 0) * (0.5f*repeatCount) * combo2ActiveTime * Time.fixedDeltaTime;
-                    yield return new WaitForFixedUpdate();
+                    slash2Queued = true;
+                    slashReady = false;
                 }
-                combo2Box.transform.localScale = combo2Box.GetComponentInChildren<Attack1Script>().originalSize;
-                combo2Box.SetActive(false);
+                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued)
+                {
+                    dodgeQueued = true;
+                    dodgeReady = false;
+                    atkTimer *= 1.5f;
+                }
             }
-        } */
+
+            yield return null;
+        }
+
+        slash1.GetComponent<AttackScript>().EndAttack();
+
+        if (slash2Queued)
+        {
+            StartCoroutine(Slash2());
+            slash2Queued = false;
+            yield break;
+        }
+        else if (dodgeQueued)
+        {
+            dodgeDir = stickPosition;
+            dodgeActive = true;
+            dodgeTimer = dodgeCooldown;
+
+            dodgeQueued = false;
+            yield break;
+        }
+
+        yield return new WaitForSeconds(slashCooldown);
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator Slash2()
+    {
+        slash2.GetComponent<AttackScript>().StartAttack();
+        float atkTimer = 0;
+
+        while (atkTimer < slash2Duration)
+        {
+            atkTimer += Time.deltaTime;
+
+            if (atkTimer > slash2Duration - slash3Window)
+            {
+                if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued)
+                {
+                    slash3Queued = true;
+                    slashReady = false;
+                }
+                else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued)
+                {
+                    dodgeQueued = true;
+                    dodgeReady = false;
+                    atkTimer *= 1.5f;
+                }
+            }
+            
+            yield return null;
+        }
+
+        slash2.GetComponent<AttackScript>().EndAttack();
+
+        if (slash3Queued)
+        {
+            StartCoroutine(Slash3());
+            slash3Queued = false;
+            yield break;
+        }
+        else if (dodgeQueued)
+        {
+            dodgeDir = stickPosition;
+            dodgeActive = true;
+            dodgeTimer = dodgeCooldown;
+
+            dodgeQueued = false;
+            yield break;
+        }
+
+        yield return new WaitForSeconds(slashCooldown);
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator Slash3()
+    {
+        slash3.GetComponent<AttackScript>().StartAttack();
+        float atkTimer = 0;
+
+        while (atkTimer < slash3Duration)
+        {
+            atkTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        slash3.GetComponent<AttackScript>().EndAttack();
+
+        yield return new WaitForSeconds(slashCooldown);
+        
+        actionInProgress = false;
     }
 
     private void LockOn()
@@ -451,6 +527,7 @@ public class PlayerBattle : MonoBehaviour
             mainCamera.transform.rotation = freeCam.transform.rotation;
 
             freeCam.SetActive(false);
+
             //freeCam.GetComponent<Camera>().enabled = false;
         }
 
@@ -465,7 +542,20 @@ public class PlayerBattle : MonoBehaviour
             mainCamera.GetComponent<CinemachineOrbitalFollow>().ForceCameraPosition(lockOnCam.transform.position, lockOnCam.transform.rotation);
 
             lockOnCam.SetActive(false);
+            
             //lockOnCam.GetComponent<Camera>().enabled = false;
+        }
+    }
+
+    private IEnumerator RotateOnTargetSwitch()
+    {
+        float rotationTime = 0f;
+        while (rotationTime < 0.1f)
+        {
+            rotationTime += Time.deltaTime;
+            Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
+            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.33f));
+            yield return null;
         }
     }
 

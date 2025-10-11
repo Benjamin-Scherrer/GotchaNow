@@ -10,14 +10,17 @@ public class LockOnCamera : MonoBehaviour
     private Vector3 targetVector;
     private Vector3 camPos;
     public GameObject freeCam;
+    public float distance = 8f;
+    public float height = 2f;
+    public float lerpSpeed = 0.1f;
     [HideInInspector] public bool isActive = false;
 
     void FixedUpdate()
     {
         targetVector = target.transform.position - player.transform.position;
 
-        camPos = player.transform.position - new Vector3(targetVector.normalized.x, 0f, targetVector.normalized.z) * 8 + new Vector3(0, 2f, 0);
-        transform.position = Vector3.Lerp(transform.position, camPos, 0.1f);
+        camPos = player.transform.position - new Vector3(targetVector.normalized.x, 0f, targetVector.normalized.z) * distance + new Vector3(0, height, 0);
+        transform.position = Vector3.Lerp(transform.position, camPos, lerpSpeed);
 
         if (isActive)
         {
@@ -65,8 +68,6 @@ public class LockOnCamera : MonoBehaviour
                     closestAngle = angle;
                     target.GetComponent<LockOnTarget>().targetEnemy = bm.activeEnemy[i];
                 }
-
-                Debug.Log(dirCheck + " " + i);
             }
         }
     }
