@@ -10,7 +10,7 @@ public class PlayerBattle : MonoBehaviour
     public static PlayerBattle Instance;
     public static event Action OnDeath;
     private InputSystem_Actions input = null;
-
+    public BattleManager bm;
     [HideInInspector] public Rigidbody rb = null;
     private Vector2 moveVector = Vector2.zero;
     private Vector2 camVector = Vector2.zero;
@@ -27,8 +27,8 @@ public class PlayerBattle : MonoBehaviour
     private bool switchReadyL = true;
 
     //essential values
-    public float maxHealth = 100;
-    public float health = 100;
+    public float maxHP = 100;
+    public float HP = 100;
     public float moveSpeed = 0.5f;
     public float dodgeSpeed = 5f;
     public float rotateSpeed = 10f;
@@ -86,7 +86,6 @@ public class PlayerBattle : MonoBehaviour
     //colors
     /* public Material defaultMaterial;
     public Material dodgeMaterial;
-    public Material guardMaterial;
     public Material hitstunMaterial; */
 
     /* private GameObject VFXBlur;
@@ -195,11 +194,12 @@ public class PlayerBattle : MonoBehaviour
     private void FixedUpdate()
     {
         //player death
-        if (health <= 0)
+        if (HP <= 0)
         {
             if (death) return;
             death = true;
-            GetComponent<MeshRenderer>().enabled = false;
+
+            //GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             OnDeath?.Invoke();
         }
@@ -265,7 +265,7 @@ public class PlayerBattle : MonoBehaviour
         }
 
         //when hit by enemy attack
-        if (hitStun)
+        /* if (hitStun)
         {
             hitStunTimer -= Time.deltaTime;
             //GetComponent<MeshRenderer>().material = hitstunMaterial;
@@ -275,7 +275,7 @@ public class PlayerBattle : MonoBehaviour
                 //GetComponent<MeshRenderer>().material = defaultMaterial;
                 hitStun = false;
             }
-        }
+        } */
 
         //inputs for moveset
         if (!actionInProgress && !hitStun)
@@ -316,7 +316,7 @@ public class PlayerBattle : MonoBehaviour
 
                 //DodgeSFX audio;
             }
-        } 
+        }
 
         //block active
         if (guardActive)
@@ -362,6 +362,58 @@ public class PlayerBattle : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ParrySuccessful()
+    {
+        Debug.Log("parry successful!");
+    }
+
+    public void HitByAttack(float dmg, float atkKnockback, Vector3 attackDir)
+    {
+        HP -= dmg;
+        hitStun = true;
+
+        if (guardActive)
+        {
+            hitStunTimer = 0.3f;
+            guardActive = false;
+            blockReady = true;
+            blockBox.GetComponent<BlockScript>().EndBlock();
+        }
+        else
+        {
+            hitStunTimer = 1f;
+        }        
+
+        StartCoroutine(Knockback(atkKnockback, attackDir));
+
+        //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
+
+        StartCoroutine(bm.EnemyAttackUI());
+        StartCoroutine(bm.UpdatePlayerHP((HP + dmg) / maxHP, HP / maxHP));
+    }
+    
+    private IEnumerator Knockback(float atkKnockback, Vector3 attackDir)
+    {
+        float knockback = atkKnockback;
+        //GetComponent<MeshRenderer>().material = hitstunMaterial;
+
+        while (hitStunTimer > 0)
+        {
+            if (atkKnockback > 0)
+            {
+                rb.MovePosition(rb.position + attackDir.normalized * atkKnockback * Time.fixedDeltaTime);
+                atkKnockback -= Time.deltaTime * 4;
+            }
+
+            hitStunTimer -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        hitStun = false;
+        //GetComponent<MeshRenderer>().material = defaultMaterial;
     }
 
     private void moveCharacter(Vector3 direction) //movement
@@ -626,7 +678,7 @@ public class PlayerBattle : MonoBehaviour
     }
 
     //rotate character towards new target when locked on
-    private IEnumerator RotateOnTargetSwitch() 
+    private IEnumerator RotateOnTargetSwitch()
     {
         float rotationTime = 0f;
         while (rotationTime < 0.1f)
@@ -637,7 +689,7 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
     }
-
+    
     //input system stuff for left analog movement
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {

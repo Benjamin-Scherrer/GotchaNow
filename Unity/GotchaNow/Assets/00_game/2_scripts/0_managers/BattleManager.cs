@@ -25,7 +25,6 @@ public class BattleManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
     }
     
     void Start()
@@ -33,7 +32,7 @@ public class BattleManager : MonoBehaviour
         playerSpritePos = playerSprite.rectTransform.position;
         enemySpritePos = enemySprite.rectTransform.position;
     }
-    
+
     public IEnumerator PlayerAttackUI()
     {
         float timer = 0;
@@ -44,17 +43,62 @@ public class BattleManager : MonoBehaviour
 
             if (timer < atkAnimationTime / 3)
             {
-                playerSprite.rectTransform.position = Vector3.Lerp(playerSprite.rectTransform.position, enemySprite.rectTransform.position+ new Vector3 (-4,0,0), 0.75f);
+                playerSprite.rectTransform.position = Vector3.Lerp(playerSprite.rectTransform.position, enemySprite.rectTransform.position + new Vector3(-4, 0, 0), 0.75f);
             }
             else if (timer > atkAnimationTime / 2)
             {
                 playerSprite.rectTransform.position = Vector3.Lerp(playerSprite.rectTransform.position, playerSpritePos, 0.33f);
-                enemySprite.rectTransform.position = enemySpritePos + new Vector3(0, 2 * MathF.Sin(16*Time.fixedTime),0);
+                enemySprite.rectTransform.position = enemySpritePos + new Vector3(0, 2 * MathF.Sin(16 * Time.fixedTime), 0);
             }
             yield return null;
         }
         playerSprite.rectTransform.position = playerSpritePos;
         enemySprite.rectTransform.position = enemySpritePos;
+    }
+
+    public IEnumerator EnemyAttackUI()
+    {
+        float timer = 0;
+
+        while (timer < atkAnimationTime)
+        {
+            timer += Time.deltaTime;
+
+            if (timer < atkAnimationTime / 3)
+            {
+                enemySprite.rectTransform.position = Vector3.Lerp(enemySprite.rectTransform.position, playerSprite.rectTransform.position + new Vector3(4, 0, 0), 0.75f);
+            }
+            else if (timer > atkAnimationTime / 2)
+            {
+                enemySprite.rectTransform.position = Vector3.Lerp(enemySprite.rectTransform.position, enemySpritePos, 0.33f);
+                playerSprite.rectTransform.position = playerSpritePos + new Vector3(0, 2 * MathF.Sin(16 * Time.fixedTime), 0);
+            }
+            yield return null;
+        }
+
+        playerSprite.rectTransform.position = playerSpritePos;
+        enemySprite.rectTransform.position = enemySpritePos;
+    }
+    
+    public IEnumerator UpdatePlayerHP(float oldHP, float newHP) //update enemy health on UI
+    {
+        float timer = 0;
+        //Vector3 originalPos = enemyHP.rectTransform.position;
+
+        playerHP.fillAmount = oldHP;
+
+        while (timer < HPdrainTime)
+        {
+            timer += Time.deltaTime;
+            playerHP.fillAmount = Mathf.Lerp(oldHP, newHP, timer / HPdrainTime); //HP drain animation
+            yield return null;
+
+            //enemyHP.rectTransform.position = originalPos + new Vector3(0, Mathf.Sin(4*Time.fixedTime), 0);
+        }
+
+        playerHP.fillAmount = newHP;
+        //enemyHP.rectTransform.position = originalPos;
+        Debug.Log("fillAmount: " + playerHP.fillAmount);
     }
     
     public IEnumerator UpdateEnemyHP(float oldHP, float newHP) //update enemy health on UI

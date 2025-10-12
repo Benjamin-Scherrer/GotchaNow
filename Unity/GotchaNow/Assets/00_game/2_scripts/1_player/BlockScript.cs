@@ -4,7 +4,7 @@ using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
     public GameObject hitbox;
-    private bool parryActive = false;
+    public bool parryActive = false;
     private bool parryRefreshing = false;
     public float parryWindow = 0.1f;
     public float parryRefresh = 0.5f;

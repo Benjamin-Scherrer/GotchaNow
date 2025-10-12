@@ -60,5 +60,19 @@ public class Enemy : MonoBehaviour
             StartCoroutine(bm.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
         }
     }
+
+    public void AttackParried()
+    {
+        GetComponent<BossEnemy>().attackParried = true;
+        //TO DO: FOR ALL ENEMY TYPES
+    }
+
+    public float DistanceCheck(Vector3 obj)
+    {
+        Vector3 distanceVector = obj - this.transform.position;
+        float distance = distanceVector.magnitude;
+
+        return distance;
+    }
 }
 
