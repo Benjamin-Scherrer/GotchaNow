@@ -53,10 +53,11 @@ namespace DialogueSystem.Runtime.UI
             int numberOfOptionsInRow = Mathf.Min(numberOfOptionsLeft, numberOfColumns);
 
             //Calculate button size based on number of columns
-            float buttonWidth = (parentWidth - (buttonOffset.x * (numberOfOptionsInRow - 1))) / numberOfColumns;
+            float buttonWidth = (parentWidth - (buttonOffset.x * (numberOfOptionsInRow - 1))) / numberOfOptionsInRow;
             int numberOfRows = Mathf.CeilToInt((float)numberOfOptionsLeft / numberOfColumns);
             float buttonHeight = (parentHeight - (buttonOffset.y * (numberOfRows - 1))) / numberOfRows;
 
+            Debug.Log("Starting to place buttons");
             foreach (var option in options)
             {
                 var isDisabledOption = disableChosenOptions && option.HasAlreadyBeenChosen;
@@ -79,7 +80,7 @@ namespace DialogueSystem.Runtime.UI
                 buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, buttonHeight);
 
                 ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
-
+                Debug.Log($"Placed button {option.Text} at column {columnIndex}, row {rowIndex}");
 
                 columnIndex++;
                 numberOfOptionsLeft--;
@@ -94,6 +95,7 @@ namespace DialogueSystem.Runtime.UI
                 columnIndex = 0;
                 rowIndex++;
             }
+            Debug.Log("Finished placing buttons");
         }
 
         private void RemoveOptions()

@@ -19,7 +19,7 @@ namespace DialogueSystem.Runtime.Interaction
         
         [SerializeField] protected DialogueContainer narrativeScriptableObject;
         [SerializeField] protected NarrativeController narrativeController;
-        [SerializeField] protected KeyCode skipInput = KeyCode.Space;
+        // [SerializeField] protected KeyCode skipInput = KeyCode.Space;
         [SerializeField] protected DialogueEvent[] dialogueEvents;
 
         [SerializeField] protected InputActionReference skipAction;

@@ -11,11 +11,15 @@ namespace DialogueSystem.Runtime.Command
 {
     public class CommandExecutionHandler : MonoBehaviour
     {
+        [Header("UI Components")]
         [SerializeField] private TextTyper textTyper;
         [SerializeField] private NarrativeUI narrativeUI;
-        [SerializeField] private CharacterSpeaker characterSpeaker;
         [SerializeField] private TextAnimator textAnimator;
 
+        [Header("Audio Components")]
+        [SerializeField] private CharacterSpeaker characterSpeaker;
+
+        // Command Data
         private Queue<DialogueCommand> _commandQueue = new();
         private CharacterData _currentCharacterData;
         private DialogueMessage _currentDialogueMessage;
