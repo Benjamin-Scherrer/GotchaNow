@@ -39,6 +39,8 @@ namespace DialogueSystem.Runtime.UI
         public override void DisplayOptions(List<DialogueOption> options, bool disableChosenOptions,
             ChoosePathDelegate choosePathFunction)
         {
+            Debug.Log("1234567_Options: " + options.Count);
+
             DisableNextNarrationUI();
             var parentRect = buttonsParent.GetComponent<RectTransform>().rect;
 
@@ -57,7 +59,7 @@ namespace DialogueSystem.Runtime.UI
             int numberOfRows = Mathf.CeilToInt((float)numberOfOptionsLeft / numberOfColumns);
             float buttonHeight = (parentHeight - (buttonOffset.y * (numberOfRows - 1))) / numberOfRows;
 
-            Debug.Log("Starting to place buttons");
+            // Debug.Log("Starting to place buttons");
             foreach (var option in options)
             {
                 var isDisabledOption = disableChosenOptions && option.HasAlreadyBeenChosen;
@@ -80,7 +82,7 @@ namespace DialogueSystem.Runtime.UI
                 buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, buttonHeight);
 
                 ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
-                Debug.Log($"Placed button {option.Text} at column {columnIndex}, row {rowIndex}");
+                // Debug.Log($"Placed button {option.Text} at column {columnIndex}, row {rowIndex}");
 
                 columnIndex++;
                 numberOfOptionsLeft--;
@@ -95,7 +97,7 @@ namespace DialogueSystem.Runtime.UI
                 columnIndex = 0;
                 rowIndex++;
             }
-            Debug.Log("Finished placing buttons");
+            // Debug.Log("Finished placing buttons");
         }
 
         private void RemoveOptions()
@@ -162,6 +164,7 @@ namespace DialogueSystem.Runtime.UI
 
         public override void DisplayAllMessage()
         {
+            Debug.Log("12_Display all messages");
             textTyper.FinishTyping();
             messageTextContainer.maxVisibleCharacters = int.MaxValue;
         }

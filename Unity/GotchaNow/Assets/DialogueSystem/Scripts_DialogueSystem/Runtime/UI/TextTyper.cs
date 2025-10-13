@@ -73,6 +73,9 @@ namespace DialogueSystem.Runtime.UI
 
         public void FinishTyping()
         {
+            // Is this being called twice?
+            Debug.Log("123_Finish typing called");
+
             if (_typeTextCoroutine == null)
             {
                 return;

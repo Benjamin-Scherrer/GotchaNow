@@ -41,6 +41,8 @@ namespace DialogueSystem.Runtime.Interaction
             if (interactable == null) return;
             // Debug.Log("Found Interactable");
             if (!interactable.CanInteract) return;
+
+            Debug.Log("Interacting with " + interactable.name);
             interactable.Interact();
         }  
     }

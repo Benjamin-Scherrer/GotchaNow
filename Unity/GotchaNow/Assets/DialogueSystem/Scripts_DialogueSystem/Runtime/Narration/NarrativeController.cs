@@ -6,6 +6,7 @@ using DialogueSystem.Runtime.Interaction;
 using DialogueSystem.Runtime.UI;
 using DialogueSystem.Runtime.Utility;
 using DialogueSystem.Utility;
+// using FMOD;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -47,6 +48,9 @@ namespace DialogueSystem.Runtime.Narration
         
         public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
         {
+            //This is only called once, as it should.
+            // Debug.Log("Begin narration");
+
             _events = dialogueEvents;
             _narrative = narrativeLoader.LoadNarrative(narrativeToLoad);
 
@@ -86,6 +90,8 @@ namespace DialogueSystem.Runtime.Narration
 
         private void ContinueToChoiceAutomatically()
         {
+            //is this being called twice?
+            Debug.Log("1234_Continue to choice automatically");
             var continueAutomatically = _narrativeQueue.Count == 0 && 
                                         (_currentNarrative.HasNextChoice() || _currentNarrative.HasChoiceAfterSimpleNode() 
                                             && !_currentNarrative.IsCheckpoint);
@@ -94,7 +100,7 @@ namespace DialogueSystem.Runtime.Narration
             {
                 return;
             }
-
+            //Thus, this is called twice
             FindNextPath();
         }
 
@@ -111,6 +117,9 @@ namespace DialogueSystem.Runtime.Narration
 
         public void NextNarrative()
         {
+            //Is this running twice?
+            Debug.Log("0_Next narrative called");
+
             IsChoosing = false;
             if (narrativeUI.IsMessageDisplaying())
             {
@@ -142,12 +151,16 @@ namespace DialogueSystem.Runtime.Narration
 
         private void SkipCurrentMessage()
         {
+            //Is this running twice?
+            Debug.Log("1_Skip current message");
             narrativeUI.DisplayAllMessage();
             commandExecutionHandler.ExecuteAllCommands();
         }
 
         private void FindNextPath()
         {
+            //Thusly this is called twice
+            Debug.Log("12345_Find next path");
             if (_currentNarrative.IsCheckpoint)
             {
                 FinishAtCheckpoint();
@@ -162,6 +175,7 @@ namespace DialogueSystem.Runtime.Narration
 
             if (_currentNarrative.HasNextChoice())
             {
+                
                 SetupDialogueOptions();
                 return;
             }
@@ -175,6 +189,8 @@ namespace DialogueSystem.Runtime.Narration
 
         private void SetupDialogueOptions()
         {
+            //This is called twice
+            Debug.Log("123456_Setup dialogue options");
             IsChoosing = true;
             narrativeUI.DisplayOptions(_currentNarrative.Options, _currentNarrative.DisableAlreadyChosenOptions, ChooseNarrativePath);
         }
@@ -221,11 +237,13 @@ namespace DialogueSystem.Runtime.Narration
 
         private void SetupNarrativeEvents()
         {
+            Debug.Log("Setup narrative events");
             narrativeUI.OnMessageEnd += ContinueToChoiceAutomatically;
         }
 
         private void UnsetNarrativeEvents()
         {
+            Debug.Log("Unset narrative events");
             narrativeUI.OnMessageEnd -= ContinueToChoiceAutomatically;
         }
 

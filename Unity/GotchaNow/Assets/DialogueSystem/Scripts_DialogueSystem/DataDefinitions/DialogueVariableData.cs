@@ -86,8 +86,8 @@ namespace DialogueSystem.Data
     
     public sealed class DialogueVariableData : EasyScriptableSingleton<DialogueVariableData>
     {
-        protected override string PathToResources => "Assets/Resources";
-        protected override string ResourcesPath => "Dialogue System Data/Dialogue";
+        protected override string PathToResources => "Assets/DialogueSystem/Resources";
+        protected override string ResourcesPath => "Data_DialogueSystem/Dialogue";
         protected override string FileName => "DialogueVariableData";
         
         [SerializeReference] private List<Variable> variables;

@@ -16,8 +16,8 @@ namespace DialogueSystem.Editor
         private IEnumerable<Edge> Edges => _targetGraphView.edges.ToList();
         private List<DialogueNode> Nodes => _targetGraphView.nodes.ToList().Cast<DialogueNode>().ToList();
 
-        private const string PathToResources = "Assets/Resources";
-        private const string ResourcesPath = "Dialogue System Data/Narratives";
+        private const string PathToResources = "Assets/DialogueSystem/Resources";
+        private const string ResourcesPath = "Data_DialogueSystem/Narratives";
     
         public static GraphSaveUtility GetInstance(DialogueGraphView targetGraphView)
         {

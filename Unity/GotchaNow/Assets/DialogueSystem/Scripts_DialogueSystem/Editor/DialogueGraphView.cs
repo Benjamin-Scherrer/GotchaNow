@@ -18,7 +18,8 @@ namespace DialogueSystem.Editor
 
         public DialogueGraphView()
         {
-            styleSheets.Add(Resources.Load<StyleSheet>("Dialogue System Data/Editor/DialogueGraph"));
+            StyleSheet styleSheet = Resources.Load<StyleSheet>("Data_DialogueSystem/Editor/DialogueGraph");
+            styleSheets.Add(styleSheet);
 
             SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
             this.AddManipulator(new ContentDragger());
@@ -119,7 +120,7 @@ namespace DialogueSystem.Editor
 
         private static void SetupStyleSheet(Node dialogueNode)
         {
-            dialogueNode.styleSheets.Add(Resources.Load<StyleSheet>("Dialogue System Data/Editor/Node"));
+            dialogueNode.styleSheets.Add(Resources.Load<StyleSheet>("Data_DialogueSystem/Editor/Node"));
             dialogueNode.mainContainer.AddToClassList("dialogueNodeMainContainer");
         }
 

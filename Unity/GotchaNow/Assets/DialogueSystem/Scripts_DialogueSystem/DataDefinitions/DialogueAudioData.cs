@@ -23,8 +23,8 @@ namespace DialogueSystem.Data
         [SerializeField] private List<AudioData> musicList;
         [SerializeField] private List<AudioData> soundEffectList;
         
-        protected override string PathToResources => "Assets/Resources";
-        protected override string ResourcesPath => "Dialogue System Data/Dialogue";
+        protected override string PathToResources => "Assets/DialogueSystem/Resources";
+        protected override string ResourcesPath => "Data_DialogueSystem/Dialogue";
         protected override string FileName => "DialogueAudioData";
 
         protected override void Initialize()

@@ -10,32 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
-  m_Name: TestNarrative
+  m_Name: MyTestNarrative
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField:
-  - <BaseNodeGuid>k__BackingField: 75ed2208-df34-4582-abbb-e01bd7ffb0ea
+  - <BaseNodeGuid>k__BackingField: 05186c06-3a5e-4fb2-87a1-fdf79477f867
     <PortName>k__BackingField: Next
-    <TargetNodeGuid>k__BackingField: f9c9e03a-57b0-48ca-807a-abc0d3870bd9
+    <TargetNodeGuid>k__BackingField: caf90cc2-8a78-4ae3-9849-00db7aeca8dc
   <DialogueNodeData>k__BackingField:
-  - guid: 75ed2208-df34-4582-abbb-e01bd7ffb0ea
+  - guid: 05186c06-3a5e-4fb2-87a1-fdf79477f867
     dialogue: []
     position: {x: 100, y: 200}
     transitionNode: 0
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: f9c9e03a-57b0-48ca-807a-abc0d3870bd9
+  - guid: caf90cc2-8a78-4ae3-9849-00db7aeca8dc
     dialogue:
-    - <CharacterName>k__BackingField: TestCharacter
-      <Content>k__BackingField: This is a text dialogue.
+    - <CharacterName>k__BackingField: TestMan
+      <Content>k__BackingField: I am the test man. I test the dialogue system.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 300, y: 200}
+    - <CharacterName>k__BackingField: TestMan
+      <Content>k__BackingField: Frog frog frog frog frog.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 283, y: 200}
     transitionNode: 1
     entryPoint: 0
-    isCheckpoint: 0
+    isCheckpoint: 1
     disableAlreadyChosenOptions: 0
   <PathToCheckpoint>k__BackingField: 
   <IsNarrativeEndReached>k__BackingField: 0
