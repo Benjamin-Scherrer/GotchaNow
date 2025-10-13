@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: DialogueVariableData
   m_EditorClassIdentifier: 
   variables:
-  - rid: 5078869983044042808
-  - rid: 5078869983044042809
-  - rid: 5078869983044042810
+  - rid: 2639800181526888527
+  - rid: 2639800181526888528
+  - rid: 2639800181526888529
   references:
     version: 2
     RefIds:
-    - rid: 5078869983044042808
+    - rid: 2639800181526888527
       type: {class: FloatVariable, ns: DialogueSystem.Data, asm: Assembly-CSharp}
       data:
         <Name>k__BackingField: cost_coffee
         floatValue: 1.5
-    - rid: 5078869983044042809
+    - rid: 2639800181526888528
       type: {class: IntVariable, ns: DialogueSystem.Data, asm: Assembly-CSharp}
       data:
         <Name>k__BackingField: cost_bread
         intValue: 1
-    - rid: 5078869983044042810
+    - rid: 2639800181526888529
       type: {class: StringVariable, ns: DialogueSystem.Data, asm: Assembly-CSharp}
       data:
         <Name>k__BackingField: character

@@ -1,60 +1,47 @@
 ﻿using DialogueSystem.Scene;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DialogueSystem.Runtime.Interaction
 {
     public class Interactor : MonoBehaviour
     {
+        //To interact in 3D space.
         [SerializeField] private Transform interactSource;
         [SerializeField] private float interactionDistance;
-        [SerializeField] private LayerMask interactableLayer;
-        [SerializeField] private PlayerControllerExample playerControllerExample; //To replace with your player controller
 
-        private const KeyCode InteractionKey = KeyCode.Return;
-        private Vector3 _rayDirection;
+        //Just general click action
+        [SerializeField] private InputActionReference interactAction;
     
         private void Update()
         {
-            CalculateInputDirection();
             InteractWithCharacter();
         }
-    
-        private void CalculateInputDirection() => 
-            _rayDirection = playerControllerExample.InputDirection == Vector3.zero ? _rayDirection : playerControllerExample.InputDirection;
-
 
         private void InteractWithCharacter()
         {
-            if (!Input.GetKeyDown(InteractionKey))
+
+            if (interactAction == null || interactAction.action == null)
             {
-                return;
+                throw new System.Exception("Interact Action is not assigned.");
             }
 
-            var ray = new Ray(interactSource.position, _rayDirection);
-
-            if (!Physics.Raycast(ray, out var hit, interactionDistance, interactableLayer))
+            if (!interactAction.action.WasPressedThisFrame())
+            return;
+            // Debug.Log("Interact Pressed");
+            Collider[] colliders = new Collider[10]; // Adjust size as needed
+            int hitCount = Physics.OverlapSphereNonAlloc(interactSource.position, interactionDistance, colliders);
+            InteractableDialogue interactable = null;
+            for (int i = 0; i < hitCount; i++)
             {
-                return;
+                interactable = colliders[i].GetComponent<InteractableDialogue>();
+                if (interactable != null)
+                    break;
             }
-
-            var interactable = hit.collider.GetComponent<IInteractable>();
-
-            if (interactable.CanInteract)
-            {
-                interactable.Interact();
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            var rayOrigin = interactSource.position;
-            var rayDirection = _rayDirection;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(rayOrigin, rayDirection * interactionDistance);
-        }
-    
-    
-
+            if (interactable == null) return;
+            // Debug.Log("Found Interactable");
+            if (!interactable.CanInteract) return;
+            interactable.Interact();
+        }  
     }
 }

@@ -2,7 +2,7 @@
 using DialogueSystem.Runtime.Narration;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 namespace DialogueSystem.Runtime.Interaction
 {
@@ -21,16 +21,18 @@ namespace DialogueSystem.Runtime.Interaction
         [SerializeField] protected NarrativeController narrativeController;
         [SerializeField] protected KeyCode skipInput = KeyCode.Space;
         [SerializeField] protected DialogueEvent[] dialogueEvents;
+
+        [SerializeField] protected InputActionReference skipAction;
         
         /// <summary>
         /// Skips the current dialogue text if the player presses the skip input.
         /// </summary>
         protected void SkipDialogueWithInput()
         {
-            if (!Input.GetKeyDown(skipInput) || narrativeController.IsChoosing ||
-                !narrativeController.IsNarrating)
+            // Requires UnityEngine.InputSystem package
+            if (!skipAction.action.WasPressedThisFrame() || narrativeController.IsChoosing || !narrativeController.IsNarrating)
             {
-                return;
+            return;
             }
 
             narrativeController.NextNarrative();

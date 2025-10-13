@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: TestNarrative
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 75ed2208-df34-4582-abbb-e01bd7ffb0ea
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: f9c9e03a-57b0-48ca-807a-abc0d3870bd9
+  <DialogueNodeData>k__BackingField:
+  - guid: 75ed2208-df34-4582-abbb-e01bd7ffb0ea
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: f9c9e03a-57b0-48ca-807a-abc0d3870bd9
+    dialogue:
+    - <CharacterName>k__BackingField: TestCharacter
+      <Content>k__BackingField: This is a text dialogue.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 300, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

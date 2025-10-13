@@ -42,11 +42,20 @@ namespace DialogueSystem.Runtime.UI
             DisableNextNarrationUI();
             var parentRect = buttonsParent.GetComponent<RectTransform>().rect;
 
-            var columnIndex = 0;
-            var rowIndex = 0;
+            //Get parent rect dimensions
+            float parentWidth = parentRect.width;
+            float parentHeight = parentRect.height;
 
-            var numberOfOptionsLeft = options.Count;
-            var numberOfOptionsInRow = Mathf.Min(numberOfOptionsLeft, numberOfColumns);
+            int columnIndex = 0;
+            int rowIndex = 0;
+
+            int numberOfOptionsLeft = options.Count;
+            int numberOfOptionsInRow = Mathf.Min(numberOfOptionsLeft, numberOfColumns);
+
+            //Calculate button size based on number of columns
+            float buttonWidth = (parentWidth - (buttonOffset.x * (numberOfOptionsInRow - 1))) / numberOfColumns;
+            int numberOfRows = Mathf.CeilToInt((float)numberOfOptionsLeft / numberOfColumns);
+            float buttonHeight = (parentHeight - (buttonOffset.y * (numberOfRows - 1))) / numberOfRows;
 
             foreach (var option in options)
             {
@@ -66,7 +75,11 @@ namespace DialogueSystem.Runtime.UI
                     });
 
                 var buttonRect = newOptionButton.GetComponent<RectTransform>();
+                buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, buttonWidth);
+                buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, buttonHeight);
+
                 ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
+
 
                 columnIndex++;
                 numberOfOptionsLeft--;
