@@ -552,21 +552,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3923323948994173126, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 540
+    - target: {fileID: 5122265491183226631, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
-      objectReference: {fileID: 0}
-    - target: {fileID: 7309421265343167023, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177151458903273252, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
