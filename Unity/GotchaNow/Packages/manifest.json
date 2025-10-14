@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.github.d3tonat0r.essentials": "https://github.com/D3TONAT0R/UnityPackage-Essentials.git#1.0.0-preview-3",
+    "com.github.d3tonat0r.essentials": "https://github.com/D3TONAT0R/UnityPackage-Essentials.git#1.0.0-preview-2",
     "com.unity.cinemachine": "3.1.4",
     "com.unity.ide.visualstudio": "2.0.25",
     "com.unity.inputsystem": "1.14.2",
