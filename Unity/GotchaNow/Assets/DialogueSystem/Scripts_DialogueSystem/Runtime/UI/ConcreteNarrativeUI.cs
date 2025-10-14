@@ -39,7 +39,7 @@ namespace DialogueSystem.Runtime.UI
         public override void DisplayOptions(List<DialogueOption> options, bool disableChosenOptions,
             ChoosePathDelegate choosePathFunction)
         {
-            Debug.Log("1234567_Options: " + options.Count);
+            // Debug.Log("1234567_Options: " + options.Count);
 
             DisableNextNarrationUI();
             var parentRect = buttonsParent.GetComponent<RectTransform>().rect;
@@ -164,7 +164,7 @@ namespace DialogueSystem.Runtime.UI
 
         public override void DisplayAllMessage()
         {
-            Debug.Log("12_Display all messages");
+            // Debug.Log("12_Display all messages");
             textTyper.FinishTyping();
             messageTextContainer.maxVisibleCharacters = int.MaxValue;
         }

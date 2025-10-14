@@ -22,7 +22,14 @@ namespace DialogueSystem.Runtime.UI
         private Coroutine _typeTextCoroutine;
 
         private void Awake() => TyperPace = defaultTyperPace;
-        
+
+        //DEBUG
+        public void LogOnTypingEndInvocations()
+        {
+            Debug.LogFormat("OnTypingEnd invocations: {0}", OnTypingEnd.GetInvocationList().Length);
+        }
+        //DEBUG END
+
         public void TypeText(string text, TMP_Text textContainer)
         {
             TyperPace = defaultTyperPace;
@@ -74,7 +81,7 @@ namespace DialogueSystem.Runtime.UI
         public void FinishTyping()
         {
             // Is this being called twice?
-            Debug.Log("123_Finish typing called");
+            // Debug.Log("123_Finish typing called");
 
             if (_typeTextCoroutine == null)
             {

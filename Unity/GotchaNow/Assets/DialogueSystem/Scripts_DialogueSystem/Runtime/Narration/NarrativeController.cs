@@ -91,7 +91,7 @@ namespace DialogueSystem.Runtime.Narration
         private void ContinueToChoiceAutomatically()
         {
             //is this being called twice?
-            Debug.Log("1234_Continue to choice automatically");
+            // Debug.Log("1234_Continue to choice automatically");
             var continueAutomatically = _narrativeQueue.Count == 0 && 
                                         (_currentNarrative.HasNextChoice() || _currentNarrative.HasChoiceAfterSimpleNode() 
                                             && !_currentNarrative.IsCheckpoint);
@@ -152,7 +152,7 @@ namespace DialogueSystem.Runtime.Narration
         private void SkipCurrentMessage()
         {
             //Is this running twice?
-            Debug.Log("1_Skip current message");
+            // Debug.Log("1_Skip current message");
             narrativeUI.DisplayAllMessage();
             commandExecutionHandler.ExecuteAllCommands();
         }
@@ -160,7 +160,7 @@ namespace DialogueSystem.Runtime.Narration
         private void FindNextPath()
         {
             //Thusly this is called twice
-            Debug.Log("12345_Find next path");
+            // Debug.Log("12345_Find next path");
             if (_currentNarrative.IsCheckpoint)
             {
                 FinishAtCheckpoint();
@@ -190,7 +190,7 @@ namespace DialogueSystem.Runtime.Narration
         private void SetupDialogueOptions()
         {
             //This is called twice
-            Debug.Log("123456_Setup dialogue options");
+            // Debug.Log("123456_Setup dialogue options");
             IsChoosing = true;
             narrativeUI.DisplayOptions(_currentNarrative.Options, _currentNarrative.DisableAlreadyChosenOptions, ChooseNarrativePath);
         }
@@ -239,12 +239,20 @@ namespace DialogueSystem.Runtime.Narration
         {
             Debug.Log("Setup narrative events");
             narrativeUI.OnMessageEnd += ContinueToChoiceAutomatically;
+
+            //DEBUG
+            narrativeUI.LogOnMessageEndInvocations();
+            //DEBUG END
         }
 
         private void UnsetNarrativeEvents()
         {
             Debug.Log("Unset narrative events");
             narrativeUI.OnMessageEnd -= ContinueToChoiceAutomatically;
+
+            //DEBUG
+            narrativeUI.LogOnMessageEndInvocations();
+            //DEBUG END
         }
 
         private void FinishAtCheckpoint()
@@ -255,6 +263,11 @@ namespace DialogueSystem.Runtime.Narration
         
         private void FinishDialogue()
         {
+            //DEBUG
+            Debug.Log("Dialogue finished");
+            UnsetNarrativeEvents();
+            //DEBUG END
+
             narrativeUI.SetUIActive(false);
             IsNarrating = false;
 

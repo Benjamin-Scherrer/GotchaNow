@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
   m_Name: test
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: abc633e1-2388-4a36-afae-7e512b14694f
     <PortName>k__BackingField: Next
@@ -66,25 +66,6 @@ MonoBehaviour:
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 97891cdd-c4f7-4ff8-8cc4-b791b97fa70b
-    dialogue:
-    - <CharacterName>k__BackingField: X
-      <Content>k__BackingField: I'm feeling really gooooood today!
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: X
-      <Content>k__BackingField: What about ya?
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1113.3334, y: 54}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: f12b69a2-5113-4cca-91d2-c887ae5dac4d
     dialogue:
     - <CharacterName>k__BackingField: X
@@ -93,7 +74,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1126.6666, y: 429.3333}
+    position: {x: 1098.5, y: 810.5}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
@@ -107,7 +88,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1126.6666, y: 318}
+    position: {x: 1098.5, y: 699}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
@@ -123,7 +104,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1610.6666, y: 429.3333}
+    position: {x: 1582.5, y: 810.5}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
@@ -136,55 +117,27 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1610.6666, y: 318}
+    position: {x: 1582.5, y: 699}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 1
     disableAlreadyChosenOptions: 0
-  - guid: b47bca0b-4822-41db-acc6-5558bc78f2a5
+  - guid: 97891cdd-c4f7-4ff8-8cc4-b791b97fa70b
     dialogue:
     - <CharacterName>k__BackingField: X
-      <Content>k__BackingField: I guess, I can make your day better!
+      <Content>k__BackingField: I'm feeling really gooooood today!
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1647.3334, y: 121.333336}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: f1be4272-2da9-4c72-a0bb-4f3947899efe
-    dialogue: []
-    position: {x: 660.6667, y: 318}
+    - <CharacterName>k__BackingField: X
+      <Content>k__BackingField: What about ya?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1098.5, y: 437}
     transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 1
-  - guid: b551527d-3554-405b-bd0d-5949924857ec
-    dialogue:
-    - <CharacterName>k__BackingField: X
-      <Content>k__BackingField: <sp:0,2><i>Welcome <val:character></i><p:long> to
-        <event:something>my<p:normal><em:Angry> <sp:0,01><color="green">shop</color><sp:0>!!!!!!!!!!!
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 336, y: 278.66666}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 5da6a15c-8cc3-439a-8360-8132191fae29
-    dialogue:
-    - <CharacterName>k__BackingField: X
-      <Content>k__BackingField: Do you want anything else?
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1912.6666, y: 374}
-    transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
@@ -196,8 +149,55 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1330.6666, y: 712}
+    position: {x: 1582.5, y: 1021.5}
     transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: b47bca0b-4822-41db-acc6-5558bc78f2a5
+    dialogue:
+    - <CharacterName>k__BackingField: X
+      <Content>k__BackingField: I guess, I can make your day better!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1582.5, y: 437}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: b551527d-3554-405b-bd0d-5949924857ec
+    dialogue:
+    - <CharacterName>k__BackingField: X
+      <Content>k__BackingField: <sp:0,2><i>Welcome <val:character></i><p:long> to
+        <event:something>my<p:normal><em:Angry> <sp:0,01><color="green">shop</color><sp:0>!!!!!!!!!!!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 289, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: f1be4272-2da9-4c72-a0bb-4f3947899efe
+    dialogue: []
+    position: {x: 660.5, y: 199}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 1
+  - guid: 5da6a15c-8cc3-439a-8360-8132191fae29
+    dialogue:
+    - <CharacterName>k__BackingField: X
+      <Content>k__BackingField: Do you want anything else?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1838.5, y: 199}
+    transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1050.6666, y: 637.3334}
+    position: {x: 1098.5, y: 1021.5}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 1

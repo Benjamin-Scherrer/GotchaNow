@@ -25,6 +25,13 @@ namespace DialogueSystem.Runtime.UI
             remove => textTyper.OnTypingEnd -= value;
         }
 
+        //DEBUG
+        public void LogOnMessageEndInvocations()
+        {
+            textTyper.LogOnTypingEndInvocations();
+        }
+        //DEBUG END
+
         public delegate void ChoosePathDelegate(int index);
                 
         /// <summary>

@@ -23,12 +23,4 @@ MonoBehaviour:
     characterFace:
       enabled: 0
       value: {fileID: 0}
-  states:
-  - emotionLabel: 4
-    speakingSoundPitch: 0.409
-    reactionSound:
-      enabled: 0
-      value: {fileID: 0}
-    characterFace:
-      enabled: 0
-      value: {fileID: 0}
+  states: []
