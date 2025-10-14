@@ -53,7 +53,7 @@ namespace GotchaNow
 
 		private void UpdateRectSize()
 		{
-			Debug.Log("Updating Rect Size");
+			// Debug.Log("Updating Rect Size");
 			// float targetHeight = targetRectTransform.rect.height;
 			// float targetWidth = targetRectTransform.rect.width;
 

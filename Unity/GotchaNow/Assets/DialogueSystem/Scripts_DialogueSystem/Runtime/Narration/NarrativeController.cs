@@ -118,7 +118,7 @@ namespace DialogueSystem.Runtime.Narration
         public void NextNarrative()
         {
             //Is this running twice?
-            Debug.Log("0_Next narrative called");
+            // Debug.Log("0_Next narrative called");
 
             IsChoosing = false;
             if (narrativeUI.IsMessageDisplaying())
@@ -237,21 +237,21 @@ namespace DialogueSystem.Runtime.Narration
 
         private void SetupNarrativeEvents()
         {
-            Debug.Log("Setup narrative events");
+            // Debug.Log("Setup narrative events");
             narrativeUI.OnMessageEnd += ContinueToChoiceAutomatically;
 
             //DEBUG
-            narrativeUI.LogOnMessageEndInvocations();
+            // narrativeUI.LogOnMessageEndInvocations();
             //DEBUG END
         }
 
         private void UnsetNarrativeEvents()
         {
-            Debug.Log("Unset narrative events");
+            // Debug.Log("Unset narrative events");
             narrativeUI.OnMessageEnd -= ContinueToChoiceAutomatically;
 
             //DEBUG
-            narrativeUI.LogOnMessageEndInvocations();
+            // narrativeUI.LogOnMessageEndInvocations();
             //DEBUG END
         }
 
@@ -263,10 +263,10 @@ namespace DialogueSystem.Runtime.Narration
         
         private void FinishDialogue()
         {
-            //DEBUG
-            Debug.Log("Dialogue finished");
+            //FIX
+            // Debug.Log("Dialogue finished");
             UnsetNarrativeEvents();
-            //DEBUG END
+            //FIX END
 
             narrativeUI.SetUIActive(false);
             IsNarrating = false;

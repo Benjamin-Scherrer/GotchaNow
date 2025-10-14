@@ -9,7 +9,7 @@ namespace GotchaNow
 
 		private void OnRectTransformDimensionsChange()
 		{
-			Debug.Log("Canvas RectTransform changed");
+			// Debug.Log("Canvas RectTransform changed");
 			rectTransformChanged?.Invoke();
 		}
 	}
