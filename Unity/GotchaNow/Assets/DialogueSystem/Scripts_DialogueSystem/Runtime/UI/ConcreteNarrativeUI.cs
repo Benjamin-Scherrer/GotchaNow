@@ -59,6 +59,9 @@ namespace DialogueSystem.Runtime.UI
             int numberOfRows = Mathf.CeilToInt((float)numberOfOptionsLeft / numberOfColumns);
             float buttonHeight = (parentHeight - (buttonOffset.y * (numberOfRows - 1))) / numberOfRows;
 
+            // Get the upper left position of the parent rect in local space
+            Vector2 originPosition = new(parentRect.xMin, parentRect.yMax);
+
             // Debug.Log("Starting to place buttons");
             foreach (var option in options)
             {
@@ -80,6 +83,8 @@ namespace DialogueSystem.Runtime.UI
                 var buttonRect = newOptionButton.GetComponent<RectTransform>();
                 buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, buttonWidth);
                 buttonRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, buttonHeight);
+
+                
 
                 ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
                 // Debug.Log($"Placed button {option.Text} at column {columnIndex}, row {rowIndex}");

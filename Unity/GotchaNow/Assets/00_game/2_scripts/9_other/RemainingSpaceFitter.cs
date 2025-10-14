@@ -74,7 +74,7 @@ namespace GotchaNow
 		}
 
 
-
+		#if UNITY_EDITOR
 		//Debugging purposes
 		[Header("Debugging")]
 		[SerializeField] private bool updateInEditor = false;
@@ -86,5 +86,6 @@ namespace GotchaNow
 				updateInEditor = false;
 			}
 		}
+		#endif
 	}
 }
