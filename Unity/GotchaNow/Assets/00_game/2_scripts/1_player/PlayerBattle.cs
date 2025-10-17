@@ -11,6 +11,8 @@ public class PlayerBattle : MonoBehaviour
     public static event Action OnDeath;
     private InputSystem_Actions input = null;
     public BattleManager bm;
+    public NotificationManager nm;
+    public GameObject model;
     [HideInInspector] public Rigidbody rb = null;
     private Vector2 moveVector = Vector2.zero;
     private Vector2 camVector = Vector2.zero;
@@ -55,6 +57,7 @@ public class PlayerBattle : MonoBehaviour
     private bool slash2Queued = false;
     private bool slash3Queued = false;
     private bool heavySlashReady = true;
+    private bool confirmReady = true;
 
     public float slashCooldown = 1f;
     public float slash1Duration = 0.5f;
@@ -76,8 +79,9 @@ public class PlayerBattle : MonoBehaviour
     private bool dodgeReady = true;
     private bool dodgeQueued = false;
     public float dodgeCooldown = 1f;
-    private float dodgeTimer = 0f;
-    private Vector3 dodgeDir;
+    public float dodgeTime = 0.5f;
+    public float dodgeInvulnerableTime = 0.2f;
+    public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
 
     private bool blockReady = true;
@@ -133,6 +137,17 @@ public class PlayerBattle : MonoBehaviour
         //check left analog
         stickPosition = new Vector3(moveVector.x, 0, moveVector.y);
 
+        //DEBUG
+        if (input.Player.Down.IsPressed())
+        {
+            //bm.SetTimeScale(1f);
+        }
+
+        if (input.Player.Up.IsPressed())
+        {
+            //bm.SetTimeScale(0.01f);
+        }
+
         //re-enable moves
         if (!slashReady)
         {
@@ -150,7 +165,7 @@ public class PlayerBattle : MonoBehaviour
             }
         }
 
-        if (!dodgeReady && !dodgeActive)
+        if (!dodgeReady)
         {
             if (!input.Player.Dodge.IsPressed())
             {
@@ -181,12 +196,20 @@ public class PlayerBattle : MonoBehaviour
                 switchReadyL = true;
             }
         }
-    
+
         if (!blockReady)
         {
             if (!input.Player.Block.IsPressed())
             {
                 blockReady = true;
+            }
+        }
+
+        if (!confirmReady)
+        {
+            if (!input.Player.Confirm.IsPressed())
+            {
+                confirmReady = true;
             }
         }
     }
@@ -264,19 +287,6 @@ public class PlayerBattle : MonoBehaviour
             switchReadyL = false;
         }
 
-        //when hit by enemy attack
-        /* if (hitStun)
-        {
-            hitStunTimer -= Time.deltaTime;
-            //GetComponent<MeshRenderer>().material = hitstunMaterial;
-
-            if (hitStunTimer <= 0)
-            {
-                //GetComponent<MeshRenderer>().material = defaultMaterial;
-                hitStun = false;
-            }
-        } */
-
         //inputs for moveset
         if (!actionInProgress && !hitStun)
         {
@@ -304,16 +314,13 @@ public class PlayerBattle : MonoBehaviour
                 blockBox.GetComponent<BlockScript>().StartBlock();
             }
 
-            //dodge
+            //dodge roll
             if (input.Player.Dodge.IsPressed() && dodgeReady)
             {
                 actionInProgress = true;
-
-                dodgeDir = stickPosition;
-                dodgeActive = true;
                 dodgeReady = false;
-                dodgeTimer = dodgeCooldown;
-
+                StartCoroutine(Roll(stickPosition));
+                
                 //DodgeSFX audio;
             }
         }
@@ -329,48 +336,22 @@ public class PlayerBattle : MonoBehaviour
                 blockBox.GetComponent<BlockScript>().EndBlock();
             }
         }
-
-        //dodge active
-        if (dodgeActive)
-        {
-            if (dodgeSuccessful)
-            {
-                //PerfectDodgeSFX audio;
-
-                dodgeSuccessful = false;
-            }
-
-            DodgeRoll(dodgeDir);
-            dodgeTimer -= 1 * Time.fixedDeltaTime;
-            //GetComponent<MeshRenderer>().material = dodgeMaterial;
-
-            if (dodgeTimer <= 0)
-            {
-                dodgeActive = false;
-                rb.linearVelocity = Vector3.zero;
-                //GetComponent<MeshRenderer>().material = defaultMaterial;
-
-                if (slash1Queued)
-                {
-                    slash1Queued = false;
-                    slashReady = false;
-                    StartCoroutine(Slash1());
-                }
-                else
-                {
-                    actionInProgress = false;
-                }
-            }
-        }
     }
 
+    //parry successful (TO DO!!)
     public void ParrySuccessful()
     {
         Debug.Log("parry successful!");
     }
 
+    //collision w enemy attack
     public void HitByAttack(float dmg, float atkKnockback, Vector3 attackDir)
     {
+        if (invulnerable)
+        {
+            return;
+        }
+        
         HP -= dmg;
         hitStun = true;
 
@@ -393,7 +374,7 @@ public class PlayerBattle : MonoBehaviour
         StartCoroutine(bm.EnemyAttackUI());
         StartCoroutine(bm.UpdatePlayerHP((HP + dmg) / maxHP, HP / maxHP));
     }
-    
+
     private IEnumerator Knockback(float atkKnockback, Vector3 attackDir)
     {
         float knockback = atkKnockback;
@@ -409,13 +390,14 @@ public class PlayerBattle : MonoBehaviour
 
             hitStunTimer -= Time.deltaTime;
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         hitStun = false;
         //GetComponent<MeshRenderer>().material = defaultMaterial;
     }
 
+    //movement
     private void moveCharacter(Vector3 direction) //movement
     {
         Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
@@ -446,21 +428,48 @@ public class PlayerBattle : MonoBehaviour
             }
         }
     }
-
-    private void DodgeRoll(Vector3 direction) //dodge movement
+    
+    //dodge roll
+    private IEnumerator Roll(Vector3 direction)
     {
+        float timer = 0;
         Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
         rotationY = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
-        rb.linearVelocity = moveDir * dodgeSpeed;
-        transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+        invulnerable = true;
+        model.GetComponent<Renderer>().material.color = Color.yellow; //debug
 
-        if (input.Player.Attack1.IsPressed() && slashReady)
+        while (timer < dodgeTime)
         {
-            slash1Queued = true;
-            slashReady = false;
-            dodgeTimer *= 0.5f;
+            timer += Time.deltaTime;
+
+            if (timer > dodgeInvulnerableTime)
+            {
+                invulnerable = false;
+                model.GetComponent<Renderer>().material.color = Color.white; //debug
+            }
+            
+            if (input.Player.Attack1.IsPressed() && slashReady)
+            {
+                slash1Queued = true;
+                slashReady = false;
+            }
+
+            rb.MovePosition(rb.position + moveDir * dodgeSpeed * Time.fixedDeltaTime);
+            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        if (slash1Queued)
+        {
+            slash1Queued = false;
+            StartCoroutine(Slash1());
+        }
+        else
+        {
+            actionInProgress = false;
         }
     }
 
@@ -504,10 +513,7 @@ public class PlayerBattle : MonoBehaviour
         }
         else if (dodgeQueued) //cancel into dodge
         {
-            dodgeDir = stickPosition;
-            dodgeActive = true;
-            dodgeTimer = dodgeCooldown;
-
+            StartCoroutine(Roll(stickPosition));
             dodgeQueued = false;
             yield break;
         }
@@ -556,10 +562,7 @@ public class PlayerBattle : MonoBehaviour
         }
         else if (dodgeQueued) //cancel into dodge
         {
-            dodgeDir = stickPosition;
-            dodgeActive = true;
-            dodgeTimer = dodgeCooldown;
-
+            StartCoroutine(Roll(stickPosition));
             dodgeQueued = false;
             yield break;
         }
@@ -598,8 +601,14 @@ public class PlayerBattle : MonoBehaviour
         {
             chgTimer += Time.deltaTime;
 
+            if (chgTimer > heavySlashChargeTime / 2)
+            {
+                model.GetComponent<Renderer>().material.color = Color.darkGreen; //debug
+            }
+
             if (!input.Player.Attack2.IsPressed())
             {
+                model.GetComponent<Renderer>().material.color = Color.white; //debug
                 if (chgTimer > heavySlashChargeTime / 2) //lower power attack before full charge
                 {
                     StartCoroutine(HeavySlash(0.5f + 0.25f * (chgTimer / heavySlashChargeTime)));
@@ -615,6 +624,7 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
+        model.GetComponent<Renderer>().material.color = Color.white; //debug
         StartCoroutine(HeavySlash(1)); //full power charge attack
     }
 
@@ -686,7 +696,8 @@ public class PlayerBattle : MonoBehaviour
             rotationTime += Time.deltaTime;
             Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
             transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.33f));
-            yield return null;
+            
+            yield return new WaitForFixedUpdate();
         }
     }
     

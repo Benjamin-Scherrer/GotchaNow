@@ -109,7 +109,7 @@ public class BossEnemy : MonoBehaviour
                 knockback -= Time.deltaTime * 12;
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         attackParried = false;
