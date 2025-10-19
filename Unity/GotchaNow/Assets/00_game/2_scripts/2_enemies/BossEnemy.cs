@@ -6,6 +6,7 @@ public class BossEnemy : MonoBehaviour
     private Rigidbody rb;
     private Enemy enemy;
     private PlayerBattle pb;
+    public GameObject model;
     private bool actionInProgress = false;
     private float distance;
     public GameObject attack1;
@@ -21,7 +22,7 @@ public class BossEnemy : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    void Start()
+    void OnEnable()
     {
         pb = PlayerBattle.Instance;   
     }
@@ -102,7 +103,7 @@ public class BossEnemy : MonoBehaviour
         while (timer < stunTime)
         {
             timer += Time.deltaTime;
-            
+
             if (knockback > 0)
             {
                 rb.MovePosition(transform.position + parryDir.normalized * knockback * Time.deltaTime);
@@ -114,5 +115,13 @@ public class BossEnemy : MonoBehaviour
 
         attackParried = false;
         actionInProgress = false;
+    }
+    
+    public void EndBattle()
+    {
+        AttackScript atkScript = attack1.GetComponent<AttackScript>();
+        atkScript.EndAttack();
+
+        this.enabled = false;
     }
 }

@@ -84,7 +84,7 @@ public class BattleManager : MonoBehaviour
         enemySprite.rectTransform.position = enemySpritePos;
     }
     
-    public IEnumerator UpdatePlayerHP(float oldHP, float newHP) //update enemy health on UI
+    public IEnumerator UpdatePlayerHP(float oldHP, float newHP) //update player health on UI
     {
         float timer = 0;
         //Vector3 originalPos = enemyHP.rectTransform.position;

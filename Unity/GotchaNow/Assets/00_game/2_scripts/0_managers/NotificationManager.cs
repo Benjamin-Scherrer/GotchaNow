@@ -9,6 +9,7 @@ using TMPro;
 
 public class NotificationManager : MonoBehaviour
 {
+    public static NotificationManager instance;
     public InputActionReference upInput;
     public InputActionReference downInput;
     public InputActionReference menuInput;
@@ -41,13 +42,18 @@ public class NotificationManager : MonoBehaviour
     public float currentQuota = 0;
     public float maxQuota = 0;
 
-    void Start()
+    void Awake()
     {
+        instance = this;
+
         request.Add(healRequest);
         request.Add(buffRequest);
         request.Add(meteorRequest);
-        request.Add(cancelRequest);
+        request.Add(cancelRequest);   
+    }
 
+    void Start()
+    {
         notifCharge = 0;
         currentQuota = 0;
         ChargeNotifBar(0);
@@ -63,7 +69,7 @@ public class NotificationManager : MonoBehaviour
                 StartCoroutine(OpenRequestMenu());
                 Debug.Log("opening menu");
             }
-            else
+            else if (menuOpen && notifCharge >= 1)
             {
                 SelectMenuItem();
             }
@@ -360,15 +366,29 @@ public class NotificationManager : MonoBehaviour
         {
             timer += Time.deltaTime;
             quotaBarUI.fillAmount = Mathf.Lerp(oldQuota / maxQuota, newQuota / maxQuota, timer / quotaFillTime);
-            
+
             fillPercentage = (int)(quotaBarUI.fillAmount * 100);
             quotaPercent.text = fillPercentage.ToString() + "%";
 
             yield return null;
         }
 
-        quotaBarUI.fillAmount = newQuota/maxQuota;
-        
+        quotaBarUI.fillAmount = newQuota / maxQuota;
+
         //Debug.Log("fillAmount: " + quotaBar.fillAmount);
+    }
+
+    public void StartBattle()
+    {
+        notifCharge = 0;
+        ChargeNotifBar(0);
+    }
+    
+    public void FullReset()
+    {
+        notifCharge = 0;
+        currentQuota = 0;
+        ChargeNotifBar(0);
+        ChargeQuota(0);
     }
 }

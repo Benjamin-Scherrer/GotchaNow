@@ -16,8 +16,7 @@ public class PlayerBattle : MonoBehaviour
     [HideInInspector] public Rigidbody rb = null;
     private Vector2 moveVector = Vector2.zero;
     private Vector2 camVector = Vector2.zero;
-    private Vector3 stickPosition;
-    private float rotationY;
+    private Vector2 stickPosition;
     public GameObject mainCamera;
     public GameObject freeCam;
     public GameObject lockOnCam;
@@ -113,6 +112,8 @@ public class PlayerBattle : MonoBehaviour
     private void OnEnable()
     {
         //input system stuff
+        HP = maxHP;
+        
         input.Enable();
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCanceled;
@@ -135,7 +136,7 @@ public class PlayerBattle : MonoBehaviour
     private void Update()
     {
         //check left analog
-        stickPosition = new Vector3(moveVector.x, 0, moveVector.y);
+        stickPosition = new Vector2(moveVector.x, moveVector.y);
 
         //DEBUG
         if (input.Player.Down.IsPressed())
@@ -398,10 +399,10 @@ public class PlayerBattle : MonoBehaviour
     }
 
     //movement
-    private void moveCharacter(Vector3 direction) //movement
+    private void moveCharacter(Vector2 direction) //movement
     {
         Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
-        rotationY = Mathf.Atan2(moveVector.x, moveVector.y) * Mathf.Rad2Deg;
+        float rotationY = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         float tiltStrength = direction.magnitude; //analog movement speed
@@ -434,7 +435,7 @@ public class PlayerBattle : MonoBehaviour
     {
         float timer = 0;
         Vector3 camFwd = new Vector3(transform.position.x - mainCamera.transform.position.x, 0, transform.position.z - mainCamera.transform.position.z);
-        rotationY = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        float rotationY = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         invulnerable = true;
