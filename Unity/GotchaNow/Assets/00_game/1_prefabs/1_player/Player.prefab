@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 8030744871869984626}
   - component: {fileID: 8840771638389467234}
   - component: {fileID: 1042826294177169535}
+  - component: {fileID: 4225623595820484780}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -288,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   bm: {fileID: 0}
+  nm: {fileID: 0}
+  model: {fileID: 4694609817803985651}
   rb: {fileID: 0}
   mainCamera: {fileID: 0}
   freeCam: {fileID: 0}
@@ -325,8 +328,28 @@ MonoBehaviour:
   slash3fMovement: 1
   attackRotationInfluence: 3
   dodgeCooldown: 0.4
+  dodgeTime: 0.33
+  dodgeInvulnerableTime: 0.2
+  invulnerable: 0
   dodgeSuccessful: 0
   parrySuccessful: 0
+--- !u!114 &4225623595820484780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825658470768432107}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34ca4b379151f243b6f71d5113313ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  rb: {fileID: 0}
+  model: {fileID: 4694609817803985651}
+  freeCam: {fileID: 0}
+  actionInProgress: 0
+  moveSpeed: 5
 --- !u!1 &3427697124179501312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,11 +1110,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8826282645334485215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 351e41f3b8372e242925def1d005ed25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  blockScript: {fileID: 1917298998672665063}
 --- !u!1 &9206623815129820704
 GameObject:
   m_ObjectHideFlags: 0

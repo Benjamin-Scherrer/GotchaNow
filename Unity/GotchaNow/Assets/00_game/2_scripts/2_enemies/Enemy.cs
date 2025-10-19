@@ -4,14 +4,15 @@ using UnityEditor.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    //public readonly static HashSet<Enemy> Pool = new HashSet<Enemy>();
-
     //essential values
+    public string enemyType;
     public float maxHP = 100;
     public float HP = 100;
     public float knockback = 0;
     public int proximity = 0;
     public BattleManager bm;
+    public ProgressionManager pm;
+    public NotificationManager nm;
     public bool isLockOnTarget = false;
     public bool isMainEnemy = false;
 
@@ -22,18 +23,23 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        bm = BattleManager.instance;
-        bm.AddToEnemyList(this.gameObject);
-
-        //Enemy.Pool.Add(this); //add to pool of alive enemies
+        //bm = BattleManager.instance;
 
         //HitBloom = GameObject.Find("VFXBloomWhite");
+    }
+
+    private void OnEnable()
+    {
+        bm = BattleManager.instance;
+        pm = ProgressionManager.instance;
+        nm = NotificationManager.instance;
+
+        bm.AddToEnemyList(this.gameObject);
     }
 
     private void OnDisable()
     {
         bm.RemoveFromEnemyList(this.gameObject);
-        //Enemy.Pool.Remove(this); //remove from pool of alive enemies
     }
 
     private void FixedUpdate()
@@ -58,13 +64,45 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(bm.PlayerAttackUI());
             StartCoroutine(bm.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
+
+            if (HP <= 0)
+            {
+                pm.EndBattle(nm.currentQuota, nm.maxQuota); //update game state
+            }
+        }
+        
+        if (HP <= 0)
+        {
+            if (enemyType == "boss")
+            {
+                GetComponent<BossEnemy>().EndBattle();
+                GetComponent<EnemyIntermission>().enabled = true;
+            }
+            else if (enemyType == "minion")
+            {
+                Destroy(this.gameObject);
+            }
+            else if (enemyType == "queen")
+            {
+                GetComponent<QueenEnemy>().EndBattle();
+            }
         }
     }
 
     public void AttackParried()
     {
-        GetComponent<BossEnemy>().attackParried = true;
-        //TO DO: FOR ALL ENEMY TYPES
+        if (enemyType == "boss")
+        {
+            GetComponent<BossEnemy>().attackParried = true;
+        }
+        else if (enemyType == "minion")
+        {
+            GetComponent<MinionEnemy>().attackParried = true;
+        }
+        else if (enemyType == "queen")
+        {
+            GetComponent<QueenEnemy>().attackParried = true;
+        }
     }
 
     public float DistanceCheck(Vector3 obj)
@@ -73,6 +111,12 @@ public class Enemy : MonoBehaviour
         float distance = distanceVector.magnitude;
 
         return distance;
+    }
+
+    public void StartBattle()
+    {
+        HP = maxHP;
+        StartCoroutine(bm.UpdateEnemyHP(0, 1));
     }
 }
 

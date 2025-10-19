@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Splines.Interpolators;
 using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
@@ -13,24 +12,29 @@ public class BattleManager : MonoBehaviour
     public List<GameObject> activeEnemy = new List<GameObject>();
     public Text debugText;
     public Image playerSprite;
-    private Vector3 playerSpritePos;
     public Image enemySprite;
-    private Vector3 enemySpritePos;
     public Image playerHP;
     public Image enemyHP;
+    public Image notifBar;
+    private Vector3 playerSpritePos;
+    private Vector3 enemySpritePos;
     public float atkAnimationTime = 0.4f;
     public float HPdrainTime = 0.2f;
-
 
     void Awake()
     {
         instance = this;
     }
-    
+
     void Start()
     {
         playerSpritePos = playerSprite.rectTransform.position;
         enemySpritePos = enemySprite.rectTransform.position;
+    }
+
+    public void SetTimeScale(float factor)
+    {
+        Time.timeScale = factor;
     }
 
     public IEnumerator PlayerAttackUI()
@@ -80,7 +84,7 @@ public class BattleManager : MonoBehaviour
         enemySprite.rectTransform.position = enemySpritePos;
     }
     
-    public IEnumerator UpdatePlayerHP(float oldHP, float newHP) //update enemy health on UI
+    public IEnumerator UpdatePlayerHP(float oldHP, float newHP) //update player health on UI
     {
         float timer = 0;
         //Vector3 originalPos = enemyHP.rectTransform.position;
@@ -98,9 +102,10 @@ public class BattleManager : MonoBehaviour
 
         playerHP.fillAmount = newHP;
         //enemyHP.rectTransform.position = originalPos;
-        Debug.Log("fillAmount: " + playerHP.fillAmount);
+        
+        //Debug.Log("fillAmount: " + playerHP.fillAmount);
     }
-    
+
     public IEnumerator UpdateEnemyHP(float oldHP, float newHP) //update enemy health on UI
     {
         float timer = 0;
@@ -119,7 +124,8 @@ public class BattleManager : MonoBehaviour
 
         enemyHP.fillAmount = newHP;
         //enemyHP.rectTransform.position = originalPos;
-        Debug.Log("fillAmount: " + enemyHP.fillAmount);
+
+        //Debug.Log("fillAmount: " + enemyHP.fillAmount);
     }
     
     //handle list of active enemies for lock on
