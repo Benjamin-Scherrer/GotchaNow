@@ -10,10 +10,7 @@ namespace DialogueSystem.Runtime.Interaction
             !((stopInteractAtNarrativeEnd && (narrativeScriptableObject is { IsNarrativeEndReached: true })) ||
               narrativeController.IsNarrating);
 
-        private void Update()
-        {
-            SkipDialogueWithInput();
-        }
+        private void Update() => SkipDialogueWithInput();
 
         public void Interact() => StartDialogue();
     }

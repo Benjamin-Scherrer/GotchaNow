@@ -1,3 +1,4 @@
+using GotchaNow;
 using NUnit.Framework;
 using System.Collections;
 using TMPro;
@@ -18,6 +19,8 @@ public class ProgressionManager : MonoBehaviour
     private string nextState;
     private string nextID;
     public GameObject intermissionUI;
+    public IntermissionDialogue intermissionDialogue;
+
     public GameObject battleUI;
     public GameObject sendNotifUI;
     public TextMeshProUGUI debugText;
@@ -25,6 +28,8 @@ public class ProgressionManager : MonoBehaviour
     public GameObject boss;
     public GameObject minion;
     public GameObject queen;
+    public Transform bossSpawnPoint;
+    public Transform queenSpawnPoint;
     private bool skipReady = true;
 
     void Awake()
@@ -105,10 +110,15 @@ public class ProgressionManager : MonoBehaviour
             queen.SetActive(true);
             boss.SetActive(false);
 
-            Vector3 spawnPoint = new Vector3(0, 2, 8);
+            Vector3 spawnPoint = queenSpawnPoint.position;
 
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "preBattle1") //after tutorial, before 1st battle
@@ -120,12 +130,17 @@ public class ProgressionManager : MonoBehaviour
 
             boss.SetActive(true);
 
-            Vector3 spawnPoint = new Vector3(0, 2, 9);
+            Vector3 spawnPoint = bossSpawnPoint.position;
 
             boss.transform.position = spawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
-            queen.transform.position = spawnPoint + new Vector3(8,0,1);
+            queen.transform.position = spawnPoint + new Vector3(8, 0, 1);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+            
+            return;
         }
 
         if (intermissionID == "intermission1TrueEndingPath") //won 1st battle with 0 quota
@@ -136,6 +151,11 @@ public class ProgressionManager : MonoBehaviour
             debugText.text += "\n\nyou should make the user spend some money";
 
             queen.SetActive(true);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "intermission1") //won 1st battle with some quota
@@ -146,6 +166,11 @@ public class ProgressionManager : MonoBehaviour
             debugText.text += "\n\nyou're a good employee.\nkeep going, squeeze that user'";
 
             queen.SetActive(true);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "preSecretBoss") //won 2nd battle with 0 quota, queen steps in
@@ -155,7 +180,7 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nwhat do you think you're doing\ni will have to step in";
 
-            Vector3 spawnPoint = new Vector3(0, 2, 10);
+            Vector3 spawnPoint = bossSpawnPoint.position;
 
             boss.transform.position = spawnPoint + new Vector3(0, 0, 2);
 
@@ -163,6 +188,11 @@ public class ProgressionManager : MonoBehaviour
 
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "trueEnding") //defeated secret boss with 0 quota
@@ -173,6 +203,11 @@ public class ProgressionManager : MonoBehaviour
             debugText.text += "\n\ngame world deleted. user can't connect to server";
 
             queen.SetActive(false);
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "trueEndingFailed") //defeated secret boss with some quota
@@ -181,6 +216,11 @@ public class ProgressionManager : MonoBehaviour
             nextID = "neutralEnding";
 
             debugText.text += "\n\nyou may have defeated me but not capitalism";
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "neutralEnding") //won 2nd battle with some quota
@@ -189,6 +229,11 @@ public class ProgressionManager : MonoBehaviour
             nextID = "intro";
 
             debugText.text += "\n\ndecent job. we got a new paying user thanks to you\nmight have to replace you with someone better tho";
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return; 
         }
 
         if (intermissionID == "badEnding") //won 2nd battle with full quota
@@ -197,6 +242,11 @@ public class ProgressionManager : MonoBehaviour
             nextID = "intro";
 
             debugText.text += "\n\nyou're our new top employee. incredible work";
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
 
         if (intermissionID == "gameOver") //lost battle (any)
@@ -205,7 +255,14 @@ public class ProgressionManager : MonoBehaviour
             nextID = "intro";
 
             debugText.text += "\n\nyou died";
+
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            return;
         }
+
+        throw new System.Exception("Invalid intermission ID: " + intermissionID);
     }
 
     public void StartBattle(string id) //enable battle controls, enable enemies
@@ -223,6 +280,7 @@ public class ProgressionManager : MonoBehaviour
         if (battleID == "tutorial")
         {
             //spawn tutorial enemy
+            return;
         }
 
         if (battleID == "battle1")
@@ -234,11 +292,13 @@ public class ProgressionManager : MonoBehaviour
 
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = new Vector3(0, 2, 8);
+            Vector3 spawnPoint = bossSpawnPoint.position;
             boss.transform.position = spawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
             boss.GetComponent<Enemy>().isMainEnemy = true;
+
+            return;
         }
 
         if (battleID == "battle2trueEndingPath")
@@ -250,7 +310,7 @@ public class ProgressionManager : MonoBehaviour
 
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = new Vector3(0, 2, 8);
+            Vector3 spawnPoint = bossSpawnPoint.position;
             boss.transform.position = spawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
@@ -264,6 +324,8 @@ public class ProgressionManager : MonoBehaviour
 
             minion2.transform.position = spawnPoint + new Vector3(4, 0, 0);
             minion2.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            return;
         }
 
         if (battleID == "battle2")
@@ -275,7 +337,7 @@ public class ProgressionManager : MonoBehaviour
 
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = new Vector3(0, 2, 8);
+            Vector3 spawnPoint = bossSpawnPoint.position;
             boss.transform.position = spawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
@@ -289,23 +351,29 @@ public class ProgressionManager : MonoBehaviour
 
             minion2.transform.position = spawnPoint + new Vector3(6, 0, 0);
             minion2.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            return;
         }
-        
+
         if (battleID == "battle3")
         {
             boss.SetActive(false);
-            
+
             queen.GetComponent<QueenEnemy>().enabled = true;
             //queen.GetComponent<EnemyIntermission>().enabled = false;
 
             queen.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = new Vector3(0, 2, 8);
+            Vector3 spawnPoint = queenSpawnPoint.position;
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             queen.GetComponent<Enemy>().isMainEnemy = true;
+
+            return;
         }
+        
+        throw new System.Exception("Invalid battle ID: " + battleID);
     }
 
     public void EndBattle(float achievedQuota, float goalQuota) //trigger when main enemy is defeated
@@ -316,6 +384,8 @@ public class ProgressionManager : MonoBehaviour
             //path to battle 1
 
             StartIntermission("tutorialCompleted");
+
+            return;
         }
 
         if (battleID == "battle1")
@@ -328,6 +398,8 @@ public class ProgressionManager : MonoBehaviour
             {
                 StartIntermission("intermission1");
             }
+
+            return;
         }
 
         if (battleID == "battle2trueEndingPath")
@@ -342,7 +414,7 @@ public class ProgressionManager : MonoBehaviour
                     i -= 1;
                 }
             }
-            
+
             if (achievedQuota == 0) //true path, secret boss
             {
                 StartIntermission("preSecretBoss");
@@ -355,6 +427,8 @@ public class ProgressionManager : MonoBehaviour
             {
                 StartIntermission("neutralEnding");
             }
+            
+            return;
         }
 
         if (battleID == "battle2")
@@ -369,7 +443,7 @@ public class ProgressionManager : MonoBehaviour
                     i -= 1;
                 }
             }
-            
+
             if (achievedQuota >= goalQuota) //bad ending
             {
                 StartIntermission("badEnding");
@@ -378,6 +452,8 @@ public class ProgressionManager : MonoBehaviour
             {
                 StartIntermission("neutralEnding");
             }
+            
+            return;
         }
 
         if (battleID == "battle3")
@@ -390,8 +466,10 @@ public class ProgressionManager : MonoBehaviour
             {
                 StartIntermission("trueEndingFailed");
             }
-        }
 
+            return;
+        }
+        throw new System.Exception("Invalid intermission ID after battle, which should not be possible as the battle only starts with a valid ID");
     }
 
     private void EnableBattleUI()

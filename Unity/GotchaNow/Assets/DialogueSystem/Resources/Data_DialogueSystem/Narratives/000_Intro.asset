@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
-  m_Name: 000_IntroText
+  m_Name: 000_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
@@ -19,6 +19,12 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     <PortName>k__BackingField: Output
     <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
+  - <BaseNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 53d0d460-f164-4778-961e-94b2a5b8ab63
+  - <BaseNodeGuid>k__BackingField: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: ac0811e3-43ff-43fe-9c50-099dae86d114
   - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
     <PortName>k__BackingField: Yes
     <TargetNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
@@ -35,7 +41,7 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: TutorialLady
+    - <CharacterName>k__BackingField: Queen
       <Content>k__BackingField: "Hi, I'm the tutorial lady. \nI still need some 
         help with the script,\nso this is some placeholder text right now."
       <HideCharacter>k__BackingField: 0
@@ -47,12 +53,23 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
+  - guid: 53d0d460-f164-4778-961e-94b2a5b8ab63
+    dialogue:
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: <event:tutorial>
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1374, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
   - guid: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
     dialogue:
-    - <CharacterName>k__BackingField: TutorialLady
-      <Content>k__BackingField: 'Good, then lets go.
-
-        <event:StartTutorial1>'
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Good, then lets go.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -62,26 +79,10 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    dialogue:
-    - <CharacterName>k__BackingField: TutorialLady
-      <Content>k__BackingField: "So you're the new girl. \nDo you need a rundown
-        how we do things here?"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 552.5, y: 200}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
     dialogue:
-    - <CharacterName>k__BackingField: TutorialLady
-      <Content>k__BackingField: 'Sure, then get to work!
-
-        <event:StartFight1>'
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Sure, then get to work!
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -91,16 +92,30 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 53d0d460-f164-4778-961e-94b2a5b8ab63
+  - guid: ac0811e3-43ff-43fe-9c50-099dae86d114
     dialogue:
-    - <CharacterName>k__BackingField: FROG
-      <Content>k__BackingField: FROG FROG FROG
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: <event:battle1>
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1374, y: 337}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
+    dialogue:
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "So you're the new girl. \nDo you need a rundown
+        how we do things here?"
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 210, y: 4}
-    transitionNode: 1
+    position: {x: 559.5, y: 200}
+    transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0

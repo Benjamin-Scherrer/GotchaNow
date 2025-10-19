@@ -32,13 +32,18 @@ namespace DialogueSystem.Runtime.Interaction
         //My Additions
         [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
 
+        protected virtual void Awake()
+        {
+            Debug.Log("Awake called in DialogueMonoBehaviour");
+            dialogueEvents = GetDialogueEvents;
+        }
         private DialogueEvent[] GetDialogueEvents
         {
             get
             {
                 int dialogueEventLength = dialogueEvents != null ? dialogueEvents.Length : 0;
                 int dialogueEventScriptableObjectLength = dialogueEventScriptableObjects != null ? dialogueEventScriptableObjects.Length : 0;
-                
+
                 DialogueEvent[] combinedEvents = new DialogueEvent[dialogueEventLength + dialogueEventScriptableObjectLength];
                 dialogueEvents.CopyTo(combinedEvents, 0);
 
@@ -50,6 +55,7 @@ namespace DialogueSystem.Runtime.Interaction
                         combinedEvents[dialogueEvents.Length + i] = new DialogueEvent(dialogueEventScriptableObject.EventName, dialogueEventScriptableObject.OnDialogueEvent);
                     }
                 }
+                Debug.Log("Total Dialogue Events Combined: " + combinedEvents.Length);
                 return combinedEvents;
             }
         }
@@ -76,6 +82,6 @@ namespace DialogueSystem.Runtime.Interaction
         /// Start the dialogue using the narrative controller and by loading the narrative scriptable object.
         /// </summary>
         // protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
-        protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, GetDialogueEvents);
+        protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
     }
 }

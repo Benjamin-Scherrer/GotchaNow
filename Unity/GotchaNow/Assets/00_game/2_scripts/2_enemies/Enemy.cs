@@ -34,12 +34,18 @@ public class Enemy : MonoBehaviour
         pm = ProgressionManager.instance;
         nm = NotificationManager.instance;
 
-        bm.AddToEnemyList(this.gameObject);
+        if(bm != null)
+        {
+            bm.AddToEnemyList(this.gameObject);
+        }
     }
 
     private void OnDisable()
     {
-        bm.RemoveFromEnemyList(this.gameObject);
+        if(bm != null)
+        {
+            bm.RemoveFromEnemyList(this.gameObject);
+        }
     }
 
     private void FixedUpdate()
