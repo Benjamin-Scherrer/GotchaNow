@@ -16,6 +16,7 @@ namespace DialogueSystem.Runtime.Narration
     [RequireComponent(typeof(NarrativeLoader)), RequireComponent(typeof(CommandExecutionHandler))]
     public class NarrativeController : MonoBehaviour
     {
+        public static NarrativeController instance { get; private set; }
         [SerializeField] private NarrativeUI narrativeUI;
         [SerializeField] private NarrativeLoader narrativeLoader;
         [SerializeField] private CommandExecutionHandler commandExecutionHandler;
@@ -45,7 +46,7 @@ namespace DialogueSystem.Runtime.Narration
 
         private DialogueMonoBehaviour.DialogueEvent[] _events;
 
-        
+
         public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
         {
             //This is only called once, as it should.
@@ -64,8 +65,18 @@ namespace DialogueSystem.Runtime.Narration
             {
                 narrativeLoader.ResetNarrative();
             }
-        
+
             StartNarrative();
+        }
+
+        //PRIVATE
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                throw new Exception("Multiple instances of NarrativeController detected. There should only be one instance per scene.");
+            }
+            instance = this;
         }
 
         private void StartNarrative()

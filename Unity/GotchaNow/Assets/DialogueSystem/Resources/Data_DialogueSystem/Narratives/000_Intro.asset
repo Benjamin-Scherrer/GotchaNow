@@ -21,7 +21,7 @@ MonoBehaviour:
     <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
   - <BaseNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
     <PortName>k__BackingField: Output
-    <TargetNodeGuid>k__BackingField: 53d0d460-f164-4778-961e-94b2a5b8ab63
+    <TargetNodeGuid>k__BackingField: a305f564-c22b-4370-9e31-3d1654ed8ea4
   - <BaseNodeGuid>k__BackingField: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
     <PortName>k__BackingField: Output
     <TargetNodeGuid>k__BackingField: ac0811e3-43ff-43fe-9c50-099dae86d114
@@ -53,19 +53,6 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 53d0d460-f164-4778-961e-94b2a5b8ab63
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: <event:tutorial>
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1374, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
     dialogue:
     - <CharacterName>k__BackingField: Queen
@@ -92,19 +79,6 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: ac0811e3-43ff-43fe-9c50-099dae86d114
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: <event:battle1>
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1374, y: 337}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
     dialogue:
     - <CharacterName>k__BackingField: Queen
@@ -116,6 +90,34 @@ MonoBehaviour:
           m_Calls: []
     position: {x: 559.5, y: 200}
     transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: a305f564-c22b-4370-9e31-3d1654ed8ea4
+    dialogue:
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: EMPTY
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1374, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: ac0811e3-43ff-43fe-9c50-099dae86d114
+    dialogue:
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: '<event:battle1>
+
+        TEST'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1374, y: 337}
+    transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0

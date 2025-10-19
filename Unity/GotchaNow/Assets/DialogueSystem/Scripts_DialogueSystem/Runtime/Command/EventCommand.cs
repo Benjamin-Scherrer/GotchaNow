@@ -25,6 +25,11 @@ namespace DialogueSystem.Runtime.Command
             catch
             {
                 LogHandler.Alert($"Event with name \"{_eventName}\" not found.");
+
+                foreach (var dialogueEvent in _events)
+                {
+                    LogHandler.Log($"Available Event: >{dialogueEvent.EventName}<");
+                }
             }
         }
     }
