@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -34,15 +35,60 @@ namespace DialogueSystem.Editor
         private void GenerateToolbar()
         {
             var toolbar = new Toolbar();
-
+            
             var fileNameTextField = new TextField("File Name:");
             fileNameTextField.SetValueWithoutNotify(_fileName);
             fileNameTextField.MarkDirtyRepaint();
             fileNameTextField.RegisterValueChangedCallback(evt => _fileName = evt.newValue);
-        
+
             toolbar.Add(fileNameTextField);
+
+            //My Edit
+            var filesDropdown = new ToolbarMenu();
+            filesDropdown.text = "Load Existing File";
+
+            // Use Path.Combine to build the path to the Narratives folder inside the Assets directory.
+            // Application.dataPath already points to the project's Assets folder, so don't prepend another "Assets".
+            string directoryPath = Path.Combine(Application.dataPath, "DialogueSystem", "Resources", "Data_DialogueSystem", "Narratives");
+            if (Directory.Exists(directoryPath))
+            {
+                // The save/load system uses ScriptableObject assets (.asset) stored in Resources/Data_DialogueSystem/Narratives.
+                // Look for .asset files (DialogueContainer assets), not .json files.
+                var files = Directory.GetFiles(directoryPath, "*.asset");
+                if (files.Length == 0)
+                {
+                    filesDropdown.menu.AppendAction("No saved narratives found", _ => { }, DropdownMenuAction.Status.Disabled);
+                }
+                else
+                {
+                    foreach (var file in files)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(file);
+                        filesDropdown.menu.AppendAction(fileName, (a) =>
+                        {
+                            // Save current graph first (if it has a valid name) before switching
+                            if (!string.IsNullOrEmpty(_fileName))
+                            {
+                                RequestDataOperation(true);
+                            }
+
+                            _fileName = fileName;
+                            // update the toolbar text field to reflect the selection
+                            fileNameTextField.SetValueWithoutNotify(_fileName);
+                            fileNameTextField.MarkDirtyRepaint();
+                            RequestDataOperation(false);
+                        });
+                    }
+                }
+            }
+            toolbar.Add(filesDropdown);
+            //My Edit End
+            
+
             toolbar.Add(new Button(() => RequestDataOperation(true)){text="Save Data"});
-            toolbar.Add(new Button(() => RequestDataOperation(false)){text="Load Data"});
+            toolbar.Add(new Button(() => RequestDataOperation(false)) { text = "Load Data" });
+        
+            
         
             var transitionCreateButton = new Button(() =>
             {

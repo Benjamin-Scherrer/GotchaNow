@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8153232644029594544, guid: 0c9e3ce602fea7040a0da2f6e9d5be29, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -397,6 +397,10 @@ PrefabInstance:
     - target: {fileID: 8143738142088335750, guid: f7eb1d621fe41c9498dbada524271730, type: 3}
       propertyPath: m_Name
       value: Dialogue Starter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143738142088335750, guid: f7eb1d621fe41c9498dbada524271730, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -737,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4355586157612502702, guid: 3e9b1a505bb5a8e46b3af5e2a78e2861, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5018926929236774903, guid: 3e9b1a505bb5a8e46b3af5e2a78e2861, type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,6 +914,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2509191900860708892, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 875
+      objectReference: {fileID: 0}
     - target: {fileID: 2540171074430414252, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -969,6 +977,10 @@ PrefabInstance:
     - target: {fileID: 3518498276526275216, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718529259009431368, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: updateInEditor
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4006073921722117938, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Layer

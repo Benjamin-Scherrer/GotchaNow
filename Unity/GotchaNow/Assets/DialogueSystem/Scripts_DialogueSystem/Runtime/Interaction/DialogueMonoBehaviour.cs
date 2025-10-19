@@ -1,5 +1,6 @@
 ﻿using DialogueSystem.Data;
 using DialogueSystem.Runtime.Narration;
+using GotchaNow;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,6 +12,12 @@ namespace DialogueSystem.Runtime.Interaction
         [System.Serializable]
         public class DialogueEvent
         {
+            public DialogueEvent(string eventName, UnityEvent onDialogueEvent)
+            {
+                this.EventName = eventName;
+                this.OnDialogueEvent = onDialogueEvent;
+            }
+
             [field: SerializeField] public string EventName { get; private set; }
             [field: SerializeField] public UnityEvent OnDialogueEvent { get; private set; }
             
@@ -21,6 +28,33 @@ namespace DialogueSystem.Runtime.Interaction
         [SerializeField] protected NarrativeController narrativeController;
         // [SerializeField] protected KeyCode skipInput = KeyCode.Space;
         [SerializeField] protected DialogueEvent[] dialogueEvents;
+
+        //My Additions
+        [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
+
+        private DialogueEvent[] GetDialogueEvents
+        {
+            get
+            {
+                int dialogueEventLength = dialogueEvents != null ? dialogueEvents.Length : 0;
+                int dialogueEventScriptableObjectLength = dialogueEventScriptableObjects != null ? dialogueEventScriptableObjects.Length : 0;
+                
+                DialogueEvent[] combinedEvents = new DialogueEvent[dialogueEventLength + dialogueEventScriptableObjectLength];
+                dialogueEvents.CopyTo(combinedEvents, 0);
+
+                for (int i = 0; i < dialogueEventScriptableObjectLength; i++)
+                {
+                    DialogueEventScriptableObject dialogueEventScriptableObject = dialogueEventScriptableObjects[i];
+                    if (dialogueEventScriptableObjects != null)
+                    {
+                        combinedEvents[dialogueEvents.Length + i] = new DialogueEvent(dialogueEventScriptableObject.EventName, dialogueEventScriptableObject.OnDialogueEvent);
+                    }
+                }
+                return combinedEvents;
+            }
+        }
+
+        //End My Additions
 
         [SerializeField] protected InputActionReference skipAction;
         
@@ -41,6 +75,7 @@ namespace DialogueSystem.Runtime.Interaction
         /// <summary>
         /// Start the dialogue using the narrative controller and by loading the narrative scriptable object.
         /// </summary>
-        protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+        // protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+        protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, GetDialogueEvents);
     }
 }
