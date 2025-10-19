@@ -96,7 +96,11 @@ MonoBehaviour:
   - guid: a305f564-c22b-4370-9e31-3d1654ed8ea4
     dialogue:
     - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: EMPTY
+      <Content>k__BackingField: '<event:tutorial>
+
+        <event:skipThroughAll>
+
+        END'
       <HideCharacter>k__BackingField: 1
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -111,7 +115,12 @@ MonoBehaviour:
     - <CharacterName>k__BackingField: 
       <Content>k__BackingField: '<event:battle1>
 
-        TEST'
+        <event:skipThroughAll>
+
+        END
+
+
+'
       <HideCharacter>k__BackingField: 1
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

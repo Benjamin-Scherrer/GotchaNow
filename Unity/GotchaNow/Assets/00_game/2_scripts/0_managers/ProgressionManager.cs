@@ -286,6 +286,10 @@ public class ProgressionManager : MonoBehaviour
         if (battleID == "battle1")
         {
             queen.SetActive(false);
+
+            //Beni debug test
+            boss.SetActive(true);
+            //test end
             
             boss.GetComponent<BossEnemy>().enabled = true;
             boss.GetComponent<EnemyIntermission>().enabled = false;

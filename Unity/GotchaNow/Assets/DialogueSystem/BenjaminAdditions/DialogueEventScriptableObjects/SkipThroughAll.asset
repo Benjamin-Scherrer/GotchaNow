@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0431e9d10ee39184e9bb9343d5897b68, type: 3}
-  m_Name: SkipThroughAll
+  m_Name: skipThroughAll
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.DialogueEventScriptableObject
-  <EventName>k__BackingField: SkipThroughAll
+  <EventName>k__BackingField: skipThroughAll
   <OnDialogueEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls:

@@ -26,13 +26,17 @@ public class Enemy : MonoBehaviour
         //bm = BattleManager.instance;
 
         //HitBloom = GameObject.Find("VFXBloomWhite");
+
+        bm = BattleManager.instance;
+        pm = ProgressionManager.instance;
+        nm = NotificationManager.instance;
     }
 
     private void OnEnable()
     {
-        bm = BattleManager.instance;
-        pm = ProgressionManager.instance;
-        nm = NotificationManager.instance;
+        // bm = BattleManager.instance;
+        // pm = ProgressionManager.instance;
+        // nm = NotificationManager.instance;
 
         if(bm != null)
         {
