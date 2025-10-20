@@ -656,7 +656,7 @@ public class PlayerBattle : MonoBehaviour
     }
 
     //switch camera modes
-    private void LockOn()
+    public void LockOn()
     {
         if (mainCamera == freeCam) //switch from free cam to lockon
         {

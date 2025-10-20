@@ -4,6 +4,7 @@ using Unity.Cinemachine;
 
 public class LockOnCamera : MonoBehaviour
 {
+    public static LockOnCamera instance;
     public BattleManager bm;
     public GameObject player;
     public GameObject target;

@@ -27,9 +27,10 @@ public class Enemy : MonoBehaviour
 
         //HitBloom = GameObject.Find("VFXBloomWhite");
 
-        bm = BattleManager.instance;
         pm = ProgressionManager.instance;
         nm = NotificationManager.instance;
+
+        BattleManager.instance.AddToEnemyList(this.gameObject);
     }
 
     private void OnEnable()
@@ -38,18 +39,15 @@ public class Enemy : MonoBehaviour
         // pm = ProgressionManager.instance;
         // nm = NotificationManager.instance;
 
-        if(bm != null)
+        if (BattleManager.instance != null)
         {
-            bm.AddToEnemyList(this.gameObject);
+            BattleManager.instance.AddToEnemyList(this.gameObject);
         }
     }
 
     private void OnDisable()
-    {
-        if(bm != null)
-        {
-            bm.RemoveFromEnemyList(this.gameObject);
-        }
+    {    
+        BattleManager.instance.RemoveFromEnemyList(this.gameObject);
     }
 
     private void FixedUpdate()
@@ -83,15 +81,26 @@ public class Enemy : MonoBehaviour
         
         if (HP <= 0)
         {
+            if (PlayerBattle.Instance.lockedOn == true)
+            {
+                PlayerBattle.Instance.lockedOn = false;
+                PlayerBattle.Instance.LockOn();
+
+                Debug.Log("lockingOff");
+            }
+            
             if (enemyType == "boss")
             {
                 GetComponent<BossEnemy>().EndBattle();
                 GetComponent<EnemyIntermission>().enabled = true;
             }
+
             else if (enemyType == "minion")
             {
+                BattleManager.instance.RemoveFromEnemyList(this.gameObject);
                 Destroy(this.gameObject);
             }
+            
             else if (enemyType == "queen")
             {
                 GetComponent<QueenEnemy>().EndBattle();

@@ -966,6 +966,10 @@ PrefabInstance:
       propertyPath: pm
       value: 
       objectReference: {fileID: 329911432}
+    - target: {fileID: 1909229706175203887, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 
@@ -1110,27 +1114,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99061877
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1366548
+      value: 0.17364816
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000033007414
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000045533377
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1285,10 +1289,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 96308152}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
-      propertyPath: battleID
-      value: intro
-      objectReference: {fileID: 0}
-    - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleUI
       value: 
       objectReference: {fileID: 310996771}
@@ -1296,10 +1296,6 @@ PrefabInstance:
       propertyPath: debugText
       value: 
       objectReference: {fileID: 310996770}
-    - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
-      propertyPath: gameState
-      value: intermission
-      objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: sendNotifUI
       value: 
@@ -1551,7 +1547,7 @@ PrefabInstance:
     - target: {fileID: 4606869996244861271, guid: 90c8071f59dc2c042aff8338f9bd6c55, type: 3}
       propertyPath: intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
     - target: {fileID: 4606869996244861271, guid: 90c8071f59dc2c042aff8338f9bd6c55, type: 3}
       propertyPath: gameOver
       value: 

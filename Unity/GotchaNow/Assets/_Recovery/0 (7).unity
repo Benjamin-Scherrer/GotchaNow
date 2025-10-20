@@ -966,6 +966,10 @@ PrefabInstance:
       propertyPath: pm
       value: 
       objectReference: {fileID: 329911432}
+    - target: {fileID: 1909229706175203887, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 
@@ -1551,7 +1555,7 @@ PrefabInstance:
     - target: {fileID: 4606869996244861271, guid: 90c8071f59dc2c042aff8338f9bd6c55, type: 3}
       propertyPath: intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
     - target: {fileID: 4606869996244861271, guid: 90c8071f59dc2c042aff8338f9bd6c55, type: 3}
       propertyPath: gameOver
       value: 
