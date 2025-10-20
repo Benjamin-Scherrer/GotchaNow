@@ -37,6 +37,6 @@ namespace GotchaNow
 			}
 		}
 		
-		private void Update() => SkipDialogueWithInput();
+		// private void Update() => SkipDialogueWithInput();
 	}
 }

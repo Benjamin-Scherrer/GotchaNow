@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2348824193756046886}
   - component: {fileID: 2127085981910861909}
-  - component: {fileID: 2550851987512421634}
+  - component: {fileID: 5854206561636631839}
   m_Layer: 3
   m_Name: Interactee (NPC)
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8153232644029594544}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,45 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21896aa3a3844dd6bbe30ef8bcec5cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  narrativeScriptableObject: {fileID: 11400000, guid: 1c1c9d1ab11b4a241b2ed4ceb58af6b2, type: 2}
+  narrativeScriptableObject: {fileID: 0}
   narrativeController: {fileID: 0}
-  dialogueEvents:
-  - <EventName>k__BackingField: something
-    <OnDialogueEvent>k__BackingField:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: DialogueSystem.Runtime.UI.TextTyper, Assembly-CSharp
-          m_MethodName: Pause
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 5
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  skipAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  stopInteractAtNarrativeEnd: 0
---- !u!135 &2550851987512421634
-SphereCollider:
+  dialogueEvents: []
+  dialogueEventScriptableObjects: []
+--- !u!114 &5854206561636631839
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8153232644029594544}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed9decd78755e44da19e7fd1f704662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.DialogueSelector
+  narrativeController: {fileID: 0}
+  intro: {fileID: 0}
+  preBattle1: {fileID: 0}
+  intermission1: {fileID: 0}
+  intermission1TrueEndingPath: {fileID: 0}
+  preSecretBoss: {fileID: 0}
+  trueEnding: {fileID: 0}
+  trueEndingFailed: {fileID: 0}
+  neutralEnding: {fileID: 0}
+  badEnding: {fileID: 0}
+  gameOver: {fileID: 0}
+  tutorial: {fileID: 0}
+  battle1: {fileID: 0}
+  battle2trueEndingPath: {fileID: 0}
+  battle2: {fileID: 0}
+  battle3: {fileID: 0}

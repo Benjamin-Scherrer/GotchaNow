@@ -31,11 +31,13 @@ namespace DialogueSystem.Runtime.Interaction
         //My Additions
         [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
 
+
         protected virtual void Awake()
         {
             Debug.Log("Awake called in DialogueMonoBehaviour");
             dialogueEvents = GetDialogueEvents;
         }
+        
         private DialogueEvent[] GetDialogueEvents
         {
             get
@@ -61,26 +63,14 @@ namespace DialogueSystem.Runtime.Interaction
 
         //End My Additions
 
-        [SerializeField] protected InputActionReference skipAction;
-        
-        /// <summary>
-        /// Skips the current dialogue text if the player presses the skip input.
-        /// </summary>
-        protected void SkipDialogueWithInput()
-        {
-            // Requires UnityEngine.InputSystem package
-            if (!skipAction.action.WasPressedThisFrame() || narrativeController.IsChoosing || !narrativeController.IsNarrating)
-            {
-            return;
-            }
-
-            narrativeController.NextNarrative();
-        }
-
         /// <summary>
         /// Start the dialogue using the narrative controller and by loading the narrative scriptable object.
         /// </summary>
         // protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
-        protected void StartDialogue() => narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+        protected void StartDialogue()
+        {
+
+            narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+        }
     }
 }

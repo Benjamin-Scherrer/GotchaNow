@@ -3,6 +3,6 @@
     public class DialogueStarter : DialogueMonoBehaviour
     {
         private void Start() => StartDialogue();
-        private void Update() => SkipDialogueWithInput();
+        // private void Update() => SkipDialogueWithInput();
     }
 }

@@ -10,6 +10,7 @@ using DialogueSystem.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityEngine.InputSystem;
 
 namespace DialogueSystem.Runtime.Narration
 {
@@ -26,10 +27,10 @@ namespace DialogueSystem.Runtime.Narration
 
         [SerializeField] private UnityEvent onNarrativeStart;
         [SerializeField] private UnityEvent onNarrativeEnd;
-        
+
         [Space, Header("Default Values"), SerializeField]
         private CharacterData defaultCharacterData;
-
+        
         private string NarrativePathID { get; set; }
     
         public bool IsChoosing { get; private set; }
