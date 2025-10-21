@@ -21,5 +21,10 @@ namespace GotchaNow
 				NarrativeController.instance.NextNarrative();
 			}
 		}
+
+		public void enablePhoneView()
+        {
+			PhoneViewController.instance.EnablePhoneView();
+        }
 	}
 }

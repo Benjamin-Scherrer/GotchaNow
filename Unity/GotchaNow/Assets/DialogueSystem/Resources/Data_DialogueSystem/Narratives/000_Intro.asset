@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: 000_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField:
-  - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
-    <PortName>k__BackingField: Next
-    <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
-  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
-    <PortName>k__BackingField: Output
-    <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
   - <BaseNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
     <PortName>k__BackingField: Output
     <TargetNodeGuid>k__BackingField: a305f564-c22b-4370-9e31-3d1654ed8ea4
@@ -31,6 +25,9 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
     <PortName>k__BackingField: No
     <TargetNodeGuid>k__BackingField: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
+  - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -39,24 +36,83 @@ MonoBehaviour:
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+  - guid: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
     dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "Hi, I'm the tutorial lady. \nI still need some 
-        help with the script,\nso this is some placeholder text right now."
+      <Content>k__BackingField: 'Good job. A good worker always confirms their task.
+
+        The
+        first rule we have here is: Do as I say.
+
+        Repeat with me. Do as I
+        say.'
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 280, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
-    dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Good, then lets go.
+      <Content>k__BackingField: 'So onto what you are here for.
+
+        We want
+        profits. How wo we get profits?
+
+        By milking this poor sucker here.
+
+        <event:enablePhoneView>
+
+        That''s
+        your player.'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: 'See him clicking away his time?
+
+        See him
+        throwing away his allowance for dopamine kicks?
+
+        We want more of
+        that. '
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "How do you do that? You fight. \nBeat up this big
+        beefy villain for your player.\nFight well and get him invested in you.\nSee
+        his view of you? That's you now. Small, cute, helpless.\n"
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "That's how you strike. Slip up \"accidentally\"
+        \nand land in a disfavourable position during your fights.\nThen scream for
+        help. "
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: '<event:moveDialogueBoxUp>
+
+        See that notification
+        bar in the lower left corner?
+
+        Use it to send your player request
+        for help.
+
+        The sucker is clearly be unable to deny you and will pay.
+
+        <event:moveDialogueBoxDown>'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Keep up the good work and don't win till you've filled
+        your quota.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -82,8 +138,8 @@ MonoBehaviour:
   - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
     dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "So you're the new girl. \nDo you need a rundown
-        how we do things here?"
+      <Content>k__BackingField: "Hey, new girl! \nWelcome to your first day.\nWould
+        you want a rundown how we do things here?"
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

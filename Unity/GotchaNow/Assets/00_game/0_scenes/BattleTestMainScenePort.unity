@@ -180,6 +180,7 @@ Transform:
   - {fileID: 1371407738}
   - {fileID: 5889097067837014797}
   - {fileID: 7608881333858236858}
+  - {fileID: 436024423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &214569253 stripped
@@ -229,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1334128706927184610, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 405.06323
       objectReference: {fileID: 0}
     - target: {fileID: 3250646143526863913, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,6 +275,10 @@ PrefabInstance:
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650883089833162160, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -388,6 +393,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb90bd42c94d5409dddd3e8c7c3774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &436024422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 436024423}
+  - component: {fileID: 436024424}
+  m_Layer: 0
+  m_Name: PhoneViewController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &436024423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436024422}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 134352901}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &436024424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436024422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a8bcbf709c1374dba834a8a8d336ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.PhoneViewController
+  phoneViewTransform: {fileID: 1709742222}
 --- !u!1001 &521461383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,15 +579,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 6555223344257709267, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -789,6 +839,14 @@ PrefabInstance:
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
+    - target: {fileID: 817097493164321285, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: dialogueEventScriptableObjects.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 817097493164321285, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 577f6cbf657bac94a88dd2879c4a3ee9, type: 2}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 
@@ -809,6 +867,10 @@ PrefabInstance:
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
+    - target: {fileID: 5887058822789001098, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6251703899130633667, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Name
       value: GamePrefab
@@ -858,6 +920,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 47929722}
     - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
@@ -870,6 +936,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3249336262985493351, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
   m_PrefabInstance: {fileID: 1700967552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1709742222 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3054896913830267245, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+  m_PrefabInstance: {fileID: 310996768}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1767981982 stripped
 GameObject:
