@@ -78,6 +78,8 @@ public class PlayerBattle : MonoBehaviour
     public float slash2MotionTime = 0.3f;
     public float slash3fMovement = 1f;
     public float slash3MotionTime = 0.3f;
+    public float heavySlashfMovement = 1f;
+    public float heavySlashMotionTime = 0.3f;
     public float attackRotationInfluence = 3f;
 
     private bool dodgeReady = true;
@@ -443,7 +445,7 @@ public class PlayerBattle : MonoBehaviour
             }
             else //rotate towards movement direction
             {
-                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.25f));
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.44f));
             }
         }
     }
@@ -715,6 +717,17 @@ public class PlayerBattle : MonoBehaviour
 
         while (atkTimer < heavySlashDuration)
         {
+            if (atkTimer > 0.1f && atkTimer < heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else if (atkTimer > heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             atkTimer += Time.deltaTime;
             yield return null;
         }

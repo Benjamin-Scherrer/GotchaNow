@@ -1102,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: slash1Duration
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: slash2Duration
@@ -1141,8 +1141,20 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: heavySlashDuration
-      value: 1
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashfMovement
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashMotionTime
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 523328363231513572, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
@@ -1191,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 3561913004998054745, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 118608567}
     - target: {fileID: 4239866494857648447, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: attackType
       value: playerAttack
