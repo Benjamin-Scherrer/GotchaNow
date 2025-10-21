@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
-  m_Name: 101_Intro_Queen
+  m_Name: 101_preBattle1_Boss
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
@@ -26,8 +26,8 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Break your bones trainee.
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: Good job. Next time I'll be serious.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

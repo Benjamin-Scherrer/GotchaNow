@@ -27,7 +27,15 @@ MonoBehaviour:
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: this is intermissioon1TrueEndingPath
+      <Content>k__BackingField: "Listen... i think you didn't understand your job
+        here. \nYou are here to obey and do your job. "
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: You better get some money next fight or there will
+        be consequences.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

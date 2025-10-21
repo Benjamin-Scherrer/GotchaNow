@@ -847,6 +847,54 @@ PrefabInstance:
       propertyPath: 'dialogueEventScriptableObjects.Array.data[6]'
       value: 
       objectReference: {fileID: 11400000, guid: 577f6cbf657bac94a88dd2879c4a3ee9, type: 2}
+    - target: {fileID: 828832808303546487, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: 07afa10e934988d44a7abb688aabb553, type: 2}
+    - target: {fileID: 828832808303546487, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 68394f4309128804cb354d5bdd39b996, type: 2}
+    - target: {fileID: 828832808303546487, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: narrativeController
+      value: 
+      objectReference: {fileID: 1371407739}
+    - target: {fileID: 828832808303546487, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e043ffb2ad18144aa3b62dee2d7ac7d, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: narrativeController
+      value: 
+      objectReference: {fileID: 1371407739}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: dialogueEventScriptableObjects.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f4492db9cfe8964db3e96ac8119d295, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fbd8947cbba36be4c80fd7a75779bdbd, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 34884c8bf93b32a47bbdc7b3ea434b18, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0434595091a6a04a88d068f8b091817, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 86e0887a35d80434a8d2d1696aefbb1a, type: 2}
+    - target: {fileID: 1072285711891675253, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b7233ec598351a74abed6c9d74c4228d, type: 2}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 
@@ -867,10 +915,58 @@ PrefabInstance:
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
+    - target: {fileID: 5815603712607099579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: f68a205f48d9e2f46af71c5fcffa1b45, type: 2}
+    - target: {fileID: 5815603712607099579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c11d0cba657db745a420e7b38e2ef02, type: 2}
+    - target: {fileID: 5815603712607099579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: narrativeController
+      value: 
+      objectReference: {fileID: 1371407739}
+    - target: {fileID: 5815603712607099579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: f031693f25329804d980c0679c2f72d6, type: 2}
     - target: {fileID: 5887058822789001098, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: narrativeController
+      value: 
+      objectReference: {fileID: 1371407739}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: dialogueEventScriptableObjects.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f4492db9cfe8964db3e96ac8119d295, type: 2}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fbd8947cbba36be4c80fd7a75779bdbd, type: 2}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 34884c8bf93b32a47bbdc7b3ea434b18, type: 2}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0434595091a6a04a88d068f8b091817, type: 2}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 86e0887a35d80434a8d2d1696aefbb1a, type: 2}
+    - target: {fileID: 6184623043113611961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'dialogueEventScriptableObjects.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b7233ec598351a74abed6c9d74c4228d, type: 2}
     - target: {fileID: 6251703899130633667, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Name
       value: GamePrefab
@@ -924,9 +1020,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
     - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 11400000, guid: 297f96ec3d3a19b4f8e24cabbc5125f2, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: badEnding
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ec3954792dded64a9de4501f71cbf9f, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 374b820bcf79d5e4bb2ce619f5bd9c74, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: preSecretBoss
+      value: 
+      objectReference: {fileID: 11400000, guid: c96e0b2d3533cee4e94941cc880dcf74, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: trueEndingFailed
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c39c41fd3abfec4f9e04afd17edbae9, type: 2}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
+    - target: {fileID: 9058294567616972327, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -978,31 +1098,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99061877
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1366548
+      value: 0.17364816
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000033007414
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000045533377
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2205185828722210335, guid: 845f4e33aba24604d84982584b685965, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
