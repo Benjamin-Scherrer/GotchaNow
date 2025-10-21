@@ -20,6 +20,7 @@ public class PlayerBattle : MonoBehaviour
     public GameObject mainCamera;
     public GameObject freeCam;
     public GameObject lockOnCam;
+    public Animator animator;
     private bool lockOnReady = true;
 
     [HideInInspector] public bool lockedOn = false;
@@ -406,9 +407,12 @@ public class PlayerBattle : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         float tiltStrength = direction.magnitude; //analog movement speed
+        animator.SetFloat("runIntensity", 0);
 
         if (!actionInProgress && !hitStun && direction.magnitude > 0.1f)
         {
+            animator.SetFloat("runIntensity", tiltStrength);
+
             if (guardActive) //slower movement when blocking
             {
                 rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
@@ -439,7 +443,9 @@ public class PlayerBattle : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         invulnerable = true;
-        model.GetComponent<Renderer>().material.color = Color.yellow; //debug
+
+        animator.SetTrigger("dodge");
+        //model.GetComponent<Renderer>().material.color = Color.yellow; //debug
 
         while (timer < dodgeTime)
         {
@@ -464,7 +470,7 @@ public class PlayerBattle : MonoBehaviour
         }
 
         if (slash1Queued)
-        {
+        {            
             slash1Queued = false;
             StartCoroutine(Slash1());
         }
@@ -478,6 +484,8 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator Slash1()
     {
         AttackScript atkScript = slash1.GetComponent<AttackScript>();
+
+        animator.SetTrigger("attack1");
 
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -509,12 +517,14 @@ public class PlayerBattle : MonoBehaviour
         if (slash2Queued) //go to combo atk
         {
             StartCoroutine(Slash2());
+
             slash2Queued = false;
             yield break;
         }
         else if (dodgeQueued) //cancel into dodge
         {
             StartCoroutine(Roll(stickPosition));
+
             dodgeQueued = false;
             yield break;
         }
@@ -527,6 +537,8 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator Slash2()
     {
         AttackScript atkScript = slash2.GetComponent<AttackScript>();
+
+        animator.SetTrigger("attack2");
 
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -558,12 +570,14 @@ public class PlayerBattle : MonoBehaviour
         if (slash3Queued) //go to combo attack
         {
             StartCoroutine(Slash3());
+            
             slash3Queued = false;
             yield break;
         }
         else if (dodgeQueued) //cancel into dodge
         {
             StartCoroutine(Roll(stickPosition));
+
             dodgeQueued = false;
             yield break;
         }
@@ -576,6 +590,8 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator Slash3()
     {
         AttackScript atkScript = slash3.GetComponent<AttackScript>();
+
+        animator.SetTrigger("attack3");
 
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -597,6 +613,8 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator HeavySlashCharge()
     {
         float chgTimer = 0;
+        animator.SetTrigger("chargeHeavy");
+        animator.SetBool("charging", true);
 
         while (chgTimer < heavySlashChargeTime)
         {
@@ -613,11 +631,14 @@ public class PlayerBattle : MonoBehaviour
                 if (chgTimer > heavySlashChargeTime / 2) //lower power attack before full charge
                 {
                     StartCoroutine(HeavySlash(0.5f + 0.25f * (chgTimer / heavySlashChargeTime)));
+                    animator.SetBool("charging", false);
+
                     yield break;
                 }
                 else //cancel charge
                 {
                     actionInProgress = false;
+                    animator.SetBool("charging", false);
                     yield break;
                 }
             }
@@ -627,6 +648,7 @@ public class PlayerBattle : MonoBehaviour
 
         model.GetComponent<Renderer>().material.color = Color.white; //debug
         StartCoroutine(HeavySlash(1)); //full power charge attack
+        animator.SetBool("charging", false);
     }
 
     private IEnumerator HeavySlash(float chgAmount)
@@ -634,6 +656,8 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = heavySlash.GetComponent<AttackScript>();
 
         atkScript.StartAttack(); //enable hitbox
+
+        animator.SetTrigger("heavyAttack");
 
         AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
         float baseDmg = atkBox.damage;
