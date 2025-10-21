@@ -313,6 +313,10 @@ public class PlayerBattle : MonoBehaviour
             {
                 guardActive = true;
                 blockReady = false;
+
+                animator.SetTrigger("guard");
+                animator.SetBool("guarding", true);
+
                 blockBox.GetComponent<BlockScript>().StartBlock();
             }
 
@@ -335,6 +339,7 @@ public class PlayerBattle : MonoBehaviour
             if (!input.Player.Block.IsPressed()) //end blocking
             {
                 guardActive = false;
+                animator.SetBool("guarding", false);
                 blockBox.GetComponent<BlockScript>().EndBlock();
             }
         }
