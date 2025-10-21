@@ -32,6 +32,7 @@ public class PlayerBattle : MonoBehaviour
     public float maxHP = 100;
     public float HP = 100;
     public float moveSpeed = 0.5f;
+    public float lockOnSpeedMult = 0.5f;
     public float dodgeSpeed = 5f;
     public float rotateSpeed = 10f;
     [HideInInspector] public bool death = false;
@@ -418,9 +419,9 @@ public class PlayerBattle : MonoBehaviour
         {
             animator.SetFloat("runIntensity", tiltStrength);
 
-            if (guardActive) //slower movement when blocking
+            if (lockedOn) //slower movement when blocking
             {
-                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
+                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * lockOnSpeedMult * Time.fixedDeltaTime); //slow down when blocking
             }
             else
             {
@@ -429,6 +430,11 @@ public class PlayerBattle : MonoBehaviour
 
             if (lockedOn) //rotate towards lock on target
             {
+                animator.SetFloat("walkDirSide", direction.x);
+                animator.SetFloat("walkDirFwd", direction.y);
+
+                Debug.Log(animator.GetFloat("walkDirSide") + " " + animator.GetFloat("walkDirFwd"));
+                
                 Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
             }
@@ -689,6 +695,8 @@ public class PlayerBattle : MonoBehaviour
     {
         if (mainCamera == freeCam) //switch from free cam to lockon
         {
+            animator.SetBool("lockedOn", true);
+            
             lockOnCam.SetActive(true);
 
             lockOnCam.GetComponent<LockOnCamera>().isActive = true;
@@ -705,6 +713,8 @@ public class PlayerBattle : MonoBehaviour
 
         else if (mainCamera == lockOnCam) //switch from lockon to free cam
         {
+            animator.SetBool("lockedOn", false);
+            
             freeCam.SetActive(true);
             lockOnCam.GetComponent<LockOnCamera>().isActive = false;
 

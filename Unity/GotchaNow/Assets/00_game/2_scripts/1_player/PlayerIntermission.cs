@@ -6,6 +6,7 @@ public class PlayerIntermission : MonoBehaviour
     public static PlayerIntermission Instance;
     private InputSystem_Actions input = null;
     [HideInInspector] public Rigidbody rb = null;
+    public Animator animator;
     public GameObject model;
     private Camera mainCamera;
     public Camera freeCam;
@@ -73,8 +74,12 @@ public class PlayerIntermission : MonoBehaviour
 
         float tiltStrength = direction.magnitude; //analog movement speed
 
+        animator.SetFloat("runIntensity", 0);
+
         if (!actionInProgress && direction.magnitude > 0.1f)
         {
+            animator.SetFloat("runIntensity", 0.4f);
+
             rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * Time.fixedDeltaTime);
             transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.25f));
 
