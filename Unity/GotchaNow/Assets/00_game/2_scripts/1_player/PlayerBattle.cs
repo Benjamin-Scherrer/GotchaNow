@@ -71,16 +71,19 @@ public class PlayerBattle : MonoBehaviour
     public float heavySlashChargeTime = 0.66f;
     public float heavySlashCooldown = 1f;
     public float heavySlashDuration = 0.5f;
-    
+
     public float slash1fMovement = 1f;
+    public float slash1MotionTime = 0.3f;
     public float slash2fMovement = 1f;
+    public float slash2MotionTime = 0.3f;
     public float slash3fMovement = 1f;
+    public float slash3MotionTime = 0.3f;
     public float attackRotationInfluence = 3f;
 
     private bool dodgeReady = true;
     private bool dodgeQueued = false;
-    public float dodgeCooldown = 1f;
     public float dodgeTime = 0.5f;
+    public float dodgeMotionTime = 0.5f;
     public float dodgeInvulnerableTime = 0.2f;
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
@@ -462,6 +465,17 @@ public class PlayerBattle : MonoBehaviour
         {
             timer += Time.deltaTime;
 
+            if (timer < dodgeMotionTime)
+            {
+                rb.MovePosition(rb.position + moveDir * dodgeSpeed * Time.fixedDeltaTime);
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else
+            {
+                rb.MovePosition(rb.position + moveDir * dodgeSpeed * 0.3f * (dodgeTime/timer) * Time.fixedDeltaTime);
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+
             if (timer > dodgeInvulnerableTime)
             {
                 invulnerable = false;
@@ -473,9 +487,6 @@ public class PlayerBattle : MonoBehaviour
                 slash1Queued = true;
                 slashReady = false;
             }
-
-            rb.MovePosition(rb.position + moveDir * dodgeSpeed * Time.fixedDeltaTime);
-            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
 
             yield return new WaitForFixedUpdate();
         }
@@ -505,12 +516,19 @@ public class PlayerBattle : MonoBehaviour
         {
             atkTimer += Time.deltaTime;
 
+            if (atkTimer > 0.1f && atkTimer < slash1MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash1fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+
             if (atkTimer > slash1Duration - slash2Window)
             {
                 if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash2Queued = true;
                     slashReady = false;
+                    atkTimer *= 1.5f;
                 }
                 else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
@@ -558,12 +576,19 @@ public class PlayerBattle : MonoBehaviour
         {
             atkTimer += Time.deltaTime;
 
+            if (atkTimer < slash2MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash2fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             if (atkTimer > slash2Duration - slash3Window)
             {
                 if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash3Queued = true;
                     slashReady = false;
+                    atkTimer *= 1.2f;
                 }
                 else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
@@ -610,6 +635,18 @@ public class PlayerBattle : MonoBehaviour
         while (atkTimer < slash3Duration)
         {
             atkTimer += Time.deltaTime;
+
+            if (atkTimer > 0.25f && atkTimer < slash3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash3fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else if (atkTimer > slash3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash3fMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             yield return null;
         }
 
