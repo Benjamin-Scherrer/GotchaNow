@@ -23,7 +23,7 @@ namespace DialogueSystem.Runtime.Command
         private Queue<DialogueCommand> _commandQueue = new();
         private CharacterData _currentCharacterData;
         private DialogueMessage _currentDialogueMessage;
-        private DialogueMonoBehaviour.DialogueEvent[] _events;
+        private DialogueEvent[] _events;
 
         private void Awake() => narrativeUI.OnMessageStart += HandleCommandExecution;
         
@@ -79,7 +79,7 @@ namespace DialogueSystem.Runtime.Command
             return processedMessageWithTextTags;
         }
         
-        public void GatherCommandData(DialogueMessage dialogueMessage, CharacterData characterDataData, DialogueMonoBehaviour.DialogueEvent[] events)
+        public void GatherCommandData(DialogueMessage dialogueMessage, CharacterData characterDataData, DialogueEvent[] events)
         {
             _currentCharacterData = characterDataData;
             _currentDialogueMessage = dialogueMessage;

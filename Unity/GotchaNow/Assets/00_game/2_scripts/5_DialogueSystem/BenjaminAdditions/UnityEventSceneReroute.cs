@@ -1,3 +1,4 @@
+using System;
 using DialogueSystem.Runtime.Narration;
 using UnityEngine;
 
@@ -22,9 +23,26 @@ namespace GotchaNow
 			}
 		}
 
-		public void enablePhoneView()
-        {
+		public void EnablePhoneView()
+		{
 			PhoneViewController.instance.EnablePhoneView();
-        }
+		}
+		
+		public void DialogleBoxAlign(String alignment)
+		{
+			switch (alignment)
+			{
+
+				case "bottom":
+					throw new NotImplementedException("Bottom alignment not implemented yet");
+					break;
+				case "top":
+					throw new NotImplementedException("Top alignment not implemented yet");
+					break;
+				default:
+					Debug.LogError("Invalid alignment parameter passed to DialogleBoxAlign: " + alignment);
+					break;
+			}
+		}	
 	}
 }

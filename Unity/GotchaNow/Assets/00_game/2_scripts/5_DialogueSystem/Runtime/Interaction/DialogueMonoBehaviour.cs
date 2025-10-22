@@ -8,58 +8,22 @@ using UnityEngine.InputSystem;
 namespace DialogueSystem.Runtime.Interaction
 {
     public abstract class DialogueMonoBehaviour : MonoBehaviour
-    {
-        [System.Serializable]
-        public class DialogueEvent
-        {
-            public DialogueEvent(string eventName, UnityEvent onDialogueEvent)
-            {
-                this.EventName = eventName;
-                this.OnDialogueEvent = onDialogueEvent;
-            }
-
-            [field: SerializeField] public string EventName { get; private set; }
-            [field: SerializeField] public UnityEvent OnDialogueEvent { get; private set; }
-            
-            public void InvokeEvent() => OnDialogueEvent?.Invoke();
-        }
-        
+    {        
         [SerializeField] protected DialogueContainer narrativeScriptableObject;
         [SerializeField] protected NarrativeController narrativeController;
-        [SerializeField] protected DialogueEvent[] dialogueEvents;
+        // [SerializeField] protected DialogueEvent[] dialogueEvents;
 
-        //My Additions
-        [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
+        // //My Additions
+        // [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
 
 
-        protected virtual void Awake()
-        {
-            // Debug.Log("Awake called in DialogueMonoBehaviour");
-            dialogueEvents = GetDialogueEvents;
-        }
+        // protected virtual void Awake()
+        // {
+        //     // Debug.Log("Awake called in DialogueMonoBehaviour");
+        //     dialogueEvents = GetDialogueEvents;
+        // }
         
-        private DialogueEvent[] GetDialogueEvents
-        {
-            get
-            {
-                int dialogueEventLength = dialogueEvents != null ? dialogueEvents.Length : 0;
-                int dialogueEventScriptableObjectLength = dialogueEventScriptableObjects != null ? dialogueEventScriptableObjects.Length : 0;
-
-                DialogueEvent[] combinedEvents = new DialogueEvent[dialogueEventLength + dialogueEventScriptableObjectLength];
-                dialogueEvents.CopyTo(combinedEvents, 0);
-
-                for (int i = 0; i < dialogueEventScriptableObjectLength; i++)
-                {
-                    DialogueEventScriptableObject dialogueEventScriptableObject = dialogueEventScriptableObjects[i];
-                    if (dialogueEventScriptableObjects != null)
-                    {
-                        combinedEvents[dialogueEvents.Length + i] = new DialogueEvent(dialogueEventScriptableObject.EventName, dialogueEventScriptableObject.OnDialogueEvent);
-                    }
-                }
-                // Debug.Log("Total Dialogue Events Combined: " + combinedEvents.Length);
-                return combinedEvents;
-            }
-        }
+       
 
         //End My Additions
 
@@ -70,7 +34,8 @@ namespace DialogueSystem.Runtime.Interaction
         protected void StartDialogue()
         {
 
-            narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+            // narrativeController.BeginNarration(narrativeScriptableObject, dialogueEvents);
+            narrativeController.BeginNarration(narrativeScriptableObject);
         }
     }
 }

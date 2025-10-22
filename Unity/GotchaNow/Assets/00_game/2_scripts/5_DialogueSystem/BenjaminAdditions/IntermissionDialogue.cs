@@ -24,10 +24,8 @@ namespace GotchaNow
 		}
 
 		//PRIVATE
-		protected override void Awake()
+		private void Awake()
 		{
-			base.Awake();
-
 			if (TryGetComponent<DialogueSelector>(out dialogueSelector))
 			{
 			}

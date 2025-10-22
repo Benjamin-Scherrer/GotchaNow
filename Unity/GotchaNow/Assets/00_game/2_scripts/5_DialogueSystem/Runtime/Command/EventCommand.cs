@@ -7,9 +7,9 @@ namespace DialogueSystem.Runtime.Command
     public class EventCommand : DialogueCommand
     {
         private readonly string _eventName;
-        private readonly DialogueMonoBehaviour.DialogueEvent[] _events;
+        private readonly DialogueEvent[] _events;
 
-        public EventCommand(int startPosition, bool mustExecute, string eventName, DialogueMonoBehaviour.DialogueEvent[] events) : base(startPosition, mustExecute)
+        public EventCommand(int startPosition, bool mustExecute, string eventName, DialogueEvent[] events) : base(startPosition, mustExecute)
         {
             _eventName = eventName;
             _events = events;

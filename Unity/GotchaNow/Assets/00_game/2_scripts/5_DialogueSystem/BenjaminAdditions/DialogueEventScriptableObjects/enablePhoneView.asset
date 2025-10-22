@@ -18,7 +18,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1848076539789107129, guid: 6459d12eeefd48244b8655d22d4a2a69, type: 3}
         m_TargetAssemblyTypeName: GotchaNow.UnityEventSceneReroute, Assembly-CSharp
-        m_MethodName: enablePhoneView
+        m_MethodName: EnablePhoneView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

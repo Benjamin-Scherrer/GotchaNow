@@ -9,15 +9,13 @@ using DialogueSystem.Utility;
 // using FMOD;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-using UnityEngine.InputSystem;
 using GotchaNow;
 
 namespace DialogueSystem.Runtime.Narration
 {
     [RequireComponent(typeof(NarrativeLoader)), RequireComponent(typeof(CommandExecutionHandler))]
     public class NarrativeController : MonoBehaviour
-    {
+    {        
         public static NarrativeController instance { get; private set; }
         [SerializeField] private NarrativeUI narrativeUI;
         [SerializeField] private NarrativeLoader narrativeLoader;
@@ -29,6 +27,33 @@ namespace DialogueSystem.Runtime.Narration
 
         [SerializeField] private UnityEvent onNarrativeStart;
         [SerializeField] private UnityEvent onNarrativeEnd;
+
+        [Header("Dialogue Events")]
+        // [SerializeField] protected DialogueEvent[] dialogueEvents;
+        [SerializeField] protected DialogueEventScriptableObject[] dialogueEventScriptableObjects;
+
+        private DialogueEvent[] GetDialogueEvents
+        {
+            get
+            {
+                if(dialogueEventScriptableObjects == null)
+                {
+                    return Array.Empty<DialogueEvent>();
+                }
+                int dialogueEventScriptableObjectLength = dialogueEventScriptableObjects.Length;
+                DialogueEvent[] combinedEvents = new DialogueEvent[dialogueEventScriptableObjectLength];
+
+                for (int i = 0; i < dialogueEventScriptableObjectLength; i++)
+                {
+                    DialogueEventScriptableObject dialogueEventScriptableObject = dialogueEventScriptableObjects[i];
+                    if (dialogueEventScriptableObjects == null) throw new Exception("Dialogue Event Scriptable Object is null.");
+                    combinedEvents[i] = new DialogueEvent(dialogueEventScriptableObject.EventName, dialogueEventScriptableObject.OnDialogueEvent);
+                }
+                // Debug.Log("Total Dialogue Events Combined: " + combinedEvents.Length);
+                return combinedEvents;
+            }
+        }
+
 
         [Space, Header("Default Values"), SerializeField]
         private CharacterData defaultCharacterData;
@@ -47,15 +72,15 @@ namespace DialogueSystem.Runtime.Narration
 
         private const string PathSeparator = ".";
 
-        private DialogueMonoBehaviour.DialogueEvent[] _events;
+        private DialogueEvent[] _events;
 
 
-        public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
+        // public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
+        public void BeginNarration(DialogueContainer narrativeToLoad)
         {
             //This is only called once, as it should.
             // Debug.Log("Begin narration");
-
-            _events = dialogueEvents;
+            
             _narrative = narrativeLoader.LoadNarrative(narrativeToLoad);
 
             if (_narrative == null)
@@ -80,6 +105,8 @@ namespace DialogueSystem.Runtime.Narration
                 throw new Exception("Multiple instances of NarrativeController detected. There should only be one instance per scene.");
             }
             instance = this;
+
+            _events = GetDialogueEvents;
         }
 
         private void StartNarrative()
