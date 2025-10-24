@@ -20,6 +20,7 @@ public class PlayerBattle : MonoBehaviour
     public GameObject mainCamera;
     public GameObject freeCam;
     public GameObject lockOnCam;
+    public Animator animator;
     private bool lockOnReady = true;
 
     [HideInInspector] public bool lockedOn = false;
@@ -31,6 +32,7 @@ public class PlayerBattle : MonoBehaviour
     public float maxHP = 100;
     public float HP = 100;
     public float moveSpeed = 0.5f;
+    public float lockOnSpeedMult = 0.5f;
     public float dodgeSpeed = 5f;
     public float rotateSpeed = 10f;
     [HideInInspector] public bool death = false;
@@ -69,16 +71,21 @@ public class PlayerBattle : MonoBehaviour
     public float heavySlashChargeTime = 0.66f;
     public float heavySlashCooldown = 1f;
     public float heavySlashDuration = 0.5f;
-    
+
     public float slash1fMovement = 1f;
+    public float slash1MotionTime = 0.3f;
     public float slash2fMovement = 1f;
+    public float slash2MotionTime = 0.3f;
     public float slash3fMovement = 1f;
+    public float slash3MotionTime = 0.3f;
+    public float heavySlashfMovement = 1f;
+    public float heavySlashMotionTime = 0.3f;
     public float attackRotationInfluence = 3f;
 
     private bool dodgeReady = true;
     private bool dodgeQueued = false;
-    public float dodgeCooldown = 1f;
     public float dodgeTime = 0.5f;
+    public float dodgeMotionTime = 0.5f;
     public float dodgeInvulnerableTime = 0.2f;
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
@@ -312,6 +319,10 @@ public class PlayerBattle : MonoBehaviour
             {
                 guardActive = true;
                 blockReady = false;
+
+                animator.SetTrigger("guard");
+                animator.SetBool("guarding", true);
+
                 blockBox.GetComponent<BlockScript>().StartBlock();
             }
 
@@ -334,6 +345,7 @@ public class PlayerBattle : MonoBehaviour
             if (!input.Player.Block.IsPressed()) //end blocking
             {
                 guardActive = false;
+                animator.SetBool("guarding", false);
                 blockBox.GetComponent<BlockScript>().EndBlock();
             }
         }
@@ -406,12 +418,15 @@ public class PlayerBattle : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         float tiltStrength = direction.magnitude; //analog movement speed
+        animator.SetFloat("runIntensity", 0);
 
         if (!actionInProgress && !hitStun && direction.magnitude > 0.1f)
         {
-            if (guardActive) //slower movement when blocking
+            animator.SetFloat("runIntensity", tiltStrength);
+
+            if (lockedOn) //slower movement when blocking
             {
-                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * 0.33f * Time.fixedDeltaTime); //slow down when blocking
+                rb.MovePosition(rb.position + moveDir * tiltStrength * moveSpeed * lockOnSpeedMult * Time.fixedDeltaTime); //slow down when blocking
             }
             else
             {
@@ -420,12 +435,17 @@ public class PlayerBattle : MonoBehaviour
 
             if (lockedOn) //rotate towards lock on target
             {
+                animator.SetFloat("walkDirSide", direction.x);
+                animator.SetFloat("walkDirFwd", direction.y);
+
+                Debug.Log(animator.GetFloat("walkDirSide") + " " + animator.GetFloat("walkDirFwd"));
+                
                 Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
             }
             else //rotate towards movement direction
             {
-                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.25f));
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.44f));
             }
         }
     }
@@ -439,11 +459,24 @@ public class PlayerBattle : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0, rotationY, 0) * camFwd.normalized;
 
         invulnerable = true;
-        model.GetComponent<Renderer>().material.color = Color.yellow; //debug
+
+        animator.SetTrigger("dodge");
+        //model.GetComponent<Renderer>().material.color = Color.yellow; //debug
 
         while (timer < dodgeTime)
         {
             timer += Time.deltaTime;
+
+            if (timer < dodgeMotionTime)
+            {
+                rb.MovePosition(rb.position + moveDir * dodgeSpeed * Time.fixedDeltaTime);
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else
+            {
+                rb.MovePosition(rb.position + moveDir * dodgeSpeed * 0.3f * (dodgeTime/timer) * Time.fixedDeltaTime);
+                transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
 
             if (timer > dodgeInvulnerableTime)
             {
@@ -457,14 +490,11 @@ public class PlayerBattle : MonoBehaviour
                 slashReady = false;
             }
 
-            rb.MovePosition(rb.position + moveDir * dodgeSpeed * Time.fixedDeltaTime);
-            transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
-
             yield return new WaitForFixedUpdate();
         }
 
         if (slash1Queued)
-        {
+        {            
             slash1Queued = false;
             StartCoroutine(Slash1());
         }
@@ -479,6 +509,8 @@ public class PlayerBattle : MonoBehaviour
     {
         AttackScript atkScript = slash1.GetComponent<AttackScript>();
 
+        animator.SetTrigger("attack1");
+
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
@@ -486,12 +518,19 @@ public class PlayerBattle : MonoBehaviour
         {
             atkTimer += Time.deltaTime;
 
+            if (atkTimer > 0.1f && atkTimer < slash1MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash1fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+
             if (atkTimer > slash1Duration - slash2Window)
             {
                 if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash2Queued = true;
                     slashReady = false;
+                    atkTimer *= 1.5f;
                 }
                 else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
@@ -509,12 +548,14 @@ public class PlayerBattle : MonoBehaviour
         if (slash2Queued) //go to combo atk
         {
             StartCoroutine(Slash2());
+
             slash2Queued = false;
             yield break;
         }
         else if (dodgeQueued) //cancel into dodge
         {
             StartCoroutine(Roll(stickPosition));
+
             dodgeQueued = false;
             yield break;
         }
@@ -528,6 +569,8 @@ public class PlayerBattle : MonoBehaviour
     {
         AttackScript atkScript = slash2.GetComponent<AttackScript>();
 
+        animator.SetTrigger("attack2");
+
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
@@ -535,12 +578,19 @@ public class PlayerBattle : MonoBehaviour
         {
             atkTimer += Time.deltaTime;
 
+            if (atkTimer < slash2MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash2fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             if (atkTimer > slash2Duration - slash3Window)
             {
                 if (input.Player.Attack1.IsPressed() && slashReady && !dodgeQueued) //queue combo attack
                 {
                     slash3Queued = true;
                     slashReady = false;
+                    atkTimer *= 1.2f;
                 }
                 else if (input.Player.Dodge.IsPressed() && dodgeReady && !slash2Queued) //queue dodge cancel
                 {
@@ -558,12 +608,14 @@ public class PlayerBattle : MonoBehaviour
         if (slash3Queued) //go to combo attack
         {
             StartCoroutine(Slash3());
+            
             slash3Queued = false;
             yield break;
         }
         else if (dodgeQueued) //cancel into dodge
         {
             StartCoroutine(Roll(stickPosition));
+
             dodgeQueued = false;
             yield break;
         }
@@ -577,12 +629,26 @@ public class PlayerBattle : MonoBehaviour
     {
         AttackScript atkScript = slash3.GetComponent<AttackScript>();
 
+        animator.SetTrigger("attack3");
+
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
         while (atkTimer < slash3Duration)
         {
             atkTimer += Time.deltaTime;
+
+            if (atkTimer > 0.25f && atkTimer < slash3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash3fMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else if (atkTimer > slash3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slash3fMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             yield return null;
         }
 
@@ -597,6 +663,8 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator HeavySlashCharge()
     {
         float chgTimer = 0;
+        animator.SetTrigger("chargeHeavy");
+        animator.SetBool("charging", true);
 
         while (chgTimer < heavySlashChargeTime)
         {
@@ -613,11 +681,14 @@ public class PlayerBattle : MonoBehaviour
                 if (chgTimer > heavySlashChargeTime / 2) //lower power attack before full charge
                 {
                     StartCoroutine(HeavySlash(0.5f + 0.25f * (chgTimer / heavySlashChargeTime)));
+                    animator.SetBool("charging", false);
+
                     yield break;
                 }
                 else //cancel charge
                 {
                     actionInProgress = false;
+                    animator.SetBool("charging", false);
                     yield break;
                 }
             }
@@ -627,6 +698,7 @@ public class PlayerBattle : MonoBehaviour
 
         model.GetComponent<Renderer>().material.color = Color.white; //debug
         StartCoroutine(HeavySlash(1)); //full power charge attack
+        animator.SetBool("charging", false);
     }
 
     private IEnumerator HeavySlash(float chgAmount)
@@ -634,6 +706,8 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = heavySlash.GetComponent<AttackScript>();
 
         atkScript.StartAttack(); //enable hitbox
+
+        animator.SetTrigger("heavyAttack");
 
         AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
         float baseDmg = atkBox.damage;
@@ -643,6 +717,17 @@ public class PlayerBattle : MonoBehaviour
 
         while (atkTimer < heavySlashDuration)
         {
+            if (atkTimer > 0.1f && atkTimer < heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            else if (atkTimer > heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+            
             atkTimer += Time.deltaTime;
             yield return null;
         }
@@ -656,10 +741,12 @@ public class PlayerBattle : MonoBehaviour
     }
 
     //switch camera modes
-    private void LockOn()
+    public void LockOn()
     {
         if (mainCamera == freeCam) //switch from free cam to lockon
         {
+            animator.SetBool("lockedOn", true);
+            
             lockOnCam.SetActive(true);
 
             lockOnCam.GetComponent<LockOnCamera>().isActive = true;
@@ -676,6 +763,8 @@ public class PlayerBattle : MonoBehaviour
 
         else if (mainCamera == lockOnCam) //switch from lockon to free cam
         {
+            animator.SetBool("lockedOn", false);
+            
             freeCam.SetActive(true);
             lockOnCam.GetComponent<LockOnCamera>().isActive = false;
 

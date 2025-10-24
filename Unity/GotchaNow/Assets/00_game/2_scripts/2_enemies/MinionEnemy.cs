@@ -126,6 +126,7 @@ public class MinionEnemy : MonoBehaviour
         AttackScript atkScript = attack1.GetComponent<AttackScript>();
         atkScript.EndAttack();
 
+        BattleManager.instance.RemoveFromEnemyList(this.gameObject);
         Destroy(this.gameObject);
     }
 }

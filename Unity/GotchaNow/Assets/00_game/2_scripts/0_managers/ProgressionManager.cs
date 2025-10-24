@@ -1,6 +1,7 @@
 using GotchaNow;
 using NUnit.Framework;
 using System.Collections;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -430,6 +431,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (battleID == "battle2trueEndingPath")
         {
+            //Debug.Log("EndBattle()");
+            
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
             {
                 //Debug.Log(bm.activeEnemy[i].GetComponent<Enemy>().enemyType);
