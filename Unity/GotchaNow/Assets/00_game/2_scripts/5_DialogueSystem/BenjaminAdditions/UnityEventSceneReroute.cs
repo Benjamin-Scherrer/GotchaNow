@@ -35,10 +35,10 @@ namespace GotchaNow
 
 				case "bottom":
 					throw new NotImplementedException("Bottom alignment not implemented yet");
-					break;
+					// break;
 				case "top":
 					throw new NotImplementedException("Top alignment not implemented yet");
-					break;
+					// break;
 				default:
 					Debug.LogError("Invalid alignment parameter passed to DialogleBoxAlign: " + alignment);
 					break;

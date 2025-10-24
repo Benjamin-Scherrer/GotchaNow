@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace DialogueSystem.Runtime.Interaction
 {
 	[System.Serializable]
-	public class DialogueEvent : MonoBehaviour
+	public class DialogueEvent
 	{
 		public DialogueEvent(string eventName, UnityEvent onDialogueEvent)
 		{
