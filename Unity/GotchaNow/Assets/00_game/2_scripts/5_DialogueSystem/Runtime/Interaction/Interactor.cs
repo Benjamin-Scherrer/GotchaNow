@@ -72,5 +72,15 @@ namespace DialogueSystem.Runtime.Interaction
 
             return true;
         }
+
+        public void PrepareInteraction()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void EndInteraction()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

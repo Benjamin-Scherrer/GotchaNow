@@ -42,8 +42,11 @@ namespace GotchaNow
 		private void OnEnable()
 		{
 			selectedButtonIndex = 0;
-			HighlightButton();
-			
+			if(ButtonReferences != null && ButtonReferences.Count > 0)
+			{
+				HighlightButton();
+			}
+
 			if (ButtonReferences == null) throw new Exception("Button References not assigned in OptionButtonManager.");
 		}
 

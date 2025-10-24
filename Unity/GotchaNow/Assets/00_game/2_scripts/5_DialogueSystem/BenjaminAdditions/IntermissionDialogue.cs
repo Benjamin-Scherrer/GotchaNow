@@ -19,7 +19,7 @@ namespace GotchaNow
 				Debug.Log("No narrative scriptable object found for the current intermission.");
 				return;
 			}
-
+			Debug.Log("Starting intermission dialogue: " + narrativeScriptableObject.name);
 			StartDialogue();
 		}
 

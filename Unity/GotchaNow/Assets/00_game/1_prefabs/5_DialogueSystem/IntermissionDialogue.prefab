@@ -47,9 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.IntermissionDialogue
   narrativeScriptableObject: {fileID: 0}
   narrativeController: {fileID: 0}
-  dialogueEvents: []
-  dialogueEventScriptableObjects: []
-  skipAction: {fileID: 0}
 --- !u!114 &4606869996244861271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,16 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.DialogueSelector
   narrativeController: {fileID: 0}
-  intro: {fileID: 0}
-  preBattle1: {fileID: 0}
-  intermission1TrueEndingPath: {fileID: 0}
-  intermission1: {fileID: 0}
-  preSecretBoss: {fileID: 0}
-  trueEnding: {fileID: 0}
-  trueEndingFailed: {fileID: 0}
-  neutralEnding: {fileID: 0}
-  badEnding: {fileID: 0}
-  gameOver: {fileID: 0}
+  intro: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
+  preBattle1: {fileID: 11400000, guid: a94b9384a50cae248b26f20cb355b313, type: 2}
+  intermission1: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
+  intermission1TrueEndingPath: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
+  preSecretBoss: {fileID: 11400000, guid: c96e0b2d3533cee4e94941cc880dcf74, type: 2}
+  trueEnding: {fileID: 11400000, guid: e15e704fa349f15468edb8dae81f4254, type: 2}
+  trueEndingFailed: {fileID: 11400000, guid: 0c39c41fd3abfec4f9e04afd17edbae9, type: 2}
+  neutralEnding: {fileID: 11400000, guid: 72694110ad1b55042a9369e8fbf0e4fa, type: 2}
+  badEnding: {fileID: 11400000, guid: 0ec3954792dded64a9de4501f71cbf9f, type: 2}
+  gameOver: {fileID: 11400000, guid: 297f96ec3d3a19b4f8e24cabbc5125f2, type: 2}
   tutorial: {fileID: 0}
   battle1: {fileID: 0}
   battle2trueEndingPath: {fileID: 0}

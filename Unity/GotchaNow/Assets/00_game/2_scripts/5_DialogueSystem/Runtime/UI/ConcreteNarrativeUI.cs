@@ -40,6 +40,7 @@ namespace DialogueSystem.Runtime.UI
             SetUIActive(false);
 
             _optionButtonManager = GetComponent<OptionButtonManager>();
+            _optionButtonManager.enabled = false;
         }
         
         public override void DisplayOptions(List<DialogueOption> options, bool disableChosenOptions,

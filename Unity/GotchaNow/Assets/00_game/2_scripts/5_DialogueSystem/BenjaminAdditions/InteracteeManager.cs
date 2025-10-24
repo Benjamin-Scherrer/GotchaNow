@@ -8,6 +8,9 @@ namespace GotchaNow
 	{
 		public static InteracteeManager Instance { get; private set; }
 
+		[Header("References")]
+		[SerializeField] private Interactor interactor;
+
 		private readonly List<InteractableDialogue> interactables = new();
 		private void Awake()
 		{
@@ -47,13 +50,27 @@ namespace GotchaNow
 			}
 			return closestInteractable;
 		}
-		
-		public void PrepareAllInteractables()
+
+		public void PrepareForInteraction()
 		{
+			if (interactor == null) throw new System.Exception("Interactor not assigned.");
+			interactor.PrepareInteraction();
+
 			foreach (var interactable in interactables)
 			{
 				interactable.PrepareInteraction();
 			}
+		}
+		
+		public void EndInteraction()
+		{
+			if (interactor == null) throw new System.Exception("Interactor not assigned.");
+			interactor.EndInteraction();
+
+			// foreach (var interactable in interactables)
+			// {
+			// 	interactable.EndInteraction();
+			// }
 		}
 	}
 }

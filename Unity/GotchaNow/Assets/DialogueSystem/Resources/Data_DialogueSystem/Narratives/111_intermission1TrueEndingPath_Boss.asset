@@ -28,6 +28,12 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 7af82c1e-5b15-4692-a719-5e1a3ea913a2
     <PortName>k__BackingField: ...
     <TargetNodeGuid>k__BackingField: 83ef3770-5ba4-4c37-8ea4-eace9e8a2b85
+  - <BaseNodeGuid>k__BackingField: 5997ece3-9847-4bea-8473-c3321d25468c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 7af82c1e-5b15-4692-a719-5e1a3ea913a2
+  - <BaseNodeGuid>k__BackingField: f04ce6da-a084-4001-b1f1-1dfefaa08752
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 7af82c1e-5b15-4692-a719-5e1a3ea913a2
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -38,7 +44,7 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: 
+    - <CharacterName>k__BackingField: Boss
       <Content>k__BackingField: 'Wow you really got me sweating over here.
 
         You
@@ -51,33 +57,6 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     position: {x: 280, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: f04ce6da-a084-4001-b1f1-1dfefaa08752
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'I don''t really know that much about him, you know.
-
-        I
-        think he''s pretty young, he is also playing already for a long time.'
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'If you want to know more,
-
-        you can take
-        a peak at his messages, you know.
-
-        Maybe you''ll find out more.'
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1141.5, y: 343}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
@@ -126,14 +105,41 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1141.5, y: 200}
+    position: {x: 1028.5, y: -145}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: f04ce6da-a084-4001-b1f1-1dfefaa08752
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: 'I don''t really know that much about him, you know.
+
+        I
+        think he''s pretty young, he is also playing already for a long time.'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: 'If you want to know more,
+
+        you can take
+        a peek at his messages, you know.
+
+        Maybe you''ll find out more.'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1028.5, y: -8}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   - guid: 83ef3770-5ba4-4c37-8ea4-eace9e8a2b85
     dialogue: []
-    position: {x: 1141.5, y: 471}
+    position: {x: 1028.5, y: 504.5}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

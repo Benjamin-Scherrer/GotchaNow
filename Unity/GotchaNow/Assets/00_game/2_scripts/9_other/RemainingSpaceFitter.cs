@@ -16,6 +16,8 @@ namespace GotchaNow
 		//Canvas reference for rendering event
 		[SerializeField] private MainCanvasEvents mainCanvasEvents;
 
+		private bool hasToUpdate = false;
+		
 		private void Awake()
 		{
 			if (targetRectTransform == null)
@@ -38,25 +40,21 @@ namespace GotchaNow
         
         private void OnEnable()
 		{
-			 mainCanvasEvents.rectTransformChanged += OnCanvasWillRender;
+			 mainCanvasEvents.rectTransformChanged += SetHasToUpdate;
 		}
 
 		private void OnDisable()
 		{
-			mainCanvasEvents.rectTransformChanged -= OnCanvasWillRender;
+			mainCanvasEvents.rectTransformChanged -= SetHasToUpdate;
 		}
 
-		private void OnCanvasWillRender()
+		private void SetHasToUpdate()
 		{
-			UpdateRectSize();
+			hasToUpdate = true;
 		}
 
 		private void UpdateRectSize()
 		{
-			// Debug.Log("Updating Rect Size");
-			// float targetHeight = targetRectTransform.rect.height;
-			// float targetWidth = targetRectTransform.rect.width;
-
 			float referenceHeight = referenceRectTransform.rect.height;
 			float referenceWidth = referenceRectTransform.rect.width;
 
@@ -69,12 +67,19 @@ namespace GotchaNow
 			if (newHeight < 0) newHeight = 0;
 			if (newWidth < 0) newWidth = 0;
 
-			//Not working properly yet...
 			targetRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
 		}
 
+		private void LateUpdate()
+		{
+			if (hasToUpdate)
+			{
+				UpdateRectSize();
+				hasToUpdate = false;
+			}
+		}
 
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		//Debugging purposes
 		[Header("Debugging")]
 		[SerializeField] private bool updateInEditor = false;
