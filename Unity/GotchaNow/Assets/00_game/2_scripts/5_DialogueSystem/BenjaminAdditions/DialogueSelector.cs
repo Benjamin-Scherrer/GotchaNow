@@ -38,6 +38,12 @@ namespace GotchaNow
 
         public DialogueContainer GetNarrativeScriptableObject()
 		{
+			if(enabled == false)
+			{
+				Debug.Log("DialogueSelector is disabled.");
+				return null;
+			}
+
 			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
 			string gameState = ProgressionManager.instance.gameState;
 
