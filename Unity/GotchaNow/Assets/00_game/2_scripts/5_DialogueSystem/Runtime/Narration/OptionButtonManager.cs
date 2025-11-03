@@ -11,6 +11,8 @@ namespace GotchaNow
 	{
 		private enum ScrollDirection { Up, Down }
 		private List<Button> _buttonReferences;
+
+		private List<Button> _activeButtonReferences;
 		public List<Button> ButtonReferences
 		{
 			private get => _buttonReferences;
@@ -20,7 +22,14 @@ namespace GotchaNow
 				// initialize selection when new list assigned
 				if (_buttonReferences != null && _buttonReferences.Count > 0)
 				{
-					selectedButtonIndex = Mathf.Clamp(selectedButtonIndex, 0, _buttonReferences.Count - 1);
+					_activeButtonReferences.Clear();
+					foreach (Button btn in _buttonReferences)
+					{
+						if (btn.gameObject.name == "Button_DefaultDisabled(Clone)") continue;
+						_activeButtonReferences.Add(btn);
+					}
+					selectedButtonIndex = Mathf.Clamp(selectedButtonIndex, 0, _activeButtonReferences.Count - 1);
+
 					HighlightButton();
 				}
 			}
@@ -39,15 +48,21 @@ namespace GotchaNow
 
 		private int selectedButtonIndex = 0;
 
+
+		private void Awake()
+		{
+			_activeButtonReferences = new List<Button>();
+		}
+
 		private void OnEnable()
 		{
 			selectedButtonIndex = 0;
-			if(ButtonReferences != null && ButtonReferences.Count > 0)
+			if (_activeButtonReferences != null && _activeButtonReferences.Count > 0)
 			{
 				HighlightButton();
 			}
 
-			if (ButtonReferences == null)
+			if (_activeButtonReferences == null)
 			{
 				// throw new Exception("Button References not assigned in OptionButtonManager.");
 				Debug.Log("Button References not assigned in OptionButtonManager.");
@@ -56,7 +71,7 @@ namespace GotchaNow
 
         private void Update()
 		{
-			if (ButtonReferences == null || ButtonReferences.Count == 0) enabled = false;
+			if (_activeButtonReferences == null || _activeButtonReferences.Count == 0) enabled = false;
 			
 			//scrolling
 			if (up.action.IsPressed() && !upScrolling)
@@ -73,7 +88,7 @@ namespace GotchaNow
 			//submit
 			if (submit.action.WasPressedThisFrame())
 			{
-				ButtonReferences[selectedButtonIndex].onClick.Invoke();
+				_activeButtonReferences[selectedButtonIndex].onClick.Invoke();
 			}
 		}
 
@@ -148,13 +163,13 @@ namespace GotchaNow
 			{
 				case ScrollDirection.Up:
 					selectedButtonIndex -= 1;
-					if (selectedButtonIndex < 0) selectedButtonIndex = ButtonReferences.Count - 1;
+					if (selectedButtonIndex < 0) selectedButtonIndex = _activeButtonReferences.Count - 1;
 					Debug.Log("Scrolled Up to index " + selectedButtonIndex);
 					break;
 
 				case ScrollDirection.Down:
 					selectedButtonIndex += 1;
-					if (selectedButtonIndex > ButtonReferences.Count - 1) selectedButtonIndex = 0;
+					if (selectedButtonIndex > _activeButtonReferences.Count - 1) selectedButtonIndex = 0;
 					Debug.Log("Scrolled Down to index " + selectedButtonIndex);
 					break;
 				default:
@@ -167,7 +182,7 @@ namespace GotchaNow
 		{
 			// SanityCheck();
 
-			Button button = ButtonReferences[selectedButtonIndex];
+			Button button = _activeButtonReferences[selectedButtonIndex];
 			button.Select();
 		}
 
@@ -175,7 +190,7 @@ namespace GotchaNow
 		{
 			// SanityCheck();
 
-			Button button = ButtonReferences[selectedButtonIndex];
+			Button button = _activeButtonReferences[selectedButtonIndex];
 			button.OnDeselect(null);
 		}
 

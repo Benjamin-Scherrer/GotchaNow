@@ -415,6 +415,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1243192517725448224}
     m_Modifications:
+    - target: {fileID: 2645970175504891969, guid: 71bbd408f267fa241a0f7ea28745bac3, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b611a356b9b3ab4880bcd8311c3759a, type: 2}
+    - target: {fileID: 2645970175504891969, guid: 71bbd408f267fa241a0f7ea28745bac3, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: f68a205f48d9e2f46af71c5fcffa1b45, type: 2}
     - target: {fileID: 6690356012543211983, guid: 71bbd408f267fa241a0f7ea28745bac3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
   <NodeLinks>k__BackingField: []
   <DialogueNodeData>k__BackingField:
-  - guid: cb477661-c92a-4f42-a6d2-fb3f75e96412
+  - guid: 2f985254-ddaa-4480-9a26-bff6e123f044
     dialogue: []
     position: {x: 100, y: 200}
     transitionNode: 0

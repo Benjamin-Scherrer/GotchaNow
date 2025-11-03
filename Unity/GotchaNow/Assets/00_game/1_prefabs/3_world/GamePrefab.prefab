@@ -1272,6 +1272,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4606869996244861271, guid: 90c8071f59dc2c042aff8338f9bd6c55, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1558,6 +1562,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8206827289571578972, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: e0036475ba0cd764cb7d5d5e4438738b, type: 2}
+    - target: {fileID: 8206827289571578972, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: 07afa10e934988d44a7abb688aabb553, type: 2}
+    - target: {fileID: 8206827289571578972, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 68394f4309128804cb354d5bdd39b996, type: 2}
+    - target: {fileID: 8206827289571578972, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e043ffb2ad18144aa3b62dee2d7ac7d, type: 2}
     - target: {fileID: 8723845907211444357, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
       propertyPath: m_Name
       value: Boss
