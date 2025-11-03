@@ -27,7 +27,15 @@ MonoBehaviour:
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: this is trueEndingFailed
+      <Content>k__BackingField: "See you are weak. \nYou thought you could be something
+        special, someone better, morally superior. "
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "But you are part of this system, you are designed
+        to exploit. \nYou will never be more than that."
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

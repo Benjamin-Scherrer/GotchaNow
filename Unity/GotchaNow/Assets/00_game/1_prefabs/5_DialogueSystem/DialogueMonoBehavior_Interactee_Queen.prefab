@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6024976443283526896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1065988195698570432, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_Name
+      value: DialogueMonoBehavior_Interactee_Queen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065988195698570432, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100549016569752895, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100549016569752895, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b611a356b9b3ab4880bcd8311c3759a, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: f68a205f48d9e2f46af71c5fcffa1b45, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c11d0cba657db745a420e7b38e2ef02, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: f031693f25329804d980c0679c2f72d6, type: 2}
+    - target: {fileID: 2127085981910861909, guid: 0c9e3ce602fea7040a0da2f6e9d5be29, type: 3}
+      propertyPath: dialogueEvents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127085981910861909, guid: 0c9e3ce602fea7040a0da2f6e9d5be29, type: 3}
+      propertyPath: dialogueEvents.Array.data[0].<OnDialogueEvent>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854206561636631839, guid: 0c9e3ce602fea7040a0da2f6e9d5be29, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b5118e3caa3a2345a4356c083c2ccd7, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}

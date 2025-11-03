@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2125055413812857766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1065988195698570432, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_Name
+      value: DialogueMonoBehavior_Interactee_Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100549016569752895, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100549016569752895, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100549016569752895, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: e0036475ba0cd764cb7d5d5e4438738b, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: 07afa10e934988d44a7abb688aabb553, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 68394f4309128804cb354d5bdd39b996, type: 2}
+    - target: {fileID: 8585369403736822961, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e043ffb2ad18144aa3b62dee2d7ac7d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7178c2cfe5d149c4cbc23c1934fca91e, type: 3}

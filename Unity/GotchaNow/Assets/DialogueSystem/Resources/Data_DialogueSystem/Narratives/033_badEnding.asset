@@ -27,7 +27,16 @@ MonoBehaviour:
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
     - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: this is badEnding
+      <Content>k__BackingField: 'Yes, yes,
+
+        YEEEEEES!'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "I am unstoppable. \nYou did it.\nYou depleted his
+        bank account."
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

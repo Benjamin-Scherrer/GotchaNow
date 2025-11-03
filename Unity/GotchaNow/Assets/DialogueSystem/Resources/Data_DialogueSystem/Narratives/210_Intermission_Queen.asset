@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: 210_Intermission_Queen
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 0369ac7d-bd6d-449f-9bb1-8611831c164a
+  - <BaseNodeGuid>k__BackingField: 0369ac7d-bd6d-449f-9bb1-8611831c164a
+    <PortName>k__BackingField: Yes!
+    <TargetNodeGuid>k__BackingField: b65dd529-c1ae-46a3-be11-b08d7c5729a4
+  - <BaseNodeGuid>k__BackingField: 0369ac7d-bd6d-449f-9bb1-8611831c164a
+    <PortName>k__BackingField: No...
+    <TargetNodeGuid>k__BackingField: 16a33dfd-bbb1-44c6-8ede-09dd694f4979
+  - <BaseNodeGuid>k__BackingField: b65dd529-c1ae-46a3-be11-b08d7c5729a4
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 88a41358-bda1-4d01-bcd6-9e38841365a7
+  <DialogueNodeData>k__BackingField:
+  - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 0369ac7d-bd6d-449f-9bb1-8611831c164a
+    dialogue:
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Ready for the next fight?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 257, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: b65dd529-c1ae-46a3-be11-b08d7c5729a4
+    dialogue:
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Then let's begin!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 752.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 16a33dfd-bbb1-44c6-8ede-09dd694f4979
+    dialogue:
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Dont keep me waiting for too long...
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 752.5, y: 369}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 88a41358-bda1-4d01-bcd6-9e38841365a7
+    dialogue:
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: '<event:battle2>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1053.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

@@ -42,6 +42,8 @@ public class ProgressionManager : MonoBehaviour
     {
         bm = BattleManager.instance;
         nm = NotificationManager.instance;
+
+        InteracteeManager.Instance.EndInteraction();
         
         if (gameState == "intermission") //start with inspector settings
         {
@@ -116,6 +118,8 @@ public class ProgressionManager : MonoBehaviour
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
+             //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -138,6 +142,8 @@ public class ProgressionManager : MonoBehaviour
 
             queen.transform.position = spawnPoint + new Vector3(8, 0, 1);
 
+             //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
             
@@ -153,6 +159,8 @@ public class ProgressionManager : MonoBehaviour
 
             queen.SetActive(true);
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -168,6 +176,8 @@ public class ProgressionManager : MonoBehaviour
 
             queen.SetActive(true);
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -190,6 +200,8 @@ public class ProgressionManager : MonoBehaviour
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -205,6 +217,8 @@ public class ProgressionManager : MonoBehaviour
 
             queen.SetActive(false);
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -218,6 +232,8 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou may have defeated me but not capitalism";
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -231,6 +247,8 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\ndecent job. we got a new paying user thanks to you\nmight have to replace you with someone better tho";
 
+             //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -244,6 +262,8 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou're our new top employee. incredible work";
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 
@@ -257,6 +277,8 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou died";
 
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
 

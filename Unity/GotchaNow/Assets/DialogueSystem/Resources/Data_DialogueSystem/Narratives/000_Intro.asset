@@ -15,22 +15,7 @@ MonoBehaviour:
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
-    <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
-  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
-    <PortName>k__BackingField: Output
-    <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-  - <BaseNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
-    <PortName>k__BackingField: Output
     <TargetNodeGuid>k__BackingField: a305f564-c22b-4370-9e31-3d1654ed8ea4
-  - <BaseNodeGuid>k__BackingField: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
-    <PortName>k__BackingField: Output
-    <TargetNodeGuid>k__BackingField: ac0811e3-43ff-43fe-9c50-099dae86d114
-  - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    <PortName>k__BackingField: Yes
-    <TargetNodeGuid>k__BackingField: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
-  - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    <PortName>k__BackingField: No
-    <TargetNodeGuid>k__BackingField: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -39,93 +24,22 @@ MonoBehaviour:
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "Hi, I'm the tutorial lady. \nI still need some 
-        help with the script,\nso this is some placeholder text right now."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 280, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 50ce82b7-b852-42d5-9ba6-bc61401b4f45
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Good, then lets go.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1063, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 81d0d2fb-7aa2-4b6c-bcaa-cdc7f25a3930
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Sure, then get to work!
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1063, y: 337}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "So you're the new girl. \nDo you need a rundown
-        how we do things here?"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 559.5, y: 200}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: a305f564-c22b-4370-9e31-3d1654ed8ea4
     dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: '<event:tutorial>
-
-        <event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "Hey, new girl! \nWelcome to your first day."
+      <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1374, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: ac0811e3-43ff-43fe-9c50-099dae86d114
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: '<event:battle1>
-
-        <event:skipThroughAll>
-
-        END
-
-
-'
-      <HideCharacter>k__BackingField: 1
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: "Get used to your new work space a little. \nWork
+        is starting soon."
+      <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1374, y: 337}
+    position: {x: 242.5, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

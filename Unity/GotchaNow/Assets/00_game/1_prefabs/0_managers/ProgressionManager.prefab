@@ -49,6 +49,7 @@ MonoBehaviour:
   battleID: battle1
   intermissionID: intro
   intermissionUI: {fileID: 0}
+  intermissionDialogue: {fileID: 0}
   battleUI: {fileID: 0}
   sendNotifUI: {fileID: 0}
   debugText: {fileID: 0}
@@ -56,3 +57,5 @@ MonoBehaviour:
   boss: {fileID: 0}
   minion: {fileID: 6387449519428849930, guid: e18277303eb21bc44b0f18f8fddeb60a, type: 3}
   queen: {fileID: 0}
+  bossSpawnPoint: {fileID: 0}
+  queenSpawnPoint: {fileID: 0}
