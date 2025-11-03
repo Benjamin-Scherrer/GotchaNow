@@ -31,12 +31,6 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
     <PortName>k__BackingField: That makes sense
     <TargetNodeGuid>k__BackingField: d1a59df4-d2dd-44e1-9303-a491e72cc219
-  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
-    <PortName>k__BackingField: Whats being benched?
-    <TargetNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
-    <PortName>k__BackingField: ...
-    <TargetNodeGuid>k__BackingField: 80089607-5377-488b-8de8-f68b5b61f999
   - <BaseNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
     <PortName>k__BackingField: Whats the probability of me getting benched?
     <TargetNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
@@ -46,6 +40,15 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
     <PortName>k__BackingField: How can i prevent being benched?
     <TargetNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
+  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
+    <PortName>k__BackingField: Whats being benched?
+    <TargetNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
+  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
+    <PortName>k__BackingField: ...
+    <TargetNodeGuid>k__BackingField: 80089607-5377-488b-8de8-f68b5b61f999
+  - <BaseNodeGuid>k__BackingField: 543b1261-5b81-4d73-bad8-7421c77ae014
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
   - <BaseNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
     <PortName>k__BackingField: I'll try not to get benched then.
     <TargetNodeGuid>k__BackingField: 315c34a3-225c-43c7-bb9f-7dd7ab8407ff
@@ -73,14 +76,22 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 301.5, y: 200}
+    position: {x: 295, y: 200}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
+    disableAlreadyChosenOptions: 1
   - guid: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
-    dialogue: []
-    position: {x: 819.5, y: 857}
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 901, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
@@ -95,7 +106,42 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 900, y: 200}
+    position: {x: 756, y: 481.5}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: "Oh you just get replaced. \nYou know if the player
+        buys more lootboxes,\nthey probably will get a character that they prefer."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: "And then you will not be played anymore.\LAs a Boss
+        I can't get permanently benched but you...\nmaybe."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1207, y: 887.5}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 9509a531-e094-40f9-9d38-679161360b2c
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: "The pitty system requires the player to get something
+        good at some point so they keep playing. \nSo the probability is high."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1657.5, y: 1082.5}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
@@ -110,7 +156,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 900, y: 561.5}
+    position: {x: 756, y: 911.5}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
@@ -131,57 +177,38 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 1406, y: 200}
+    position: {x: 1207, y: 322}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   - guid: d1a59df4-d2dd-44e1-9303-a491e72cc219
-    dialogue: []
-    position: {x: 1406, y: 355}
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1207, y: 704}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   - guid: 80089607-5377-488b-8de8-f68b5b61f999
-    dialogue: []
-    position: {x: 1406, y: 857}
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1207, y: 1355}
     transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Oh you just get replaced. \nYou know if the player
-        buys more lootboxes,\nthey probably will get a character that they prefer."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "And then you will not be played anymore.\LAs a Boss
-        I can't get permanently benched but you\n...\nmaybe."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1409.5, y: 561.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 9509a531-e094-40f9-9d38-679161360b2c
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "The pitty system requires the player to get something
-        good at some point so they keep playing. \nSo the probability is high."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1844, y: 355}
-    transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
@@ -196,14 +223,22 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 2282, y: 585.5}
+    position: {x: 2099, y: 911.5}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   - guid: 315c34a3-225c-43c7-bb9f-7dd7ab8407ff
-    dialogue: []
-    position: {x: 2795, y: 585.5}
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 2551, y: 911.5}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

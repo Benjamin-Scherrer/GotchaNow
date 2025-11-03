@@ -74,7 +74,7 @@ MonoBehaviour:
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
+    disableAlreadyChosenOptions: 1
   - guid: 5997ece3-9847-4bea-8473-c3321d25468c
     dialogue:
     - <CharacterName>k__BackingField: Boss
@@ -138,7 +138,15 @@ MonoBehaviour:
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   - guid: 83ef3770-5ba4-4c37-8ea4-eace9e8a2b85
-    dialogue: []
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
     position: {x: 1028.5, y: 504.5}
     transitionNode: 1
     entryPoint: 0

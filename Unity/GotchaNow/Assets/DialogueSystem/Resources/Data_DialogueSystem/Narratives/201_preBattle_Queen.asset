@@ -59,19 +59,6 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 16a33dfd-bbb1-44c6-8ede-09dd694f4979
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Dont keep me waiting for too long...
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 752.5, y: 369}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 88a41358-bda1-4d01-bcd6-9e38841365a7
     dialogue:
     - <CharacterName>k__BackingField: 
@@ -85,6 +72,19 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     position: {x: 1053.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 16a33dfd-bbb1-44c6-8ede-09dd694f4979
+    dialogue:
+    - <CharacterName>k__BackingField: Queen
+      <Content>k__BackingField: Dont keep me waiting for too long...
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 752.5, y: 369}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

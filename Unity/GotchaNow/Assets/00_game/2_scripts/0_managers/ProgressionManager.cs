@@ -300,6 +300,9 @@ public class ProgressionManager : MonoBehaviour
         player.GetComponent<PlayerBattle>().enabled = true;
         player.GetComponent<PlayerIntermission>().enabled = false;
 
+        //End intermission dialogue if still active
+        InteracteeManager.Instance.EndInteraction();
+
         if (battleID == "tutorial")
         {
             //spawn tutorial enemy

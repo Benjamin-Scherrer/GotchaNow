@@ -74,7 +74,7 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 88a41358-bda1-4d01-bcd6-9e38841365a7
     dialogue:
-    - <CharacterName>k__BackingField: 
+    - <CharacterName>k__BackingField: Queen
       <Content>k__BackingField: '<event:battle1>
 
         <event:skipThroughAll>

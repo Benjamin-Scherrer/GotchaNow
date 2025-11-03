@@ -46,23 +46,6 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: a0e7041e-af5d-4b9c-9b67-831c13f44cc2
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: '<event:tutorial>
-
-        <event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1052.5, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 5be46824-e66b-4df5-8add-edd32ae6e6de
     dialogue:
     - <CharacterName>k__BackingField: Boss
@@ -89,6 +72,23 @@ MonoBehaviour:
           m_Calls: []
     position: {x: 275, y: 200}
     transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: a0e7041e-af5d-4b9c-9b67-831c13f44cc2
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: '<event:tutorial>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1052.5, y: 200}
+    transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0

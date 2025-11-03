@@ -445,6 +445,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueMonoBehavior_Interactee_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: e0036475ba0cd764cb7d5d5e4438738b, type: 2}
+    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 11400000, guid: 07afa10e934988d44a7abb688aabb553, type: 2}
+    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: intermission1
+      value: 
+      objectReference: {fileID: 11400000, guid: 68394f4309128804cb354d5bdd39b996, type: 2}
+    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: intermission1TrueEndingPath
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e043ffb2ad18144aa3b62dee2d7ac7d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
