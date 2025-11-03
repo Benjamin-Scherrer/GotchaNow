@@ -449,13 +449,13 @@ public class PlayerBattle : MonoBehaviour
         animator.SetTrigger("guard");
         animator.SetBool("guarding", true);
 
-        blockBox.GetComponent<BlockScript>().StartBlock();
-
         while (timer < blockMinTime)
         {
             timer += Time.deltaTime;
             yield return null;
         }
+
+        blockBox.GetComponent<BlockScript>().StartBlock();
         
         while (timer >= blockMinTime)
         {
@@ -573,7 +573,7 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        atkScript.EndAttack(); //disable hitbox
+        //atkScript.EndAttack(); //disable hitbox
 
         if (slash2Queued) //go to combo atk
         {
@@ -633,7 +633,7 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        atkScript.EndAttack(); //disable hitbox
+        //atkScript.EndAttack(); //disable hitbox
 
         if (slash3Queued) //go to combo attack
         {
@@ -682,7 +682,7 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        atkScript.EndAttack(); //disable hitbox
+        //atkScript.EndAttack(); //disable hitbox
 
         yield return new WaitForSeconds(slashCooldown); //ending lag
 
@@ -739,9 +739,9 @@ public class PlayerBattle : MonoBehaviour
 
         animator.SetTrigger("heavyAttack");
 
-        AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
+        /* AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
         float baseDmg = atkBox.damage;
-        atkBox.damage *= chgAmount; //calculate damage
+        atkBox.damage *= chgAmount; //calculate damage */
 
         float atkTimer = 0;
 
@@ -762,8 +762,8 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        atkBox.damage = baseDmg; //reset damage of hitbox
-        atkScript.EndAttack();
+        /* atkBox.damage = baseDmg; //reset damage of hitbox */
+        //atkScript.EndAttack();
 
         yield return new WaitForSeconds(heavySlashCooldown); //ending lag
 
@@ -816,11 +816,26 @@ public class PlayerBattle : MonoBehaviour
             rotationTime += Time.deltaTime;
             Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
             transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.33f));
-            
+
             yield return new WaitForFixedUpdate();
         }
     }
     
+    //REQUESTS
+    public void Heal(float hpAmount)
+    {
+        if (HP + hpAmount >= maxHP)
+        {
+            StartCoroutine(BattleManager.instance.UpdatePlayerHP(HP/maxHP, 1));
+            HP = maxHP;
+        }
+        else
+        {
+            StartCoroutine(BattleManager.instance.UpdatePlayerHP(HP/maxHP, (HP+hpAmount)/maxHP));
+            HP += hpAmount;
+        }
+    }
+
     //input system stuff for left analog movement
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {

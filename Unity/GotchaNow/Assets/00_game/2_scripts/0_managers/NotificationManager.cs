@@ -305,6 +305,9 @@ public class NotificationManager : MonoBehaviour
     {
         ChargeNotifBar(-1);
         ChargeQuota(30);
+
+        PlayerBattle.Instance.Heal(50);
+
         StartCoroutine(CloseRequestMenu());
     }
 

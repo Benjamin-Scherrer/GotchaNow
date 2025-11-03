@@ -16,6 +16,11 @@ public class LockOnCamera : MonoBehaviour
     public float lerpSpeed = 0.1f;
     [HideInInspector] public bool isActive = false;
 
+    void Awake()
+    {
+        LockOnCamera.instance = this;
+    }
+    
     void FixedUpdate()
     {
         targetVector = target.transform.position - player.transform.position;

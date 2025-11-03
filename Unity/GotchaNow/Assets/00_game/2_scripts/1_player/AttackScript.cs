@@ -18,17 +18,15 @@ public class AttackScript : MonoBehaviour
         {
             StartCoroutine(PlayerAttack());
         }
-        /* else if (attackType == "playerHeavyAttack")
+        else if (attackType == "playerHeavyAttack")
         {
             StartCoroutine(PlayerHeavyAttack());
-        } */
+        }
         else
         {
             hitbox.SetActive(true);
         }
     }
-
-    
 
     public void EndAttack()
     {
@@ -37,9 +35,11 @@ public class AttackScript : MonoBehaviour
 
     private IEnumerator PlayerAttack()
     {
+        AttackBox atkBox = hitbox.GetComponent<AttackBox>();
+        
         float timer = 0;
 
-        hitbox.GetComponent<AttackBox>().damage = hitboxDmg;
+        atkBox.damage = hitboxDmg;
 
         while (timer < windupTime)
         {
@@ -47,23 +47,18 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
+        atkBox.damage = hitboxDmg;
+        atkBox.duration = endTime - windupTime;
+
         hitbox.SetActive(true);
-
-        while (timer < endTime)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        hitbox.SetActive(false);
     }
 
-    /* private IEnumerator PlayerHeavyAttack()
+    private IEnumerator PlayerHeavyAttack()
     {
         float timer = 0;
 
-        hitbox.GetComponent<AttackBox>().damage = hitboxDmg;
-        hitbox2.GetComponent<AttackBox>().damage = hitbox2Dmg;
+        AttackBox atkBox1 = hitbox.GetComponent<AttackBox>();
+        AttackBox atkBox2 = hitbox2.GetComponent<AttackBox>();
 
         while (timer < windupTime)
         {
@@ -71,6 +66,8 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
+        atkBox1.damage = hitboxDmg;
+        atkBox1.duration = 0.3f;
         hitbox.SetActive(true);
 
         while (timer < windup2Time)
@@ -79,15 +76,8 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
+        atkBox2.damage = hitbox2Dmg;
+        atkBox2.duration = 0.25f;
         hitbox2.SetActive(true);
-
-        while (timer < endTime)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        hitbox.SetActive(false);
-        hitbox2.SetActive(false);
-    } */
+    }
 }
