@@ -317,13 +317,9 @@ public class PlayerBattle : MonoBehaviour
             //block
             if (input.Player.Block.IsPressed() && blockReady)
             {
-                guardActive = true;
+                actionInProgress = true;
                 blockReady = false;
-
-                animator.SetTrigger("guard");
-                animator.SetBool("guarding", true);
-
-                blockBox.GetComponent<BlockScript>().StartBlock();
+                StartCoroutine(StartBlock());
             }
 
             //dodge roll
@@ -340,14 +336,7 @@ public class PlayerBattle : MonoBehaviour
         //block active
         if (guardActive)
         {
-            //
-
-            if (!input.Player.Block.IsPressed()) //end blocking
-            {
-                guardActive = false;
-                animator.SetBool("guarding", false);
-                blockBox.GetComponent<BlockScript>().EndBlock();
-            }
+            
         }
     }
 
@@ -439,7 +428,7 @@ public class PlayerBattle : MonoBehaviour
                 animator.SetFloat("walkDirFwd", direction.y);
 
                 Debug.Log(animator.GetFloat("walkDirSide") + " " + animator.GetFloat("walkDirFwd"));
-                
+
                 Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
             }
@@ -449,7 +438,48 @@ public class PlayerBattle : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator StartBlock()
+    {
+        float timer = 0;
+        float blockMinTime = 0.2f;
+        
+        guardActive = true;
+
+        animator.SetTrigger("guard");
+        animator.SetBool("guarding", true);
+
+        blockBox.GetComponent<BlockScript>().StartBlock();
+
+        while (timer < blockMinTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        while (timer >= blockMinTime)
+        {
+            timer += Time.deltaTime;
+
+            if (!input.Player.Block.IsPressed()) //end blocking
+            {
+                EndBlock();
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
     
+    public void EndBlock()
+    {
+        guardActive = false;
+        animator.SetBool("guarding", false);
+        blockBox.GetComponent<BlockScript>().EndBlock();
+
+        actionInProgress = false;
+    }
+
     //dodge roll
     private IEnumerator Roll(Vector3 direction)
     {
@@ -474,7 +504,7 @@ public class PlayerBattle : MonoBehaviour
             }
             else
             {
-                rb.MovePosition(rb.position + moveDir * dodgeSpeed * 0.3f * (dodgeTime/timer) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + moveDir * dodgeSpeed * 0.3f * (dodgeTime / timer) * Time.fixedDeltaTime);
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
             }
 
@@ -483,7 +513,7 @@ public class PlayerBattle : MonoBehaviour
                 invulnerable = false;
                 model.GetComponent<Renderer>().material.color = Color.white; //debug
             }
-            
+
             if (input.Player.Attack1.IsPressed() && slashReady)
             {
                 slash1Queued = true;
@@ -494,7 +524,7 @@ public class PlayerBattle : MonoBehaviour
         }
 
         if (slash1Queued)
-        {            
+        {
             slash1Queued = false;
             StartCoroutine(Slash1());
         }

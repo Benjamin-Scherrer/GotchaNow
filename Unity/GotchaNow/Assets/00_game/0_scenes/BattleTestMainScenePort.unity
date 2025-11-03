@@ -1427,6 +1427,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2476346654219344423, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitboxDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476346654219344423, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: windupTime
       value: 0.2
       objectReference: {fileID: 0}
@@ -1451,6 +1455,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4239866494857648447, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitboxDmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239866494857648447, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: windupTime
       value: 0.2
       objectReference: {fileID: 0}
@@ -1465,6 +1473,10 @@ PrefabInstance:
     - target: {fileID: 4365344956961028296, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: attackDmg
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365344956961028296, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitboxDmg
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4365344956961028296, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: windupTime
@@ -1558,6 +1570,14 @@ PrefabInstance:
       propertyPath: bm
       value: 
       objectReference: {fileID: 47929722}
+    - target: {fileID: 8194117043117110058, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262205917055459211, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8556497094005094179, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 0
