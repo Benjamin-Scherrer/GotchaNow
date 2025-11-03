@@ -18,8 +18,13 @@ namespace GotchaNow
 
 		private bool hasToUpdate = false;
 		
-		private void Awake()
+		private void Start()
 		{
+			if (enabled == false)
+            {
+                throw new System.Exception("RemainingSpaceFitter is disabled.");
+            }
+
 			if (targetRectTransform == null)
 			{
 				throw new System.Exception("Target RectTransform is not assigned.");

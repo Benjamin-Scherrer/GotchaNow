@@ -7,12 +7,16 @@ namespace GotchaNow
     [RequireComponent(typeof(DialogueSelector))]
     public class InteractableDialogue : DialogueMonoBehaviour
     {
+        [Header("Hint")]
+        [SerializeField] private GameObject hintObject;
+
         private bool stopInteractAtNarrativeEnd;
         private DialogueSelector dialogueSelector;
 
         // public bool CanInteract =>
         //     !((stopInteractAtNarrativeEnd && (narrativeScriptableObject is { IsNarrativeEndReached: true })) ||
         //       narrativeController.IsNarrating);
+        public GameObject HintObject { get => hintObject; }
 
         public bool CanInteract
         {
@@ -22,7 +26,7 @@ namespace GotchaNow
                 {
                     return false;
                 }
-                
+
                 // If we've been configured to stop interactions after the narrative ends,
                 // and we have a narrative that has reached the end, then disallow interaction.
                 bool isStoppedBecauseNarrativeEnded =
@@ -36,9 +40,8 @@ namespace GotchaNow
                 return !(isStoppedBecauseNarrativeEnded || isNarratingNow);
             }
         }
-
+        
         // private void Update() => SkipDialogueWithInput();
-
         public void PrepareInteraction()
         {
             narrativeScriptableObject = dialogueSelector.GetNarrativeScriptableObject();
@@ -55,17 +58,12 @@ namespace GotchaNow
         }
 
         //PRIVATE
-
         private void Awake()
         {
+            dialogueSelector = GetComponent<DialogueSelector>();
+            if (dialogueSelector == null) throw new System.Exception("DialogueSelector component not found on the GameObject.");
 
-            if (TryGetComponent<DialogueSelector>(out dialogueSelector))
-            {
-            }
-            else
-            {
-                throw new System.Exception("DialogueSelector component not found on the GameObject.");
-            }
+            if(hintObject != null) hintObject.SetActive(false);
         }
         
         private void Start()

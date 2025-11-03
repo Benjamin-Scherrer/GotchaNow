@@ -63,7 +63,7 @@ MonoBehaviour:
   intro: {fileID: 11400000, guid: b5278e883fdbdca41939a3d098c8e355, type: 2}
   preBattle1: {fileID: 11400000, guid: a94b9384a50cae248b26f20cb355b313, type: 2}
   intermission1: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
-  intermission1TrueEndingPath: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
+  intermission1TrueEndingPath: {fileID: 11400000, guid: 374b820bcf79d5e4bb2ce619f5bd9c74, type: 2}
   preSecretBoss: {fileID: 11400000, guid: c96e0b2d3533cee4e94941cc880dcf74, type: 2}
   trueEnding: {fileID: 11400000, guid: e15e704fa349f15468edb8dae81f4254, type: 2}
   trueEndingFailed: {fileID: 11400000, guid: 0c39c41fd3abfec4f9e04afd17edbae9, type: 2}

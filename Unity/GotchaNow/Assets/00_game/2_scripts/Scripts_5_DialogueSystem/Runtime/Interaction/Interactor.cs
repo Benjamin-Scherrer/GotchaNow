@@ -1,6 +1,7 @@
 ﻿using GotchaNow;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using DialogueSystem.Runtime.Narration;
 
 namespace DialogueSystem.Runtime.Interaction
@@ -19,15 +20,19 @@ namespace DialogueSystem.Runtime.Interaction
         [SerializeField] private InputActionReference interactAction;
         [SerializeField] private InputActionReference skipAction;
 
-            
+
+        private List<GameObject> hintObjects = new List<GameObject>();
+
+        //PRIVATE METHODS
+
         private void Update()
         {
             //Order is important.
             //1
-            if(SkipDialogueWithInput()) return;
+            if (SkipDialogueWithInput()) return;
 
             //2
-            if(InteractWithCharacter()) return;
+            if (InteractWithCharacter()) return;
         }
 
         private bool InteractWithCharacter()
@@ -36,12 +41,21 @@ namespace DialogueSystem.Runtime.Interaction
             {
                 throw new System.Exception("Interact Action is not assigned.");
             }
+            //Try get the interactable in range.
+            InteractableDialogue interactable = InteracteeManager.Instance.GetInteractableDialogue(transform.position, interactionDistance);
+            if(hintObjects.Count > 0)
+            {
+                hintObjects.ForEach(hint => hint.SetActive(false));
+                hintObjects.Clear();
+            }
+            if (interactable == null) return false;
+            hintObjects.Add(interactable.HintObject);
+            hintObjects.ForEach(hint => hint.SetActive(true));
+            Debug.Log("Showing hint for " + interactable.name);
 
             if (!interactAction.action.WasPressedThisFrame())
                 return false;
             Debug.Log("Interact Pressed");
-            InteractableDialogue interactable = InteracteeManager.Instance.GetInteractableDialogue(transform.position, interactionDistance);
-            if (interactable == null) return false;
             Debug.Log("Found Interactable");
             if (!interactable.CanInteract) return false;
 
