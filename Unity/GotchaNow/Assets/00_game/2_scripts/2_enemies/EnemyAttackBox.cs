@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
@@ -13,20 +14,15 @@ public class EnemyAttackBox : MonoBehaviour
 
     //private GameObject HitBloom;
 
-    void Start()
-    {
-
-    }
-
     void OnEnable()
     {
-        //attack audio
-        //HitBloom = GameObject.Find("VFXBloomWhite");
+        attackParried = false;
+        attackBlocked = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerBlock")
+        if (other.CompareTag("PlayerBlock"))
         {
             if (other.GetComponentInParent<BlockScript>().parryActive)
             {
@@ -37,8 +33,17 @@ public class EnemyAttackBox : MonoBehaviour
                 attackBlocked = true;
             }
         }
-        
-        if (other.tag == "Player")
+
+        if (other.CompareTag("Player"))
+        {
+            StartCoroutine(PlayerHit(other));
+        }
+    }
+    
+    private IEnumerator PlayerHit(Collider other)
+    {
+        yield return null; //delay for 1 frame so block/parry is always checked first
+
         {
             PlayerBattle pb = other.GetComponent<PlayerBattle>();
 
