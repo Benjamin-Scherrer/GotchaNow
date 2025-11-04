@@ -546,7 +546,7 @@ public class PlayerBattle : MonoBehaviour
 
         while (atkTimer < slash1Duration)
         {
-            atkTimer += Time.deltaTime;
+            atkTimer += Time.fixedDeltaTime;
 
             if (atkTimer > 0.1f && atkTimer < slash1MotionTime)
             {
@@ -570,7 +570,7 @@ public class PlayerBattle : MonoBehaviour
                 }
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         //atkScript.EndAttack(); //disable hitbox
@@ -606,7 +606,7 @@ public class PlayerBattle : MonoBehaviour
 
         while (atkTimer < slash2Duration)
         {
-            atkTimer += Time.deltaTime;
+            atkTimer += Time.fixedDeltaTime;
 
             if (atkTimer < slash2MotionTime)
             {
@@ -630,7 +630,7 @@ public class PlayerBattle : MonoBehaviour
                 }
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         //atkScript.EndAttack(); //disable hitbox
@@ -666,7 +666,7 @@ public class PlayerBattle : MonoBehaviour
 
         while (atkTimer < slash3Duration)
         {
-            atkTimer += Time.deltaTime;
+            atkTimer += Time.fixedDeltaTime;
 
             if (atkTimer > 0.25f && atkTimer < slash3MotionTime)
             {
@@ -679,7 +679,7 @@ public class PlayerBattle : MonoBehaviour
                 //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
             }
             
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         //atkScript.EndAttack(); //disable hitbox
@@ -757,9 +757,11 @@ public class PlayerBattle : MonoBehaviour
                 rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
                 //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
             }
-            
+
             atkTimer += Time.deltaTime;
-            yield return null;
+
+            Debug.Log("test");
+            yield return new WaitForFixedUpdate();
         }
 
         /* atkBox.damage = baseDmg; //reset damage of hitbox */

@@ -110,7 +110,7 @@ public class MinionEnemy : MonoBehaviour
 
             if (knockback > 0)
             {
-                rb.MovePosition(transform.position + parryDir.normalized * knockback * Time.deltaTime);
+                rb.MovePosition(transform.position + parryDir.normalized * knockback * Time.fixedDeltaTime);
                 knockback -= Time.deltaTime * 12;
             }
 
