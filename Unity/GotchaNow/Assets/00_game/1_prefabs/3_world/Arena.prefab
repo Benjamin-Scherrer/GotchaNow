@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c2424bb2f1e5bf846b1d1b8a38c423ca, type: 2}
+    - target: {fileID: 875278009102298524, guid: be77bf66b13f6a14c8b4351c8a4e5f98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be77bf66b13f6a14c8b4351c8a4e5f98, type: 3}
       propertyPath: m_Name
       value: Arena_for texturing_V1
