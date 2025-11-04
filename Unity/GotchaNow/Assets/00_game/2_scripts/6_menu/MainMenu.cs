@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private enum MenuState
     {
@@ -14,7 +15,10 @@ public class MainMenuManager : MonoBehaviour
     }
 
     // Singleton instance
-    public static MainMenuManager MainMenuInstance { get; private set; }
+    public static MainMenu MainMenuInstance { get; private set; }
+
+    [Header("Input Actions")]
+    [SerializeField] private InputActionReference pauseInputAction;
 
     [Header("Main Menu")]
     [SerializeField] private Canvas mainMenuScreen;
@@ -44,7 +48,6 @@ public class MainMenuManager : MonoBehaviour
             gameSceneName = value;
         }
     }
-
 
     public void StartGameButton()//button based
     {
@@ -117,21 +120,39 @@ public class MainMenuManager : MonoBehaviour
 
         menuState = MenuState.MAINMENU;
 
-        //show main menu
         if (mainMenuScreen == null) throw new Exception($"mainMenu reference not set in inspector");
-        mainMenuScreen.gameObject.SetActive(true);
-        //hide options and credits screen
         if (creditsScreen == null) throw new Exception($"creditsScreen reference not set in inspector");
-        creditsScreen.gameObject.SetActive(false);
         if (controlsScreen == null) throw new Exception($"controlsScreen reference not set in inspector");
-        controlsScreen.gameObject.SetActive(false);
+        //show main menu & hide options and credits screen
+        ToggleMenu(mainMenuScreen);
     }
 
     private void Update()
     {
         //update volume every frame
         AudioListener.volume = volumeSlider.value;
-    }
+
+        if (pauseInputAction.action.WasPerformedThisFrame())
+        {
+            switch (menuState)
+            {
+                case MenuState.MAINMENU:
+                    //if in gameplay, open pause menu
+                    ToggleControlsScreen();
+                    break;
+                case MenuState.CONTROLS:
+                    //if in pause menu, close pause menu
+                    ToggleControlsScreen();
+                    break;
+                case MenuState.CREDITS:
+                    //if in controls screen, go back to pause menu
+                    ToggleCreditsScreen();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }      
 
     private void ToggleMenu(Canvas menuToShow)
     {

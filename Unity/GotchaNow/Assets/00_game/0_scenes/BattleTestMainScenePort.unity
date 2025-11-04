@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5514195735450673958, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
@@ -399,6 +403,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8829122098873070057, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: pauseInputAction
+      value: 
+      objectReference: {fileID: 4418740478177260786, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 8924066614132268128, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0
@@ -410,6 +418,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8065045997556964048, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1662256180}
+    - targetCorrespondingSourceObject: {fileID: 3228329731971763930, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 667064750}
   m_SourcePrefab: {fileID: 100100000, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
 --- !u!114 &310996769 stripped
 MonoBehaviour:
@@ -747,6 +758,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2118678656621620429, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
   m_PrefabInstance: {fileID: 1700967552}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &667064747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3228329731971763930, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+  m_PrefabInstance: {fileID: 310996768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &667064750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667064747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &734850005 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7332973569138649779, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
