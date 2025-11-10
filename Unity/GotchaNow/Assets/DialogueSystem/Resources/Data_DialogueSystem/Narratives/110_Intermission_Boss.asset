@@ -16,15 +16,6 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
     <TargetNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: ...
-    <TargetNodeGuid>k__BackingField: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
-  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: Do you not fight that much?
-    <TargetNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
-  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: It's ok it's for show anyway no?
-    <TargetNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
   - <BaseNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
     <PortName>k__BackingField: I like your design
     <TargetNodeGuid>k__BackingField: 543b1261-5b81-4d73-bad8-7421c77ae014
@@ -35,7 +26,7 @@ MonoBehaviour:
     <PortName>k__BackingField: Whats the probability of me getting benched?
     <TargetNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
   - <BaseNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-    <PortName>k__BackingField: How can i prevent being benched?
+    <PortName>k__BackingField: How can I prevent being benched?
     <TargetNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
   - <BaseNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
     <PortName>k__BackingField: How can i prevent being benched?
@@ -52,6 +43,15 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
     <PortName>k__BackingField: I'll try not to get benched then.
     <TargetNodeGuid>k__BackingField: 315c34a3-225c-43c7-bb9f-7dd7ab8407ff
+  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
+    <PortName>k__BackingField: ...
+    <TargetNodeGuid>k__BackingField: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
+  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
+    <PortName>k__BackingField: Do you not fight that much?
+    <TargetNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
+  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
+    <PortName>k__BackingField: It's ok it's for show anyway no?
+    <TargetNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []

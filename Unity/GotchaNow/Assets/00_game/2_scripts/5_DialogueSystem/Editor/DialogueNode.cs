@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using DialogueSystem.Runtime.Narration;
 using UnityEditor.Experimental.GraphView;
 
+using UnityEditorInternal;
+
 namespace DialogueSystem.Editor
 {
     public class DialogueNode : Node
@@ -12,5 +14,8 @@ namespace DialogueSystem.Editor
         public bool TransitionNode { get; set; }
         public bool Checkpoint { get; set; }
         public bool DisableAlreadyChosenOptions { get; set; }
+
+        //my additions
+        public bool ShowTextInputField { get; set; }
     }
 }

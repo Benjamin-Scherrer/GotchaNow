@@ -6,6 +6,11 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
+using UnityEditor;
+using UnityEditor.UIElements;
+
+
 #if UNITY_EDITOR
 
 namespace DialogueSystem.Editor
@@ -28,7 +33,7 @@ namespace DialogueSystem.Editor
 
             var grid = new GridBackground();
             grid.StretchToParentSize();
-        
+
             Insert(0, grid);
             AddElement(GenerateEntryPointNode());
         }
@@ -67,7 +72,7 @@ namespace DialogueSystem.Editor
 
             node.RefreshExpandedState();
             node.RefreshPorts();
-            node.SetPosition(new Rect(100,200,100,150));
+            node.SetPosition(new Rect(100, 200, 100, 150));
             return node;
         }
 
@@ -88,27 +93,49 @@ namespace DialogueSystem.Editor
 
             CreatePort(dialogueNode, Direction.Input);
 
+            //
+            var textInputGroupBoxTitle = new Label("Content:");
+            var textInputGroupBox = new VisualElement();
+            foreach (var msg in messages)
+            {
+                textInputGroupBox.Add(new Label(msg.CharacterName + ": " + msg.Content));
+            }
+            //
+
             var openDialogueButton = new Button(() =>
             {
                 DialogueView.CloseWindow();
                 DialogueView.OpenWindow(dialogueNode.Messages);
-            }) { text = "Edit Dialogue" };
-        
+                
+                textInputGroupBox.Clear();
+                foreach (var msg in dialogueNode.Messages)
+                {
+                    textInputGroupBox.Add(new Label(msg.CharacterName + ": " + msg.Content));
+                }
+            })
+            { text = "Edit Dialogue" };
+
             var addChoiceButton = new Button(() => { AddChoicePort(dialogueNode, ""); }) { text = "New Choice" };
-        
-            var optionDisablingToggle = new Toggle("Disable already chosen options") { value =  disableOptions };
-            
+
+            var optionDisablingToggle = new Toggle("Disable already chosen options") { value = disableOptions };
+
             optionDisablingToggle.RegisterValueChangedCallback(evt => dialogueNode.DisableAlreadyChosenOptions = optionDisablingToggle.value);
-            
+
             optionDisablingToggle.AddToClassList("toggle");
-            
+
             dialogueNode.titleContainer.Add(openDialogueButton);
             dialogueNode.titleContainer.Add(addChoiceButton);
             dialogueNode.mainContainer.Add(optionDisablingToggle);
 
+            //
+            dialogueNode.mainContainer.Add(textInputGroupBoxTitle);
+            dialogueNode.mainContainer.Add(textInputGroupBox);
+            //
+
             RefreshNode(dialogueNode);
-        
+
             dialogueNode.SetPosition(new Rect(Vector2.zero, DefaultNodeSize));
+
             return dialogueNode;
         }
 
@@ -127,16 +154,16 @@ namespace DialogueSystem.Editor
         public void AddChoicePort(DialogueNode dialogueNode, string overridenPortName)
         {
             var outputPortCount = dialogueNode.outputContainer.Query("connector").ToList().Count;
-            
-            if(outputPortCount >= 5) return;
-            
+
+            if (outputPortCount >= 5) return;
+
             var generatedPort = GeneratePort(dialogueNode, Direction.Output);
 
             var oldLabel = generatedPort.contentContainer.Q<Label>("type");
             generatedPort.contentContainer.Remove(oldLabel);
-        
-            var choicePortName = string.IsNullOrEmpty(overridenPortName) 
-                ? $"Choice {outputPortCount+1}" 
+
+            var choicePortName = string.IsNullOrEmpty(overridenPortName)
+                ? $"Choice {outputPortCount + 1}"
                 : overridenPortName;
 
             var textField = new TextField
@@ -146,10 +173,10 @@ namespace DialogueSystem.Editor
                 maxLength = MaxChoiceTextLength
             };
             textField.AddToClassList("sized-input");
-        
+
             var choiceContainer = new VisualElement();
             choiceContainer.AddToClassList("choice-container");
-        
+
             textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
             var deleteButton = new Button(() => RemovePort(dialogueNode, generatedPort)) { text = "Remove" };
 
@@ -182,7 +209,7 @@ namespace DialogueSystem.Editor
                 edge.input.Disconnect(edge);
                 RemoveElement(enumerable.First());
             }
-            
+
             RefreshNode(dialogueNode);
         }
 
@@ -200,28 +227,50 @@ namespace DialogueSystem.Editor
             };
 
             SetupStyleSheet(dialogueNode);
-        
+
             CreatePort(dialogueNode, Direction.Input);
             CreatePort(dialogueNode, Direction.Output);
-        
+
+            //
+            var textInputGroupBoxTitle = new Label("Content:");
+            var textInputGroupBox = new VisualElement();
+            foreach (var msg in messages)
+            {
+                textInputGroupBox.Add(new Label(msg.CharacterName + ": " + msg.Content));
+            }
+            //
+
             var openDialogueButton = new Button(() =>
             {
                 DialogueView.CloseWindow();
                 DialogueView.OpenWindow(dialogueNode.Messages);
-            }) { text = "Edit Dialogue" };
+
+                textInputGroupBox.Clear();
+                foreach (var msg in dialogueNode.Messages)
+                {
+                    textInputGroupBox.Add(new Label(msg.CharacterName + ": " + msg.Content));
+                }
+            })
+            { text = "Edit Dialogue" };
 
             var checkpointToggle = new Toggle("Close and reopen to next node") { value = isCheckpoint };
 
-            checkpointToggle.RegisterValueChangedCallback(evt=> dialogueNode.Checkpoint = checkpointToggle.value);
+            checkpointToggle.RegisterValueChangedCallback(evt => dialogueNode.Checkpoint = checkpointToggle.value);
 
             checkpointToggle.AddToClassList("toggle");
 
             dialogueNode.titleContainer.Add(openDialogueButton);
             dialogueNode.mainContainer.Add(checkpointToggle);
 
+            //
+            dialogueNode.mainContainer.Add(textInputGroupBoxTitle);
+            dialogueNode.mainContainer.Add(textInputGroupBox);
+            //
+
             dialogueNode.SetPosition(new Rect(Vector2.zero, DefaultNodeSize));
-        
+
             RefreshNode(dialogueNode);
+
             return dialogueNode;
         }
 
@@ -241,5 +290,4 @@ namespace DialogueSystem.Editor
         }
     }
 }
-
 #endif
