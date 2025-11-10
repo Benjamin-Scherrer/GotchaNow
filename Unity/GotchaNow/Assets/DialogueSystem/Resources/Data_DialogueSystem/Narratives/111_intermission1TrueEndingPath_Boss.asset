@@ -47,11 +47,19 @@ MonoBehaviour:
     - <CharacterName>k__BackingField: Boss
       <Content>k__BackingField: 'Wow you really got me sweating over here.
 
-        You
-        know, I mean normally we just chill a bit.
-
-        You know, if I''m too
-        boring, I can try a bit harder, you know.'
+'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: You know, normally we just roughhouse a bit.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: If I'm too boring, I can try a bit harder, you know.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -65,7 +73,13 @@ MonoBehaviour:
     dialogue:
     - <CharacterName>k__BackingField: Boss
       <Content>k__BackingField: "You know, I'm impressed. \nJust don't forget your
-        job, you know.\nThe boss lady can get scary, you know."
+        job, you know."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: The boss lady can get scary, you know.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -94,11 +108,15 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'Only times I really have to put in effort is during
+      <Content>k__BackingField: The only time I really have to put in effort is during
         events.
-
-        There''s some where i need to fight like a dozen times straight,
-        you know.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: 'There''s some where i need to fight like a dozen
+        times straight, you know.
 
         It''s quite exhausting.'
       <HideCharacter>k__BackingField: 0
@@ -113,10 +131,14 @@ MonoBehaviour:
   - guid: f04ce6da-a084-4001-b1f1-1dfefaa08752
     dialogue:
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'I don''t really know that much about him, you know.
-
-        I
-        think he''s pretty young, he is also playing already for a long time.'
+      <Content>k__BackingField: I don't really know that much about him, you know.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: I think he's pretty young, he is also playing already
+        for a long time.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

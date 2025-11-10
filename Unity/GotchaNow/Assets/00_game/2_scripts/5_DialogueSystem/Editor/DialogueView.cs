@@ -60,15 +60,44 @@ namespace DialogueSystem.Editor
                 {
                     return;
                 }
-            
+
+                // Draw Text Fields
+                Rect textFieldRect = new (rect.x + GUIOffset, rect.y + GUIOffset, position.width - 50, 20);
                 element.CharacterName =
-                    EditorGUI.TextField(new Rect(rect.x + GUIOffset, rect.y + GUIOffset, position.width - 50, 20),
-                        new GUIContent("Character name"), element.CharacterName);
+                    EditorGUI.TextField(
+                        textFieldRect,
+                        new GUIContent("Character name"),
+                        element.CharacterName
+                    );
+
                 element.HideCharacter = EditorGUI.Toggle(new Rect(rect.x + GUIOffset, rect.y + GUIOffset + 30, position.width - 50, 20), new GUIContent("Hide character"), element.HideCharacter);
+
+                // Draw Text Area
+                int fontSize = 24;
+                GUIStyle style = new(EditorStyles.textArea)
+                {
+                    wordWrap = true,
+                    clipping = TextClipping.Overflow,
+                    fontSize = fontSize,
+                };
+                
+                float lineHeight = style.lineHeight;
+                float lines = 4f + 0.5f;
+                float height = lineHeight * lines;
+                float width = Mathf.Min(position.width - 50, fontSize * 25);
+
+                style.fixedHeight = height;
+                style.fixedWidth = width;
+                
+                float xtraOffset = ((position.width - 50) - width);
+                Rect textAreaRect = new (rect.x + GUIOffset + xtraOffset, rect.y + GUIOffset + 60, width, height);
                 element.Content =
                     EditorGUI.TextArea(
-                        new Rect(rect.x + GUIOffset, rect.y + GUIOffset + 60, position.width - 50, 125),
-                        element.Content);
+                        textAreaRect,
+                        element.Content,
+                        style
+                    );
+
             };
         
             _reorderableMessages.elementHeightCallback = _ => EditorGUIUtility.singleLineHeight + 170f + GUIOffset;

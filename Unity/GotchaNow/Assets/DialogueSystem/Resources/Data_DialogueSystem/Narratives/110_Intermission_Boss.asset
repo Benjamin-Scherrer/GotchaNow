@@ -60,27 +60,6 @@ MonoBehaviour:
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Hi nice to meet you! I'm Mephistopheles 15.\nI'm
-        sorry, did I go too hard on you? \nI didn't mean it. "
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "You know, i can be a little slower next time or
-        something. \nI just got excited that i can fight again!"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 295, y: 200}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 1
   - guid: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
     dialogue:
     - <CharacterName>k__BackingField: Boss
@@ -99,9 +78,17 @@ MonoBehaviour:
   - guid: 152f7072-88c6-4b06-9166-9c38cae3db22
     dialogue:
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "No, Since our victims only see a limited view of
-        this fight.\nI guess I'm not interesting enough. \nMaybe it's my design,
-        you know."
+      <Content>k__BackingField: 'No, Since our victims only see a limited view of
+        this fight.
+
+'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: I guess I'm not interesting enough. Maybe it's my
+        design, you know.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -114,15 +101,31 @@ MonoBehaviour:
   - guid: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
     dialogue:
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Oh you just get replaced. \nYou know if the player
-        buys more lootboxes,\nthey probably will get a character that they prefer."
+      <Content>k__BackingField: 'Oh you just get replaced.
+
+        You know, the
+        player is constantly buying more lootboxes.
+
+'
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "And then you will not be played anymore.\LAs a Boss
-        I can't get permanently benched but you...\nmaybe."
+      <Content>k__BackingField: They will eventually get a character they like better
+        and then you will not be played anymore.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: As a Boss I can't get permanently benched but you...
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: Maybe.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -135,8 +138,14 @@ MonoBehaviour:
   - guid: 9509a531-e094-40f9-9d38-679161360b2c
     dialogue:
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "The pitty system requires the player to get something
-        good at some point so they keep playing. \nSo the probability is high."
+      <Content>k__BackingField: There a pitty system that ensures even the unluckiest
+        player gets something good eventually.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: So the probability is high.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -150,8 +159,14 @@ MonoBehaviour:
     dialogue:
     - <CharacterName>k__BackingField: Boss
       <Content>k__BackingField: "Yeah that's true.\LWe normally just chill here in
-        the arena. \nNot really much going on. \nBut it's more exciting than being
-        benched."
+        the arena."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: "Not really much going on. \nBut it's more exciting
+        than being benched."
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -164,8 +179,13 @@ MonoBehaviour:
   - guid: 543b1261-5b81-4d73-bad8-7421c77ae014
     dialogue:
     - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Really Wowie!\LNobody told me that before. \nI mean
-        you are gorgeous. \nI mean objectively...\L"
+      <Content>k__BackingField: "Really, wow!\LNobody told me that before."
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: "I mean you are gorgeous. \nI mean objectively...\L"
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -243,6 +263,35 @@ MonoBehaviour:
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
+  - guid: 1fb45fbd-0041-474f-80d6-726fe2a7c249
+    dialogue:
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: 'Hi nice to meet you! I''m the floor boss here.
+
+'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: I'm sorry if I hit you too hard. I didn't mean it.
+        It's just been a while, you know.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Boss
+      <Content>k__BackingField: "I can be a little slower next time or something.
+        \n"
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 295, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 1
   <PathToCheckpoint>k__BackingField: 
   <IsNarrativeEndReached>k__BackingField: 0
   <StartFromPreviousNarrativePath>k__BackingField: 1
