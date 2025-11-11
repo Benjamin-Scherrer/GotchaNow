@@ -70,6 +70,11 @@ public class MainMenu : MonoBehaviour
                 menuState = MenuState.MAINMENU;
                 ToggleMenu(mainMenuScreen);
                 break;
+            case MenuState.CREDITS:
+                menuState = MenuState.CONTROLS;
+                ToggleMenu(creditsScreen);
+                ToggleMenu(controlsScreen);
+                break;
             default:
                 throw new Exception($"Invalid menu state {menuState} in ToggleControlsScreen");
         }
@@ -87,6 +92,11 @@ public class MainMenu : MonoBehaviour
             case MenuState.CREDITS:
                 menuState = MenuState.MAINMENU;
                 ToggleMenu(mainMenuScreen);
+                break;
+            case MenuState.CONTROLS:
+                menuState = MenuState.CREDITS;
+                ToggleMenu(controlsScreen);
+                ToggleMenu(creditsScreen);
                 break;
             default:
                 throw new Exception($"Invalid menu state {menuState} in ToggleCreditsScreen");
