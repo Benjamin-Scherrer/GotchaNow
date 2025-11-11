@@ -13,8 +13,8 @@ namespace GotchaNow
 		//Rect transform of the parent object
 		[SerializeField] private RectTransform parentRectTransform;
 
-		//Canvas reference for rendering event
-		[SerializeField] private MainCanvasEvents mainCanvasEvents;
+		// //Canvas reference for rendering event
+		// [SerializeField] private MainCanvasEvents mainCanvasEvents;
 
 		private bool hasToUpdate = false;
 		
@@ -45,34 +45,60 @@ namespace GotchaNow
         
         private void OnEnable()
 		{
-			 mainCanvasEvents.rectTransformChanged += SetHasToUpdate;
+			//  mainCanvasEvents.rectTransformChanged += SetHasToUpdate;
+			GameObject referenceGameObject = referenceRectTransform.gameObject;
+			if (!referenceGameObject.TryGetComponent<SpaceFitterReference>(out var spaceFitterReference)) return;
+
+			spaceFitterReference.OnDisableEvent += SetHasToUpdate;
+			spaceFitterReference.OnEnableEvent += SetHasToUpdate;
+			// spaceFitterReference.OnRectTransformDimensionsChangeEvent += SetHasToUpdate;
 		}
 
 		private void OnDisable()
 		{
-			mainCanvasEvents.rectTransformChanged -= SetHasToUpdate;
+			// mainCanvasEvents.rectTransformChanged -= SetHasToUpdate;$
+			GameObject referenceGameObject = referenceRectTransform.gameObject;
+			if (!referenceGameObject.TryGetComponent<SpaceFitterReference>(out var spaceFitterReference)) return;
+
+			spaceFitterReference.OnDisableEvent -= SetHasToUpdate;
+			spaceFitterReference.OnEnableEvent -= SetHasToUpdate;
+			// spaceFitterReference.OnRectTransformDimensionsChangeEvent -= SetHasToUpdate;
 		}
 
 		private void SetHasToUpdate()
 		{
+			Debug.Log($"SetHasToUpdate called on {gameObject.name}");
 			hasToUpdate = true;
 		}
 
 		private void UpdateRectSize()
 		{
-			float referenceHeight = referenceRectTransform.rect.height;
-			float referenceWidth = referenceRectTransform.rect.width;
+			Debug.Log($"UpdateRectSize called on {gameObject.name}");
 
-			float parentHeight = parentRectTransform.rect.height;
+			// float referenceHeight = 0;
+			float referenceWidth; ;
+			if (referenceRectTransform.gameObject.activeInHierarchy == true)
+			{
+				// referenceHeight = referenceRectTransform.rect.height;
+				referenceWidth = referenceRectTransform.rect.width;
+			}
+			else
+			{
+				// referenceHeight = 0;
+				referenceWidth = 0;
+			}
+		
+			// float parentHeight = parentRectTransform.rect.height;
 			float parentWidth = parentRectTransform.rect.width;
 
-			var newHeight = parentHeight - referenceHeight;
+			// var newHeight = parentHeight - referenceHeight;
 			var newWidth = parentWidth - referenceWidth;
 
-			if (newHeight < 0) newHeight = 0;
+			// if (newHeight < 0) newHeight = 0;
 			if (newWidth < 0) newWidth = 0;
 
-			targetRectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+			targetRectTransform.sizeDelta = new Vector2(newWidth, 0);
+			Debug.Log($"New sizeDelta for {targetRectTransform.gameObject.name}: {targetRectTransform.sizeDelta}");
 		}
 
 		private void LateUpdate()

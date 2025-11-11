@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5849411004609834385}
   - component: {fileID: 2247022490336583523}
   - component: {fileID: 110311427048388908}
-  - component: {fileID: 5473500431087767490}
   - component: {fileID: 5014951847153569207}
   m_Layer: 0
   m_Name: Canvas
@@ -89,18 +88,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &5473500431087767490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019301851472413320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4623c6428ba69ed479aa09312aa70137, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.MainCanvasEvents
 --- !u!114 &5014951847153569207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +307,7 @@ GameObject:
   - component: {fileID: 608497629163484903}
   - component: {fileID: 2635812666160857156}
   - component: {fileID: 1874493209888888781}
+  - component: {fileID: 3967984439256516879}
   m_Layer: 0
   m_Name: PhoneRender
   m_TagString: Untagged
@@ -399,6 +387,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.AspectRatioFitter
   m_AspectMode: 2
   m_AspectRatio: 0.45
+--- !u!114 &3967984439256516879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485151680991376164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7d5de322188b74f8e6701388532c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.OnDisableEventManager
 --- !u!1 &4769058799534180446
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4769058799534180446}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75387900ea7c7f94093670ae2de793a2, type: 3}
   m_Name: 
@@ -461,7 +461,7 @@ MonoBehaviour:
   targetRectTransform: {fileID: 6380809402050583888}
   referenceRectTransform: {fileID: 7556061715774812078}
   parentRectTransform: {fileID: 5849411004609834385}
-  mainCanvasEvents: {fileID: 5473500431087767490}
+  mainCanvasEvents: {fileID: 0}
   updateInEditor: 0
 --- !u!1 &5637689081239267684
 GameObject:

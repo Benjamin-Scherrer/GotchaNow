@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6964933751338388201}
   - component: {fileID: 1328205141380469044}
   - component: {fileID: 166410788657589159}
-  - component: {fileID: 6717906980359500807}
-  - component: {fileID: 5638984943784600489}
+  - component: {fileID: 770855046877407508}
   m_Layer: 0
   m_Name: OutGameUI
   m_TagString: Untagged
@@ -80,7 +79,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6717906980359500807
+--- !u!114 &770855046877407508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,30 +96,6 @@ MonoBehaviour:
   mainMenuScene: MainMenuScene
   controlsScreen: {fileID: 7583592997294740143}
   volumeSlider: {fileID: 6955312589670629912}
---- !u!114 &5638984943784600489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7938975785084004500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d783ecf96de88d4096ed65a2f97ec56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ScreenElementSelector
-  movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  up: {fileID: 2411907206095950430, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  down: {fileID: 7476244043514120974, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  submit: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  maxScrollSpeed: 0.1
-  selectablesReferences:
-  - {fileID: 4403688459031719953}
-  - {fileID: 7474948912274477826}
-  - {fileID: 7532392229250532345}
-  - {fileID: 4991607278979197209}
-  - {fileID: 6622667676530685466}
-  startingButton: {fileID: 7474948912274477826}
 --- !u!1001 &1825250671691787109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,15 +191,27 @@ PrefabInstance:
     - target: {fileID: 6634179998220829308, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6717906980359500807}
+      objectReference: {fileID: 770855046877407508}
+    - target: {fileID: 6634179998220829308, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGameSession
+      objectReference: {fileID: 0}
     - target: {fileID: 8204706409311332508, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6717906980359500807}
+      objectReference: {fileID: 770855046877407508}
+    - target: {fileID: 8204706409311332508, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleControlsScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 9144785260350503015, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6717906980359500807}
+      objectReference: {fileID: 770855046877407508}
+    - target: {fileID: 9144785260350503015, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePauseScreen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -235,44 +222,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1497155409446981733, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
   m_PrefabInstance: {fileID: 1825250671691787109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4403688459031719953 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2614793144686467956, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-  m_PrefabInstance: {fileID: 1825250671691787109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f61095725402438ee0d875ee331c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.SelectableLink
---- !u!114 &4991607278979197209 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6634179998220829308, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-  m_PrefabInstance: {fileID: 1825250671691787109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!223 &5019887970808343579 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 6700984970979231614, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
   m_PrefabInstance: {fileID: 1825250671691787109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6622667676530685466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4808972461077552511, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-  m_PrefabInstance: {fileID: 1825250671691787109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0f61095725402438ee0d875ee331c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.SelectableLink
 --- !u!114 &6955312589670629912 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8778267892860168573, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
@@ -284,28 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
---- !u!114 &7474948912274477826 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9144785260350503015, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-  m_PrefabInstance: {fileID: 1825250671691787109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &7532392229250532345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8204706409311332508, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-  m_PrefabInstance: {fileID: 1825250671691787109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!223 &7583592997294740143 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 8100500693936241098, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}

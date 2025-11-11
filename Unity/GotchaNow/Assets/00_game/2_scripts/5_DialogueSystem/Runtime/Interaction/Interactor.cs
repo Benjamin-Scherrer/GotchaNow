@@ -49,15 +49,15 @@ namespace DialogueSystem.Runtime.Interaction
                 hintObjects.Clear();
             }
             if (interactable == null) return false;
-            Debug.Log("Found Interactable");
+            // Debug.Log("Found Interactable");
             if (!interactable.CanInteract) return false;
-            Debug.Log("Can Interact");
+            // Debug.Log("Can Interact");
             hintObjects.Add(interactable.HintObject);
             hintObjects.ForEach(hint => hint.SetActive(true));
-            Debug.Log("Showing hint for " + interactable.name);
+            // Debug.Log("Showing hint for " + interactable.name);
             if (!interactAction.action.WasPressedThisFrame()) return false;
-            Debug.Log("Interact Pressed");
-            Debug.Log("Interacting with " + interactable.name);
+            // Debug.Log("Interact Pressed");
+            // Debug.Log("Interacting with " + interactable.name);
             interactable.Interact();
             return true;
         }

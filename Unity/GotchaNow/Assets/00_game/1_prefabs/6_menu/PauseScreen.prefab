@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1497155409446981733}
   - component: {fileID: 6700984970979231614}
   - component: {fileID: 1697837818673282847}
+  - component: {fileID: 9089292491564496248}
   m_Layer: 0
   m_Name: PauseScreen
   m_TagString: Untagged
@@ -79,6 +80,30 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9089292491564496248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307266629526724689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d783ecf96de88d4096ed65a2f97ec56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ScreenElementSelector
+  movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  up: {fileID: 2411907206095950430, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  down: {fileID: 7476244043514120974, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  submit: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  maxScrollSpeed: 0.1
+  selectablesReferences:
+  - {fileID: 2614793144686467956}
+  - {fileID: 9144785260350503015}
+  - {fileID: 8204706409311332508}
+  - {fileID: 6634179998220829308}
+  - {fileID: 4808972461077552511}
+  startingButton: {fileID: 9144785260350503015}
 --- !u!1 &3897782793768145310
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +259,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
-  selectableLink: {fileID: 8204706409311332508}
+  selectableLink: {fileID: 9144785260350503015}
 --- !u!1 &5849326863669906659
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +388,12 @@ PrefabInstance:
       value: ResumeButton
       objectReference: {fileID: 0}
     - target: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1307266629526724689}
+    - target: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePauseScreen
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -475,6 +504,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 4853864547210545176}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9144785260350503015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 4853864547210545176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &5505739238880893155
 PrefabInstance:
   m_ObjectHideFlags: 0
