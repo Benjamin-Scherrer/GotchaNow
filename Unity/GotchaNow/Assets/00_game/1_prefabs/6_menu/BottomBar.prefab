@@ -208,6 +208,14 @@ PrefabInstance:
       propertyPath: m_text
       value: QUIT
       objectReference: {fileID: 0}
+    - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_Name
       value: QuitButton
@@ -250,11 +258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,6 +312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8338517251162991070, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 96
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -336,6 +348,14 @@ PrefabInstance:
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_text
       value: CREDITS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_Name
@@ -379,11 +399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -433,6 +453,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8338517251162991070, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 96
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -454,10 +478,6 @@ PrefabInstance:
     - target: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_Name
       value: ControlsButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_Pivot.x
@@ -485,11 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_LocalPosition.x

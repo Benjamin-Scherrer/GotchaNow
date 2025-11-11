@@ -34,7 +34,6 @@ namespace GotchaNow
 
 		//Private Variables
 		private MenuState menuState;
-		private List<Canvas> menus;
 
 		public string MainMenuScene
 		{
@@ -56,12 +55,19 @@ namespace GotchaNow
 				case MenuState.DISABLED:
 					Time.timeScale = 0f; //pause time	
 					menuState = MenuState.PAUSEMENU;
-					ToggleMenu(pauseMenuScreen);
+					pauseMenuScreen.gameObject.SetActive(true);
 					break;
 				case MenuState.PAUSEMENU:
 					menuState = MenuState.DISABLED;
 					Time.timeScale = 1f; //resume time
-					ToggleMenu(null);
+					pauseMenuScreen.gameObject.SetActive(false);
+					break;
+				case MenuState.CONTROLS:
+					//if in controls screen, go back to pause menu
+					menuState = MenuState.DISABLED;
+					controlsScreen.gameObject.SetActive(false);
+					pauseMenuScreen.gameObject.SetActive(false);
+					Time.timeScale = 1f; //resume time
 					break;
 				default:
 					throw new Exception($"Invalid menu state {menuState} in ToggleControlsScreen");
@@ -75,11 +81,11 @@ namespace GotchaNow
 			{
 				case MenuState.PAUSEMENU:
 					menuState = MenuState.CONTROLS;
-					ToggleMenu(controlsScreen);
+					controlsScreen.gameObject.SetActive(true);
 					break;
 				case MenuState.CONTROLS:
 					menuState = MenuState.PAUSEMENU;
-					ToggleMenu(pauseMenuScreen);
+					controlsScreen.gameObject.SetActive(false);
 					break;
 				default:
 					throw new Exception($"Invalid menu state {menuState} in ToggleControlsScreen");
@@ -106,17 +112,13 @@ namespace GotchaNow
 			if (PauseMenuInstance != null) throw new Exception("There are multiple instances of the PauseMenu in the scene!");
 			PauseMenuInstance = this;
 
-			menus = new List<Canvas>()
-			{
-			pauseMenuScreen,
-			controlsScreen,
-			};
-
 			menuState = MenuState.DISABLED;
 
 			if (pauseMenuScreen == null) throw new Exception($"pauseMenuScreen reference not set in inspector");
 			if (controlsScreen == null) throw new Exception($"controlsScreen reference not set in inspector");
-			ToggleMenu(null);
+
+			pauseMenuScreen.gameObject.SetActive(false);
+			controlsScreen.gameObject.SetActive(false);
 		}
 
 		private void Update()
@@ -145,21 +147,6 @@ namespace GotchaNow
 						break;
 				}
 				
-			}
-		}
-
-		private void ToggleMenu(Canvas menuToShow)
-		{
-			foreach (Canvas menu in menus)
-			{
-				if (menu == menuToShow)
-				{
-					menu.gameObject.SetActive(true);
-				}
-				else
-				{
-					menu.gameObject.SetActive(false);
-				}
 			}
 		}
 	}
