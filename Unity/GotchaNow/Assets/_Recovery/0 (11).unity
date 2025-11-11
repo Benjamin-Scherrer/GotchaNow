@@ -1290,7 +1290,7 @@ PrefabInstance:
       objectReference: {fileID: 1974311708}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpHeight
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: clawSwipeDuration
@@ -1298,7 +1298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpAirTime
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: shoulderBashRange
@@ -1354,51 +1354,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].time
-      value: 0.48817265
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[2].time
-      value: 0.7679371
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[3].time
       value: 1.0041809
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].value
-      value: 0.9686661
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[2].value
-      value: 0.8684249
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[3].value
       value: -0.002380371
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[0].inSlope
-      value: 2.6128657
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].inSlope
-      value: 0.16865192
+      value: 0.08156077
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[2].inSlope
-      value: -2.0848622
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[3].inSlope
-      value: 0.3638022
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[0].outSlope
-      value: 2.6128657
+      value: -0.9442964
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].inWeight
@@ -1406,35 +1386,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].outSlope
-      value: 0.16865192
+      value: 0.08156077
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
+      value: 0.38046837
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[2].outSlope
-      value: -2.0848622
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[3].inWeight
-      value: 0.8655786
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[3].outSlope
-      value: 0.3638022
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[0].outWeight
-      value: 0.2238076
+      value: -0.9442964
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpCurve.m_Curve.Array.data[1].outWeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hammerJumpCurve.m_Curve.Array.data[2].outWeight
-      value: 0.31626943
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 985863867186657495, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
