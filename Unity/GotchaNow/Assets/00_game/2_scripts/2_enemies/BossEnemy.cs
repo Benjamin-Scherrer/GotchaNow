@@ -12,6 +12,8 @@ public class BossEnemy : MonoBehaviour
     public GameObject model;
     private bool actionInProgress = false;
     private float distance;
+    private string behaviorState = null;
+    private string attackState = null;
     [Header("Basic Attributes")]
     public float walkSpeed = 3;
     public float strafeSpeed = 2;
@@ -44,6 +46,30 @@ public class BossEnemy : MonoBehaviour
     public float hammerJumpSpeed;
     public float hammerJumpDuration;
     public float hammerJumpEndingLag;
+    [Header("Hammer Spin Attack")]
+    public GameObject HammerSpinAttack;
+    public float hammerSpinRange;
+    public float hammerSpinStartupTime;
+    public float hammerSpinDuration;
+    public float hammerSpinMotionTime;
+    public float hammerSpinSpeed;
+    public float hammerSpinEndingLag;
+    [Header("Hammer Combo 1 Attack")]
+    public GameObject HammerCombo1Attack;
+    public float hammerCombo1Range;
+    public float hammerCombo1StartupTime;
+    public float hammerCombo1Duration;
+    public float hammerCombo1MotionTime;
+    public float hammerCombo1Speed;
+    public float hammerCombo1EndingLag;
+    [Header("Hammer Combo 2 Attack")]
+    public GameObject HammerCombo2Attack;
+    public float hammerCombo2Range;
+    public float hammerCombo2StartupTime;
+    public float hammerCombo2Duration;
+    public float hammerCombo2MotionTime;
+    public float hammerCombo2Speed;
+    public float hammerCombo2EndingLag;
     [Header("Parry")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
@@ -92,10 +118,18 @@ public class BossEnemy : MonoBehaviour
         {
             StartCoroutine(ClawSwipe());
         } */
-        if (distance <= hammerJumpRange)
+        /* if (distance <= hammerJumpRange)
         {
             StartCoroutine(HammerJump());
+        } */
+        if (distance <= hammerSpinRange)
+        {
+            StartCoroutine(HammerSpin());
         }
+        /* if (distance <= hammerCombo1Range)
+        {
+            StartCoroutine(HammerCombo1());
+        } */
         else
         {
             //approach player
@@ -194,7 +228,6 @@ public class BossEnemy : MonoBehaviour
 
             if (atkTimer < shoulderBashMotionTime)
             {
-
                 rb.MovePosition(rb.position + transform.forward * shoulderBashSpeed * Time.fixedDeltaTime);
             }
 
@@ -238,7 +271,7 @@ public class BossEnemy : MonoBehaviour
             atkTimer += Time.fixedDeltaTime;
 
             if (atkTimer < clawSwipeMotionTime)
-            {
+            {   
                 rb.MovePosition(rb.position + transform.forward * clawSwipeSpeed * Time.fixedDeltaTime);
                 transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + transform.right, 0.02f));
             }
@@ -270,7 +303,7 @@ public class BossEnemy : MonoBehaviour
         while (atkTimer < hammerJumpStartupTime)
         {
             atkTimer += Time.fixedDeltaTime;
-            LookAtPlayer(1.5f);
+            LookAtPlayer(1.25f);
 
             yield return new WaitForFixedUpdate();
         }
@@ -285,11 +318,9 @@ public class BossEnemy : MonoBehaviour
         while (atkTimer < hammerJumpAirTime)
         {
             atkTimer += Time.fixedDeltaTime;
-            
-            hammerJumpYPos = startingSpot.y + hammerJumpHeight * hammerJumpCurve.Evaluate(atkTimer / hammerJumpAirTime);
 
-            rb.MovePosition(new Vector3(startingSpot.x+jumpVector.x*(atkTimer/hammerJumpAirTime), hammerJumpYPos, startingSpot.z+jumpVector.z*(atkTimer/hammerJumpAirTime)));
-            //rb.MovePosition(rb.position + transform.forward * HammerJumpSpeed * Time.fixedDeltaTime);
+            hammerJumpYPos = startingSpot.y + hammerJumpHeight * hammerJumpCurve.Evaluate(atkTimer / hammerJumpAirTime);
+            rb.MovePosition(new Vector3(startingSpot.x + jumpVector.x * (atkTimer / hammerJumpAirTime), hammerJumpYPos, startingSpot.z + jumpVector.z * (atkTimer / hammerJumpAirTime)));
 
             yield return new WaitForFixedUpdate();
         }
@@ -314,6 +345,101 @@ public class BossEnemy : MonoBehaviour
         atkScript.EndAttack();
 
         yield return new WaitForSeconds(hammerJumpEndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    //HAMMER SPIN
+    private IEnumerator HammerSpin()
+    {
+        AttackScript atkScript = HammerSpinAttack.GetComponent<AttackScript>();
+
+        float atkTimer = 0;
+
+        while (atkTimer < hammerSpinStartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.33f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        Vector3 moveDir = rb.position + transform.forward;
+
+        while (atkTimer < hammerSpinDuration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < hammerSpinMotionTime)
+            {
+                Vector3 pVector = pb.gameObject.transform.position - rb.position;
+                pVector.y = 0;
+
+                rb.MovePosition(rb.position + pVector.normalized * hammerSpinSpeed * Time.fixedDeltaTime);
+                //moveDir = Vector3.Lerp(moveDir, rb.position + pVector.normalized, 0.5f);
+
+                transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + transform.right, 0.1f));
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        yield return new WaitForSeconds(hammerSpinEndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator HammerCombo1()
+    {
+        AttackScript atkScript = HammerCombo1Attack.GetComponent<AttackScript>();
+
+        float atkTimer = 0;
+
+        while (atkTimer < hammerCombo1StartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < hammerCombo1Duration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < hammerCombo1MotionTime)
+            {   
+                rb.MovePosition(rb.position + transform.forward * hammerCombo1Speed * Time.fixedDeltaTime);
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        yield return new WaitForSeconds(hammerCombo1EndingLag); //ending lag
 
         actionInProgress = false;
     }

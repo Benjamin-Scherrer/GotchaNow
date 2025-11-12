@@ -328,16 +328,11 @@ public class PlayerBattle : MonoBehaviour
                 actionInProgress = true;
                 dodgeReady = false;
                 StartCoroutine(Roll(stickPosition));
-                
+
                 //DodgeSFX audio;
             }
         }
-
-        //block active
-        if (guardActive)
-        {
-            
-        }
+        
     }
 
     //parry successful (TO DO!!)
@@ -357,18 +352,20 @@ public class PlayerBattle : MonoBehaviour
         HP -= dmg;
         hitStun = true;
 
-        if (guardActive)
+        if (guardActive) //TO DO: IMPROVE (use EnemyAttackBox.attackBlocked)
         {
-            hitStunTimer = 0.3f;
-            guardActive = false;
+            hitStunTimer = 0.4f;
+
+            /* guardActive = false;
             blockReady = true;
-            blockBox.GetComponent<BlockScript>().EndBlock();
+            blockBox.GetComponent<BlockScript>().EndBlock(); */
         }
         else
         {
-            hitStunTimer = 1f;
-        }        
-
+            hitStunTimer = 0.9f;
+            animator.SetTrigger("gotHit");
+        }
+        
         StartCoroutine(Knockback(atkKnockback, attackDir));
 
         //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
@@ -387,7 +384,7 @@ public class PlayerBattle : MonoBehaviour
             if (atkKnockback > 0)
             {
                 rb.MovePosition(rb.position + attackDir.normalized * atkKnockback * Time.fixedDeltaTime);
-                atkKnockback -= Time.deltaTime * 4;
+                knockback -= Time.deltaTime * 4;
             }
 
             hitStunTimer -= Time.deltaTime;

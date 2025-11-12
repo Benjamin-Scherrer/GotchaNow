@@ -41,8 +41,8 @@ public class BlockScript : MonoBehaviour
 
         while (timer < parryWindow)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
         parryActive = false;
