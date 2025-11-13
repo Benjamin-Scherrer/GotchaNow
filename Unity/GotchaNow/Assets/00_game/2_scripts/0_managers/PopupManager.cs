@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace GotchaNow
 			BuffMe,
 			MeteoriteNow
 		}
+
+		public static PopupManager instance;
 
 		[Header("Popup Screens")]
 		[SerializeField] private Popup healMePopupPrefab;
@@ -45,25 +48,39 @@ namespace GotchaNow
 			{
 				throw new System.Exception("Meteorite Now Popup is not assigned in PopupManager.");
 			}
+			if(popupParent == null)
+			{
+				throw new System.Exception("Popup Parent is not assigned in PopupManager.");
+			}
+			if (instance != null)
+            {
+				throw new System.Exception("Multiple instances of PopupManager detected. There should only be one instance of PopupManager in the scene.");
+            }
+			instance = this;
 		}
 
-		public void ShowPopup(PopupType popupType)
+		public void ShowHealMePopup()
 		{
-			switch (popupType)
-			{
-				case PopupType.HealMe:
-					StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
-					break;
-				case PopupType.BuffMe:
-					StartCoroutine(ShowPopupAnimation(buffMePopupPrefab));
-					break;
-				case PopupType.MeteoriteNow:
-					StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab));
-					break;
-				default:
-					Debug.LogWarning("Unknown popup type: " + popupType);
-					break;
-			}
+			StartCoroutine(ShowPopupAnimation(healMePopupPrefab, () =>
+            {
+                NotificationManager.instance.AcceptHeal();
+            }));
+		}
+
+		public void ShowBuffMePopup()
+		{
+			StartCoroutine(ShowPopupAnimation(buffMePopupPrefab, () =>
+            {
+                NotificationManager.instance.AcceptBuff();
+            }));
+		}
+
+		public void ShowMeteoriteNowPopup()
+		{
+			StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab, () =>
+            {
+                NotificationManager.instance.AcceptMeteor();
+            }));
 		}
 
 		//PRIVATE
@@ -71,25 +88,25 @@ namespace GotchaNow
 		{
 			// Example usage
 			// ShowPopup(PopupType.HealMe);
-			StartCoroutine(LoopSpawnPopups());
+			// StartCoroutine(LoopSpawnPopups());
 		}
 
 
-		private IEnumerator LoopSpawnPopups()
-		{
-			WaitForSeconds wait = new(0.1f);
-			while (true)
-			{
-				yield return StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
-				yield return wait;
-				yield return StartCoroutine(ShowPopupAnimation(buffMePopupPrefab));
-				yield return wait;
-				yield return StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab));
-				yield return wait;
-			}
-		}
+		// private IEnumerator LoopSpawnPopups()
+		// {
+		// 	WaitForSeconds wait = new(0.1f);
+		// 	while (true)
+		// 	{
+		// 		yield return StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
+		// 		yield return wait;
+		// 		yield return StartCoroutine(ShowPopupAnimation(buffMePopupPrefab));
+		// 		yield return wait;
+		// 		yield return StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab));
+		// 		yield return wait;
+		// 	}
+		// }
 		
-		private IEnumerator ShowPopupAnimation(Popup popupScreenPrefab)
+		private IEnumerator ShowPopupAnimation(Popup popupScreenPrefab, Action acceptPopup = null)
 		{
 			Popup popupScreen = Instantiate(popupScreenPrefab, popupParent);
 			Debug.Log("Popup instantiated: " + popupScreen.name);
@@ -123,6 +140,8 @@ namespace GotchaNow
 
 				yield return null;
 			}
+
+			acceptPopup?.Invoke();
 
 			float popDownTime = 0f;
 			while (popDownTime < popDownDuration)
