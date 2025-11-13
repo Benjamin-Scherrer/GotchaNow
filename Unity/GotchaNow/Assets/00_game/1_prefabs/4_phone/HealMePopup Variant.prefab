@@ -68,9 +68,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2916840487272390337, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: Heal me NOW!
+      objectReference: {fileID: 0}
     - target: {fileID: 3138066527305276836, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_Name
       value: HealMePopup Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520360374136011865, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: $30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368003407092126313, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: Your fighter is hurt! Quick heal her so your effort isn't wasted!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

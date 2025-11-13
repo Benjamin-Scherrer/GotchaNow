@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 320007243027123770, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1514471590346128269, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -68,9 +72,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2058903691123472646, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916840487272390337, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: Buff me NOW!
+      objectReference: {fileID: 0}
     - target: {fileID: 3138066527305276836, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_Name
       value: BuffMePoppup Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520360374136011865, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: $50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368003407092126313, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_text
+      value: Buff your fighter to achieve victory now!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
