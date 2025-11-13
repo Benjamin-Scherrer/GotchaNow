@@ -13,12 +13,23 @@ namespace GotchaNow
 		}
 
 		[Header("Popup Screens")]
-		[SerializeField] private GameObject healMePopupPrefab;
-		[SerializeField] private GameObject buffMePopupPrefab;
-		[SerializeField] private GameObject meteoriteNowPopupPrefab;
+		[SerializeField] private Popup healMePopupPrefab;
+		[SerializeField] private Popup buffMePopupPrefab;
+		[SerializeField] private Popup meteoriteNowPopupPrefab;
 
 		[Header("References")]
 		[SerializeField] private Transform popupParent;
+
+		[Header("Variables")]
+		[SerializeField] private float popUpDuration = 0.5f;
+		[SerializeField] private float displayDuration = 2f;
+		[SerializeField] private float popDownDuration = 0.5f;
+
+		[SerializeField] private float jiggleInterval = 0.1f;
+		[SerializeField] private int jiggleAmount = 5;
+		[SerializeField] private float jiggleDuration = 0.5f;
+		[SerializeField] private float jiggleIntensity = 1f;
+
 
 		private void Awake()
 		{
@@ -36,19 +47,18 @@ namespace GotchaNow
 			}
 		}
 
-
-		public void ShowPopup(PopupType popupType, float displayDuration)
+		public void ShowPopup(PopupType popupType)
 		{
 			switch (popupType)
 			{
 				case PopupType.HealMe:
-					StartCoroutine(ShowPopupAnimation(healMePopupPrefab, displayDuration));
+					StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
 					break;
 				case PopupType.BuffMe:
-					StartCoroutine(ShowPopupAnimation(buffMePopupPrefab, displayDuration));
+					StartCoroutine(ShowPopupAnimation(buffMePopupPrefab));
 					break;
 				case PopupType.MeteoriteNow:
-					StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab, displayDuration));
+					StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab));
 					break;
 				default:
 					Debug.LogWarning("Unknown popup type: " + popupType);
@@ -60,18 +70,66 @@ namespace GotchaNow
 		private void Start()
 		{
 			// Example usage
-			ShowPopup(PopupType.HealMe, 3f);
+			// ShowPopup(PopupType.HealMe);
+			StartCoroutine(LoopSpawnPopups());
+		}
+
+
+		private IEnumerator LoopSpawnPopups()
+		{
+			WaitForSeconds wait = new(0.1f);
+			while (true)
+			{
+				yield return StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
+				yield return wait;
+				yield return StartCoroutine(ShowPopupAnimation(buffMePopupPrefab));
+				yield return wait;
+				yield return StartCoroutine(ShowPopupAnimation(meteoriteNowPopupPrefab));
+				yield return wait;
+			}
 		}
 		
-		private IEnumerator ShowPopupAnimation(GameObject popupScreenPrefab, float displayDuration)
+		private IEnumerator ShowPopupAnimation(Popup popupScreenPrefab)
 		{
-			GameObject popupScreen = Instantiate(popupScreenPrefab, popupParent);
+			Popup popupScreen = Instantiate(popupScreenPrefab, popupParent);
 			Debug.Log("Popup instantiated: " + popupScreen.name);
 			// Here you can add animation code if needed
-			while (displayDuration > 0)
+
+			float popUpTime = 0f;
+
+			while (popUpTime < popUpDuration)
 			{
-				displayDuration -= Time.deltaTime;
-				popupScreen.transform.Rotate(Vector3.up, 90 * Time.deltaTime); // Example animation
+				popUpTime += Time.deltaTime;
+				float popupfCoeff = popUpTime / popUpDuration;
+				popupScreen.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, popupfCoeff);
+				yield return null;
+			}
+
+			int performedJiggles = 0;
+			float jiggleTime = 0;
+
+			float displayTime = 0f;
+			while (displayTime < displayDuration)
+			{
+				displayTime += Time.deltaTime;
+
+				jiggleTime += Time.deltaTime;
+				if(jiggleTime >= jiggleInterval && performedJiggles < jiggleAmount)
+				{
+					jiggleTime -= jiggleInterval;
+					performedJiggles++;
+					popupScreen.StartJiggle(jiggleDuration, jiggleIntensity);
+				}
+
+				yield return null;
+			}
+
+			float popDownTime = 0f;
+			while (popDownTime < popDownDuration)
+			{
+				popDownTime += Time.deltaTime;
+				float popupfCoeff = 1 - (popDownTime / popDownDuration);
+				popupScreen.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, popupfCoeff);
 				yield return null;
 			}
 			Destroy(popupScreen);

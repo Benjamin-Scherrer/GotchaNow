@@ -757,7 +757,7 @@ public class PlayerBattle : MonoBehaviour
 
             atkTimer += Time.deltaTime;
 
-            Debug.Log("test");
+            // Debug.Log("test");
             yield return new WaitForFixedUpdate();
         }
 
