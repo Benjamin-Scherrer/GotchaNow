@@ -122,14 +122,14 @@ public class BossEnemy : MonoBehaviour
         {
             StartCoroutine(HammerJump());
         } */
-        if (distance <= hammerSpinRange)
+        /* if (distance <= hammerSpinRange)
         {
             StartCoroutine(HammerSpin());
-        }
-        /* if (distance <= hammerCombo1Range)
+        } */
+        if (distance <= hammerCombo1Range)
         {
             StartCoroutine(HammerCombo1());
-        } */
+        }
         else
         {
             //approach player
@@ -423,7 +423,7 @@ public class BossEnemy : MonoBehaviour
             atkTimer += Time.fixedDeltaTime;
 
             if (atkTimer < hammerCombo1MotionTime)
-            {   
+            {
                 rb.MovePosition(rb.position + transform.forward * hammerCombo1Speed * Time.fixedDeltaTime);
             }
 
@@ -439,10 +439,69 @@ public class BossEnemy : MonoBehaviour
 
         atkScript.EndAttack();
 
+        //follow-up with combo 2
+        distance = enemy.DistanceCheck(pb.gameObject.transform.position);
+
+        if (distance < hammerCombo2Range)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(HammerCombo2());
+                yield break;
+            }
+        }
+
         yield return new WaitForSeconds(hammerCombo1EndingLag); //ending lag
 
         actionInProgress = false;
     }
+    
+    private IEnumerator HammerCombo2()
+    {
+        AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
+
+        float atkTimer = 0;
+
+        while (atkTimer < hammerCombo2StartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < hammerCombo2Duration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < hammerCombo2MotionTime)
+            {   
+                rb.MovePosition(rb.position + transform.forward * hammerCombo2Speed * Time.fixedDeltaTime);
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        yield return new WaitForSeconds(hammerCombo2EndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
 
     //when attack is parried by player
     private IEnumerator AttackParried(float stunTime, float knockback)

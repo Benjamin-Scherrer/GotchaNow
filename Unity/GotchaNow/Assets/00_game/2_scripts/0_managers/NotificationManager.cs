@@ -306,8 +306,6 @@ public class NotificationManager : MonoBehaviour
         ChargeNotifBar(-1);
         ChargeQuota(30);
 
-        PlayerBattle.Instance.Heal(50);
-
         StartCoroutine(CloseRequestMenu());
     }
 
@@ -315,6 +313,9 @@ public class NotificationManager : MonoBehaviour
     {
         ChargeNotifBar(-1);
         ChargeQuota(30);
+
+        AcceptHeal(); //wip
+
         StartCoroutine(CloseRequestMenu());
     }
 
@@ -323,6 +324,20 @@ public class NotificationManager : MonoBehaviour
         ChargeNotifBar(-1);
         ChargeQuota(50);
         StartCoroutine(CloseRequestMenu());
+    }
+
+    public void AcceptHeal()
+    {
+        PlayerBattle.Instance.Heal(50);
+    }
+
+    public void AcceptBuff()
+    {
+        //buff effect
+    }
+    public void AcceptMeteor()
+    {
+        //spawn meteor
     }
 
     public void ChargeNotifBar(float amount)
