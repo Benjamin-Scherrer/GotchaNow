@@ -87,6 +87,7 @@ public class PlayerBattle : MonoBehaviour
     public float dodgeTime = 0.5f;
     public float dodgeMotionTime = 0.5f;
     public float dodgeInvulnerableTime = 0.2f;
+    public float baseKnockback = 2f;
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
 
@@ -377,23 +378,38 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator Knockback(float atkKnockback, Vector3 attackDir)
     {
         float knockback = atkKnockback;
+        StartCoroutine(Invulnerability(0.75f));
         //GetComponent<MeshRenderer>().material = hitstunMaterial;
 
         while (hitStunTimer > 0)
         {
             if (atkKnockback > 0)
             {
-                rb.MovePosition(rb.position + attackDir.normalized * atkKnockback * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + attackDir.normalized * atkKnockback * baseKnockback * Time.fixedDeltaTime);
                 knockback -= Time.deltaTime * 4;
             }
 
-            hitStunTimer -= Time.deltaTime;
+            hitStunTimer -= Time.fixedDeltaTime;
 
             yield return new WaitForFixedUpdate();
         }
 
         hitStun = false;
         //GetComponent<MeshRenderer>().material = defaultMaterial;
+    }
+
+    private IEnumerator Invulnerability(float invTime)
+    {
+        float timer = 0;
+        invulnerable = true;
+
+        while (timer < invTime)
+        {
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        invulnerable = false;
     }
 
     //movement

@@ -10,6 +10,7 @@ public class BossEnemy : MonoBehaviour
     private Enemy enemy;
     private PlayerBattle pb;
     public GameObject model;
+    public Animator animator;
     private bool actionInProgress = false;
     private float distance;
     private string behaviorState = null;
@@ -113,22 +114,27 @@ public class BossEnemy : MonoBehaviour
         /* if (distance <= shoulderBashRange)
         {
             StartCoroutine(ShoulderBash());
+            ResetWalkAnim();
         } */
         /* if (distance <= clawSwipeRange)
         {
             StartCoroutine(ClawSwipe());
+            ResetWalkAnim();
         } */
         /* if (distance <= hammerJumpRange)
         {
             StartCoroutine(HammerJump());
+            ResetWalkAnim();
         } */
         /* if (distance <= hammerSpinRange)
         {
             StartCoroutine(HammerSpin());
+            ResetWalkAnim();
         } */
         if (distance <= hammerCombo1Range)
         {
             StartCoroutine(HammerCombo1());
+            ResetWalkAnim();
         }
         else
         {
@@ -153,6 +159,7 @@ public class BossEnemy : MonoBehaviour
         Vector3 pVector = pb.gameObject.transform.position - rb.position;
         pVector.y = 0;
 
+        animator.SetFloat("motionFwd", 1);
         rb.MovePosition(rb.position + pVector.normalized * walkSpeed * speedMult * Time.fixedDeltaTime);
     }
     
@@ -161,6 +168,7 @@ public class BossEnemy : MonoBehaviour
         Vector3 pVector = pb.gameObject.transform.position - rb.position;
         pVector.y = 0;
 
+        animator.SetFloat("motionFwd", -1);
         rb.MovePosition(rb.position - pVector.normalized * walkSpeed * speedMult * Time.fixedDeltaTime);
     }
 
@@ -171,11 +179,13 @@ public class BossEnemy : MonoBehaviour
 
         if (dir == "r")
         {
+            animator.SetFloat("motionSide", 1);
             rb.MovePosition(rb.position + transform.right * strafeSpeed * speedMult * Time.fixedDeltaTime);
         }
 
         if (dir == "l")
         {
+            animator.SetFloat("motionSide", -1);
             rb.MovePosition(rb.position - transform.right * strafeSpeed * speedMult * Time.fixedDeltaTime);
         }
     }
@@ -183,6 +193,8 @@ public class BossEnemy : MonoBehaviour
     private IEnumerator ApproachPlayer(float actionTime)
     {
         float timer = 0;
+
+        animator.SetBool("Walking", true);
 
         //WIP: set strafe direction
         int rndm = Random.Range(0, 2);
@@ -210,6 +222,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = ShoulderBashAttack.GetComponent<AttackScript>();
 
         float atkTimer = 0;
+        animator.SetTrigger("ShoulderAttack");
 
         while (atkTimer < shoulderBashStartupTime)
         {
@@ -242,6 +255,7 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.EndAttack();
+        animator.SetTrigger("ShoulderEnd");
 
         yield return new WaitForSeconds(shoulderBashEndingLag); //ending lag
 
@@ -254,6 +268,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = ClawSwipeAttack.GetComponent<AttackScript>();
 
         float atkTimer = 0;
+        animator.SetTrigger("ClawAttack");
 
         while (atkTimer < clawSwipeStartupTime)
         {
@@ -299,6 +314,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerJumpAttack.GetComponent<AttackScript>();
 
         float atkTimer = 0;
+        animator.SetTrigger("JumpAttack");
 
         while (atkTimer < hammerJumpStartupTime)
         {
@@ -354,7 +370,9 @@ public class BossEnemy : MonoBehaviour
     {
         AttackScript atkScript = HammerSpinAttack.GetComponent<AttackScript>();
 
+        //Debug.Log("s");
         float atkTimer = 0;
+        animator.SetTrigger("SpinAttack");
 
         while (atkTimer < hammerSpinStartupTime)
         {
@@ -381,7 +399,7 @@ public class BossEnemy : MonoBehaviour
                 rb.MovePosition(rb.position + pVector.normalized * hammerSpinSpeed * Time.fixedDeltaTime);
                 //moveDir = Vector3.Lerp(moveDir, rb.position + pVector.normalized, 0.5f);
 
-                transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + transform.right, 0.1f));
+                //transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + transform.right, 0.05f));
             }
 
             if (attackParried)
@@ -395,6 +413,7 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.EndAttack();
+        animator.SetTrigger("SpinEnd");
 
         yield return new WaitForSeconds(hammerSpinEndingLag); //ending lag
 
@@ -406,6 +425,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerCombo1Attack.GetComponent<AttackScript>();
 
         float atkTimer = 0;
+        animator.SetTrigger("Combo1");
 
         while (atkTimer < hammerCombo1StartupTime)
         {
@@ -439,10 +459,8 @@ public class BossEnemy : MonoBehaviour
 
         atkScript.EndAttack();
 
-        //follow-up with combo 2
-        distance = enemy.DistanceCheck(pb.gameObject.transform.position);
-
-        if (distance < hammerCombo2Range)
+        //follow-up with combo 2 if in range
+        if (enemy.DistanceCheck(pb.gameObject.transform.position) < hammerCombo2Range)
         {
             //check if player is in front of enemy
             float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
@@ -462,8 +480,9 @@ public class BossEnemy : MonoBehaviour
     private IEnumerator HammerCombo2()
     {
         AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
-
+        
         float atkTimer = 0;
+        animator.SetTrigger("Combo2");
 
         while (atkTimer < hammerCombo2StartupTime)
         {
@@ -507,6 +526,8 @@ public class BossEnemy : MonoBehaviour
     private IEnumerator AttackParried(float stunTime, float knockback)
     {
         float timer = 0;
+        animator.SetTrigger("GotParried");
+
         Vector3 parryDir = transform.position - pb.gameObject.transform.position;
         parryDir.y = 0;
 
@@ -525,6 +546,13 @@ public class BossEnemy : MonoBehaviour
 
         attackParried = false;
         actionInProgress = false;
+    }
+
+    private void ResetWalkAnim()
+    {
+        animator.SetBool("Walking", false);
+        animator.SetFloat("motionFwd", 0);
+        animator.SetFloat("motionSide", 0);
     }
     
     public void EndBattle()

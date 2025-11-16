@@ -49,7 +49,7 @@ public class EnemyAttackBox : MonoBehaviour
 
             float damageCalc = damage;
             float knockbackCalc = knockback;
-            Vector3 attackDir = new Vector3(other.transform.position.x, 0, other.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+            Vector3 attackDir = new Vector3(other.transform.position.x, 0, other.transform.position.z) - new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
 
             if (attackParried)
             {
