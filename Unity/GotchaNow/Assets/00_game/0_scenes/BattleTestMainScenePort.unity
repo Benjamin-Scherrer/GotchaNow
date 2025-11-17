@@ -359,6 +359,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &227716553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2503570652909091033, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+  m_PrefabInstance: {fileID: 1700967552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5b98a80998c684b981fba834756e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackScript
 --- !u!1001 &310996768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -776,6 +787,7 @@ GameObject:
   - component: {fileID: 625362664}
   - component: {fileID: 625362663}
   - component: {fileID: 625362662}
+  - component: {fileID: 625362665}
   m_Layer: 0
   m_Name: Combo1Hitbox
   m_TagString: Untagged
@@ -877,6 +889,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625362660}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &625362665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625362660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b152629771bb439ba3c9fe8622486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  enemy: {fileID: 1700967554}
+  attackScript: {fileID: 227716553}
+  damage: 30
+  movement: 1
+  knockback: 2
 --- !u!1 &649387586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 448212762401177060, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -1533,6 +1562,10 @@ PrefabInstance:
       propertyPath: nm
       value: 
       objectReference: {fileID: 47929724}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1Duration
+      value: 0.64
+      objectReference: {fileID: 0}
     - target: {fileID: 433208495148576675, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1558,12 +1591,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hammerCombo1Range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hammerCombo1Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2Range
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2Speed
-      value: 1.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: HammerCombo2Attack
@@ -1579,11 +1620,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2Duration
-      value: 0.9
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hammerCombo1EndingLag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2EndingLag
-      value: 0.9
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerJumpStartupTime
@@ -1591,7 +1636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2MotionTime
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo1StartupTime
@@ -1599,7 +1644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2StartupTime
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 985863867186657495, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
@@ -1830,6 +1875,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 162a8eb406fabcc45970fc427345b1db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7131095940029453227, guid: 162a8eb406fabcc45970fc427345b1db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 162a8eb406fabcc45970fc427345b1db, type: 3}
       propertyPath: m_Name

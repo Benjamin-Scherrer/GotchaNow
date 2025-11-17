@@ -481,6 +481,8 @@ public class BossEnemy : MonoBehaviour
     {
         AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
         
+        Debug.Log("combo2");
+
         float atkTimer = 0;
         animator.SetTrigger("Combo2");
 
