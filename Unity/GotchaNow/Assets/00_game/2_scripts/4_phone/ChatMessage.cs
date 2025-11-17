@@ -15,11 +15,14 @@ namespace GotchaNow
 		[SerializeField] private TextMeshProUGUI messageTextUI;
 		// [SerializeField] private RectTransform scalingRectTransform;
 
-		private float messageFoldedHeight = 40f;
-		private float messageUnfoldedHeight = 80f;
-		private float imageMargin = 10f;
-		private float textMargin = 10f;
+		[Header("Variables")]
+		[SerializeField] private float messageFoldedHeight = 32f;
+		[SerializeField] private float messageUnfoldedHeight = 64f;
+		[SerializeField] private float imageMargin = 12f;
+		[SerializeField] private float textMargin = 12f;
 		[SerializeField] private float messageFoldingCoef = 1.0f;
+
+		public bool GettingSwipedAway = false;
 
 		//PUBLIC PROPERTIES
 		public float getHeight => Mathf.Lerp(messageFoldedHeight, messageUnfoldedHeight, messageFoldingCoef);
@@ -120,7 +123,7 @@ namespace GotchaNow
 			messageSenderUI.rectTransform.anchoredPosition = new(senderTextPosX, senderTextPosY);
 
 			float senderTextWidth = Mathf.Max(backgroundWidth - senderTextPosX, 0f);
-			float senderTextHeight = messageSenderUI.fontSize * 1.25f; //keep font size
+			float senderTextHeight = messageSenderUI.fontSize; //keep font size
 			messageSenderUI.rectTransform.sizeDelta = new(senderTextWidth, senderTextHeight);
 
 			//calculate Message Text size and position
@@ -133,9 +136,12 @@ namespace GotchaNow
 			messageTextUI.rectTransform.sizeDelta = new(messageTextWidth, messageTextHeight);
 		}
 
+		//EDITOR
+		#if(UNITY_EDITOR)
 		public void OnValidate()
 		{
 			ScaleMessageRespectingFontSize(messageFoldingCoef);
 		}
+		#endif
 	}
 }

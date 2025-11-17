@@ -6,6 +6,7 @@ using System.Threading;
 using UnityEngine.UI;
 using UnityEngine.Splines.Interpolators;
 using TMPro;
+using GotchaNow;
 
 public class NotificationManager : MonoBehaviour
 {
@@ -306,6 +307,8 @@ public class NotificationManager : MonoBehaviour
         ChargeNotifBar(-1);
         ChargeQuota(30);
 
+        PopupManager.instance.ShowHealMePopup();
+
         StartCoroutine(CloseRequestMenu());
     }
 
@@ -314,7 +317,8 @@ public class NotificationManager : MonoBehaviour
         ChargeNotifBar(-1);
         ChargeQuota(30);
 
-        AcceptHeal(); //wip
+        PopupManager.instance.ShowBuffMePopup();
+        // AcceptBuff(); //wip
 
         StartCoroutine(CloseRequestMenu());
     }
@@ -323,6 +327,10 @@ public class NotificationManager : MonoBehaviour
     {
         ChargeNotifBar(-1);
         ChargeQuota(50);
+
+        PopupManager.instance.ShowMeteoriteNowPopup();
+        // AcceptMeteor(); //wip
+
         StartCoroutine(CloseRequestMenu());
     }
 
@@ -334,10 +342,12 @@ public class NotificationManager : MonoBehaviour
     public void AcceptBuff()
     {
         //buff effect
+        Debug.Log("Buff accepted");
     }
     public void AcceptMeteor()
     {
         //spawn meteor
+        Debug.Log("Meteor accepted");
     }
 
     public void ChargeNotifBar(float amount)

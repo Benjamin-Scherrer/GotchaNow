@@ -19,8 +19,8 @@ namespace GotchaNow
 		[Header("Battle Dialogues")]
 		[SerializeField] protected ChatMessageHistory tutorial;
 		[SerializeField] protected ChatMessageHistory battle1;
-		[SerializeField] protected ChatMessageHistory battle2trueEndingPath;
 		[SerializeField] protected ChatMessageHistory battle2;
+		[SerializeField] protected ChatMessageHistory battle2trueEndingPath;
 		[SerializeField] protected ChatMessageHistory battle3;
 
 

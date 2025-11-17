@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -35}
-  m_SizeDelta: {x: 210, y: 35}
+  m_AnchoredPosition: {x: 64, y: -36}
+  m_SizeDelta: {x: 220, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3227846249600634721
 CanvasRenderer:
@@ -65,7 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEFAULT MESSAGE TEXT
+  m_text: 'DEFAULT MESSAGE TEXT
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -110,7 +112,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -170,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 6, y: -6}
+  m_SizeDelta: {x: 52, y: 52}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3599098988537662869
 CanvasRenderer:
@@ -245,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -10}
-  m_SizeDelta: {x: 220, y: 15}
+  m_AnchoredPosition: {x: 64, y: -12}
+  m_SizeDelta: {x: 232, y: 12}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4876450320182320401
 CanvasRenderer:
@@ -321,7 +323,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -384,7 +386,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 296, y: 64}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8404836165163119735
 GameObject:
@@ -421,7 +423,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 296, y: 64}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8004289596943650543
 CanvasRenderer:
@@ -496,7 +498,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 296, y: 64}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5432395057101799634
 MonoBehaviour:
@@ -514,4 +516,8 @@ MonoBehaviour:
   messageSenderUI: {fileID: 8118354031437706020}
   messageSenderAvatarUI: {fileID: 6578291885505832176}
   messageTextUI: {fileID: 3241057083344030378}
+  messageFoldedHeight: 32
+  messageUnfoldedHeight: 64
+  imageMargin: 6
+  textMargin: 12
   messageFoldingCoef: 1

@@ -9,6 +9,8 @@ namespace GotchaNow
 	[RequireComponent(typeof(ChatMessageSelector))]
 	public class ChatMessagesManager : MonoBehaviour
 	{
+		public static ChatMessagesManager Instance;
+
 		[Header("Message Prefab")]
 		[SerializeField] private ChatMessage messagePrefab;
 
@@ -21,6 +23,9 @@ namespace GotchaNow
 		// [SerializeField] private float messageSpeed = 512f;
 		[SerializeField] private float popUpDuration = 0.5f;
 		[SerializeField] private float messageSpacing = 10f;
+		[SerializeField] private float swipeAwayDuration = 0.3f;
+		[SerializeField] private int swipeTreshold = 3;
+
 		private ChatMessageSelector messageSelector;
 		[SerializeField] private List<ChatMessage> activeMessages = new();
 
@@ -47,23 +52,29 @@ namespace GotchaNow
 			{
 				throw new System.Exception("ChatMessageSelector component is missing from ChatMessagesManager GameObject.");
 			}
+
+			if (Instance != null)
+			{
+				throw new System.Exception("Multiple instances of ChatMessagesManager detected. There should only be one instance of ChatMessagesManager in the scene.");
+			}
+			Instance = this;
 		}
 
-		private void Start()
-		{
-			// Example usage
-			// SpawnMessageHistory(messageSelector.GetChatMessageHistory());
+		// private void Start()
+		// {
+		// 	// Example usage
+		// 	// SpawnMessageHistory(messageSelector.GetChatMessageHistory());
 
-			StartCoroutine(LoopSpawnMessages());
-		}
+		// 	StartCoroutine(LoopSpawnMessages());
+		// }
 
-		private IEnumerator LoopSpawnMessages()
-		{
-            while (true)
-            {
-				yield return StartCoroutine(ShowChatMessageHistory(messageSelector.GetChatMessageHistory()));	
-            }
-		}
+		// private IEnumerator LoopSpawnMessages()
+		// {
+        //     while (true)
+        //     {
+		// 		yield return StartCoroutine(ShowChatMessageHistory(messageSelector.GetChatMessageHistory()));	
+        //     }
+		// }
 
 		private void SpawnMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
@@ -83,21 +94,34 @@ namespace GotchaNow
 			while ((messageData = chatMessageHistory.GetNextMessage()) != null)
 			{
 				float delayTillNext = messageData.DelayTillNext;
-				StartCoroutine(ShowMessageAnimation(messageData));
+				float displayDuration = messageData.DisplayDuration;
+				StartCoroutine(ShowMessageAnimation(messageData, displayDuration));
+				if(activeMessages.Count >= swipeTreshold)
+				{
+					StartCoroutine(SwipeCascade());
+				}
 				yield return new WaitForSeconds(delayTillNext);
 			}
 
 			// clean up after all messages have been shown
 			chatMessageHistory.ResetChatHistory();
-			foreach (var msg in activeMessages)
-			{
-				if (msg != null)
-				{
-					Destroy(msg.gameObject);
-				}
-			}
-			activeMessages.Clear();
+			StartCoroutine(SwipeCascade());
 		}
+
+		private IEnumerator SwipeCascade()
+        {
+            for (int i = 0; i < activeMessages.Count; i++)
+			{
+				ChatMessage msg = activeMessages[i];
+				if (msg == null) 
+				{
+					activeMessages.Remove(msg);
+					continue;
+				}
+				StartCoroutine(SwipeAwayMessage(msg, swipeAwayDuration));
+				yield return new WaitForSeconds(0.2f);
+			}
+        }
 
 		private IEnumerator ShowMessageAnimation(ChatMessageData messageData, float displayDuration = float.MaxValue)
 		{
@@ -130,6 +154,10 @@ namespace GotchaNow
 			while (typingPreview > 0f)
 			{
 				typingPreview -= Time.deltaTime;
+				if (messageScript == null || messageScript.gameObject == null)
+				{
+					yield break;
+				}
 				yield return null;
 			}
 
@@ -146,6 +174,11 @@ namespace GotchaNow
 				Vector3 scaleValue = Vector3.Lerp(startScale, Vector3.one, timeCoefficient);
 				messageScript.ScaleMessageRespectingFontSize(scaleValue);
 				PushDown();
+
+				if (messageScript == null || messageScript.gameObject == null)
+				{
+					yield break;
+				}
 				yield return null;
 			}
 			while (elapsedTime < displayDuration)
@@ -157,6 +190,40 @@ namespace GotchaNow
 				}
 				yield return null;
 			}
+
+			StartCoroutine(SwipeAwayMessage(messageScript, swipeAwayDuration));
+		}
+
+		private IEnumerator SwipeAwayMessage(ChatMessage messageScript, float duration)
+		{
+
+			if (messageScript == null)
+			{
+				yield break;
+			}
+			if(messageScript.GettingSwipedAway)
+			{
+				yield break; // already being swiped away
+			}
+			messageScript.GettingSwipedAway = true;
+
+			RectTransform messageRect = messageScript.transform as RectTransform;
+			Vector2 startPos = messageRect.anchoredPosition;
+			Vector2 endPos = startPos + new Vector2(
+				messageRect.rect.width * 2,
+				0f
+			);
+
+			float elapsedTime = 0f;
+			while (elapsedTime < duration)
+			{
+				elapsedTime += Time.deltaTime;
+				float timeCoefficient = elapsedTime / duration;
+
+				messageRect.anchoredPosition = Vector2.Lerp(startPos, endPos, timeCoefficient);
+				yield return null;
+			}
+
 			activeMessages.Remove(messageScript);
 			Destroy(messageScript.gameObject);
 		}

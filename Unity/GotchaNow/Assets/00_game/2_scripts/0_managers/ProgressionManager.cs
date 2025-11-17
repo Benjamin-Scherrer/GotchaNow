@@ -118,10 +118,13 @@ public class ProgressionManager : MonoBehaviour
             queen.transform.position = spawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
-             //Dialogue Update
+            //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }
@@ -146,6 +149,9 @@ public class ProgressionManager : MonoBehaviour
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
             
             return;
         }
@@ -164,6 +170,9 @@ public class ProgressionManager : MonoBehaviour
             //Force start dialogue
             intermissionDialogue.Interact();
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -180,6 +189,9 @@ public class ProgressionManager : MonoBehaviour
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }
@@ -205,6 +217,9 @@ public class ProgressionManager : MonoBehaviour
             //Force start dialogue
             intermissionDialogue.Interact();
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -222,6 +237,9 @@ public class ProgressionManager : MonoBehaviour
             //Force start dialogue
             intermissionDialogue.Interact();
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -236,6 +254,9 @@ public class ProgressionManager : MonoBehaviour
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }
@@ -252,6 +273,9 @@ public class ProgressionManager : MonoBehaviour
             //Force start dialogue
             intermissionDialogue.Interact();
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return; 
         }
 
@@ -267,6 +291,9 @@ public class ProgressionManager : MonoBehaviour
             //Force start dialogue
             intermissionDialogue.Interact();
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -281,6 +308,9 @@ public class ProgressionManager : MonoBehaviour
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }
@@ -306,6 +336,10 @@ public class ProgressionManager : MonoBehaviour
         if (battleID == "tutorial")
         {
             //spawn tutorial enemy
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -327,6 +361,9 @@ public class ProgressionManager : MonoBehaviour
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
             boss.GetComponent<Enemy>().isMainEnemy = true;
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }
@@ -355,6 +392,9 @@ public class ProgressionManager : MonoBehaviour
             minion2.transform.position = spawnPoint + new Vector3(4, 0, 0);
             minion2.transform.eulerAngles = new Vector3(0, 180, 0);
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -382,6 +422,9 @@ public class ProgressionManager : MonoBehaviour
             minion2.transform.position = spawnPoint + new Vector3(6, 0, 0);
             minion2.transform.eulerAngles = new Vector3(0, 180, 0);
 
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
             return;
         }
 
@@ -399,6 +442,9 @@ public class ProgressionManager : MonoBehaviour
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             queen.GetComponent<Enemy>().isMainEnemy = true;
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
 
             return;
         }

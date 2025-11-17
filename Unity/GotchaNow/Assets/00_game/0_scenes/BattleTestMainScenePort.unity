@@ -1335,11 +1335,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
---- !u!224 &1178423851 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 871047047082131656, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
-  m_PrefabInstance: {fileID: 1178423850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1178423852 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4002941814209863556, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -2257,66 +2252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChatMessagesManager
       objectReference: {fileID: 0}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: intro
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: battle1
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: battle2
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: battle3
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: gameOver
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: tutorial
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: badEnding
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: preBattle1
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: trueEnding
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: intermission1
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: neutralEnding
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: preSecretBoss
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: trueEndingFailed
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: battle2trueEndingPath
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
-    - target: {fileID: 704104015189404945, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: intermission1TrueEndingPath
-      value: 
-      objectReference: {fileID: 11400000, guid: 30d4aa512ea6a8c45a061ae6954761d8, type: 2}
     - target: {fileID: 8144150242304122607, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2358,29 +2293,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: messageGoal
-      value: 
-      objectReference: {fileID: 1178423851}
-    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: messageSpeed
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: messageParent
       value: 
       objectReference: {fileID: 1162061838}
     - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: popUpDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
-      propertyPath: messageSpacing
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: messageSpawnPoint
       value: 
       objectReference: {fileID: 1178423852}
+    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
+      propertyPath: swipeAwayDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

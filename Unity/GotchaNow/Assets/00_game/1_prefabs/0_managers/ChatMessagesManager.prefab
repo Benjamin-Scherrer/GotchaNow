@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8144150242304122607}
   - component: {fileID: 9097151192315698137}
+  - component: {fileID: 704104015189404945}
   m_Layer: 0
   m_Name: ChatMessagesManager
   m_TagString: Untagged
@@ -46,3 +47,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessagesManager
   messagePrefab: {fileID: 5432395057101799634, guid: 6058137e656b4cb40b04904669348d4a, type: 3}
   messageParent: {fileID: 0}
+  messageSpawnPoint: {fileID: 0}
+  popUpDuration: 0.1
+  messageSpacing: 12
+  activeMessages: []
+--- !u!114 &704104015189404945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389748769026514337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dc0aebba29665469dfaa073dc4931e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageSelector
+  intro: {fileID: 11400000, guid: b58bee78410fb254a9b6cbd9893b7360, type: 2}
+  preBattle1: {fileID: 11400000, guid: cfe25e0246cfa45478545c1bfff11f4d, type: 2}
+  intermission1: {fileID: 11400000, guid: b8ef7e71206d6c643bb60f169c6c82a7, type: 2}
+  intermission1TrueEndingPath: {fileID: 11400000, guid: 30a74bc0eb4d62e4d86289aaef2a2825, type: 2}
+  preSecretBoss: {fileID: 11400000, guid: 45882e24fd4299a47b69313f99420d22, type: 2}
+  trueEnding: {fileID: 11400000, guid: afe3a3405a523ce4fb46cc797f311bac, type: 2}
+  trueEndingFailed: {fileID: 11400000, guid: f563f85421b97424da1c5f56308e67ac, type: 2}
+  neutralEnding: {fileID: 11400000, guid: 50c3c3f2145c2694eab8b11be8dc6299, type: 2}
+  badEnding: {fileID: 11400000, guid: e4f662a0814e468468b8312996c49c25, type: 2}
+  gameOver: {fileID: 11400000, guid: abbb299328cf9424fb52e94dd39d7193, type: 2}
+  tutorial: {fileID: 11400000, guid: 38c15088ebaa7e74ebe8472e476d9566, type: 2}
+  battle1: {fileID: 11400000, guid: 4a3d1358bbf7dce4696952a81730454a, type: 2}
+  battle2trueEndingPath: {fileID: 11400000, guid: abbb299328cf9424fb52e94dd39d7193, type: 2}
+  battle2: {fileID: 11400000, guid: 8c9e6060f26891d4db6a11267881ddc6, type: 2}
+  battle3: {fileID: 11400000, guid: d0c4da89b1fb46d438d31b92c487d7cf, type: 2}
