@@ -24,14 +24,25 @@ namespace GotchaNow
 		[SerializeField] private Transform popupParent;
 
 		[Header("Variables")]
+		[Header("Popup Animation Settings")]
 		[SerializeField] private float popUpDuration = 0.5f;
 		[SerializeField] private float displayDuration = 2f;
 		[SerializeField] private float popDownDuration = 0.5f;
 
+		[Header("Jiggle Settings")]
 		[SerializeField] private float jiggleInterval = 0.1f;
 		[SerializeField] private int jiggleAmount = 5;
 		[SerializeField] private float jiggleDuration = 0.5f;
 		[SerializeField] private float jiggleIntensity = 1f;
+
+		[Header("Button Press Animation Settings")]
+		[SerializeField] private float buttonPressInDuration = 0.1f;
+		[SerializeField] private float buttonPressDuration = 0.2f;
+		[SerializeField] private float buttonPopOutDuration = 0.1f;
+		[SerializeField] private float buttonPressScale = 0.9f;
+		[SerializeField] private float buttonPressPopupPopdownDelay = 0.1f;
+
+
 
 
 		private void Awake()
@@ -137,11 +148,19 @@ namespace GotchaNow
 					performedJiggles++;
 					popupScreen.StartJiggle(jiggleDuration, jiggleIntensity);
 				}
-
+				
 				yield return null;
 			}
 
+            popupScreen.StartButtonPressAnimation(buttonPressInDuration, buttonPressDuration, 
+				buttonPopOutDuration, buttonPressScale);
+                
 			acceptPopup?.Invoke();
+			
+			yield return new WaitForSeconds(buttonPressInDuration 
+				+ buttonPressDuration
+				+ buttonPopOutDuration
+				+ buttonPressPopupPopdownDelay);
 
 			float popDownTime = 0f;
 			while (popDownTime < popDownDuration)

@@ -2355,6 +2355,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1341414542286458786, guid: 308f1678a34224a469a1980b65634a47, type: 3}
+      propertyPath: buttonPressScale
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341414542286458786, guid: 308f1678a34224a469a1980b65634a47, type: 3}
       propertyPath: buffMePopupPrefab
       value: 
       objectReference: {fileID: 274303994880341787, guid: e9c3974edf2e179428e0f9d942b7ec53, type: 3}
