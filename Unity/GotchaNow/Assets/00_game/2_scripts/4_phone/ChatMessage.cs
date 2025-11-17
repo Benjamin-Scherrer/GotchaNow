@@ -38,7 +38,7 @@ namespace GotchaNow
 			{
 				throw new System.ArgumentNullException("messageData", "ChatMessageData provided to InitializeMessage is null.");
 			}
-			if (messageData.SenderName == null)
+			if (messageData.GetSenderName == null)
 			{
 				throw new System.Exception("SenderName in ChatMessageData is null.");
 			}
@@ -67,7 +67,7 @@ namespace GotchaNow
 			{
 				throw new System.Exception("messageTextUI is not assigned in ChatMessage.");
 			}
-			messageSenderUI.text = messageData.SenderName;
+			messageSenderUI.text = messageData.GetSenderName;
 			messageSenderAvatarUI.sprite = messageData.SenderAvatar;
 			messageTextUI.text = messageData.MessageContent;
 

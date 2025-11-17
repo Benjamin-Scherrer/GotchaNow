@@ -154,7 +154,7 @@ namespace GotchaNow
 
 			// Typing Preview
 			messageScript.ScaleMessageRespectingFontSize(startScale);
-			messageScript.SetSenderText(messageData.SenderName + " is typing...");
+			messageScript.SetSenderText(messageData.GetSenderName + " is typing...");
 			messageScript.SetMessageText("");
 			PushDown();
 			while (typingPreview > 0f)
@@ -169,7 +169,7 @@ namespace GotchaNow
 
 			float elapsedTime = 0f;
 			Debug.Log("Message instantiated: " + messageScript.name);
-			messageScript.SetSenderText(messageData.SenderName);
+			messageScript.SetSenderText(messageData.GetSenderName);
 			messageScript.SetMessageText(messageData.MessageContent);
 
 			messageScript.Written = true;
