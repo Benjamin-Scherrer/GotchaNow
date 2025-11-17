@@ -24,6 +24,8 @@ namespace GotchaNow
 
 		public bool GettingSwipedAway = false;
 
+		public bool Written = false;
+
 		//PUBLIC PROPERTIES
 		public float getHeight => Mathf.Lerp(messageFoldedHeight, messageUnfoldedHeight, messageFoldingCoef);
 		// public float getHeight => (scalingRectTransform != null) ? scalingRectTransform.rect.height : 0f;
@@ -68,6 +70,8 @@ namespace GotchaNow
 			messageSenderUI.text = messageData.SenderName;
 			messageSenderAvatarUI.sprite = messageData.SenderAvatar;
 			messageTextUI.text = messageData.MessageContent;
+
+			Written = false;
 		}
 
 		public void SetSenderText(string newText)

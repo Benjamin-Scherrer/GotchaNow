@@ -12,24 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
   m_Name: 001_0tutorial
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  chatMessages:
-  - senderName: Test Guy
-    senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-    messageContent: 1
-    typingPreview: 2
-    delayTillNext: 3
-  - senderName: Test Guy
-    senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-    messageContent: 2
-    typingPreview: 2
-    delayTillNext: 3
-  - senderName: Test Guy
-    senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-    messageContent: 3
-    typingPreview: 2
-    delayTillNext: 3
-  - senderName: Test Guy
-    senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-    messageContent: Test, test, test, over.
-    typingPreview: 2
-    delayTillNext: 3
+  chatMessages: []

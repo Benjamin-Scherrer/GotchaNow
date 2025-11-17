@@ -32,6 +32,7 @@ namespace GotchaNow
 		//PUBLIC
 		public void DisplayMessageHistory()
 		{
+			Debug.Log("Displaying message history.");
 			StartCoroutine(ShowChatMessageHistory(messageSelector.GetChatMessageHistory()));
 		}
 
@@ -76,15 +77,15 @@ namespace GotchaNow
         //     }
 		// }
 
-		private void SpawnMessageHistory(ChatMessageHistory chatMessageHistory)
-		{
-			if (chatMessageHistory == null)
-			{
-				Debug.LogWarning("Attempted to spawn a null ChatMessageHistory.");
-				return;
-			}
-			StartCoroutine(ShowChatMessageHistory(chatMessageHistory));
-		}
+		// private void SpawnMessageHistory(ChatMessageHistory chatMessageHistory)
+		// {
+		// 	if (chatMessageHistory == null)
+		// 	{
+		// 		Debug.LogWarning("Attempted to spawn a null ChatMessageHistory.");
+		// 		return;
+		// 	}
+		// 	StartCoroutine(ShowChatMessageHistory(chatMessageHistory));
+		// }
 
 		private IEnumerator ShowChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
@@ -110,6 +111,7 @@ namespace GotchaNow
 
 		private IEnumerator SwipeCascade()
         {
+			WaitForSeconds waitForSeconds = new(0.2f);
             for (int i = 0; i < activeMessages.Count; i++)
 			{
 				ChatMessage msg = activeMessages[i];
@@ -118,8 +120,12 @@ namespace GotchaNow
 					activeMessages.Remove(msg);
 					continue;
 				}
+				if(msg.Written == false)
+				{
+					continue;
+				}
 				StartCoroutine(SwipeAwayMessage(msg, swipeAwayDuration));
-				yield return new WaitForSeconds(0.2f);
+				yield return waitForSeconds;
 			}
         }
 
@@ -165,6 +171,8 @@ namespace GotchaNow
 			Debug.Log("Message instantiated: " + messageScript.name);
 			messageScript.SetSenderText(messageData.SenderName);
 			messageScript.SetMessageText(messageData.MessageContent);
+
+			messageScript.Written = true;
 			// Here you can add animation code if needed
 			while (elapsedTime < popUpDuration)
 			{
