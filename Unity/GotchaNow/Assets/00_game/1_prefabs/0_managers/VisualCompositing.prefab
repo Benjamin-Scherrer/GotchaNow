@@ -88,7 +88,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9219916454450984795, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5519995529473899260}
   m_SourcePrefab: {fileID: 100100000, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
 --- !u!4 &1980204547691999053 stripped
 Transform:
@@ -100,6 +103,25 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 3951446348026154154, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
   m_PrefabInstance: {fileID: 1161776628528180619}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8065045997556964048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9219916454450984795, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+  m_PrefabInstance: {fileID: 1161776628528180619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5519995529473899260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065045997556964048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &8817837948925142348
 PrefabInstance:
   m_ObjectHideFlags: 0

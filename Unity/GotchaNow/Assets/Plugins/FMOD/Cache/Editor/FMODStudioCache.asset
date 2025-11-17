@@ -15,15 +15,45 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 3664920439720309852}
   - {fileID: 3101832715778800861}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 212525450827988564}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3101832715778800861}
   StringsBanks:
   - {fileID: 3664920439720309852}
   cacheVersion: 131849
-  cacheTime: 638953577200045579
-  SerializableEventsDict: []
+  cacheTime: 638989860462800806
+  SerializableEventsDict:
+  - key: event:/TestSound
+    index: 0
+--- !u!114 &212525450827988564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TestSound
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/TestSound
+  Guid:
+    Data1: -1947487075
+    Data2: 1284849923
+    Data3: 1627888020
+    Data4: 1644882251
+  Banks:
+  - {fileID: 3101832715778800861}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 816
 --- !u!114 &3101832715778800861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,10 +69,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638953577200045579
+  lastModified: 638989860462790809
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 12672
   Exists: 1
 --- !u!114 &3664920439720309852
 MonoBehaviour:
@@ -59,8 +89,8 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638953577200045579
+  lastModified: 638989860462800806
   FileSizes:
   - Name: Desktop
-    Value: 724
+    Value: 770
   Exists: 1

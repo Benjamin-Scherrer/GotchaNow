@@ -111,11 +111,11 @@ public class BossEnemy : MonoBehaviour
         distance = enemy.DistanceCheck(pb.gameObject.transform.position);
         Debug.Log("distance to player: " + distance);
 
-        /* if (distance <= shoulderBashRange)
+        if (distance <= shoulderBashRange)
         {
             StartCoroutine(ShoulderBash());
             ResetWalkAnim();
-        } */
+        }
         /* if (distance <= clawSwipeRange)
         {
             StartCoroutine(ClawSwipe());
@@ -131,11 +131,11 @@ public class BossEnemy : MonoBehaviour
             StartCoroutine(HammerSpin());
             ResetWalkAnim();
         } */
-        if (distance <= hammerCombo1Range)
+        /* if (distance <= hammerCombo1Range)
         {
             StartCoroutine(HammerCombo1());
             ResetWalkAnim();
-        }
+        } */
         else
         {
             //approach player
@@ -480,8 +480,6 @@ public class BossEnemy : MonoBehaviour
     private IEnumerator HammerCombo2()
     {
         AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
-        
-        Debug.Log("combo2");
 
         float atkTimer = 0;
         animator.SetTrigger("Combo2");

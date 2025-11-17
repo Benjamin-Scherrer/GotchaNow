@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 //using System.Numerics;
@@ -93,6 +94,8 @@ public class PlayerBattle : MonoBehaviour
 
     private bool blockReady = true;
     [HideInInspector] public bool parrySuccessful = false;
+
+    public FMODUnity.EventReference Slash1SFX;
 
     //colors
     /* public Material defaultMaterial;
@@ -553,7 +556,8 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = slash1.GetComponent<AttackScript>();
 
         animator.SetTrigger("attack1");
-
+        FMODUnity.RuntimeManager.PlayOneShot(Slash1SFX, transform.position);
+        
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
 
