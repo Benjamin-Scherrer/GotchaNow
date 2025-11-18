@@ -8,7 +8,7 @@ namespace GotchaNow
 	{
         public void StartBattle(string id) //enable battle controls, enable enemies
 		{
-			Debug.Log("Starting Battle: " + id);
+			// Debug.Log("Starting Battle: " + id);
 			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
 			ProgressionManager.instance.StartBattle(id);
 		}
@@ -18,7 +18,7 @@ namespace GotchaNow
 			if (NarrativeController.Instance == null) throw new System.Exception("NarrativeController instance is null");
 			while (NarrativeController.Instance.IsNarrating)
 			{
-				Debug.Log("Manual Skip Dialogue called from UnityEventSceneReroute");
+				// Debug.Log("Manual Skip Dialogue called from UnityEventSceneReroute");
 				NarrativeController.Instance.NextNarrative();
 			}
 		}
@@ -32,7 +32,6 @@ namespace GotchaNow
 		{
 			switch (alignment)
 			{
-
 				case "bottom":
 					throw new NotImplementedException("Bottom alignment not implemented yet");
 					// break;

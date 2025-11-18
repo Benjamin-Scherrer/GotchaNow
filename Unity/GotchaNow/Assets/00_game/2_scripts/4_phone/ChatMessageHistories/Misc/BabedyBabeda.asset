@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: BabedyBabeda
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 0
+  chatMessageDataViewer:
+    fireMode: 1
+    amountToFire: 3
+    chatMessages:
+    - typingPreview: 0
+      senderName: 10
+      messageContent: BABEDI BABEDA
+      delayTillNext: 1
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: THIS IS AN ENDING
+      delayTillNext: 1
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: SKRAA BIDBEDIBBEDI BA
+      delayTillNext: 1
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: PEW PEW PEW
+      delayTillNext: 1
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: WOW YOU MADE IT!
+      delayTillNext: 1
+      messageLifetime: 5
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 0}

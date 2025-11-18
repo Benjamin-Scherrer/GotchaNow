@@ -9,9 +9,30 @@ namespace GotchaNow
 	{
 		[Serializable]
 		public class ChatMessageDataViewer {
+			public enum FireMode
+            {
+                fireAll,
+				fireAmount
+            }
+			[SerializeField] private FireMode fireMode = FireMode.fireAll;
+			[ShowIf("fireMode", FireMode.fireAmount)]
+			[SerializeField] private int amountToFire;
 			[SerializeField] private ChatMessageData[] chatMessages;
 			public ChatMessageData[] ChatMessages => chatMessages;
-			// public ChatMessageData[] ChatMessages => chatMessages;
+			public int AmountToFire {
+				get {
+					if(fireMode == FireMode.fireAll)
+					{
+						return chatMessages.Length;
+					}
+					else
+					{
+						return amountToFire;
+					}
+				}
+			}
+
+			public FireMode GetFireMode { get { return fireMode; } }
 		}
 
 		[Serializable]
@@ -22,14 +43,15 @@ namespace GotchaNow
         }
 
 		[Header("Chat Message History Type")]
-		[SerializeField] private ChatMessageDataType messageDataType = ChatMessageDataType.Chronological;
+		[SerializeField] private ChatMessageHistoryType chatMessageHistoryType = ChatMessageHistoryType.Simple;
+		[SerializeField] private ChatMessageHistoryOrder messageHistoryOrder = ChatMessageHistoryOrder.Chronological;
 
-		[HideIf("messageDataType", ChatMessageDataType.Conglomerate)]
+		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Simple)]
 		 [SerializeField] private ChatMessageDataViewer chatMessageDataViewer;
 		// [SerializeField] private ChatMessageData[] chatMessages;
 		// [SerializeField] private bool test1;
 
-		[ShowIf("messageDataType", ChatMessageDataType.Conglomerate)]
+		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Conglomerate)]
 		[SerializeField] private ChatMessageHistoryWrapper chatMessageHistoryWrapper;
 		
 		// [SerializeField] private bool test2;
@@ -44,30 +66,90 @@ namespace GotchaNow
 
 		// for conglomerate type
 		private int conglomerateCurrentHistoryIndex = 0;
-		
+
+		// amount to fire
+		private int amountFired = 0;
+		public bool FiredOut
+        {
+            get
+            {
+				switch(chatMessageHistoryType)
+				{
+					case ChatMessageHistoryType.Simple:
+                        int amountToFire = chatMessageDataViewer.GetFireMode switch
+                        {
+                            ChatMessageDataViewer.FireMode.fireAll => chatMessages.Length,
+                            ChatMessageDataViewer.FireMode.fireAmount => chatMessageDataViewer.AmountToFire,
+                            _ => throw new Exception("Invalid FireMode."),
+                        };
+						if(amountToFire > chatMessages.Length 
+							&& messageHistoryOrder == ChatMessageHistoryOrder.Chronological)
+							throw new Exception("Amount to fire exceeds available chat messages in Chronological mode.");
+
+                        // Debug.Log($"Simple FiredOut check. AmountFired: {amountFired}, AmountToFire: {amountToFire}");
+						// Debug.Log("Simple FiredOut check: " + (amountFired >= amountToFire));
+						return amountFired >= amountToFire;
+
+					case ChatMessageHistoryType.Conglomerate:
+						bool allFiredOut = true;
+						foreach(var history in conglomerateHistories)
+						{
+							if(history.FiredOut) continue;
+							allFiredOut = false;
+							break;
+						}
+						// Debug.Log("Conglomerate FiredOut check: " + allFiredOut);
+						return allFiredOut;
+					default:
+						throw new Exception("Invalid ChatMessageDataType.");
+				}
+            }
+        } 
+
+		public void ResetAmountFired()
+		{
+			switch(chatMessageHistoryType)
+			{
+				case ChatMessageHistoryType.Simple:
+					// Debug.Log("Resetting amount fired for Simple ChatMessageHistory.");
+					amountFired = 0;
+					break;
+				case ChatMessageHistoryType.Conglomerate:
+					// Debug.Log("Resetting amount fired for Conglomerate ChatMessageHistory.");
+					foreach(var history in conglomerateHistories)
+					{
+						history.ResetAmountFired();
+					}
+					break;
+				default:
+					throw new Exception("Invalid ChatMessageDataType.");
+			}
+		}
+
+		public ChatMessageHistoryType ChatMessageHistoryType => chatMessageHistoryType;
+		public ChatMessageHistoryOrder MessageHistoryOrder => messageHistoryOrder;
+
 		//PUBLIC
 		public ChatMessageData GetNextMessage()
 		{
-            return messageDataType switch
+			amountFired++;
+			ChatMessageData chatMessageData = chatMessageHistoryType switch
             {
-                ChatMessageDataType.Chronological => GetNextMessageChronological(),
-                ChatMessageDataType.Achronological => GetNextMessageAchronological(),
-                ChatMessageDataType.Conglomerate => GetNextMessageConglomerate(),
+                ChatMessageHistoryType.Simple => GetNextMessageSimple(),
+                ChatMessageHistoryType.Conglomerate => GetNextMessageConglomerate(),
                 _ => throw new Exception("Invalid ChatMessageDataType."),
-            };
+            } ?? throw new Exception("ChatMessageData is null.");
+            return chatMessageData;
         }
 
 		public void ResetChatHistory()
 		{
-			switch(messageDataType)
+			switch(chatMessageHistoryType)
 			{
-				case ChatMessageDataType.Chronological:
-					ResetChatHistoryChronological();
+				case ChatMessageHistoryType.Simple:
+					ResetChatHistorySimple();
 					break;
-				case ChatMessageDataType.Achronological:
-					ResetChatHistoryAchronological();
-					break;
-				case ChatMessageDataType.Conglomerate:
+				case ChatMessageHistoryType.Conglomerate:
 					ResetChatHistoryConglomerate();
 					break;
 				default:
@@ -76,47 +158,82 @@ namespace GotchaNow
 		}
 
 		// PRIVATE
-		private ChatMessageData GetNextMessageChronological()
+		private ChatMessageData GetNextMessageSimple()
+		{
+			ChatMessageData chatMessageData = messageHistoryOrder switch
+            {
+                ChatMessageHistoryOrder.Chronological => GetNextMessageSimpleChronological(),
+                ChatMessageHistoryOrder.Achronological => GetNextMessageSimpleAchronological(),
+                _ => throw new Exception("Invalid ChatMessageHistoryOrder."),
+            } ?? throw new Exception("ChatMessageData is null.");
+			return chatMessageData;
+        }
+
+		private ChatMessageData GetNextMessageSimpleChronological()
         {
             if (chatMessages == null || chatMessages.Length == 0)
 			{
-				Debug.LogWarning("ChatMessageHistory has no messages.");
-				return null;
+				throw new Exception("SinmpleChronological | ChatMessageHistory has no messages.");
 			}
 
 			if (currentIndex >= chatMessages.Length)
 			{
-				Debug.Log("Reached the end of ChatMessageHistory.");
-				return null;
+				switch (chatMessageDataViewer.GetFireMode)
+				{
+					case ChatMessageDataViewer.FireMode.fireAll:
+						// There is a big change you forgot to set the firemode to random
+						throw new Exception("SimpleChronological | Reached the end of ChatMessageHistory." + 
+						" CurrentIndex: " + currentIndex + ", ChatMessages Length: " + chatMessages.Length);
+					case ChatMessageDataViewer.FireMode.fireAmount:
+						Debug.LogWarning("SimpleChronological | Reached the end of ChatMessageHistory with fireAmount mode." +
+							"You should probably make sure the");
+						return new ChatMessageData(); // return a blank message to indicate the end
+				}
 			}
 
-			ChatMessageData message = chatMessages[currentIndex];
-			currentIndex++;
+			ChatMessageData message = chatMessages[currentIndex]
+				?? throw new Exception("SimpleChronological | ChatMessageData at index " + currentIndex + " is null.");
+            currentIndex++;
 			return message;
         }
 
-		private ChatMessageData GetNextMessageAchronological()
+		private ChatMessageData GetNextMessageSimpleAchronological()
         {
             if (chatMessages == null || chatMessages.Length == 0)
             {
-				Debug.LogWarning("ChatMessageHistory has no messages.");
-				return null;
+				throw new Exception("SimpleAchronological | ChatMessageHistory has no messages.");
             }
 			if (achronologicalIndices == null)
             {
-                Debug.LogWarning("Achronological indices not initialized. Resetting chat history.");
-            }
-			if(achronologicalIndices.Count == 0)
-			{
-				Debug.Log("Reached the end of ChatMessageHistory.");
-				return null;
+                throw new Exception("SimpleAchronological | Achronological indices not initialized. Resetting chat history.");
 			}
+			// if(achronologicalIndices.Count == 0)
+			// {
+			// 	Debug.Log("SimpleAchronological | Reached the end of ChatMessageHistory.");
+			// 	return null;
+			// }
 
-			int nextIndex = achronologicalIndices.PickRandom();
-			achronologicalIndices.Remove(nextIndex);
-			return chatMessages[nextIndex];
+			int recursionSafety = 128;
+			while(recursionSafety-- > 0)
+			{
+				if(achronologicalIndices.Count == 0)
+				{
+					ResetChatHistorySimpleAchronological();
+				}
+				int nextIndex = achronologicalIndices.PickRandom();
+				achronologicalIndices.Remove(nextIndex);
+				if(nextIndex < 0 || nextIndex >= chatMessages.Length)
+                {
+					throw new Exception("Achronological index out of bounds.");
+                }
+				ChatMessageData message = chatMessages[nextIndex]
+					?? throw new Exception("SimpleAchronological | ChatMessageData at index " + nextIndex + " is null.");
+				return message;
+			}
+			throw new Exception("Failed to get next achronological message after multiple attempts.");
 		}
 
+		// CONGLOMERATE
 		private ChatMessageData GetNextMessageConglomerate()
 		{
 			if(conglomerateHistories == null || conglomerateHistories.Length == 0)
@@ -130,8 +247,20 @@ namespace GotchaNow
 				return null;
 			}
 
+            ChatMessageData chatMessageData = messageHistoryOrder switch
+            {
+                ChatMessageHistoryOrder.Chronological => GetNextMessageConglomerateChronological(),
+                ChatMessageHistoryOrder.Achronological => GetNextMessageConglomerateAchronological(),
+                _ => throw new Exception("Invalid ChatMessageHistoryOrder."),
+            } ?? throw new Exception("ChatMessageData is null.");
+			return chatMessageData;
+        }
+
+		private ChatMessageData GetNextMessageConglomerateChronological()
+		{
 			ChatMessageData message = null;
-			for(int i = 0; i < conglomerateHistories.Length; i++)
+			int repetitions = 128;
+			while(repetitions-- > 0)
             {
 				if(conglomerateCurrentHistoryIndex >= conglomerateHistories.Length)
 				{
@@ -150,12 +279,13 @@ namespace GotchaNow
 					conglomerateCurrentHistoryIndex++;
 					continue;
 				}
-				message = currentHistory.GetNextMessage();
-				if(message == null)
-                {
+				if(currentHistory.FiredOut)
+				{
 					conglomerateCurrentHistoryIndex++;
-                    continue;
-                }
+					continue;
+				}
+				message = currentHistory.GetNextMessage() 
+					?? throw new Exception("ChatMessageData is null.");
 				break;
             }
 			if(message == null)
@@ -166,13 +296,70 @@ namespace GotchaNow
 			return message;
 		}
 
+		private ChatMessageData GetNextMessageConglomerateAchronological()
+		{
+			ChatMessageData message = null;
+			conglomerateCurrentHistoryIndex = UnityEngine.Random.Range(0, conglomerateHistories.Length);
+			int repetitions = 100;
+			while (repetitions-- > 0)
+            {
+				if(conglomerateCurrentHistoryIndex >= conglomerateHistories.Length)
+				{
+					conglomerateCurrentHistoryIndex = 0;
+					continue;
+				}
+				ChatMessageHistory currentHistory = conglomerateHistories[conglomerateCurrentHistoryIndex];
+				if(currentHistory == null)
+				{
+					Debug.LogWarning("A ChatMessageHistory in the Conglomerate is null. Skipping.");
+					conglomerateCurrentHistoryIndex++;
+					continue;
+				}
+				if(currentHistory == this)
+				{
+					Debug.LogWarning("A ChatMessageHistory in the Conglomerate is itself. Skipping to avoid infinite loop.");
+					conglomerateCurrentHistoryIndex++;
+					continue;
+				}
+				if(currentHistory.FiredOut)
+				{
+					conglomerateCurrentHistoryIndex++;
+					continue;
+				}
+				message = currentHistory.GetNextMessage() 
+					?? throw new Exception("ChatMessageData is null.");
+				break;
+            }
+			if(message == null)
+			{
+				Debug.Log("Reached the end of Conglomerate ChatMessageHistory.");
+				return null;
+			}
+			return message;
+		}
+
+
 		//RESET
-		private void ResetChatHistoryChronological()
+		private void ResetChatHistorySimple()
+		{
+			switch (messageHistoryOrder)
+			{
+				case ChatMessageHistoryOrder.Chronological:
+					ResetChatHistorySimpleChronological();
+					break;
+				case ChatMessageHistoryOrder.Achronological:
+					ResetChatHistorySimpleAchronological();
+					break;
+				default:
+					throw new Exception("Invalid ChatMessageHistoryOrder.");
+			}
+		}
+		private void ResetChatHistorySimpleChronological()
 		{
 			currentIndex = 0;
 		}
 
-		private void ResetChatHistoryAchronological()
+		private void ResetChatHistorySimpleAchronological()
 		{
 			achronologicalIndices = new List<int>();
 			for (int i = 0; i < chatMessages.Length; i++)

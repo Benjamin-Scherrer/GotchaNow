@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
   m_Name: 010_Intermission1
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  messageDataType: 2
+  chatMessageHistoryType: 1
+  messageHistoryOrder: 0
   chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
     chatMessages:
     - typingPreview: 2
-      senderName: TEST
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
+      senderName: 0
       messageContent: TEST TEST TEST
       delayTillNext: 2
       messageLifetime: 3
     - typingPreview: 2
-      senderName: TEST
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
+      senderName: 0
       messageContent: TEST TEST TEST
       delayTillNext: 2
       messageLifetime: 3
     - typingPreview: 2
-      senderName: TEST
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
+      senderName: 0
       messageContent: TEST TEST TEST
       delayTillNext: 2
       messageLifetime: 3

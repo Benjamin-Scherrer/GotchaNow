@@ -13,20 +13,20 @@ namespace GotchaNow
             [InspectorName("KingBob")] KingBob,
 			[InspectorName("Honey._.Bear")] HoneyBear,
 			[InspectorName("CeilingFanEnthusast")] CeilingFanEnthusast,
-			[InspectorName("TurtleHerder")] TurtleHerder
+			[InspectorName("TurtleHerder")] TurtleHerder,
+			[InspectorName("Ikigai Tournament")] IkigaiTournament = 10
         }
 		
 		[Header("Start")]
-		[SerializeField] private float typingPreview = 2f;
+		[SerializeField] private float typingPreview = 0f;
 
 		[Header("Message Content")]
-		[SerializeField] private SenderName senderName;
-		[SerializeField] private Sprite senderAvatar;
-		[SerializeField] [TextArea(3, 10)] private string messageContent;
+		[SerializeField] private SenderName senderName = SenderName.KingBob;
+		[SerializeField] [TextArea(3, 10)] private string messageContent = "";
 
 		[Header("End")]
-		[SerializeField] private float delayTillNext = 3f;
-		[SerializeField] private float messageLifetime = 5f;
+		[SerializeField] private float delayTillNext = 0f;
+		[SerializeField] private float messageLifetime = 0f;
 
 		public string GetSenderName
         {
@@ -42,12 +42,14 @@ namespace GotchaNow
 						return "CeilingFanEnthusast";
 					case SenderName.TurtleHerder:
 						return "TurtleHerder";
+					case SenderName.IkigaiTournament:
+						return "Ikigai Tournament";
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
             }
         }
-		public Sprite SenderAvatar => senderAvatar;
+		
 		public string MessageContent => messageContent;
 
 		public float TypingPreview => typingPreview;

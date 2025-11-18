@@ -61,6 +61,7 @@ namespace GotchaNow
             };
         }
 		
+		// PRIVATE
 		private ChatMessageHistory BattleDialogue()
 		{
 			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
@@ -76,5 +77,26 @@ namespace GotchaNow
                 _ => throw new System.Exception("Invalid battle ID: " + battleID),
             };
         }
-	}
+
+        private void Awake()
+        {
+            intro?.ResetChatHistory();
+			preBattle1?.ResetChatHistory();
+			intermission1?.ResetChatHistory();
+			intermission1TrueEndingPath?.ResetChatHistory();
+			preSecretBoss?.ResetChatHistory();
+			trueEnding?.ResetChatHistory();
+			trueEndingFailed?.ResetChatHistory();
+			neutralEnding?.ResetChatHistory();
+			badEnding?.ResetChatHistory();
+			gameOver?.ResetChatHistory();
+			
+			tutorial?.ResetChatHistory();
+			battle1?.ResetChatHistory();
+			battle2?.ResetChatHistory();
+			battle2trueEndingPath?.ResetChatHistory();
+			battle3?.ResetChatHistory();
+
+        }
+    }
 }

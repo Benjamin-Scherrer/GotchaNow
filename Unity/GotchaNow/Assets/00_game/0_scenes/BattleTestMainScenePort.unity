@@ -2462,6 +2462,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1162061838}
     - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
+      propertyPath: swipeTreshold
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: messageSpawnPoint
       value: 
       objectReference: {fileID: 1178423852}
@@ -2623,7 +2627,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: battle
+      value: intermission
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: sendNotifUI

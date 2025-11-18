@@ -40,7 +40,7 @@ namespace GotchaNow
 		{
 			if(enabled == false)
 			{
-				Debug.Log("DialogueSelector is disabled.");
+				// Debug.Log("DialogueSelector is disabled.");
 				return null;
 			}
 

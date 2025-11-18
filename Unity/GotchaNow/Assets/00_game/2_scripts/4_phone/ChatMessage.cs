@@ -10,9 +10,9 @@ namespace GotchaNow
 	{
 		[Header("UI References")]
 		[SerializeField] private Image backgroundImage;
-		[SerializeField] private TextMeshProUGUI messageSenderUI;
-		[SerializeField] private Image messageSenderAvatarUI;
-		[SerializeField] private TextMeshProUGUI messageTextUI;
+		[SerializeField] private TextMeshProUGUI messageSenderName;
+		[SerializeField] private Image messageSenderAvatar;
+		[SerializeField] private TextMeshProUGUI messageText;
 		// [SerializeField] private RectTransform scalingRectTransform;
 
 		[Header("Variables")]
@@ -32,7 +32,7 @@ namespace GotchaNow
 		// public Vector2 getLossyScale => (scalingRectTransform != null) ? scalingRectTransform.lossyScale : Vector2.one;
 
 		//PUBLIC METHODS
-		public void InitializeMessage(ChatMessageData messageData)
+		public void InitializeMessage(ChatMessageData messageData, Sprite senderImage, Sprite senderBackgroundImage)
 		{
 			if (messageData == null)
 			{
@@ -46,50 +46,56 @@ namespace GotchaNow
 			{
 				throw new System.Exception("MessageContent in ChatMessageData is null.");
 			}
-			if (messageData.SenderAvatar == null)
+
+			if(senderImage == null)
 			{
-				throw new System.Exception("SenderAvatar in ChatMessageData is null.");
+				// Debug.LogWarning("senderImage is not assigned in ChatMessage.");
+			}
+			if(senderBackgroundImage == null)
+			{
+				// Debug.LogWarning("senderBackgroundImage is not assigned in ChatMessage.");
 			}
 
 			if(backgroundImage == null)
 			{
 				throw new System.Exception("backgroundImage is not assigned in ChatMessage.");
 			}
-			if (messageSenderUI == null)
+			if (messageSenderName == null)
 			{
 				throw new System.Exception("messageSenderUI is not assigned in ChatMessage.");
 			}
-			if (messageSenderAvatarUI == null)
+			if (messageSenderAvatar == null)
 			{
 				throw new System.Exception("messageSenderAvatarUI is not assigned in ChatMessage.");
 			}
-			if (messageTextUI == null)
+			if (messageText == null)
 			{
 				throw new System.Exception("messageTextUI is not assigned in ChatMessage.");
 			}
-			messageSenderUI.text = messageData.GetSenderName;
-			messageSenderAvatarUI.sprite = messageData.SenderAvatar;
-			messageTextUI.text = messageData.MessageContent;
+			backgroundImage.sprite = senderBackgroundImage;
+			messageSenderName.text = messageData.GetSenderName;
+			messageSenderAvatar.sprite = senderImage;
+			messageText.text = messageData.MessageContent;
 
 			Written = false;
 		}
 
 		public void SetSenderText(string newText)
 		{
-			if (messageSenderUI == null)
+			if (messageSenderName == null)
 			{
 				throw new System.Exception("messageSenderUI is not assigned in ChatMessage.");
 			}
-			messageSenderUI.text = newText;
+			messageSenderName.text = newText;
 		}
 
 		public void SetMessageText(string newText)
 		{
-			if (messageTextUI == null)
+			if (messageText == null)
 			{
 				throw new System.Exception("messageTextUI is not assigned in ChatMessage.");
 			}
-			messageTextUI.text = newText;
+			messageText.text = newText;
 		}
 
 		public void ScaleMessageRespectingFontSize(Vector3 scaleVector)
@@ -99,7 +105,7 @@ namespace GotchaNow
 
 		public void ScaleMessageRespectingFontSize(float scaleFactor)
 		{
-			if (messageTextUI == null)
+			if (messageText == null)
 			{
 				throw new System.Exception("messageTextUI is not assigned in ChatMessage.");
 			}
@@ -115,29 +121,29 @@ namespace GotchaNow
 			//calculate Image size and position
 			float imagePosX = imageMargin;
 			float imagePosY = -imageMargin;
-			messageSenderAvatarUI.rectTransform.anchoredPosition = new(imagePosX, imagePosY);
+			messageSenderAvatar.rectTransform.anchoredPosition = new(imagePosX, imagePosY);
 
 			float imageHeight = Math.Max(backgroundHeight - 2 * imageMargin, 0f);
 			float imageWidth = imageHeight; //keep square
-			messageSenderAvatarUI.rectTransform.sizeDelta = new(imageWidth, imageHeight);
+			messageSenderAvatar.rectTransform.sizeDelta = new(imageWidth, imageHeight);
 
 			//calculate Sender Text size and position
 			float senderTextPosX = imageWidth + 2 * imageMargin;
 			float senderTextPosY = -textMargin;
-			messageSenderUI.rectTransform.anchoredPosition = new(senderTextPosX, senderTextPosY);
+			messageSenderName.rectTransform.anchoredPosition = new(senderTextPosX, senderTextPosY);
 
 			float senderTextWidth = Mathf.Max(backgroundWidth - senderTextPosX, 0f);
-			float senderTextHeight = messageSenderUI.fontSize; //keep font size
-			messageSenderUI.rectTransform.sizeDelta = new(senderTextWidth, senderTextHeight);
+			float senderTextHeight = messageSenderName.fontSize; //keep font size
+			messageSenderName.rectTransform.sizeDelta = new(senderTextWidth, senderTextHeight);
 
 			//calculate Message Text size and position
 			float messageTextPosX = senderTextPosX;
 			float messageTextPosY = senderTextPosY - senderTextHeight - textMargin;
-			messageTextUI.rectTransform.anchoredPosition = new(messageTextPosX, messageTextPosY);
+			messageText.rectTransform.anchoredPosition = new(messageTextPosX, messageTextPosY);
 
 			float messageTextWidth = Mathf.Max(backgroundWidth - messageTextPosX - textMargin, 0f);
 			float messageTextHeight = Math.Max(backgroundHeight + messageTextPosY - textMargin, 0f);
-			messageTextUI.rectTransform.sizeDelta = new(messageTextWidth, messageTextHeight);
+			messageText.rectTransform.sizeDelta = new(messageTextWidth, messageTextHeight);
 		}
 
 		//EDITOR

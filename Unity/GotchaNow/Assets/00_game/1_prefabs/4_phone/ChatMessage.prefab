@@ -513,11 +513,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessage
   backgroundImage: {fileID: 2262599009934087863}
-  messageSenderUI: {fileID: 8118354031437706020}
-  messageSenderAvatarUI: {fileID: 6578291885505832176}
-  messageTextUI: {fileID: 3241057083344030378}
+  messageSenderName: {fileID: 8118354031437706020}
+  messageSenderAvatar: {fileID: 6578291885505832176}
+  messageText: {fileID: 3241057083344030378}
   messageFoldedHeight: 32
   messageUnfoldedHeight: 64
   imageMargin: 6
   textMargin: 12
   messageFoldingCoef: 1
+  GettingSwipedAway: 0
+  Written: 0

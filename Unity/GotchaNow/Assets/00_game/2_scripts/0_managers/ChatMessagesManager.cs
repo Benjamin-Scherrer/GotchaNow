@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
-using UnityEssentials;
 
 namespace GotchaNow
 {
 	[RequireComponent(typeof(ChatMessageSelector))]
+	[RequireComponent(typeof(ChatMessageImageSelector))]
 	public class ChatMessagesManager : MonoBehaviour
 	{
 		public static ChatMessagesManager Instance;
@@ -27,13 +26,20 @@ namespace GotchaNow
 		[SerializeField] private int swipeTreshold = 3;
 
 		private ChatMessageSelector messageSelector;
+		private ChatMessageImageSelector messageImageSelector;
 		[SerializeField] private List<ChatMessage> activeMessages = new();
 
 		//PUBLIC
 		public void DisplayMessageHistory()
 		{
 			Debug.Log("Displaying message history.");
-			StartCoroutine(ShowChatMessageHistory(messageSelector.GetChatMessageHistory()));
+			ChatMessageHistory messageHistory = messageSelector.GetChatMessageHistory();
+			if (messageHistory == null)
+			{
+				// Debug.Log("No ChatMessageHistory found to display.");
+				return;
+			}
+			StartCoroutine(ShowChatMessageHistory(messageHistory));
 		}
 
 		//PRIVATE
@@ -58,44 +64,50 @@ namespace GotchaNow
 			{
 				throw new System.Exception("Multiple instances of ChatMessagesManager detected. There should only be one instance of ChatMessagesManager in the scene.");
 			}
+
+			messageImageSelector = GetComponent<ChatMessageImageSelector>();
+			if (messageImageSelector == null)
+			{
+				throw new System.Exception("ChatMessageImageSelector component is missing from ChatMessagesManager GameObject.");
+			}
+
 			Instance = this;
 		}
 
-		// private void Start()
-		// {
-		// 	// Example usage
-		// 	// SpawnMessageHistory(messageSelector.GetChatMessageHistory());
-
-		// 	StartCoroutine(LoopSpawnMessages());
-		// }
-
-		// private IEnumerator LoopSpawnMessages()
-		// {
-        //     while (true)
-        //     {
-		// 		yield return StartCoroutine(ShowChatMessageHistory(messageSelector.GetChatMessageHistory()));	
-        //     }
-		// }
-
-		// private void SpawnMessageHistory(ChatMessageHistory chatMessageHistory)
-		// {
-		// 	if (chatMessageHistory == null)
-		// 	{
-		// 		Debug.LogWarning("Attempted to spawn a null ChatMessageHistory.");
-		// 		return;
-		// 	}
-		// 	StartCoroutine(ShowChatMessageHistory(chatMessageHistory));
-		// }
-
 		private IEnumerator ShowChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
+			Debug.Log("Starting to show chat message history:" + chatMessageHistory.name);
 			yield return new WaitForSeconds(1f); // initial delay before starting chat message history
-			chatMessageHistory.ResetChatHistory();
-			ChatMessageData messageData;
-			while ((messageData = chatMessageHistory.GetNextMessage()) != null)
+
+			switch(chatMessageHistory.MessageHistoryOrder)
 			{
+				case ChatMessageHistoryOrder.Chronological:
+					chatMessageHistory.ResetChatHistory();
+					chatMessageHistory.ResetAmountFired();
+					break;
+				case ChatMessageHistoryOrder.Achronological:
+					chatMessageHistory.ResetAmountFired();
+					break;
+				default:
+					throw new System.Exception("Invalid ChatMessageHistoryType.");
+			}
+
+			ChatMessageData messageData;
+
+			int recursionSafety = 128; // prevent infinite loops
+			Debug.Log("ShowChatMessageHistory | Entering message display loop.");
+			while (!chatMessageHistory.FiredOut && recursionSafety-- > 0)
+			{
+				// Debug.Log(indentation + "Getting next message from chat message history.");
+				messageData = chatMessageHistory.GetNextMessage();
+				if (messageData == null)
+				{
+					Debug.LogWarning("ShowChatMessageHistory | Retrieved null ChatMessageData from ChatMessageHistory: " + chatMessageHistory.name);
+					continue;
+				}
 				float delayTillNext = messageData.DelayTillNext;
 				float displayDuration = messageData.DisplayDuration;
+				// Debug.Log(indentation + output + "Displaying message with delay: " + delayTillNext + " and duration: " + displayDuration);
 				StartCoroutine(ShowMessageAnimation(messageData, displayDuration));
 				if(activeMessages.Count >= swipeTreshold)
 				{
@@ -104,13 +116,27 @@ namespace GotchaNow
 				yield return new WaitForSeconds(delayTillNext);
 			}
 
-			// clean up after all messages have been shown
-			chatMessageHistory.ResetChatHistory();
+			switch(chatMessageHistory.MessageHistoryOrder)
+			{
+				case ChatMessageHistoryOrder.Chronological:
+					chatMessageHistory.ResetChatHistory();
+					chatMessageHistory.ResetAmountFired();
+					break;
+				case ChatMessageHistoryOrder.Achronological:
+					chatMessageHistory.ResetAmountFired();
+					break;
+				default:
+					throw new System.Exception("Invalid ChatMessageHistoryType.");
+			}
+
 			StartCoroutine(SwipeCascade());
+
+			// Debug.Log("Finished showing chat message history:" + chatMessageHistory.name);
 		}
 
 		private IEnumerator SwipeCascade()
         {
+			// Debug.Log("Starting swipe cascade.");
 			WaitForSeconds waitForSeconds = new(0.2f);
             for (int i = 0; i < activeMessages.Count; i++)
 			{
@@ -133,16 +159,22 @@ namespace GotchaNow
 		{
 			if (messageData == null)
 			{
-				Debug.LogWarning("Attempted to show a null ChatMessageData.");
+				Debug.LogWarning("ShowMessageAnimation | Attempted to show a null ChatMessageData.");
 				yield break;
 			}
+			// Debug.Log("ShowMessageAnimation | Showing message animation for message from: " + messageData.GetSenderName);
+
 			float typingPreview = messageData.TypingPreview;
 			Vector3 startScale = new(0.5f, 0.3f, 1f);
 
 			ChatMessage messageScript = Instantiate(messagePrefab, messageParent as RectTransform);
-			messageScript.InitializeMessage(messageData);
+
+			Sprite senderImage = messageImageSelector.GetSenderImage(messageData.GetSenderName);
+			Sprite senderBackgroundImage = messageImageSelector.GetSenderBackgroundImage(messageData.GetSenderName);
+
+			messageScript.InitializeMessage(messageData, senderImage, senderBackgroundImage);
 			activeMessages.Add(messageScript);
-			Debug.Log("Starting animation for message: " + messageScript.name);
+			// Debug.Log("ShowMessageAnimation | Starting animation for message: " + messageScript.name);
 
 			RectTransform messageRect = messageScript.transform as RectTransform;
 			RectTransform spawnRect = messageSpawnPoint as RectTransform;
@@ -168,7 +200,7 @@ namespace GotchaNow
 			}
 
 			float elapsedTime = 0f;
-			Debug.Log("Message instantiated: " + messageScript.name);
+			// Debug.Log("ShowMessageAnimation | Message instantiated: " + messageScript.name);
 			messageScript.SetSenderText(messageData.GetSenderName);
 			messageScript.SetMessageText(messageData.MessageContent);
 

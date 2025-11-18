@@ -4,10 +4,15 @@ using System;
 namespace GotchaNow
 {
     [Serializable]
-    public enum ChatMessageDataType
+    public enum ChatMessageHistoryType
+    {
+        Simple,
+        Conglomerate
+    }
+
+    public enum ChatMessageHistoryOrder
     {
         Chronological,
-        Achronological,
-        Conglomerate
+        Achronological
     }
 }

@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
   m_Name: 010_0Battle1
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  chatMessages: []
+  chatMessageHistoryType: 1
+  messageHistoryOrder: 1
+  chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
+    chatMessages: []
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 11400000, guid: e4929b74a14de984e9765178b4f24386, type: 2}

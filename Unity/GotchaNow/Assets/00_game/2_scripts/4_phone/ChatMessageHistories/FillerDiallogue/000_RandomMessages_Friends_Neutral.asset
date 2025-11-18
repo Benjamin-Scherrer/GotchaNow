@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: 000_RandomMessages_Friends_Neutral
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 1
+  chatMessageDataViewer:
+    fireMode: 1
+    amountToFire: 3
+    chatMessages:
+    - typingPreview: 2
+      senderName: 2
+      messageContent: Hey, you up?
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: How are you doing?
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: Was nice seeing ya yesterday.
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: Haven't seen you in a while.
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: Heyoo my turtle
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: Wanna hang out?
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: Wanna hang out?
+      delayTillNext: 3
+      messageLifetime: 5
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 0}
