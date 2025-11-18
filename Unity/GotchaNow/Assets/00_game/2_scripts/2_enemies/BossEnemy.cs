@@ -3,6 +3,7 @@ using System.Threading;
 using Unity.Properties;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossEnemy : MonoBehaviour
 {
@@ -85,6 +86,9 @@ public class BossEnemy : MonoBehaviour
     void OnEnable()
     {
         pb = PlayerBattle.Instance;
+
+        actionInProgress = false;
+
     }
 
     // Update is called once per frame
@@ -559,7 +563,11 @@ public class BossEnemy : MonoBehaviour
     {
         /* AttackScript atkScript = attack1.GetComponent<AttackScript>();
         atkScript.EndAttack(); */
+        StopAllCoroutines();
+        ResetWalkAnim();
+        animator.SetTrigger("GotHit"); //placeholder for death anim
 
+        GetComponent<EnemyIntermission>().enabled = true;
         this.enabled = false;
     }
 }

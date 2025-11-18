@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerBattle))]
 public class PlayerIntermission : MonoBehaviour
 {
     public static PlayerIntermission Instance;
@@ -24,7 +25,6 @@ public class PlayerIntermission : MonoBehaviour
 
         input = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
-
     }
     
     void Start()
@@ -90,6 +90,14 @@ public class PlayerIntermission : MonoBehaviour
             } */
             
         }
+    }
+
+    public void EndIntermission()
+    {   
+        animator.SetFloat("runIntensity", 0);
+        
+        GetComponent<PlayerBattle>().enabled = true;
+        enabled = false;
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)

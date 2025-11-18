@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
 using System.Threading;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Splines.Interpolators;
 using TMPro;
@@ -43,6 +44,8 @@ public class NotificationManager : MonoBehaviour
     public float currentQuota = 0;
     public float maxQuota = 0;
     public GameObject Meteor;
+    public UnityEvent BuffEnabled;
+    public UnityEvent BuffDisabled;
 
     void Awake()
     {
@@ -51,7 +54,10 @@ public class NotificationManager : MonoBehaviour
         request.Add(healRequest);
         request.Add(buffRequest);
         request.Add(meteorRequest);
-        request.Add(cancelRequest);   
+        request.Add(cancelRequest);
+
+        BuffEnabled = new UnityEvent();
+        BuffDisabled = new UnityEvent();   
     }
 
     void Start()
@@ -344,6 +350,8 @@ public class NotificationManager : MonoBehaviour
     {
         //buff effect
         Debug.Log("Buff accepted");
+
+        BuffEnabled.Invoke();
     }
     public void AcceptMeteor()
     {

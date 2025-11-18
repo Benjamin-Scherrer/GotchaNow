@@ -1,18 +1,21 @@
 using FMODUnity;
 using System;
 using System.Collections;
+using System.Threading;
+
 //using System.Numerics;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerIntermission))]
 public class PlayerBattle : MonoBehaviour
 {
     public static PlayerBattle Instance;
     public static event Action OnDeath;
     private InputSystem_Actions input = null;
     public BattleManager bm;
-    public NotificationManager nm;
     public GameObject model;
     [HideInInspector] public Rigidbody rb = null;
     private Vector2 moveVector = Vector2.zero;
@@ -94,6 +97,7 @@ public class PlayerBattle : MonoBehaviour
     private bool blockReady = true;
     [HideInInspector] public bool parrySuccessful = false;
     public bool buffActive = false;
+    public float buffTime;
     public float buffMult = 1.5f;
     public bool meteorExists = false;
     [Header("Sound FX")]
@@ -125,11 +129,24 @@ public class PlayerBattle : MonoBehaviour
     private void OnEnable()
     {
         //input system stuff
-        HP = maxHP;
-        
         input.Enable();
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCanceled;
+
+        //reset stats & bools
+        HP = maxHP;
+        
+        actionInProgress = false;
+        hitStun = false;
+
+        buffActive = false;
+        guardActive = false;
+        invulnerable = false;
+
+        slash1Queued = false;
+        slash2Queued = false;
+        slash3Queued = false;
+        dodgeQueued = false;
 
         /* input.Player.CameraControl.performed += OnCameraPerformed;
         input.Player.CameraControl.canceled += OnCameraCanceled; */
@@ -144,6 +161,12 @@ public class PlayerBattle : MonoBehaviour
 
         /* input.Player.CameraControl.performed -= OnCameraPerformed; 
         input.Player.CameraControl.canceled -= OnCameraCanceled; */
+    }
+
+    private void Start()
+    {
+        NotificationManager.instance.BuffEnabled.AddListener(EnableBuff);
+        NotificationManager.instance.BuffDisabled.AddListener(DisableBuff);
     }
 
     private void Update()
@@ -355,7 +378,9 @@ public class PlayerBattle : MonoBehaviour
             return;
         }
         
-        HP -= dmg;
+        if (buffActive) HP -= dmg * 0.5f;
+        else HP -= dmg;
+        
         hitStun = true;
 
         if (guardActive) //TO DO: IMPROVE (use EnemyAttackBox.attackBlocked)
@@ -444,8 +469,6 @@ public class PlayerBattle : MonoBehaviour
             {
                 animator.SetFloat("walkDirSide", direction.x);
                 animator.SetFloat("walkDirFwd", direction.y);
-
-                Debug.Log(animator.GetFloat("walkDirSide") + " " + animator.GetFloat("walkDirFwd"));
 
                 Vector3 targetPos = lockOnTarget.GetComponent<LockOnTarget>().targetEnemy.transform.position;
                 transform.LookAt(Vector3.Lerp(transform.position + transform.forward, new Vector3(targetPos.x, transform.position.y, targetPos.z), 0.15f));
@@ -721,7 +744,7 @@ public class PlayerBattle : MonoBehaviour
 
             if (chgTimer > heavySlashChargeTime / 2)
             {
-                model.GetComponent<Renderer>().material.color = Color.darkGreen; //debug
+                //
             }
 
             if (!input.Player.Attack2.IsPressed())
@@ -745,7 +768,6 @@ public class PlayerBattle : MonoBehaviour
             yield return null;
         }
 
-        model.GetComponent<Renderer>().material.color = Color.white; //debug
         StartCoroutine(HeavySlash(1)); //full power charge attack
         animator.SetBool("charging", false);
     }
@@ -855,6 +877,56 @@ public class PlayerBattle : MonoBehaviour
             StartCoroutine(BattleManager.instance.UpdatePlayerHP(HP/maxHP, (HP+hpAmount)/maxHP));
             HP += hpAmount;
         }
+    }
+
+    public void EnableBuff()
+    {
+        Debug.Log("buff activated");
+        
+        buffActive = true;
+        StartCoroutine(BuffTimer());
+    }
+
+    private IEnumerator BuffTimer()
+    {
+        float timer = 0;
+
+        while (timer < buffTime)
+        {
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        
+        DisableBuff();
+    }
+
+    public void DisableBuff()
+    {
+        Debug.Log("buff deactivated");
+        
+        buffActive = false;
+    }
+
+    public void EndBattle()
+    {
+        StopAllCoroutines();
+        EndBlock();
+
+        animator.SetFloat("runIntensity", 0);
+        animator.SetBool("charging", false);
+        
+        if (lockedOn)
+        {
+            lockedOn = false;
+            LockOn();
+
+            animator.SetBool("lockedOn", false);
+            animator.SetFloat("walkDirSide", 0);
+            animator.SetFloat("walkDirFwd", 0);
+        }
+        
+        GetComponent<PlayerIntermission>().enabled = true;
+        enabled = false;
     }
 
     //input system stuff for left analog movement

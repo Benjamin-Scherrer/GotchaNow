@@ -1,19 +1,32 @@
 using UnityEngine;
 using System.Collections;
 using System.Threading;
+using System;
 
 public class AttackBox : MonoBehaviour
 {
+    public float baseDmg = 30;
     public float damage = 30;
     public float duration = 1;
     public float movement = 1;
     public float knockback = 10;
+    public float buffMult = 1.5f;
 
     //private GameObject HitBloom;
 
     void OnEnable()
     {
         StartCoroutine(Duration(duration));
+
+        if (PlayerBattle.Instance.buffActive)
+        {
+            Debug.Log("buffed atk");
+            damage = baseDmg * buffMult;
+        }
+        else if (!PlayerBattle.Instance.buffActive)
+        {
+            damage = baseDmg;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

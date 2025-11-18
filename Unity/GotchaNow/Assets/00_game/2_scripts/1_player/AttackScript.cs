@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AttackScript : MonoBehaviour
 {
@@ -12,8 +13,13 @@ public class AttackScript : MonoBehaviour
     public float hitboxDmg;
     public float hitbox2Dmg;
 
-    public void StartAttack()
+    void Start()
     {
+        ProgressionManager.instance.EndBattleEvent.AddListener(EndBattle);
+    }
+
+    public void StartAttack()
+    {   
         if (attackType == "playerAttack")
         {
             StartCoroutine(PlayerAttack());
@@ -31,6 +37,10 @@ public class AttackScript : MonoBehaviour
     public void EndAttack()
     {
         hitbox.SetActive(false);
+        if (hitbox2 != null)
+        {
+            hitbox2.SetActive(false);
+        }
     }
 
     private IEnumerator PlayerAttack()
@@ -79,5 +89,11 @@ public class AttackScript : MonoBehaviour
         atkBox2.damage = hitbox2Dmg;
         atkBox2.duration = 0.25f;
         hitbox2.SetActive(true);
+    }
+
+    void EndBattle() //triggered through event
+    {
+        StopAllCoroutines();
+        EndAttack();
     }
 }

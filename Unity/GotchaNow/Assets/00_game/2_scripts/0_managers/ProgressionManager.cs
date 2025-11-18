@@ -5,6 +5,7 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -32,10 +33,13 @@ public class ProgressionManager : MonoBehaviour
     public Transform bossSpawnPoint;
     public Transform queenSpawnPoint;
     private bool skipReady = true;
+    public UnityEvent EndBattleEvent;
 
     void Awake()
     {
         instance = this;
+
+        EndBattleEvent = new UnityEvent();
     }
 
     void Start()
@@ -98,8 +102,7 @@ public class ProgressionManager : MonoBehaviour
 
         EnableIntermissionUI();
 
-        player.GetComponent<PlayerBattle>().enabled = false;
-        player.GetComponent<PlayerIntermission>().enabled = true;
+        
 
         if (intermissionID == "intro")
         {   
@@ -350,10 +353,8 @@ public class ProgressionManager : MonoBehaviour
             //Beni debug test
             boss.SetActive(true);
             //test end
-            
-            boss.GetComponent<BossEnemy>().enabled = true;
-            boss.GetComponent<EnemyIntermission>().enabled = false;
 
+            boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
             Vector3 spawnPoint = bossSpawnPoint.position;
@@ -454,6 +455,8 @@ public class ProgressionManager : MonoBehaviour
 
     public void EndBattle(float achievedQuota, float goalQuota) //trigger when main enemy is defeated
     {
+        EndBattleEvent.Invoke();
+        player.GetComponent<PlayerBattle>().EndBattle(); //clean up maybe
 
         if (battleID == "tutorial")
         {

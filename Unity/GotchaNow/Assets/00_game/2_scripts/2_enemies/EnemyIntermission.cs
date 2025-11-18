@@ -24,4 +24,10 @@ public class EnemyIntermission : MonoBehaviour
     {
         
     }
+
+    public void EndIntermission()
+    {
+        GetComponent<BossEnemy>().enabled = true;
+        this.enabled = false;
+    }
 }
