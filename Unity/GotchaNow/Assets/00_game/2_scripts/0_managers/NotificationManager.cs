@@ -42,6 +42,7 @@ public class NotificationManager : MonoBehaviour
     public float notifCharge = 0;
     public float currentQuota = 0;
     public float maxQuota = 0;
+    public GameObject Meteor;
 
     void Awake()
     {
@@ -348,6 +349,8 @@ public class NotificationManager : MonoBehaviour
     {
         //spawn meteor
         Debug.Log("Meteor accepted");
+
+        Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
     }
 
     public void ChargeNotifBar(float amount)

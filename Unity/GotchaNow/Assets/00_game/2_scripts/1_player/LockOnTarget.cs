@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class LockOnTarget : MonoBehaviour
 {
+    public static LockOnTarget instance;
     public GameObject player;
     public GameObject targetEnemy;
     private Vector3 distance;
     public float lerpSpeed = 0.2f;
 
+    void Awake()
+    {
+        instance = this;
+    }
+    
     void Start()
     {
         targetEnemy = null;

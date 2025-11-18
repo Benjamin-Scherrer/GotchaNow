@@ -91,10 +91,12 @@ public class PlayerBattle : MonoBehaviour
     public float baseKnockback = 2f;
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
-
     private bool blockReady = true;
     [HideInInspector] public bool parrySuccessful = false;
-
+    public bool buffActive = false;
+    public float buffMult = 1.5f;
+    public bool meteorExists = false;
+    [Header("Sound FX")]
     public FMODUnity.EventReference Slash1SFX;
 
     //colors
@@ -266,7 +268,7 @@ public class PlayerBattle : MonoBehaviour
                     StartCoroutine(RotateOnTargetSwitch());
                 }
             }
-            else if (lockedOn == true)
+            else if (lockedOn == true && !meteorExists)
             {
                 lockedOn = false;
                 LockOn();
@@ -275,7 +277,7 @@ public class PlayerBattle : MonoBehaviour
             lockOnReady = false;
         }
 
-        if (input.Player.LockOnR.IsPressed() && switchReadyR && lockedOn)
+        if (input.Player.LockOnR.IsPressed() && switchReadyR && lockedOn && !meteorExists)
         {
             lockOnCam.GetComponent<LockOnCamera>().SwitchTargetR();
 
@@ -287,7 +289,7 @@ public class PlayerBattle : MonoBehaviour
             switchReadyR = false;
         }
 
-        if (input.Player.LockOnL.IsPressed() && switchReadyL && lockedOn)
+        if (input.Player.LockOnL.IsPressed() && switchReadyL && lockedOn && !meteorExists)
         {
             lockOnCam.GetComponent<LockOnCamera>().SwitchTargetL();
 
