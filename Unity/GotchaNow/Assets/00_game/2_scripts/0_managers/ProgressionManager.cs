@@ -373,9 +373,7 @@ public class ProgressionManager : MonoBehaviour
         {
             queen.SetActive(false);
             
-            boss.GetComponent<BossEnemy>().enabled = true;
-            boss.GetComponent<EnemyIntermission>().enabled = false;
-
+            boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
             Vector3 spawnPoint = bossSpawnPoint.position;
@@ -403,9 +401,7 @@ public class ProgressionManager : MonoBehaviour
         {
             queen.SetActive(false);
             
-            boss.GetComponent<BossEnemy>().enabled = true;
-            boss.GetComponent<EnemyIntermission>().enabled = false;
-
+            boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
             Vector3 spawnPoint = bossSpawnPoint.position;
