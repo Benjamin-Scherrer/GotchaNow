@@ -7,55 +7,21 @@ namespace GotchaNow
 {
 	public class ChatMessageHistory : ScriptableObject
 	{
-		[Serializable]
-		public class ChatMessageDataViewer {
-			public enum FireMode
-            {
-                fireAll,
-				fireAmount
-            }
-			[SerializeField] private FireMode fireMode = FireMode.fireAll;
-			[ShowIf("fireMode", FireMode.fireAmount)]
-			[SerializeField] private int amountToFire;
-			[SerializeField] private ChatMessageData[] chatMessages;
-			public ChatMessageData[] ChatMessages => chatMessages;
-			public int AmountToFire {
-				get {
-					if(fireMode == FireMode.fireAll)
-					{
-						return chatMessages.Length;
-					}
-					else
-					{
-						return amountToFire;
-					}
-				}
-			}
-
-			public FireMode GetFireMode { get { return fireMode; } }
-		}
-
-		[Serializable]
-		public class ChatMessageHistoryWrapper
-        {
-            [SerializeField] private ChatMessageHistory[] conglomerateHistories;
-			public ChatMessageHistory[] ConglomerateHistories => conglomerateHistories;
-        }
-
+		// FIELDS
 		[Header("Chat Message History Type")]
 		[SerializeField] private ChatMessageHistoryType chatMessageHistoryType = ChatMessageHistoryType.Simple;
 		[SerializeField] private ChatMessageHistoryOrder messageHistoryOrder = ChatMessageHistoryOrder.Chronological;
 
 		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Simple)]
-		 [SerializeField] private ChatMessageDataViewer chatMessageDataViewer;
+		[SerializeField] private ChatMessageDataViewer chatMessageDataViewer;
 		// [SerializeField] private ChatMessageData[] chatMessages;
 		// [SerializeField] private bool test1;
 
 		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Conglomerate)]
 		[SerializeField] private ChatMessageHistoryWrapper chatMessageHistoryWrapper;
 		
-		// [SerializeField] private bool test2;
-
+		private bool inUse = false;
+		// PROPERTIES
 		private ChatMessageData[] chatMessages => chatMessageDataViewer.ChatMessages;
 		private ChatMessageHistory[] conglomerateHistories => chatMessageHistoryWrapper.ConglomerateHistories;
 		//for chronological type
@@ -78,8 +44,8 @@ namespace GotchaNow
 					case ChatMessageHistoryType.Simple:
                         int amountToFire = chatMessageDataViewer.GetFireMode switch
                         {
-                            ChatMessageDataViewer.FireMode.fireAll => chatMessages.Length,
-                            ChatMessageDataViewer.FireMode.fireAmount => chatMessageDataViewer.AmountToFire,
+                            FireMode.fireAll => chatMessages.Length,
+                            FireMode.fireAmount => chatMessageDataViewer.AmountToFire,
                             _ => throw new Exception("Invalid FireMode."),
                         };
 						if(amountToFire > chatMessages.Length 
@@ -104,8 +70,48 @@ namespace GotchaNow
 						throw new Exception("Invalid ChatMessageDataType.");
 				}
             }
-        } 
+        }
 
+		public bool InUse 
+		{ 
+			get 
+			{ 
+				switch(chatMessageHistoryType)
+				{
+					case ChatMessageHistoryType.Simple:
+						return inUse;
+					case ChatMessageHistoryType.Conglomerate:
+						if (inUse) return true;
+						foreach (var history in conglomerateHistories)
+						{
+							if (history.InUse) return true;
+						}
+						return false;
+					default:
+						throw new Exception("Invalid ChatMessageDataType.");
+				}
+			} 
+			set 
+			{ 
+				switch(chatMessageHistoryType)
+				{
+					case ChatMessageHistoryType.Simple:
+						inUse = value;
+						break;
+					case ChatMessageHistoryType.Conglomerate:
+						inUse = value;
+						foreach (var history in conglomerateHistories)
+						{
+							history.InUse = value;
+						}
+						break;
+					default:
+						throw new Exception("Invalid ChatMessageDataType.");
+				}
+			} 
+		}
+
+		// METHODS
 		public void ResetAmountFired()
 		{
 			switch(chatMessageHistoryType)
@@ -141,6 +147,13 @@ namespace GotchaNow
             } ?? throw new Exception("ChatMessageData is null.");
             return chatMessageData;
         }
+
+		public void ResetAllOnAwake()
+		{
+			ResetChatHistory();
+			ResetAmountFired();
+			inUse = false;
+		}
 
 		public void ResetChatHistory()
 		{
@@ -180,13 +193,13 @@ namespace GotchaNow
 			{
 				switch (chatMessageDataViewer.GetFireMode)
 				{
-					case ChatMessageDataViewer.FireMode.fireAll:
+					case FireMode.fireAll:
 						// There is a big change you forgot to set the firemode to random
 						throw new Exception("SimpleChronological | Reached the end of ChatMessageHistory." + 
 						" CurrentIndex: " + currentIndex + ", ChatMessages Length: " + chatMessages.Length);
-					case ChatMessageDataViewer.FireMode.fireAmount:
+					case FireMode.fireAmount:
 						Debug.LogWarning("SimpleChronological | Reached the end of ChatMessageHistory with fireAmount mode." +
-							"You should probably make sure the");
+							"You should probably make sure the amount to fire matches the number of messages availabley");
 						return new ChatMessageData(); // return a blank message to indicate the end
 				}
 			}

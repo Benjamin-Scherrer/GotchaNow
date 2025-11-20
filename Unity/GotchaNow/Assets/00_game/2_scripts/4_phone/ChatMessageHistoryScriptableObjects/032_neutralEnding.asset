@@ -10,39 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
-  m_Name: 000_RandomMessages_Game
+  m_Name: 032_neutralEnding
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
   chatMessageHistoryType: 0
   messageHistoryOrder: 1
   chatMessageDataViewer:
-    fireMode: 1
-    amountToFire: 3
+    fireMode: 0
+    amountToFire: 0
     chatMessages:
     - typingPreview: 0
       senderName: 10
-      messageContent: WOW! 50% OFF NOW!
-      delayTillNext: 1
-      messageLifetime: 5
+      messageContent: New character unlocked! Try NOW!
+      delayTillNext: 2
+      messageLifetime: 8
     - typingPreview: 0
       senderName: 10
-      messageContent: BUY BUY BUY!
-      delayTillNext: 1
-      messageLifetime: 5
+      messageContent: Try NOW 50% OFF!!!
+      delayTillNext: 2
+      messageLifetime: 8
     - typingPreview: 0
       senderName: 10
-      messageContent: BOST NOW 200% Extra XP!
-      delayTillNext: 1
-      messageLifetime: 5
-    - typingPreview: 0
-      senderName: 10
-      messageContent: YOU'RE WINNING!
-      delayTillNext: 1
-      messageLifetime: 5
-    - typingPreview: 0
-      senderName: 10
-      messageContent: KEEP ON GOING!
-      delayTillNext: 1
-      messageLifetime: 5
+      messageContent: Don't wait. Get your free character reroll NOW!
+      delayTillNext: 2
+      messageLifetime: 8
   chatMessageHistoryWrapper:
-    conglomerateHistories:
-    - {fileID: 0}
+    conglomerateHistories: []

@@ -20,9 +20,18 @@ namespace GotchaNow
 		[Header("TurtleHerder")]
 		[SerializeField] private Sprite turtleHerderImage;
 		[SerializeField] private Sprite turtleHerderBackgroundImage;
+
+		[Header("Mum")]
+		[SerializeField] private Sprite mumImage;
+		[SerializeField] private Sprite mumBackgroundImage;
+
 		[Header("Ikigai Tournament")]
 		[SerializeField] private Sprite ikigaiTournamentImage;
 		[SerializeField] private Sprite ikigaiTournamentBackgroundImage;
+
+		[Header("Bank")]
+		[SerializeField] private Sprite bankImage;
+		[SerializeField] private Sprite bankBackgroundImage;
 
 		//PUBLIC
 		public Sprite GetSenderImage(string senderName)
@@ -33,7 +42,9 @@ namespace GotchaNow
 				"Honey._.Bear" => honeyBearImage,
 				"CeilingFanEnthusast" => ceilingFanEnthusastImage,
 				"TurtleHerder" => turtleHerderImage,
+				"Mum" => mumImage,
 				"Ikigai Tournament" => ikigaiTournamentImage,
+				"Bank" => bankImage,
 				_ => null,
 			};
 		}
@@ -46,7 +57,9 @@ namespace GotchaNow
 				"Honey._.Bear" => honeyBearBackgroundImage,
 				"CeilingFanEnthusast" => ceilingFanEnthusastBackgroundImage,
 				"TurtleHerder" => turtleHerderBackgroundImage,
+				"Mum" => mumBackgroundImage,
 				"Ikigai Tournament" => ikigaiTournamentBackgroundImage,
+				"Bank" => bankBackgroundImage,
 				_ => null,
 			};
 		}

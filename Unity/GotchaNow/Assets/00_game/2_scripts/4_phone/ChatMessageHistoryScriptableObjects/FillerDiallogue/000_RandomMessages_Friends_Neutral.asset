@@ -16,12 +16,12 @@ MonoBehaviour:
   messageHistoryOrder: 1
   chatMessageDataViewer:
     fireMode: 1
-    amountToFire: 3
+    amountToFire: 2
     chatMessages:
     - typingPreview: 2
       senderName: 2
       messageContent: Hey, you up?
-      delayTillNext: 3
+      delayTillNext: 5
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
     - typingPreview: 2
       senderName: 2
       messageContent: Was nice seeing ya yesterday.
-      delayTillNext: 3
+      delayTillNext: 6
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
@@ -41,17 +41,17 @@ MonoBehaviour:
     - typingPreview: 2
       senderName: 3
       messageContent: Heyoo my turtle
-      delayTillNext: 3
+      delayTillNext: 4
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
       messageContent: Wanna hang out?
-      delayTillNext: 3
+      delayTillNext: 5
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
-      messageContent: Wanna hang out?
-      delayTillNext: 3
+      messageContent: Up for a team quest?
+      delayTillNext: 2
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories:

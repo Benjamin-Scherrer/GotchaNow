@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: 000_RandomMessages_Game
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 1
+  chatMessageDataViewer:
+    fireMode: 1
+    amountToFire: 3
+    chatMessages:
+    - typingPreview: 0
+      senderName: 10
+      messageContent: WOW! 50% OFF NOW!
+      delayTillNext: 4
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: BUY BUY BUY!
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: BOST NOW 200% Extra XP!
+      delayTillNext: 5
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: YOU'RE WINNING!
+      delayTillNext: 2
+      messageLifetime: 5
+    - typingPreview: 0
+      senderName: 10
+      messageContent: KEEP ON GOING!
+      delayTillNext: 4
+      messageLifetime: 5
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 0}

@@ -10,14 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
-  m_Name: 020_0Battle2
+  m_Name: 033_badEnding_MumPanic
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  chatMessageHistoryType: 1
-  messageHistoryOrder: 1
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 0
   chatMessageDataViewer:
     fireMode: 0
     amountToFire: 0
-    chatMessages: []
+    chatMessages:
+    - typingPreview: 4
+      senderName: 4
+      messageContent: Hey! I just got a notification that my credid card was billed
+        a huge amount.
+      delayTillNext: 5
+      messageLifetime: 8
+    - typingPreview: 1
+      senderName: 4
+      messageContent: . Do you know what's up?
+      delayTillNext: 2
+      messageLifetime: 8
   chatMessageHistoryWrapper:
-    conglomerateHistories:
-    - {fileID: 11400000, guid: e4929b74a14de984e9765178b4f24386, type: 2}
+    conglomerateHistories: []

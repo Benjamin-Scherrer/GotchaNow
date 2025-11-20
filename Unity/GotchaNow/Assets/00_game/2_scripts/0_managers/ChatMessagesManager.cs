@@ -39,7 +39,7 @@ namespace GotchaNow
 				// Debug.Log("No ChatMessageHistory found to display.");
 				return;
 			}
-			StartCoroutine(ShowChatMessageHistory(messageHistory));
+			StartCoroutine(QueueChatMessageHistory(messageHistory));
 		}
 
 		//PRIVATE
@@ -74,10 +74,24 @@ namespace GotchaNow
 			Instance = this;
 		}
 
+		private IEnumerator QueueChatMessageHistory(ChatMessageHistory chatMessageHistory)
+		{
+			WaitForSeconds waitForSeconds = new(1f);
+			while(chatMessageHistory.InUse)
+			{
+				yield return waitForSeconds;
+			}
+			chatMessageHistory.InUse = true;
+
+			yield return StartCoroutine(ShowChatMessageHistory(chatMessageHistory));
+
+			chatMessageHistory.InUse = false;
+
+		}
+
 		private IEnumerator ShowChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
 			Debug.Log("Starting to show chat message history:" + chatMessageHistory.name);
-			yield return new WaitForSeconds(1f); // initial delay before starting chat message history
 
 			switch(chatMessageHistory.MessageHistoryOrder)
 			{

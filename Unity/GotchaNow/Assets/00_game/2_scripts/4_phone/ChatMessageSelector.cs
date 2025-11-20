@@ -80,23 +80,22 @@ namespace GotchaNow
 
         private void Awake()
         {
-            intro?.ResetChatHistory();
-			preBattle1?.ResetChatHistory();
-			intermission1?.ResetChatHistory();
-			intermission1TrueEndingPath?.ResetChatHistory();
-			preSecretBoss?.ResetChatHistory();
-			trueEnding?.ResetChatHistory();
-			trueEndingFailed?.ResetChatHistory();
-			neutralEnding?.ResetChatHistory();
-			badEnding?.ResetChatHistory();
-			gameOver?.ResetChatHistory();
+            intro?.ResetAllOnAwake();
+			preBattle1?.ResetAllOnAwake();
+			intermission1?.ResetAllOnAwake();
+			intermission1TrueEndingPath?.ResetAllOnAwake();
+			preSecretBoss?.ResetAllOnAwake();
+			trueEnding?.ResetAllOnAwake();
+			trueEndingFailed?.ResetAllOnAwake();
+			neutralEnding?.ResetAllOnAwake();
+			badEnding?.ResetAllOnAwake();
+			gameOver?.ResetAllOnAwake();
 			
-			tutorial?.ResetChatHistory();
-			battle1?.ResetChatHistory();
-			battle2?.ResetChatHistory();
-			battle2trueEndingPath?.ResetChatHistory();
-			battle3?.ResetChatHistory();
-
+			tutorial?.ResetAllOnAwake();
+			battle1?.ResetAllOnAwake();
+			battle2?.ResetAllOnAwake();
+			battle2trueEndingPath?.ResetAllOnAwake();
+			battle3?.ResetAllOnAwake();
         }
     }
 }

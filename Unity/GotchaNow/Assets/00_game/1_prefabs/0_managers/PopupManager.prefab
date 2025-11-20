@@ -44,7 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32accb91ab2bb6a4b969de158d74c998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.PopupManager
-  healMePopupPrefab: {fileID: 4246717554357126231, guid: 2a2a7ebd00b34de498888ba20d2781c3, type: 3}
-  buffMePopupPrefab: {fileID: 8659461621774975239, guid: e9c3974edf2e179428e0f9d942b7ec53, type: 3}
-  meteoriteNowPopupPrefab: {fileID: 9170266249862743761, guid: dc818f0403b915941a105a8ae29e4185, type: 3}
+  healMePopupPrefab: {fileID: 4687490117530153547, guid: 2a2a7ebd00b34de498888ba20d2781c3, type: 3}
+  buffMePopupPrefab: {fileID: 274303994880341787, guid: e9c3974edf2e179428e0f9d942b7ec53, type: 3}
+  meteoriteNowPopupPrefab: {fileID: 333623584209776845, guid: dc818f0403b915941a105a8ae29e4185, type: 3}
   popupParent: {fileID: 0}
+  popUpDuration: 0.1
+  displayDuration: 5
+  popDownDuration: 0.1
+  jiggleInterval: 1
+  jiggleAmount: 3
+  jiggleDuration: 0.1
+  jiggleIntensity: 3
+  buttonPressInDuration: 0.1
+  buttonPressDuration: 0.2
+  buttonPopOutDuration: 0.1
+  buttonPressScale: 0.8
+  buttonPressPopupPopdownDelay: 0.1

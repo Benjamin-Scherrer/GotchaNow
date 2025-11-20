@@ -14,7 +14,9 @@ namespace GotchaNow
 			[InspectorName("Honey._.Bear")] HoneyBear,
 			[InspectorName("CeilingFanEnthusast")] CeilingFanEnthusast,
 			[InspectorName("TurtleHerder")] TurtleHerder,
-			[InspectorName("Ikigai Tournament")] IkigaiTournament = 10
+			[InspectorName("Mum")] Mum,
+			[InspectorName("Ikigai Tournament")] IkigaiTournament = 10,
+			[InspectorName("Bank")] Bank = 11
         }
 		
 		[Header("Start")]
@@ -32,21 +34,17 @@ namespace GotchaNow
         {
             get
             {
-                switch (senderName)
-				{
-					case SenderName.KingBob:
-						return "KingBob";
-					case SenderName.HoneyBear:
-						return "Honey._.Bear";
-					case SenderName.CeilingFanEnthusast:
-						return "CeilingFanEnthusast";
-					case SenderName.TurtleHerder:
-						return "TurtleHerder";
-					case SenderName.IkigaiTournament:
-						return "Ikigai Tournament";
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
+                return senderName switch
+                {
+                    SenderName.KingBob => "KingBob",
+                    SenderName.HoneyBear => "Honey._.Bear",
+                    SenderName.CeilingFanEnthusast => "CeilingFanEnthusast",
+                    SenderName.TurtleHerder => "TurtleHerder",
+                    SenderName.Mum => "Mum",
+                    SenderName.IkigaiTournament => "Ikigai Tournament",
+                    SenderName.Bank => "Bank",
+                    _ => throw new ArgumentOutOfRangeException(),
+                };
             }
         }
 		
