@@ -57,7 +57,7 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
-        atkBox.damage = hitboxDmg;
+        atkBox.baseDmg = hitboxDmg;
         atkBox.duration = endTime - windupTime;
 
         hitbox.SetActive(true);
@@ -76,7 +76,7 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
-        atkBox1.damage = hitboxDmg;
+        atkBox1.baseDmg = hitboxDmg;
         atkBox1.duration = 0.3f;
         hitbox.SetActive(true);
 
@@ -86,7 +86,7 @@ public class AttackScript : MonoBehaviour
             yield return null;
         }
 
-        atkBox2.damage = hitbox2Dmg;
+        atkBox2.baseDmg = hitbox2Dmg;
         atkBox2.duration = 0.25f;
         hitbox2.SetActive(true);
     }

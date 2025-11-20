@@ -1,9 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
+using System.Xml;
+using TMPro;
 using Unity.Properties;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BossEnemy : MonoBehaviour
 {
@@ -14,8 +18,14 @@ public class BossEnemy : MonoBehaviour
     public Animator animator;
     private bool actionInProgress = false;
     private float distance;
-    private string behaviorState = null;
+    private string behaviorPhase = null;
     private string attackState = null;
+    private bool readyForAttack = false;
+    private bool strafeActive = false;
+    private bool approachActive = false;
+    private List<string> availableAttacks = new List<string>();
+    private List<string> attackChoice = new List<string>();
+
     [Header("Basic Attributes")]
     public float walkSpeed = 3;
     public float strafeSpeed = 2;
@@ -75,6 +85,7 @@ public class BossEnemy : MonoBehaviour
     [Header("Parry")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
+    public TextMeshProUGUI debugText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -88,26 +99,56 @@ public class BossEnemy : MonoBehaviour
         pb = PlayerBattle.Instance;
 
         actionInProgress = false;
-
+        
+        behaviorPhase = "start";
+        availableAttacks.Add("hammerCombo");
+        availableAttacks.Add("clawSwipe");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        /* //test
-        LookAtPlayer(1);
-        WalkTowardsPlayer(1);
-        StrafeAroundPlayer("r", 1); */
+        debugText.text = "behavior phase: " + behaviorPhase + "\navailable Attacks:\n";
+        for (int i = 0; i < availableAttacks.Count; i++)
+        {
+            debugText.text += availableAttacks[i] + "\n";
+        }
+        if (readyForAttack) debugText.text += "\nready for attack";
+        if (strafeActive) debugText.text += "\nstrafe active";
+        if (approachActive) debugText.text += "\napproach active";
+        debugText.text += "\nHP: " + enemy.HP + "/" + enemy.maxHP; 
         
+        //set moves on new phase
+        if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.8))
+        {
+            behaviorPhase = "phase1";
+
+            availableAttacks.Clear();
+            availableAttacks.Add("hammerCombo");
+            availableAttacks.Add("clawSwipe");
+            availableAttacks.Add("shoulderBash");
+        }
+
+        if (behaviorPhase == "phase1" && (enemy.HP/enemy.maxHP < 0.4))
+        {
+            behaviorPhase = "phase2";
+
+            availableAttacks.Clear();
+            availableAttacks.Add("hammerCombo");
+            availableAttacks.Add("clawSwipe");
+            availableAttacks.Add("shoulderBash");
+            availableAttacks.Add("hammerSpin");
+        }
+        
+        if (readyForAttack)
+        {
+            PickAttack();
+        }
+
         if (!actionInProgress)
         {
             ChooseAction();
         }
-    }
-
-    private void Spawn()
-    {
-
     }
 
     private void ChooseAction()
@@ -115,41 +156,102 @@ public class BossEnemy : MonoBehaviour
         distance = enemy.DistanceCheck(pb.gameObject.transform.position);
         Debug.Log("distance to player: " + distance);
 
-        if (distance <= shoulderBashRange)
-        {
-            StartCoroutine(ShoulderBash());
-            ResetWalkAnim();
-        }
-        /* if (distance <= clawSwipeRange)
-        {
-            StartCoroutine(ClawSwipe());
-            ResetWalkAnim();
-        } */
-        /* if (distance <= hammerJumpRange)
-        {
-            StartCoroutine(HammerJump());
-            ResetWalkAnim();
-        } */
-        /* if (distance <= hammerSpinRange)
-        {
-            StartCoroutine(HammerSpin());
-            ResetWalkAnim();
-        } */
-        /* if (distance <= hammerCombo1Range)
-        {
-            StartCoroutine(HammerCombo1());
-            ResetWalkAnim();
-        } */
-        else
-        {
-            //approach player
+        int rndAction;
 
-            StartCoroutine(ApproachPlayer(1));
+        if (behaviorPhase == "start")
+        {
+            rndAction = Random.Range(0,2);
+            if (rndAction == 0) StartCoroutine(ApproachAction(5));
+            if (rndAction == 1) StartCoroutine(StrafeAction(5));
+        }
+        if (behaviorPhase == "phase1")
+        {
+            rndAction = Random.Range(0,2);
+            if (rndAction == 0) StartCoroutine(ApproachAction(5));
+            if (rndAction == 1) StartCoroutine(StrafeAction(5));
+        }
+        if (behaviorPhase == "phase2")
+        {
+            rndAction = Random.Range(0,3);
+            if (rndAction == 0) StartCoroutine(ApproachAction(5));
+            if (rndAction == 1) StartCoroutine(StrafeAction(5));
+            if (rndAction == 2) StartCoroutine(HammerJump());
         }
 
         actionInProgress = true;
     }
 
+    //attack choice behavior
+    private void PickAttack()
+    {
+        distance = enemy.DistanceCheck(pb.gameObject.transform.position);
+
+        //find attacks in range & add to attackChoice List
+        for (int i = 0; i < availableAttacks.Count; i++)
+        {
+            if (availableAttacks[i] == "clawSwipe" && distance <= clawSwipeRange)
+            {
+                attackChoice.Add("clawSwipe");
+            }
+
+            if (availableAttacks[i] == "hammerCombo" && distance <= clawSwipeRange)
+            {
+                attackChoice.Add("hammerCombo");
+            }
+
+            if (availableAttacks[i] == "hammerSpin" && distance <= clawSwipeRange)
+            {
+                attackChoice.Add("hammerSpin");
+            }
+
+            if (availableAttacks[i] == "hammerJump" && distance <= clawSwipeRange)
+            {
+                attackChoice.Add("hammerJump");
+            }
+
+            if (availableAttacks[i] == "shoulderBash" && distance <= clawSwipeRange)
+            {
+                attackChoice.Add("shoulderBash");
+            }
+        }
+
+        //pick attack when in range
+        if (attackChoice.Count > 0)
+        {
+            int rndAttack = Random.Range(0, attackChoice.Count);
+
+            if (strafeActive) strafeActive = false;
+            else if (approachActive) approachActive = false;
+
+            StopAllCoroutines();
+                
+            if (attackChoice[rndAttack] == "clawSwipe")
+            {
+                StartCoroutine(ClawSwipe());
+            }
+            else if (attackChoice[rndAttack] == "hammerCombo")
+            {
+                StartCoroutine(HammerCombo1());
+            }
+            else if (attackChoice[rndAttack] == "hammerSpin")
+            {
+                StartCoroutine(HammerSpin());
+            }
+            else if (attackChoice[rndAttack] == "hammerJump")
+            {
+                StartCoroutine(HammerJump());
+            }
+            else if (attackChoice[rndAttack] == "shoulderBash")
+            {
+                StartCoroutine(ShoulderBash());
+            }
+            
+            attackChoice.Clear();
+            readyForAttack = false;
+        }
+    }
+
+    //MOVEMENT FUNCTIONS
     private void LookAtPlayer(float speedMult)
     {
         Vector3 pVector = pb.gameObject.transform.position - rb.position;
@@ -178,9 +280,6 @@ public class BossEnemy : MonoBehaviour
 
     private void StrafeAroundPlayer(string dir, float speedMult)
     {
-        /* Vector3 pVector = pb.gameObject.transform.position - transform.position;
-        pVector.y = 0; */
-
         if (dir == "r")
         {
             animator.SetFloat("motionSide", 1);
@@ -194,11 +293,78 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
-    private IEnumerator ApproachPlayer(float actionTime)
+    //MOVEMENT COROUTINES
+    private IEnumerator ApproachAction(float actionTime)
     {
         float timer = 0;
 
+        approachActive = true;
         animator.SetBool("Walking", true);
+
+        if (behaviorPhase == "start" || behaviorPhase == "phase1") readyForAttack = false;
+        else if (behaviorPhase == "phase2") readyForAttack = true;
+
+        //WIP: set strafe direction
+        int rndm = Random.Range(0, 2);
+        /* string strafeDir;
+        if (rndm == 0) strafeDir = "l";
+        else strafeDir = "r"; */
+
+        while (approachActive)
+        {
+            while (timer < actionTime)
+            {
+                timer += Time.fixedDeltaTime;
+
+                if (behaviorPhase == "start" && (timer > actionTime/2))
+                {
+                    readyForAttack = true;
+                }
+                else if (behaviorPhase == "phase1" && (timer > actionTime/4))
+                {
+                    readyForAttack = true;
+                }
+
+                LookAtPlayer(1);
+                WalkTowardsPlayer(1);
+                //StrafeAroundPlayer(strafeDir, 1);
+
+                yield return new WaitForFixedUpdate();
+            }
+
+            if (behaviorPhase == "start")
+            {
+                StartCoroutine(ShoulderBash());
+                
+                /* int rndmMove = Random.Range(0,3);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(4));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(6));
+                else if (rndmMove == 2) StartCoroutine(ShoulderBash()); */
+            }
+
+            if (behaviorPhase == "phase1")
+            {
+                int rndmMove = Random.Range(0,4);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(3));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(5));
+                else if (rndmMove == 2) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 3) StartCoroutine(HammerJump());
+            }
+
+            actionInProgress = false;
+            approachActive = false;
+        }
+    }
+
+    private IEnumerator StrafeAction(float actionTime)
+    {
+        float timer = 0;
+
+        strafeActive = true;
+        animator.SetBool("Walking", true);
+
+        if (behaviorPhase == "start" || behaviorPhase == "phase1") readyForAttack = false;
+        else if (behaviorPhase == "phase2") readyForAttack = true;
 
         //WIP: set strafe direction
         int rndm = Random.Range(0, 2);
@@ -206,26 +372,56 @@ public class BossEnemy : MonoBehaviour
         if (rndm == 0) strafeDir = "l";
         else strafeDir = "r";
 
-        while (timer < actionTime)
+        while (strafeActive)
         {
-            timer += Time.fixedDeltaTime;
+            while (timer < actionTime)
+            {
+                timer += Time.fixedDeltaTime;
 
-            LookAtPlayer(1);
-            WalkTowardsPlayer(1);
-            StrafeAroundPlayer(strafeDir, 1);
+                if (readyForAttack == false && behaviorPhase == "start" && (timer > actionTime/2))
+                {
+                    readyForAttack = true;
+                }
+                else if (readyForAttack == false && behaviorPhase == "phase1" && (timer > actionTime/4))
+                {
+                    readyForAttack = true;
+                }
 
-            yield return new WaitForFixedUpdate();
-        }
+                LookAtPlayer(1);
+                WalkTowardsPlayer(1);
+                StrafeAroundPlayer(strafeDir, 1);
 
-        actionInProgress = false;
+                yield return new WaitForFixedUpdate();
+            }
+
+            if (behaviorPhase == "start")
+            {
+                int rndmMove = Random.Range(0,3);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(6));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(4));
+                else if (rndmMove == 2) StartCoroutine(ShoulderBash());
+            }
+            else if (behaviorPhase == "phase1")
+            {
+                int rndmMove = Random.Range(0,4);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(5));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(3));
+                else if (rndmMove == 2) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 3) StartCoroutine(HammerJump());
+            }
+
+            actionInProgress = false;
+            strafeActive = false;
+        }        
     }
 
-    //SHOULDER BASH
+    //ATTACKS
     private IEnumerator ShoulderBash()
     {
         AttackScript atkScript = ShoulderBashAttack.GetComponent<AttackScript>();
 
         float atkTimer = 0;
+        ResetWalkAnim();
         animator.SetTrigger("ShoulderAttack");
 
         while (atkTimer < shoulderBashStartupTime)
@@ -261,17 +457,32 @@ public class BossEnemy : MonoBehaviour
         atkScript.EndAttack();
         animator.SetTrigger("ShoulderEnd");
 
+        //follow-up with claw swipe
+        if (behaviorPhase == "phase2" && enemy.DistanceCheck(pb.gameObject.transform.position) < clawSwipeRange)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(ClawSwipe());
+                yield break;
+            }
+        }
+
         yield return new WaitForSeconds(shoulderBashEndingLag); //ending lag
 
         actionInProgress = false;
     }
 
-    //CLAW SWIPE
     private IEnumerator ClawSwipe()
     {
         AttackScript atkScript = ClawSwipeAttack.GetComponent<AttackScript>();
 
+        actionInProgress = true;
+
         float atkTimer = 0;
+        ResetWalkAnim();
         animator.SetTrigger("ClawAttack");
 
         while (atkTimer < clawSwipeStartupTime)
@@ -312,12 +523,14 @@ public class BossEnemy : MonoBehaviour
         actionInProgress = false;
     }
 
-    //HAMMER JUMP
     private IEnumerator HammerJump()
     {
         AttackScript atkScript = HammerJumpAttack.GetComponent<AttackScript>();
 
+        actionInProgress = true;
+
         float atkTimer = 0;
+        ResetWalkAnim();
         animator.SetTrigger("JumpAttack");
 
         while (atkTimer < hammerJumpStartupTime)
@@ -369,13 +582,14 @@ public class BossEnemy : MonoBehaviour
         actionInProgress = false;
     }
 
-    //HAMMER SPIN
     private IEnumerator HammerSpin()
     {
         AttackScript atkScript = HammerSpinAttack.GetComponent<AttackScript>();
 
-        //Debug.Log("s");
+        actionInProgress = true;
+
         float atkTimer = 0;
+        ResetWalkAnim();
         animator.SetTrigger("SpinAttack");
 
         while (atkTimer < hammerSpinStartupTime)
@@ -423,12 +637,15 @@ public class BossEnemy : MonoBehaviour
 
         actionInProgress = false;
     }
-
+    
     private IEnumerator HammerCombo1()
     {
         AttackScript atkScript = HammerCombo1Attack.GetComponent<AttackScript>();
 
+        actionInProgress = true;
+
         float atkTimer = 0;
+        ResetWalkAnim();
         animator.SetTrigger("Combo1");
 
         while (atkTimer < hammerCombo1StartupTime)
@@ -464,7 +681,7 @@ public class BossEnemy : MonoBehaviour
         atkScript.EndAttack();
 
         //follow-up with combo 2 if in range
-        if (enemy.DistanceCheck(pb.gameObject.transform.position) < hammerCombo2Range)
+        if (behaviorPhase != "start" && enemy.DistanceCheck(pb.gameObject.transform.position) < hammerCombo2Range)
         {
             //check if player is in front of enemy
             float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
@@ -480,10 +697,12 @@ public class BossEnemy : MonoBehaviour
 
         actionInProgress = false;
     }
-    
+      
     private IEnumerator HammerCombo2()
     {
         AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
 
         float atkTimer = 0;
         animator.SetTrigger("Combo2");
@@ -525,10 +744,11 @@ public class BossEnemy : MonoBehaviour
         actionInProgress = false;
     }
 
-
     //when attack is parried by player
     private IEnumerator AttackParried(float stunTime, float knockback)
     {
+        actionInProgress = true;
+        
         float timer = 0;
         animator.SetTrigger("GotParried");
 

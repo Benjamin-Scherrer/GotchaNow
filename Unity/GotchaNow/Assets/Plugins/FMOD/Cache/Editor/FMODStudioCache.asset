@@ -1,33 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
-  EditorBanks:
-  - {fileID: 3664920439720309852}
-  - {fileID: 3101832715778800861}
-  EditorEvents:
-  - {fileID: 212525450827988564}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 3101832715778800861}
-  StringsBanks:
-  - {fileID: 3664920439720309852}
-  cacheVersion: 131849
-  cacheTime: 638989926890664587
-  SerializableEventsDict:
-  - key: event:/TestSound
-    index: 0
---- !u!114 &212525450827988564
+--- !u!114 &-5978447359584157383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +19,7 @@ MonoBehaviour:
     Data3: 1627888020
     Data4: 1644882251
   Banks:
-  - {fileID: 3101832715778800861}
+  - {fileID: -4861923069804575134}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -54,7 +27,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
---- !u!114 &3101832715778800861
+--- !u!114 &-4861923069804575134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,12 +42,39 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638989926890582222
+  lastModified: 638989860462790809
   FileSizes:
   - Name: Desktop
     Value: 12672
   Exists: 1
---- !u!114 &3664920439720309852
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 2356189799062267114}
+  - {fileID: -4861923069804575134}
+  EditorEvents:
+  - {fileID: -5978447359584157383}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -4861923069804575134}
+  StringsBanks:
+  - {fileID: 2356189799062267114}
+  cacheVersion: 131849
+  cacheTime: 638989860462800806
+  SerializableEventsDict:
+  - key: event:/TestSound
+    index: 0
+--- !u!114 &2356189799062267114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638989926890664587
+  lastModified: 638989860462800806
   FileSizes:
   - Name: Desktop
     Value: 770
