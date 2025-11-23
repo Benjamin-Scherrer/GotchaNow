@@ -155,7 +155,7 @@ MonoBehaviour:
   attackScript: {fileID: 931700146}
   damage: 30
   movement: 1
-  knockback: 2
+  knockback: 2.5
 --- !u!136 &32381374
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ MonoBehaviour:
   attackScript: {fileID: 227716553}
   damage: 20
   movement: 1
-  knockback: 2
+  knockback: 3
 --- !u!1 &649387586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 448212762401177060, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -865,7 +865,7 @@ MonoBehaviour:
   attackScript: {fileID: 933900946}
   damage: 25
   movement: 1
-  knockback: 2
+  knockback: 4
 --- !u!136 &735366665
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   attackScript: {fileID: 907653578}
   damage: 25
   movement: 1
-  knockback: 2.5
+  knockback: 6
 --- !u!136 &826185275
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1755,7 +1755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2194279826725178306, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: knockback
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2503570652909091033, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hitbox
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   attackScript: {fileID: 1429380818}
   damage: 30
   movement: 1
-  knockback: 2
+  knockback: 4.5
 --- !u!136 &1808308949
 CapsuleCollider:
   m_ObjectHideFlags: 0
