@@ -32,9 +32,21 @@ public class BattleManager : MonoBehaviour
         enemySpritePos = enemySprite.rectTransform.position;
     }
 
-    public void SetTimeScale(float factor)
+    public IEnumerator SetTimeScale(float newTimeScale, float transitionTime)
     {
-        Time.timeScale = factor;
+        float timer = 0;
+        float currentTimeScale = Time.timeScale;
+
+        while(timer < transitionTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            //Time.timeScale = Mathf.Lerp(currentTimeScale, newTimeScale, timer/transitionTime);
+
+            yield return new WaitForSecondsRealtime(0.016f);
+        }
+
+        Debug.Log("new TimeScale set");
+        //Time.timeScale = newTimeScale;
     }
 
     public IEnumerator PlayerAttackUI()

@@ -407,19 +407,20 @@ public class PlayerBattle : MonoBehaviour
 
     private IEnumerator Knockback(float atkKnockback, Vector3 attackDir)
     {
+        float timer = 0;
         float knockback = atkKnockback;
         StartCoroutine(Invulnerability(0.75f));
         //GetComponent<MeshRenderer>().material = hitstunMaterial;
 
-        while (hitStunTimer > 0)
+        while (timer < hitStunTimer)
         {
-            if (atkKnockback > 0)
+            timer += Time.fixedDeltaTime;
+            
+            if (timer < hitStunTimer/2)
             {
-                rb.MovePosition(rb.position + attackDir.normalized * atkKnockback * baseKnockback * Time.fixedDeltaTime);
-                knockback -= Time.deltaTime * 4;
+                knockback = Mathf.Lerp(atkKnockback,0,timer/(hitStunTimer/2));
+                rb.MovePosition(rb.position + attackDir.normalized * knockback * baseKnockback * Time.fixedDeltaTime);
             }
-
-            hitStunTimer -= Time.fixedDeltaTime;
 
             yield return new WaitForFixedUpdate();
         }

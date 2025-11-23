@@ -385,10 +385,10 @@ public class ProgressionManager : MonoBehaviour
             GameObject minion1 = Instantiate(minion);
             GameObject minion2 = Instantiate(minion);
 
-            minion1.transform.position = spawnPoint + new Vector3(-4, 0, 0);
+            minion1.transform.position = spawnPoint + new Vector3(-4, 4, 0);
             minion1.transform.eulerAngles = new Vector3(0, 180, 0);
 
-            minion2.transform.position = spawnPoint + new Vector3(4, 0, 0);
+            minion2.transform.position = spawnPoint + new Vector3(4, 4, 0);
             minion2.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Start Chat Message History

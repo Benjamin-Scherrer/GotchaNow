@@ -32,9 +32,7 @@ public class AttackBox : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
-        {
-            Debug.Log(other.name);
-            
+        {            
             Enemy enemy = other.GetComponent<Enemy>();
 
             float damageCalc = damage;

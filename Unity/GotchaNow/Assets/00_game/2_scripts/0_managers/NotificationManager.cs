@@ -132,6 +132,8 @@ public class NotificationManager : MonoBehaviour
         rt.sizeDelta = closedSize;
 
         buttonSouth.SetActive(false);
+
+        StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime));
         
         while (timer < openTime)
         {
@@ -305,7 +307,7 @@ public class NotificationManager : MonoBehaviour
         if (selectedRequest == 3) //cancel, close menu
         {
             StartCoroutine(CloseRequestMenu());
-            Debug.Log("closing menu");
+            StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime)); //reset timescale   
         }
     }
 
@@ -343,20 +345,20 @@ public class NotificationManager : MonoBehaviour
 
     public void AcceptHeal()
     {
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
+        
         PlayerBattle.Instance.Heal(50);
     }
 
     public void AcceptBuff()
     {
-        //buff effect
-        Debug.Log("Buff accepted");
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
 
         BuffEnabled.Invoke();
     }
     public void AcceptMeteor()
     {
-        //spawn meteor
-        Debug.Log("Meteor accepted");
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
     }

@@ -37,6 +37,7 @@ public class AttackScript : MonoBehaviour
     public void EndAttack()
     {
         hitbox.SetActive(false);
+        
         if (hitbox2 != null)
         {
             hitbox2.SetActive(false);

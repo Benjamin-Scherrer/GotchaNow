@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         pm = ProgressionManager.instance;
         nm = NotificationManager.instance;
 
-        BattleManager.instance.AddToEnemyList(this.gameObject);
+        //BattleManager.instance.AddToEnemyList(this.gameObject);
     }
 
     private void OnEnable()
@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
         // bm = BattleManager.instance;
         // pm = ProgressionManager.instance;
         // nm = NotificationManager.instance;
+
+        bm = BattleManager.instance;
 
         if (BattleManager.instance != null)
         {
@@ -66,6 +68,19 @@ public class Enemy : MonoBehaviour
         HP -= dmg;
         knockback = atkKnockback;
 
+        if (enemyType == "boss")
+        {
+            StartCoroutine(GetComponent<BossEnemy>().GotHit(atkKnockback));
+        }
+        else if (enemyType == "minion")
+        {
+            StartCoroutine(GetComponent<MinionEnemy>().GotHit(atkKnockback));
+        }
+        else if (enemyType == "queen")
+        {
+            //StartCoroutine(GetComponent<QueenEnemy>().GotHit(atkKnockback));
+        }
+
         //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
 
         if (isMainEnemy)
@@ -81,7 +96,7 @@ public class Enemy : MonoBehaviour
         
         if (HP <= 0)
         {
-            if (PlayerBattle.Instance.lockedOn == true)
+            if (PlayerBattle.Instance.lockedOn == true) // TO DO : update to consider meteor
             {
                 PlayerBattle.Instance.lockedOn = false;
                 PlayerBattle.Instance.LockOn();

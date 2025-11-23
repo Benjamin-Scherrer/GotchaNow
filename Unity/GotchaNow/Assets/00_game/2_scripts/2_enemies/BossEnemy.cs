@@ -85,6 +85,16 @@ public class BossEnemy : MonoBehaviour
     [Header("Parry")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
+    private bool gotHit = false;
+    public float hitTime = 0.1f;
+    public float baseKnockback = 1f;
+    [Header("Visual")]
+    public Renderer eyeRenderer;
+    public Renderer gemRenderer;
+    private Color eyeColor;
+    private Color gemColor;
+    private Color defaultEyeColor;
+    private Color defaultGemColor;
     public TextMeshProUGUI debugText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -97,6 +107,12 @@ public class BossEnemy : MonoBehaviour
     void OnEnable()
     {
         pb = PlayerBattle.Instance;
+
+        defaultEyeColor = eyeRenderer.material.color;
+        defaultGemColor = gemRenderer.material.color;
+
+        eyeColor = defaultEyeColor;
+        gemColor = defaultGemColor;
 
         actionInProgress = false;
         
@@ -121,6 +137,11 @@ public class BossEnemy : MonoBehaviour
         //set moves on new phase
         if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.8))
         {
+            eyeColor = Color.black;
+            gemColor = Color.black;
+            eyeRenderer.material.color = eyeColor;
+            gemRenderer.material.color = gemColor;
+            
             behaviorPhase = "phase1";
 
             availableAttacks.Clear();
@@ -131,6 +152,11 @@ public class BossEnemy : MonoBehaviour
 
         if (behaviorPhase == "phase1" && (enemy.HP/enemy.maxHP < 0.4))
         {
+            eyeColor = Color.darkOrange;
+            gemColor = Color.darkOrange;
+            eyeRenderer.material.color = eyeColor;
+            gemRenderer.material.color = gemColor;
+            
             behaviorPhase = "phase2";
 
             availableAttacks.Clear();
@@ -325,7 +351,7 @@ public class BossEnemy : MonoBehaviour
                     readyForAttack = true;
                 }
 
-                LookAtPlayer(1);
+                LookAtPlayer(0.75f);
                 WalkTowardsPlayer(1);
                 //StrafeAroundPlayer(strafeDir, 1);
 
@@ -341,17 +367,24 @@ public class BossEnemy : MonoBehaviour
                 else if (rndmMove == 1) StartCoroutine(StrafeAction(6));
                 else if (rndmMove == 2) StartCoroutine(ShoulderBash()); */
             }
-
-            if (behaviorPhase == "phase1")
+            else if (behaviorPhase == "phase1")
             {
                 int rndmMove = Random.Range(0,4);
-                if (rndmMove == 0) StartCoroutine(ApproachAction(3));
-                else if (rndmMove == 1) StartCoroutine(StrafeAction(5));
+                if (rndmMove == 0) StartCoroutine(ApproachAction(4));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(6));
                 else if (rndmMove == 2) StartCoroutine(ShoulderBash());
                 else if (rndmMove == 3) StartCoroutine(HammerJump());
             }
+            else if (behaviorPhase == "phase2")
+            {
+                int rndmMove = Random.Range(0,6);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(3));
+                else if (rndmMove == 1) StartCoroutine(StrafeAction(5));
+                else if (rndmMove == 2 || rndmMove == 3) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 4 || rndmMove == 5) StartCoroutine(HammerJump());
+            }
 
-            actionInProgress = false;
+            //actionInProgress = false;
             approachActive = false;
         }
     }
@@ -387,7 +420,7 @@ public class BossEnemy : MonoBehaviour
                     readyForAttack = true;
                 }
 
-                LookAtPlayer(1);
+                LookAtPlayer(0.75f);
                 WalkTowardsPlayer(1);
                 StrafeAroundPlayer(strafeDir, 1);
 
@@ -396,21 +429,26 @@ public class BossEnemy : MonoBehaviour
 
             if (behaviorPhase == "start")
             {
-                int rndmMove = Random.Range(0,3);
+                int rndmMove = Random.Range(0,2);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(6));
-                else if (rndmMove == 1) StartCoroutine(StrafeAction(4));
-                else if (rndmMove == 2) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 1) StartCoroutine(ShoulderBash());
             }
             else if (behaviorPhase == "phase1")
             {
-                int rndmMove = Random.Range(0,4);
+                int rndmMove = Random.Range(0,3);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(5));
-                else if (rndmMove == 1) StartCoroutine(StrafeAction(3));
-                else if (rndmMove == 2) StartCoroutine(ShoulderBash());
-                else if (rndmMove == 3) StartCoroutine(HammerJump());
+                else if (rndmMove == 1) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 2) StartCoroutine(HammerJump());
+            }
+            else if (behaviorPhase == "phase2")
+            {
+                int rndmMove = Random.Range(0,5);
+                if (rndmMove == 0) StartCoroutine(ApproachAction(5));
+                else if (rndmMove == 1 || rndmMove == 2) StartCoroutine(ShoulderBash());
+                else if (rndmMove == 3 || rndmMove == 4) StartCoroutine(HammerJump());
             }
 
-            actionInProgress = false;
+            //actionInProgress = false;
             strafeActive = false;
         }        
     }
@@ -419,6 +457,9 @@ public class BossEnemy : MonoBehaviour
     private IEnumerator ShoulderBash()
     {
         AttackScript atkScript = ShoulderBashAttack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         ResetWalkAnim();
@@ -455,6 +496,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.EndAttack();
+
+        Debug.Log("End Shoulder Bash");
         animator.SetTrigger("ShoulderEnd");
 
         //follow-up with claw swipe
@@ -480,6 +523,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = ClawSwipeAttack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         ResetWalkAnim();
@@ -488,7 +532,7 @@ public class BossEnemy : MonoBehaviour
         while (atkTimer < clawSwipeStartupTime)
         {
             atkTimer += Time.fixedDeltaTime;
-            LookAtPlayer(0.25f);
+            LookAtPlayer(0.33f);
 
             yield return new WaitForFixedUpdate();
         }
@@ -528,6 +572,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerJumpAttack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         ResetWalkAnim();
@@ -587,6 +632,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerSpinAttack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         ResetWalkAnim();
@@ -643,6 +689,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerCombo1Attack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         ResetWalkAnim();
@@ -703,6 +750,7 @@ public class BossEnemy : MonoBehaviour
         AttackScript atkScript = HammerCombo2Attack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        readyForAttack = false;
 
         float atkTimer = 0;
         animator.SetTrigger("Combo2");
@@ -745,11 +793,13 @@ public class BossEnemy : MonoBehaviour
     }
 
     //when attack is parried by player
-    private IEnumerator AttackParried(float stunTime, float knockback)
+    private IEnumerator AttackParried(float stunTime, float parryKnockback)
     {
         actionInProgress = true;
         
         float timer = 0;
+        float knockback = parryKnockback;
+
         animator.SetTrigger("GotParried");
 
         Vector3 parryDir = transform.position - pb.gameObject.transform.position;
@@ -762,7 +812,7 @@ public class BossEnemy : MonoBehaviour
             if (knockback > 0)
             {
                 rb.MovePosition(transform.position + parryDir.normalized * knockback * Time.fixedDeltaTime);
-                knockback -= Time.deltaTime * 12;
+                knockback = Mathf.Lerp(parryKnockback,0,3*timer/stunTime);
             }
 
             yield return new WaitForFixedUpdate();
@@ -770,6 +820,39 @@ public class BossEnemy : MonoBehaviour
 
         attackParried = false;
         actionInProgress = false;
+    }
+
+    public IEnumerator GotHit(float atkKnockback)
+    {
+        gotHit = true;
+        Debug.Log("got hit");
+
+        float timer = 0f;
+        float knockback = atkKnockback;
+
+        eyeRenderer.material.color = Color.red;
+        gemRenderer.material.color = Color.red;
+
+        Vector3 attackDir = transform.position - pb.gameObject.transform.position;
+        attackDir.y = 0;
+
+        while (timer < hitTime)
+        {
+            timer += Time.fixedDeltaTime;
+            
+            if (knockback > 0)
+            {
+                rb.MovePosition(rb.position + attackDir.normalized * knockback * baseKnockback * Time.fixedDeltaTime);
+                knockback = Mathf.Lerp(atkKnockback,0,4*timer/hitTime);
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        eyeRenderer.material.color = eyeColor;
+        gemRenderer.material.color = gemColor;
+
+        gotHit = false;
     }
 
     private void ResetWalkAnim()
@@ -784,8 +867,11 @@ public class BossEnemy : MonoBehaviour
         /* AttackScript atkScript = attack1.GetComponent<AttackScript>();
         atkScript.EndAttack(); */
         StopAllCoroutines();
+        
         ResetWalkAnim();
         animator.SetTrigger("GotHit"); //placeholder for death anim
+        eyeRenderer.material.color = defaultEyeColor;
+        gemRenderer.material.color = defaultGemColor;
 
         GetComponent<EnemyIntermission>().enabled = true;
         this.enabled = false;
