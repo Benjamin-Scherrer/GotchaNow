@@ -12,6 +12,8 @@ public class Meteor : MonoBehaviour
     private Vector3 aimVector;
     private bool falling = false;
     public LockOnTarget lockOnTarget;
+    public GameObject explosionVFX;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,6 +63,8 @@ public class Meteor : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            Debug.Log("hit");
+            
             Enemy enemy = other.GetComponent<Enemy>();
 
             float damageCalc = damage;
@@ -70,6 +74,8 @@ public class Meteor : MonoBehaviour
             dmgNumber.GetComponentInChildren<TextMesh>().text = damageCalc.ToString(); */
 
             enemy.HitByAttack(damageCalc, knockbackCalc);
+            Instantiate(explosionVFX, transform.position, Quaternion.identity);
+
             //hit audio;
 
             //HitBloom.gameObject.GetComponent<HitBloom>().hitCheck = true;

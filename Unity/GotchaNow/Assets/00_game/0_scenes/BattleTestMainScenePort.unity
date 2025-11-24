@@ -929,6 +929,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1133167311}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: gemExplosion
+      value: 
+      objectReference: {fileID: 7675191920043395332, guid: 7f56a027e34bbd24eb738f270d1240fb, type: 3}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: baseKnockback
       value: 0.7
       objectReference: {fileID: 0}
@@ -1032,6 +1036,34 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShot
+      value: 
+      objectReference: {fileID: 7125078387867469232, guid: cd9e3218799103746b1a08416603d7e5, type: 3}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotEndingLag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotMotionTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: meteorShotStartupTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4301611264837935418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1040,6 +1072,10 @@ PrefabInstance:
       propertyPath: parryVFX
       value: 
       objectReference: {fileID: 522905768870107075, guid: 87b02c5fd38a6334d9fe329f4616b869, type: 3}
+    - target: {fileID: 4450831799996272425, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: knockback
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5103422632325103828, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_TagString
       value: EnemyAttack
@@ -1769,7 +1805,7 @@ PrefabInstance:
       objectReference: {fileID: 96308152}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleID
-      value: battle2
+      value: battle1
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleUI
@@ -1791,6 +1827,10 @@ PrefabInstance:
       propertyPath: bossSpawnPoint
       value: 
       objectReference: {fileID: 778820612}
+    - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
+      propertyPath: intermissionID
+      value: preSecretBoss
+      objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint
       value: 
@@ -1928,7 +1968,7 @@ PrefabInstance:
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: Meteor
       value: 
-      objectReference: {fileID: 3513758737935513956, guid: 440020d2a6937bb458d90c2310c6f65c, type: 3}
+      objectReference: {fileID: 7125078387867469232, guid: c4d4f0229a6b0af4d9c70f8675830add, type: 3}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: selector
       value: 

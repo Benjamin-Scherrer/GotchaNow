@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public float HP = 100;
     public float knockback = 0;
     public int proximity = 0;
-    public BattleManager bm;
     public ProgressionManager pm;
     public NotificationManager nm;
     public bool isLockOnTarget = false;
@@ -23,10 +22,6 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        //bm = BattleManager.instance;
-
-        //HitBloom = GameObject.Find("VFXBloomWhite");
-
         pm = ProgressionManager.instance;
         nm = NotificationManager.instance;
 
@@ -35,11 +30,8 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        // bm = BattleManager.instance;
         // pm = ProgressionManager.instance;
         // nm = NotificationManager.instance;
-
-        bm = BattleManager.instance;
 
         if (BattleManager.instance != null)
         {
@@ -54,12 +46,10 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (HP <= 0) //check if alive
+        /* if (HP <= 0) //check if alive
         {
-            //HitBloom.gameObject.GetComponent<HitBloom>().killCheck = true;
-
             //Destroy(gameObject);
-        }
+        } */
     }
 
     public void HitByAttack(float dmg, float atkKnockback)
@@ -85,8 +75,8 @@ public class Enemy : MonoBehaviour
 
         if (isMainEnemy)
         {
-            StartCoroutine(bm.PlayerAttackUI());
-            StartCoroutine(bm.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
+            StartCoroutine(BattleManager.instance.PlayerAttackUI());
+            StartCoroutine(BattleManager.instance.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
 
             if (HP <= 0)
             {
@@ -113,7 +103,8 @@ public class Enemy : MonoBehaviour
             else if (enemyType == "minion")
             {
                 BattleManager.instance.RemoveFromEnemyList(this.gameObject);
-                Destroy(this.gameObject);
+                Debug.Log("removing");
+                GetComponent<MinionEnemy>().Death();
             }
             
             else if (enemyType == "queen")
@@ -150,7 +141,12 @@ public class Enemy : MonoBehaviour
     public void StartBattle()
     {
         HP = maxHP;
-        StartCoroutine(bm.UpdateEnemyHP(0, 1));
+        StartCoroutine(BattleManager.instance.UpdateEnemyHP(0, 1));
+
+        if (!BattleManager.instance.activeEnemy.Contains(this.gameObject))
+        {
+            BattleManager.instance.AddToEnemyList(this.gameObject);
+        }
     }
 }
 

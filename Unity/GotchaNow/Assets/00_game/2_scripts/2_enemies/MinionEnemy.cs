@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class MinionEnemy : MonoBehaviour
     private bool actionInProgress = false;
     private float distance;
     private string behaviorPhase = null;
-    private string attackState = null;
     private bool readyForAttack = false;
     private bool strafeActive = false;
     private bool approachActive = false;
@@ -75,8 +75,10 @@ public class MinionEnemy : MonoBehaviour
     public Renderer gemRenderer;
     private Color eyeColor;
     private Color gemColor;
-    private Color defaultEyeColor;
-    private Color defaultGemColor;
+    public Color defaultEyeColor;
+    public Color defaultGemColor;
+    public GameObject gemExplosion;
+    public float deathTime = 2.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -89,8 +91,11 @@ public class MinionEnemy : MonoBehaviour
     {
         pb = PlayerBattle.Instance;
 
-        eyeColor = eyeRenderer.material.color;
-        gemColor = gemRenderer.material.color;
+        eyeColor = defaultEyeColor;
+        gemColor = defaultGemColor;
+
+        eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", gemColor);
         
         actionInProgress = false;
         
@@ -104,10 +109,10 @@ public class MinionEnemy : MonoBehaviour
         //set moves on new phase
         if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.8))
         {
-            eyeColor = Color.lightGoldenRodYellow;
-            gemColor = Color.lightGoldenRodYellow;
-            eyeRenderer.material.color = eyeColor;
-            gemRenderer.material.color = gemColor;
+            eyeColor = Color.orange;
+            gemColor = Color.orange;
+            eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+            gemRenderer.material.SetColor("_Diamond_Color", gemColor);
             
             behaviorPhase = "phase1";
 
@@ -119,10 +124,10 @@ public class MinionEnemy : MonoBehaviour
 
         if (behaviorPhase == "phase1" && (enemy.HP/enemy.maxHP < 0.4))
         {
-            eyeColor = Color.darkOrange;
-            gemColor = Color.darkOrange;
-            eyeRenderer.material.color = eyeColor;
-            gemRenderer.material.color = gemColor;
+            eyeColor = Color.darkRed;
+            gemColor = Color.darkRed;
+            eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+            gemRenderer.material.SetColor("_Diamond_Color", gemColor);
             
             behaviorPhase = "phase2";
 
@@ -156,19 +161,19 @@ public class MinionEnemy : MonoBehaviour
 
         if (behaviorPhase == "start")
         {
-            rndAction = Random.Range(0,2);
+            rndAction = UnityEngine.Random.Range(0,2);
             if (rndAction == 0) StartCoroutine(ApproachAction(5));
             if (rndAction == 1) StartCoroutine(StrafeAction(5));
         }
         if (behaviorPhase == "phase1")
         {
-            rndAction = Random.Range(0,2);
+            rndAction = UnityEngine.Random.Range(0,2);
             if (rndAction == 0) StartCoroutine(ApproachAction(5));
             if (rndAction == 1) StartCoroutine(StrafeAction(3));
         }
         if (behaviorPhase == "phase2")
         {
-            rndAction = Random.Range(0,2);
+            rndAction = UnityEngine.Random.Range(0,2);
             if (rndAction == 0) StartCoroutine(ApproachAction(6));
             if (rndAction == 1) StartCoroutine(StrafeAction(4));
         }
@@ -208,7 +213,7 @@ public class MinionEnemy : MonoBehaviour
         //pick attack when in range
         if (attackChoice.Count > 0)
         {
-            int rndAttack = Random.Range(0, attackChoice.Count);
+            int rndAttack = UnityEngine.Random.Range(0, attackChoice.Count);
 
             if (strafeActive) strafeActive = false;
             else if (approachActive) approachActive = false;
@@ -280,7 +285,6 @@ public class MinionEnemy : MonoBehaviour
     }
 
     //MOVEMENT COROUTINES
-    //MOVEMENT COROUTINES
     private IEnumerator ApproachAction(float actionTime)
     {
         float timer = 0;
@@ -292,7 +296,7 @@ public class MinionEnemy : MonoBehaviour
         else if (behaviorPhase == "phase2") readyForAttack = true;
 
         //WIP: set strafe direction
-        int rndm = Random.Range(0, 2);
+        int rndm = UnityEngine.Random.Range(0, 2);
         /* string strafeDir;
         if (rndm == 0) strafeDir = "l";
         else strafeDir = "r"; */
@@ -321,21 +325,21 @@ public class MinionEnemy : MonoBehaviour
 
             if (behaviorPhase == "start")
             {
-                int rndmMove = Random.Range(0,4);
+                int rndmMove = UnityEngine.Random.Range(0,4);
                 if (rndmMove == 0 || rndmMove == 1) StartCoroutine(ApproachAction(4));
                 else if (rndmMove == 2) StartCoroutine(StrafeAction(6));
                 else if (rndmMove == 3) StartCoroutine(ShoulderBash());
             }
             else if (behaviorPhase == "phase1")
             {
-                int rndmMove = Random.Range(0,3);
+                int rndmMove = UnityEngine.Random.Range(0,3);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(4));
                 else if (rndmMove == 1) StartCoroutine(StrafeAction(5));
                 else if (rndmMove == 2) StartCoroutine(ShoulderBash());
             }
             else if (behaviorPhase == "phase2")
             {
-                int rndmMove = Random.Range(0,4);
+                int rndmMove = UnityEngine.Random.Range(0,4);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(3));
                 else if (rndmMove == 1) StartCoroutine(StrafeAction(5));
                 else if (rndmMove == 2 || rndmMove == 3) StartCoroutine(ShoulderBash());
@@ -357,7 +361,7 @@ public class MinionEnemy : MonoBehaviour
         else if (behaviorPhase == "phase2") readyForAttack = true;
 
         //WIP: set strafe direction
-        int rndm = Random.Range(0, 2);
+        int rndm = UnityEngine.Random.Range(0, 2);
         string strafeDir;
         if (rndm == 0) strafeDir = "l";
         else strafeDir = "r";
@@ -386,19 +390,19 @@ public class MinionEnemy : MonoBehaviour
 
             if (behaviorPhase == "start")
             {
-                int rndmMove = Random.Range(0,2);
+                int rndmMove = UnityEngine.Random.Range(0,2);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(5));
                 else if (rndmMove == 1) StartCoroutine(ShoulderBash());
             }
             else if (behaviorPhase == "phase1")
             {
-                int rndmMove = Random.Range(0,2);
+                int rndmMove = UnityEngine.Random.Range(0,2);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(5));
                 else if (rndmMove == 1) StartCoroutine(ShoulderBash());
             }
             else if (behaviorPhase == "phase2")
             {
-                int rndmMove = Random.Range(0,3);
+                int rndmMove = UnityEngine.Random.Range(0,3);
                 if (rndmMove == 0) StartCoroutine(ApproachAction(5));
                 else if (rndmMove == 1 || rndmMove == 2) StartCoroutine(ShoulderBash());
             }
@@ -721,8 +725,8 @@ public class MinionEnemy : MonoBehaviour
         gotHit = true;
         Debug.Log("got hit");
 
-        eyeRenderer.material.color = Color.red;
-        gemRenderer.material.color = Color.red;
+        eyeRenderer.material.SetColor("_Diamond_Color", Color.ghostWhite);
+        gemRenderer.material.SetColor("_Diamond_Color", Color.ghostWhite);
 
         float timer = 0f;
         float knockback = atkKnockback;
@@ -743,8 +747,8 @@ public class MinionEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        eyeRenderer.material.color = eyeColor;
-        gemRenderer.material.color = gemColor;
+        eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", gemColor);
 
         gotHit = false;
     }
@@ -754,6 +758,40 @@ public class MinionEnemy : MonoBehaviour
         animator.SetBool("Walking", false);
         animator.SetFloat("motionFwd", 0);
         animator.SetFloat("motionSide", 0);
+    }
+
+    public void Death()
+    {
+        StopAllCoroutines();
+        actionInProgress = true;
+        readyForAttack = false;
+
+        StartCoroutine(DeathAnimation());    
+    }
+
+    public IEnumerator DeathAnimation()
+    {
+        float timer = 0;
+        
+        animator.SetTrigger("GotParried");
+        GameObject explosion = Instantiate(gemExplosion, transform.position, Quaternion.Euler(-90,0,0));
+        
+        while (timer < deathTime/2)
+        {
+            timer += Time.fixedDeltaTime;
+            transform.Rotate(0,10,0);
+            yield return new WaitForFixedUpdate();
+        }
+
+        while (timer < deathTime)
+        {
+            timer += Time.fixedDeltaTime;
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, 1-(timer/deathTime));
+            yield return new WaitForFixedUpdate();
+        }
+
+        explosion.GetComponent<ParticleSystem>().Stop();
+        Destroy(this.gameObject);
     }
     
     public void EndBattle()

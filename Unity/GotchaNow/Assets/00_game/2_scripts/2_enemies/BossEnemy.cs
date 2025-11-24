@@ -94,6 +94,7 @@ public class BossEnemy : MonoBehaviour
     private Color gemColor;
     public Color defaultEyeColor;
     public Color defaultGemColor;
+    public GameObject gemExplosion;
     public TextMeshProUGUI debugText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -870,9 +871,15 @@ public class BossEnemy : MonoBehaviour
         StopAllCoroutines();
         
         ResetWalkAnim();
-        animator.SetTrigger("GotHit"); //placeholder for death anim
-        eyeRenderer.material.SetColor("_Diamond_Color", defaultEyeColor);
-        gemRenderer.material.SetColor("_Diamond_Color", defaultGemColor);
+        animator.SetTrigger("GotParried"); //placeholder for death anim
+
+        GameObject explosion = Instantiate(gemExplosion, transform.position, Quaternion.Euler(-90,0,0));
+        explosion.transform.localScale *= 2;
+        
+        eyeColor = defaultEyeColor;
+        gemColor = defaultGemColor;
+        eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", gemColor);
 
         GetComponent<EnemyIntermission>().enabled = true;
         this.enabled = false;
