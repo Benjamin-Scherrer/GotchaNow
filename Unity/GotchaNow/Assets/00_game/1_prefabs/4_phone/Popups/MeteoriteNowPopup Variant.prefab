@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 662194244440482641, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7885a79c610c222459c81a20ed9b2bff, type: 3}
     - target: {fileID: 1514471590346128269, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2916840487272390337, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_text
-      value: Meorite NOW!
+      value: METEOR
       objectReference: {fileID: 0}
     - target: {fileID: 3138066527305276836, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_Name
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6520360374136011865, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_text
-      value: $100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8368003407092126313, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_text

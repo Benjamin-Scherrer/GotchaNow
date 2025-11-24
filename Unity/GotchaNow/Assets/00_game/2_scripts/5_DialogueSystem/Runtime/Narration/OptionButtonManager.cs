@@ -1,13 +1,14 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using System.Collections;
-using System;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace GotchaNow
 {
-	public class OptionButtonManager : MonoBehaviour
+	public class OptionButtonManager : MonoBehaviour, IPointerEnterHandler
 	{
 		private enum ScrollDirection { Up, Down }
 
@@ -43,10 +44,37 @@ namespace GotchaNow
 					}
 					selectedButtonIndex = Mathf.Clamp(selectedButtonIndex, 0, _activeButtonReferences.Count - 1);
 
-					HighlightButton();
+					HighlightButton(_activeButtonReferences[selectedButtonIndex]);
 				}
 			}
 		}
+
+		//PUBLIC METHODS
+		public void OnPointerEnter(PointerEventData eventData)
+		{
+			Debug.Log("OnPointerEnter event received in OptionButtonManager.");
+			if (eventData == null) throw new Exception("PointerEventData is null in OnPointerEnter.");
+			if (eventData.pointerEnter == null) throw new Exception("PointerEventData.pointerEnter is null in OnPointerEnter.");
+			Debug.Log("OnPointerEnter event received from " + eventData.pointerEnter.name);
+			if (!eventData.pointerEnter.TryGetComponent<Selectable>(out Selectable selectable)) return;
+			Debug.Log("OnPointerEnter called on " + selectable.gameObject.name);
+			foreach (Button button in _activeButtonReferences)
+			{
+				if (selectable as Button == button)
+				{
+					HighlightButton(button);
+					Debug.Log("Pointer entered " + button.gameObject.name);
+					continue;
+				}
+				if (button == null) continue;
+				if (button.isActiveAndEnabled == false) continue;
+				if (button.gameObject.activeInHierarchy == false) continue;
+				DeselectButton(button);
+				Debug.Log("Deselecting " + button.gameObject.name);
+			}
+		}
+
+		//PRIVATE METHODS
 		
 		private void Awake()
 		{
@@ -58,7 +86,7 @@ namespace GotchaNow
 			selectedButtonIndex = 0;
 			if (_activeButtonReferences != null && _activeButtonReferences.Count > 0)
 			{
-				HighlightButton();
+				HighlightButton(_activeButtonReferences[selectedButtonIndex]);
 			}
 
 			if (_activeButtonReferences == null)
@@ -156,7 +184,7 @@ namespace GotchaNow
 			// SanityCheck();
 			Debug.Log("Scrolling " + dir.ToString());
 
-			DeselectButton();
+			DeselectButton(_activeButtonReferences[selectedButtonIndex]);
 
 			switch (dir)
 			{
@@ -175,22 +203,20 @@ namespace GotchaNow
 					throw new Exception("Invalid scroll direction");
 			}
 
-			HighlightButton();
+			HighlightButton(_activeButtonReferences[selectedButtonIndex]);
 		}
-		private void HighlightButton()
+		private void HighlightButton(Button buttonToHighlight)
 		{
 			// SanityCheck();
-
-			Button button = _activeButtonReferences[selectedButtonIndex];
-			button.Select();
+			buttonToHighlight.Select();
+			buttonToHighlight.OnPointerEnter(null);
 		}
 
-		private void DeselectButton()
+		private void DeselectButton(Button buttonToDeselect)
 		{
 			// SanityCheck();
-
-			Button button = _activeButtonReferences[selectedButtonIndex];
-			button.OnDeselect(null);
+			buttonToDeselect.OnDeselect(null);
+			buttonToDeselect.OnPointerExit(null);
 		}
 
 		// private void SanityCheck()
