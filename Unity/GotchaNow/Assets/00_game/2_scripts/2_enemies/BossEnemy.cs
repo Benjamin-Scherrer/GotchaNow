@@ -19,7 +19,6 @@ public class BossEnemy : MonoBehaviour
     private bool actionInProgress = false;
     private float distance;
     private string behaviorPhase = null;
-    private string attackState = null;
     private bool readyForAttack = false;
     private bool strafeActive = false;
     private bool approachActive = false;
@@ -93,8 +92,8 @@ public class BossEnemy : MonoBehaviour
     public Renderer gemRenderer;
     private Color eyeColor;
     private Color gemColor;
-    private Color defaultEyeColor;
-    private Color defaultGemColor;
+    public Color defaultEyeColor;
+    public Color defaultGemColor;
     public TextMeshProUGUI debugText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -102,21 +101,21 @@ public class BossEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         enemy = GetComponent<Enemy>();
-
-        defaultEyeColor = eyeRenderer.material.color;
-        defaultGemColor = gemRenderer.material.color;
     }
 
     void OnEnable()
     {
         pb = PlayerBattle.Instance;
 
-        
-
         eyeColor = defaultEyeColor;
         gemColor = defaultGemColor;
 
+        eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", gemColor);
+
         actionInProgress = false;
+
+        availableAttacks.Clear();
         
         behaviorPhase = "start";
         availableAttacks.Add("hammerCombo");
@@ -139,10 +138,10 @@ public class BossEnemy : MonoBehaviour
         //set moves on new phase
         if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.8))
         {
-            eyeColor = Color.black;
-            gemColor = Color.black;
-            eyeRenderer.material.color = eyeColor;
-            gemRenderer.material.color = gemColor;
+            eyeColor = Color.orange;
+            gemColor = Color.orange;
+            eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+            gemRenderer.material.SetColor("_Diamond_Color", gemColor);
             
             behaviorPhase = "phase1";
 
@@ -154,10 +153,10 @@ public class BossEnemy : MonoBehaviour
 
         if (behaviorPhase == "phase1" && (enemy.HP/enemy.maxHP < 0.4))
         {
-            eyeColor = Color.darkOrange;
-            gemColor = Color.darkOrange;
-            eyeRenderer.material.color = eyeColor;
-            gemRenderer.material.color = gemColor;
+            eyeColor = Color.darkRed;
+            gemColor = Color.darkRed;
+            eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+            gemRenderer.material.SetColor("_Diamond_Color", gemColor);
             
             behaviorPhase = "phase2";
 
@@ -832,8 +831,8 @@ public class BossEnemy : MonoBehaviour
         float timer = 0f;
         float knockback = atkKnockback;
 
-        eyeRenderer.material.color = Color.red;
-        gemRenderer.material.color = Color.red;
+        eyeRenderer.material.SetColor("_Diamond_Color", Color.ghostWhite);
+        gemRenderer.material.SetColor("_Diamond_Color", Color.ghostWhite);
 
         Vector3 attackDir = transform.position - pb.gameObject.transform.position;
         attackDir.y = 0;
@@ -851,8 +850,8 @@ public class BossEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        eyeRenderer.material.color = eyeColor;
-        gemRenderer.material.color = gemColor;
+        eyeRenderer.material.SetColor("_Diamond_Color", eyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", gemColor);
 
         gotHit = false;
     }
@@ -872,8 +871,8 @@ public class BossEnemy : MonoBehaviour
         
         ResetWalkAnim();
         animator.SetTrigger("GotHit"); //placeholder for death anim
-        eyeRenderer.material.color = defaultEyeColor;
-        gemRenderer.material.color = defaultGemColor;
+        eyeRenderer.material.SetColor("_Diamond_Color", defaultEyeColor);
+        gemRenderer.material.SetColor("_Diamond_Color", defaultGemColor);
 
         GetComponent<EnemyIntermission>().enabled = true;
         this.enabled = false;

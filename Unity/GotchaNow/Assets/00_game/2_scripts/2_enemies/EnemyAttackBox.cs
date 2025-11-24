@@ -27,7 +27,6 @@ public class EnemyAttackBox : MonoBehaviour
             if (other.GetComponentInParent<BlockScript>().parryActive)
             {
                 attackParried = true;
-                other.GetComponent<BlockHitbox>().ParryVFX();
             }
             else
             {
@@ -57,10 +56,6 @@ public class EnemyAttackBox : MonoBehaviour
                 pb.ParrySuccessful();
                 enemy.AttackParried();
                 attackParried = false;
-
-                Debug.Log("parry");
-
-                //attackScript.EndAttack();
             }
             else
             {
@@ -72,13 +67,9 @@ public class EnemyAttackBox : MonoBehaviour
                     Debug.Log("block");
                 }
 
-                /* GameObject dmgNumber = Instantiate(other.GetComponent<Enemy>().dmgNumbers, other.transform.position, Quaternion.identity);
-                dmgNumber.GetComponentInChildren<TextMesh>().text = damageCalc.ToString(); */
-
                 pb.HitByAttack(damageCalc, knockbackCalc, attackDir);
 
                 //hit audio;
-                //HitBloom.gameObject.GetComponent<HitBloom>().hitCheck = true;
             }
         }
     }

@@ -423,6 +423,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb90bd42c94d5409dddd3e8c7c3774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &358500036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4339758939608135141, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+  m_PrefabInstance: {fileID: 1700967552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351e41f3b8372e242925def1d005ed25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &456728705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2945004356286066423, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
@@ -556,12 +567,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 165217958}
     m_Modifications:
+    - target: {fileID: 1993541611022137205, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
+      propertyPath: m_RenderAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2945004356286066423, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
       propertyPath: m_Name
       value: BuffActivate
       objectReference: {fileID: 0}
     - target: {fileID: 2945004356286066423, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441694377321626378, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
+      propertyPath: TrailModule.worldSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8894822183489511656, guid: 9ad5625ad419ef94b85273b1e69661f1, type: 3}
@@ -1017,6 +1036,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 456728705}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockHitbox
+      value: 
+      objectReference: {fileID: 358500036}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: baseKnockback
       value: 5
       objectReference: {fileID: 0}
@@ -1069,12 +1092,40 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: defaultEyeColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: defaultEyeColor.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: defaultGemColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: defaultGemColor.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hammerCombo2Range
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hammerJumpDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 628572656693775340, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hammerJumpEndingLag
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 678370332238975889, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fc6e4cf9d980d3948839a32e5288ca30, type: 2}
     - target: {fileID: 913146307127842132, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 985863867186657495, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
@@ -1082,7 +1133,7 @@ PrefabInstance:
       objectReference: {fileID: 1371407739}
     - target: {fileID: 1666725977272678699, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666725977272678699, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_CastShadows
@@ -1118,11 +1169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3479124769564142742, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3836284044221763397, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906005683924725478, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_IsActive
@@ -1134,11 +1185,11 @@ PrefabInstance:
       objectReference: {fileID: 1371407739}
     - target: {fileID: 4029559784933208376, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4301611264837935418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4339758939608135141, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: parryVFX
@@ -1264,6 +1315,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemyAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 7478884522453166242, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fc6e4cf9d980d3948839a32e5288ca30, type: 2}
     - target: {fileID: 8140138118928480247, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 

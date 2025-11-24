@@ -95,6 +95,7 @@ public class PlayerBattle : MonoBehaviour
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
     private bool blockReady = true;
+    public BlockHitbox blockHitbox;
     [HideInInspector] public bool parrySuccessful = false;
     public bool buffActive = false;
     public GameObject buffVFX;
@@ -368,7 +369,7 @@ public class PlayerBattle : MonoBehaviour
     //parry successful (TO DO!!)
     public void ParrySuccessful()
     {
-        Debug.Log("parry successful!");
+        blockHitbox.ParryVFX();
     }
 
     //collision w enemy attack
