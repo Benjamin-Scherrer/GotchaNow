@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Threading;
 using System;
+using UnityEngine.VFX;
 
 public class AttackBox : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AttackBox : MonoBehaviour
     public float movement = 1;
     public float knockback = 10;
     public float buffMult = 1.5f;
+    public VisualEffect hitGlow;
 
     //private GameObject HitBloom;
 
@@ -42,6 +44,9 @@ public class AttackBox : MonoBehaviour
             dmgNumber.GetComponentInChildren<TextMesh>().text = damageCalc.ToString(); */
 
             enemy.HitByAttack(damageCalc, knockbackCalc);
+
+            Instantiate(hitGlow, transform.position, Quaternion.identity);
+
             //hit audio;
 
             //HitBloom.gameObject.GetComponent<HitBloom>().hitCheck = true;

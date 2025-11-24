@@ -97,6 +97,7 @@ public class PlayerBattle : MonoBehaviour
     private bool blockReady = true;
     [HideInInspector] public bool parrySuccessful = false;
     public bool buffActive = false;
+    public GameObject buffVFX;
     public float buffTime;
     public float buffMult = 1.5f;
     public bool meteorExists = false;
@@ -892,6 +893,8 @@ public class PlayerBattle : MonoBehaviour
     {
         float timer = 0;
 
+        buffVFX.SetActive(true);
+
         while (timer < buffTime)
         {
             timer += Time.fixedDeltaTime;
@@ -903,7 +906,7 @@ public class PlayerBattle : MonoBehaviour
 
     public void DisableBuff()
     {
-        Debug.Log("buff deactivated");
+        buffVFX.SetActive(false);
         
         buffActive = false;
     }
@@ -912,6 +915,7 @@ public class PlayerBattle : MonoBehaviour
     {
         StopAllCoroutines();
         EndBlock();
+        DisableBuff();
 
         animator.SetFloat("runIntensity", 0);
         animator.SetBool("charging", false);

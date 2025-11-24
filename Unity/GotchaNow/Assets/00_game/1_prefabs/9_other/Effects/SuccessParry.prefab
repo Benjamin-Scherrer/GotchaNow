@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8268304452603378111}
   - component: {fileID: 522905768870107075}
   - component: {fileID: 4171165685006240277}
+  - component: {fileID: -6028616916557643926}
   m_Layer: 0
   m_Name: SuccessParry
   m_TagString: Untagged
@@ -120,3 +121,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-6028616916557643926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956361397210081325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2e71757d70494489bd4f5a8280289e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticleScript
+  lifetime: 2

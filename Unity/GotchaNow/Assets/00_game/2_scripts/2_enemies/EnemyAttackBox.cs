@@ -27,6 +27,7 @@ public class EnemyAttackBox : MonoBehaviour
             if (other.GetComponentInParent<BlockScript>().parryActive)
             {
                 attackParried = true;
+                other.GetComponent<BlockHitbox>().ParryVFX();
             }
             else
             {

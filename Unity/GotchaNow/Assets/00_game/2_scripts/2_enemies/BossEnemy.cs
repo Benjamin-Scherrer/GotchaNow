@@ -102,14 +102,16 @@ public class BossEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         enemy = GetComponent<Enemy>();
+
+        defaultEyeColor = eyeRenderer.material.color;
+        defaultGemColor = gemRenderer.material.color;
     }
 
     void OnEnable()
     {
         pb = PlayerBattle.Instance;
 
-        defaultEyeColor = eyeRenderer.material.color;
-        defaultGemColor = gemRenderer.material.color;
+        
 
         eyeColor = defaultEyeColor;
         gemColor = defaultGemColor;
