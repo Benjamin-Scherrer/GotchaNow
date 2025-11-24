@@ -100,7 +100,9 @@ namespace GotchaNow
 
 		public void ScaleMessageRespectingFontSize(Vector3 scaleVector)
 		{
-			ScaleMessageRespectingFontSize(scaleVector.y);
+			//removed for now
+			//TODO: Make it compatible with new sprites!
+			// ScaleMessageRespectingFontSize(scaleVector.y);
 		}
 
 		public void ScaleMessageRespectingFontSize(float scaleFactor)
@@ -146,12 +148,12 @@ namespace GotchaNow
 			messageText.rectTransform.sizeDelta = new(messageTextWidth, messageTextHeight);
 		}
 
-		//EDITOR
-		#if(UNITY_EDITOR)
-		public void OnValidate()
-		{
-			ScaleMessageRespectingFontSize(messageFoldingCoef);
-		}
-		#endif
+		// //EDITOR
+		// #if(UNITY_EDITOR)
+		// public void OnValidate()
+		// {
+		// 	ScaleMessageRespectingFontSize(messageFoldingCoef);
+		// }
+		// #endif
 	}
 }

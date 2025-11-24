@@ -56,7 +56,7 @@ namespace GotchaNow
 			if (eventData == null) throw new Exception("PointerEventData is null in OnPointerEnter.");
 			if (eventData.pointerEnter == null) throw new Exception("PointerEventData.pointerEnter is null in OnPointerEnter.");
 			Debug.Log("OnPointerEnter event received from " + eventData.pointerEnter.name);
-			if (!eventData.pointerEnter.TryGetComponent<Selectable>(out Selectable selectable)) return;
+			if (!eventData.pointerEnter.TryGetComponent(out Selectable selectable)) return;
 			Debug.Log("OnPointerEnter called on " + selectable.gameObject.name);
 			foreach (Button button in _activeButtonReferences)
 			{
