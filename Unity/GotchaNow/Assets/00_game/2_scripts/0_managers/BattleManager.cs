@@ -40,7 +40,7 @@ public class BattleManager : MonoBehaviour
         while(timer < transitionTime)
         {
             timer += Time.unscaledDeltaTime;
-            //Time.timeScale = Mathf.Lerp(currentTimeScale, newTimeScale, timer/transitionTime);
+            Time.timeScale = Mathf.Lerp(currentTimeScale, newTimeScale, timer/transitionTime);
 
             yield return new WaitForSecondsRealtime(0.016f);
         }
