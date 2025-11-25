@@ -33,6 +33,14 @@ public class QueenEnemy : MonoBehaviour
     public float meteorShotMotionTime;
     public float meteorShotSpeed;
     public float meteorShotEndingLag;
+    [Header("Magic Ring Attack")]
+    public GameObject magicRing;
+    public float magicRingRange;
+    public float magicRingStartupTime;
+    public float magicRingDuration;
+    public float magicRingMotionTime;
+    public float magicRingSpeed;
+    public float magicRingEndingLag;
     [Header("Parry etc")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
@@ -73,7 +81,7 @@ public class QueenEnemy : MonoBehaviour
         distance = enemy.DistanceCheck(pb.gameObject.transform.position);
         //Debug.Log("distance to player: " + distance);
 
-        StartCoroutine(MeteorShot());
+        StartCoroutine(MagicRing());
         actionInProgress = true;
     }
 
@@ -302,7 +310,7 @@ public class QueenEnemy : MonoBehaviour
 
             if (atkTimer < meteorShotMotionTime)
             {   
-                transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + transform.right, 0.02f));
+                //LookAtPlayer(0.2f);
             }
 
             yield return new WaitForFixedUpdate();
@@ -311,6 +319,45 @@ public class QueenEnemy : MonoBehaviour
         //atkScript.EndAttack();
 
         yield return new WaitForSeconds(meteorShotEndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator MagicRing()
+    {
+        //AttackScript atkScript = MeteorShotAttack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+
+        float atkTimer = 0;
+
+        while (atkTimer < magicRingStartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.33f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        //atkScript.StartAttack(); //enable hitbox
+        Instantiate(magicRing, transform.position + 5* transform.forward, transform.rotation);
+        atkTimer = 0;
+
+        while (atkTimer < magicRingDuration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < magicRingMotionTime)
+            {   
+                //LookAtPlayer(0.2f);
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        //atkScript.EndAttack();
+
+        yield return new WaitForSeconds(magicRingEndingLag); //ending lag
 
         actionInProgress = false;
     }
