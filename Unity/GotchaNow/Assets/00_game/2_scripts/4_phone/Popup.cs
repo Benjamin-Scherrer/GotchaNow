@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 namespace GotchaNow
@@ -9,7 +7,6 @@ namespace GotchaNow
 	{
 		[SerializeField] private RectTransform popupExtra;
 		[SerializeField] private RectTransform popupMain;
-
 		[SerializeField] private RectTransform popupButton;
 
 		//
@@ -51,12 +48,19 @@ namespace GotchaNow
 
 		private IEnumerator AnimateButtonPress()
 		{
+			WaitForSecondsRealtime waitForSeconds = new WaitForSecondsRealtime(1f);
 			Debug.Log("Starting button press animation.");
 			float buttonPressTime = 0f;
 			// Press In
 			while (buttonPressTime < buttonPressInDuration)
 			{
-				buttonPressTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				buttonPressTime += Time.unscaledDeltaTime;
 				float pressCoeff = buttonPressTime / buttonPressInDuration;
 				float scaledValue = Mathf.Lerp(1f, buttonPressScale, pressCoeff);
 				SetbuttonScale(scaledValue);
@@ -66,7 +70,13 @@ namespace GotchaNow
 			buttonPressTime = 0f;
 			while (buttonPressTime < buttonPressDuration)
 			{
-				buttonPressTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				buttonPressTime += Time.unscaledDeltaTime;
 				yield return null;
 			}
 			
@@ -74,7 +84,13 @@ namespace GotchaNow
 			buttonPressTime = 0f;
 			while (buttonPressTime < buttonPopOutDuration)
 			{
-				buttonPressTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				buttonPressTime += Time.unscaledDeltaTime;
 				float popOutCoeff = buttonPressTime / buttonPopOutDuration;
 				float scaledValue = Mathf.Lerp(buttonPressScale, 1f, popOutCoeff);
 				SetbuttonScale(scaledValue);
@@ -96,7 +112,12 @@ namespace GotchaNow
 		{
 			if (jiggle)
 			{
-				jiggleTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					return;
+				}
+
+				jiggleTime += Time.unscaledDeltaTime;
 				float jiggleCoeff = jiggleTime / jiggleDuration;
 				float jiggleValue = Mathf.Sin(jiggleCoeff * Mathf.PI) * jiggleIntensity;
 				SetJiggleValue(jiggleValue);

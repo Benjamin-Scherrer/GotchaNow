@@ -2,10 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
-using System.Threading;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.Splines.Interpolators;
 using TMPro;
 using GotchaNow;
 
@@ -30,8 +28,8 @@ public class NotificationManager : MonoBehaviour
     public float openTime = 0.3f;
     public bool menuOpen = false;
     private bool menuReady = true;
-    private Vector2 closedSize = new Vector2 (320, 48);
-    private Vector2 openSize = new Vector2(320, 240);
+    private Vector2 closedSize = new Vector2 (403, 51.5f); //new Vector2 (320, 48);
+    private Vector2 openSize = new Vector2(403, 278.75f); //new Vector2(320, 240);
     public Image notifBarUI;
     public Image quotaBarUI;
     public TextMeshProUGUI notifPercent;
@@ -58,6 +56,8 @@ public class NotificationManager : MonoBehaviour
 
         BuffEnabled = new UnityEvent();
         BuffDisabled = new UnityEvent();   
+
+        // selector.SetActive(false);
     }
 
     void Start()
@@ -202,7 +202,7 @@ public class NotificationManager : MonoBehaviour
 
         buttonSouth.SetActive(true);
         RectTransform buttonRt = buttonSouth.GetComponent<RectTransform>();
-        buttonRt.anchoredPosition= new Vector3(-132, -24, 0);
+        buttonRt.anchoredPosition = new Vector3 (-24, -46);//new Vector3(-132, -24, 0);
     }
 
     private IEnumerator UpScroll()
@@ -286,8 +286,13 @@ public class NotificationManager : MonoBehaviour
         RectTransform selectorRt = selector.GetComponent<RectTransform>();
         RectTransform buttonRt = buttonSouth.GetComponent<RectTransform>();
 
-        selectorRt.anchoredPosition = new Vector3(0, -48 + (selectedRequest * -48), 0);
-        buttonRt.anchoredPosition = new Vector3(-132, -72 + (selectedRequest * -48), 0);
+        // selectorRt.anchoredPosition = new Vector3(0, -48 + (selectedRequest * -48), 0);
+
+        Vector3 goalPos = request[pos].GetComponent<RectTransform>().anchoredPosition;
+        selectorRt.anchoredPosition = goalPos;
+
+        // buttonRt.anchoredPosition = new Vector3(-132, -72 + (selectedRequest * -48), 0);
+        buttonRt.anchoredPosition = new Vector3(buttonRt.anchoredPosition.x, goalPos.y, goalPos.z);
     }
 
     private void SelectMenuItem()

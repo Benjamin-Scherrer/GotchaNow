@@ -20,12 +20,12 @@ namespace DialogueSystem.Runtime.UI
         [SerializeField] private Button buttonPrefab;
         [SerializeField] private Button disabledButtonPrefab;
         [SerializeField] private Transform buttonsParent;
-        [SerializeField] private Button nextMessageButton;
+        // [SerializeField] private Button nextMessageButton;
         [SerializeField] private Vector2 buttonOffset;
         [SerializeField, Min(1)] private int numberOfColumns = 2;
 
         [Space, Header("UI Rendering")]
-        [SerializeField] private Optional<Image> characterSprite;
+        // [SerializeField] private Optional<Image> characterSprite;
         [SerializeField] private Image dialogueBubble;
     
         private List<Button> _currentOptionButtonList;
@@ -48,7 +48,7 @@ namespace DialogueSystem.Runtime.UI
         {
             // Debug.Log("1234567_Options: " + options.Count);
 
-            DisableNextNarrationUI();
+            // DisableNextNarrationUI();
             var parentRect = buttonsParent.GetComponent<RectTransform>().rect;
 
             //Get parent rect dimensions
@@ -84,7 +84,7 @@ namespace DialogueSystem.Runtime.UI
                     {
                         choosePathFunction(options.IndexOf(option));
                         RemoveOptions();
-                        EnableNextNarrationUI();
+                        // EnableNextNarrationUI();
                     });
 
                 var buttonRect = newOptionButton.GetComponent<RectTransform>();
@@ -147,26 +147,26 @@ namespace DialogueSystem.Runtime.UI
 
         public override void DisplayCharacter(Optional<Sprite> sprite, bool hideCharacter)
         {
-            if (!characterSprite.Enabled)
-            {
-                return;
-            }
+            // if (!characterSprite.Enabled)
+            // {
+            //     return;
+            // }
 
-            characterSprite.Value.sprite = sprite.Value;
-            characterSprite.Value.gameObject.SetActive(!hideCharacter && sprite.Enabled);
+            // characterSprite.Value.sprite = sprite.Value;
+            // characterSprite.Value.gameObject.SetActive(!hideCharacter && sprite.Enabled);
         }
 
-        private void EnableNextNarrationUI() => nextMessageButton.gameObject.SetActive(true);
-        private void DisableNextNarrationUI() => nextMessageButton.gameObject.SetActive(false);
+        // private void EnableNextNarrationUI() => nextMessageButton.gameObject.SetActive(true);
+        // private void DisableNextNarrationUI() => nextMessageButton.gameObject.SetActive(false);
         
         public override void SetUIActive(bool active)
         {
             speakerNameText.gameObject.SetActive(active);
             messageTextContainer.gameObject.SetActive(active);
             buttonsParent.gameObject.SetActive(active);
-            nextMessageButton.gameObject.SetActive(active);
+            // nextMessageButton.gameObject.SetActive(active);
             dialogueBubble.gameObject.SetActive(active);
-            characterSprite.Value.gameObject.SetActive(active);
+            // characterSprite.Value.gameObject.SetActive(active);
         }
     
         public override void InitializeUI()

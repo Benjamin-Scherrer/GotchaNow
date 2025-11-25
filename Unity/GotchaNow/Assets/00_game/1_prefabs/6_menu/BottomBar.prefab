@@ -268,10 +268,10 @@ RectTransform:
   - {fileID: 8789379996570345300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.125}
-  m_AnchorMax: {x: 0.5, y: 0.125}
+  m_AnchorMin: {x: 0.5, y: 0.075}
+  m_AnchorMax: {x: 0.5, y: 0.075}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 0}
+  m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7233917761210729462
 CanvasRenderer:
@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.92549026
+      value: 0.92941177
       objectReference: {fileID: 0}
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_fontColor.g
@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.6901961
+      value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_fontSizeBase
@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179737603523798161, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4293682352
+      value: 4293747889
       objectReference: {fileID: 0}
     - target: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
       propertyPath: m_Name

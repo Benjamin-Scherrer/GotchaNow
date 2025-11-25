@@ -53,12 +53,8 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1851353415986813201, guid: cddc6c7c60e7316439d45cc2baa0952b, type: 3}
   disabledButtonPrefab: {fileID: 1851353415986813201, guid: f052b6a0606a3f747b3ccfac2cd3c684, type: 3}
   buttonsParent: {fileID: 0}
-  nextMessageButton: {fileID: 0}
   buttonOffset: {x: 20, y: 20}
   numberOfColumns: 1
-  characterSprite:
-    enabled: 1
-    value: {fileID: 0}
   dialogueBubble: {fileID: 0}
 --- !u!114 &7044367008953306730
 MonoBehaviour:
@@ -100,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502619664387336783}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e9db7e58c9b0d4e8d2eb7d391526d8, type: 3}
   m_Name: 
@@ -176,7 +172,7 @@ MonoBehaviour:
   narrativeUI: {fileID: 708971640602487698}
   narrativeLoader: {fileID: 718990699374184701}
   commandExecutionHandler: {fileID: 1977219144382408722}
-  optionButtonManager: {fileID: 0}
+  optionButtonManager: {fileID: 828680580310654099}
   resetNarrativeOnLoad: 1
   onNarrativeStart:
     m_PersistentCalls:

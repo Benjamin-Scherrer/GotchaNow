@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6964933751338388201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -192,26 +192,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 770855046877407508}
-    - target: {fileID: 6634179998220829308, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGameSession
-      objectReference: {fileID: 0}
     - target: {fileID: 8204706409311332508, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 770855046877407508}
-    - target: {fileID: 8204706409311332508, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleControlsScreen
-      objectReference: {fileID: 0}
     - target: {fileID: 9144785260350503015, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 770855046877407508}
-    - target: {fileID: 9144785260350503015, guid: 0d491cfaa08941647a3f9af47fa2465a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePauseScreen
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
