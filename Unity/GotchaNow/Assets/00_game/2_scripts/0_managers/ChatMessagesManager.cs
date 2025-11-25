@@ -32,13 +32,14 @@ namespace GotchaNow
 		//PUBLIC
 		public void DisplayMessageHistory()
 		{
-			Debug.Log("Displaying message history.");
+			Debug.Log("Trying to display message history.");
 			ChatMessageHistory messageHistory = messageSelector.GetChatMessageHistory();
 			if (messageHistory == null)
 			{
-				// Debug.Log("No ChatMessageHistory found to display.");
+				Debug.Log("No ChatMessageHistory found to display.");
 				return;
 			}
+			Debug.Log("Displaying message history.");
 			StartCoroutine(QueueChatMessageHistory(messageHistory));
 		}
 
@@ -76,9 +77,10 @@ namespace GotchaNow
 
 		private IEnumerator QueueChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
-			WaitForSeconds waitForSeconds = new(1f);
+			WaitForSecondsRealtime waitForSeconds = new(1f);
 			while(chatMessageHistory.InUse)
 			{
+				Debug.Log("ChatMessageHistory {" + chatMessageHistory.name + "} is currently in use, waiting...");
 				yield return waitForSeconds;
 			}
 			chatMessageHistory.InUse = true;
@@ -91,6 +93,8 @@ namespace GotchaNow
 
 		private IEnumerator ShowChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
+			WaitForSecondsRealtime waitForSeconds = new(1f);
+
 			Debug.Log("Starting to show chat message history:" + chatMessageHistory.name);
 
 			switch(chatMessageHistory.MessageHistoryOrder)
@@ -112,6 +116,12 @@ namespace GotchaNow
 			Debug.Log("ShowChatMessageHistory | Entering message display loop.");
 			while (!chatMessageHistory.FiredOut && recursionSafety-- > 0)
 			{
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
 				// Debug.Log(indentation + "Getting next message from chat message history.");
 				messageData = chatMessageHistory.GetNextMessage();
 				if (messageData == null)
@@ -127,7 +137,7 @@ namespace GotchaNow
 				{
 					StartCoroutine(SwipeCascade());
 				}
-				yield return new WaitForSeconds(delayTillNext);
+				yield return new WaitForSecondsRealtime(delayTillNext);
 			}
 
 			switch(chatMessageHistory.MessageHistoryOrder)
@@ -151,9 +161,15 @@ namespace GotchaNow
 		private IEnumerator SwipeCascade()
         {
 			// Debug.Log("Starting swipe cascade.");
-			WaitForSeconds waitForSeconds = new(0.2f);
+			WaitForSecondsRealtime waitForSeconds = new(0.2f);
             for (int i = 0; i < activeMessages.Count; i++)
 			{
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
 				ChatMessage msg = activeMessages[i];
 				if (msg == null) 
 				{
@@ -171,6 +187,8 @@ namespace GotchaNow
 
 		private IEnumerator ShowMessageAnimation(ChatMessageData messageData, float displayDuration = float.MaxValue)
 		{
+			WaitForSecondsRealtime waitForSeconds = new(1f);
+
 			if (messageData == null)
 			{
 				Debug.LogWarning("ShowMessageAnimation | Attempted to show a null ChatMessageData.");
@@ -205,7 +223,13 @@ namespace GotchaNow
 			PushDown();
 			while (typingPreview > 0f)
 			{
-				typingPreview -= Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				typingPreview -= Time.unscaledDeltaTime;
 				if (messageScript == null || messageScript.gameObject == null)
 				{
 					yield break;
@@ -222,7 +246,13 @@ namespace GotchaNow
 			// Here you can add animation code if needed
 			while (elapsedTime < popUpDuration)
 			{
-				elapsedTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				elapsedTime += Time.unscaledDeltaTime;
 				float timeCoefficient = elapsedTime / popUpDuration;
 
 				Vector3 scaleValue = Vector3.Lerp(startScale, Vector3.one, timeCoefficient);
@@ -237,7 +267,13 @@ namespace GotchaNow
 			}
 			while (elapsedTime < displayDuration)
 			{
-				elapsedTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				elapsedTime += Time.unscaledDeltaTime;
 				if (messageScript == null || messageScript.gameObject == null)
 				{
 					yield break;
@@ -250,7 +286,7 @@ namespace GotchaNow
 
 		private IEnumerator SwipeAwayMessage(ChatMessage messageScript, float duration)
 		{
-
+			WaitForSecondsRealtime waitForSeconds = new(1f);
 			if (messageScript == null)
 			{
 				yield break;
@@ -271,7 +307,13 @@ namespace GotchaNow
 			float elapsedTime = 0f;
 			while (elapsedTime < duration)
 			{
-				elapsedTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				elapsedTime += Time.unscaledDeltaTime;
 				float timeCoefficient = elapsedTime / duration;
 
 				messageRect.anchoredPosition = Vector2.Lerp(startPos, endPos, timeCoefficient);

@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -4}
   m_SizeDelta: {x: 338.33334, y: 169.16667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4952902996634279007
@@ -461,7 +461,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 296, y: 64}
+  m_SizeDelta: {x: 296, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8404836165163119735
 GameObject:
@@ -499,7 +499,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 296, y: 64}
+  m_SizeDelta: {x: 296, y: 88}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8004289596943650543
 CanvasRenderer:
@@ -574,7 +574,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 296, y: 64}
+  m_SizeDelta: {x: 296, y: 88}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5432395057101799634
 MonoBehaviour:
@@ -592,8 +592,8 @@ MonoBehaviour:
   messageSenderName: {fileID: 8118354031437706020}
   messageSenderAvatar: {fileID: 6578291885505832176}
   messageText: {fileID: 3241057083344030378}
-  messageFoldedHeight: 32
-  messageUnfoldedHeight: 64
+  messageFoldedHeight: 88
+  messageUnfoldedHeight: 88
   imageMargin: 6
   textMargin: 12
   messageFoldingCoef: 1

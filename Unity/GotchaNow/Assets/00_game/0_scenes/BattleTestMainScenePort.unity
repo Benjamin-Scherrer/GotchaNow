@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5301145105125387642, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
@@ -680,15 +684,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 624569175459771697, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.x
@@ -696,39 +704,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1640702575904615670, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1640702575904615670, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640702575904615670, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640702575904615670, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1704594504894473568, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_Name
       value: PhonePrefab
       objectReference: {fileID: 0}
     - target: {fileID: 2827028206009925488, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827028206009925488, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827028206009925488, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2827028206009925488, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827028206009925488, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 720
+      objectReference: {fileID: 0}
     - target: {fileID: 3204935915207610760, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204935915207610760, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204935915207610760, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalScale.z
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204935915207610760, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002941814209863556, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -88
       objectReference: {fileID: 0}
     - target: {fileID: 5392790969387870208, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 810
+      value: 540.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5392790969387870208, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 720.00006
       objectReference: {fileID: 0}
     - target: {fileID: 6555223344257709267, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1782,6 +1822,10 @@ PrefabInstance:
       propertyPath: messageParent
       value: 
       objectReference: {fileID: 1162061838}
+    - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
+      propertyPath: messageSpacing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9097151192315698137, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: messageSpawnPoint
       value: 

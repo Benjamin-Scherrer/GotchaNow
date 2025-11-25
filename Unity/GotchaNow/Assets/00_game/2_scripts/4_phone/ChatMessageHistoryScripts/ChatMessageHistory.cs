@@ -152,7 +152,7 @@ namespace GotchaNow
 		{
 			ResetChatHistory();
 			ResetAmountFired();
-			inUse = false;
+			InUse = false;
 		}
 
 		public void ResetChatHistory()

@@ -16,8 +16,8 @@ namespace GotchaNow
 		// [SerializeField] private RectTransform scalingRectTransform;
 
 		[Header("Variables")]
-		[SerializeField] private float messageFoldedHeight = 32f;
-		[SerializeField] private float messageUnfoldedHeight = 64f;
+		[SerializeField] private float messageFoldedHeight = 88f; //previously 32f
+		[SerializeField] private float messageUnfoldedHeight = 88f; //previously 64f
 		[SerializeField] private float imageMargin = 12f;
 		[SerializeField] private float textMargin = 12f;
 		[SerializeField] private float messageFoldingCoef = 1.0f;
@@ -102,7 +102,7 @@ namespace GotchaNow
 		{
 			//removed for now
 			//TODO: Make it compatible with new sprites!
-			// ScaleMessageRespectingFontSize(scaleVector.y);
+			ScaleMessageRespectingFontSize(scaleVector.y);
 		}
 
 		public void ScaleMessageRespectingFontSize(float scaleFactor)

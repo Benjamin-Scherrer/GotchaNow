@@ -42,30 +42,27 @@ namespace GotchaNow
 		[SerializeField] private float buttonPressScale = 0.9f;
 		[SerializeField] private float buttonPressPopupPopdownDelay = 0.1f;
 
-
-
-
 		private void Awake()
 		{
 			if (healMePopupPrefab == null)
 			{
-				throw new System.Exception("Heal Me Popup is not assigned in PopupManager.");
+				throw new Exception("Heal Me Popup is not assigned in PopupManager.");
 			}
 			if (buffMePopupPrefab == null)
 			{
-				throw new System.Exception("Buff Me Popup is not assigned in PopupManager.");
+				throw new Exception("Buff Me Popup is not assigned in PopupManager.");
 			}
 			if (meteoriteNowPopupPrefab == null)
 			{
-				throw new System.Exception("Meteorite Now Popup is not assigned in PopupManager.");
+				throw new Exception("Meteorite Now Popup is not assigned in PopupManager.");
 			}
 			if(popupParent == null)
 			{
-				throw new System.Exception("Popup Parent is not assigned in PopupManager.");
+				throw new Exception("Popup Parent is not assigned in PopupManager.");
 			}
 			if (instance != null)
             {
-				throw new System.Exception("Multiple instances of PopupManager detected. There should only be one instance of PopupManager in the scene.");
+				throw new Exception("Multiple instances of PopupManager detected. There should only be one instance of PopupManager in the scene.");
             }
 			instance = this;
 		}
@@ -95,17 +92,17 @@ namespace GotchaNow
 		}
 
 		//PRIVATE
-		private void Start()
-		{
-			// Example usage
-			// ShowPopup(PopupType.HealMe);
-			// StartCoroutine(LoopSpawnPopups());
-		}
+		// private void Start()
+		// {
+		// 	// Example usage
+		// 	// ShowPopup(PopupType.HealMe);
+		// 	// StartCoroutine(LoopSpawnPopups());
+		// }
 
 
 		// private IEnumerator LoopSpawnPopups()
 		// {
-		// 	WaitForSeconds wait = new(0.1f);
+		// 	WaitForSecondsRealtime wait = new(0.1f);
 		// 	while (true)
 		// 	{
 		// 		yield return StartCoroutine(ShowPopupAnimation(healMePopupPrefab));
@@ -119,6 +116,8 @@ namespace GotchaNow
 		
 		private IEnumerator ShowPopupAnimation(Popup popupScreenPrefab, Action acceptPopup = null)
 		{
+			WaitForSecondsRealtime waitForSeconds = new(1f);
+
 			Popup popupScreen = Instantiate(popupScreenPrefab, popupParent);
 			Debug.Log("Popup instantiated: " + popupScreen.name);
 			// Here you can add animation code if needed
@@ -127,7 +126,13 @@ namespace GotchaNow
 
 			while (popUpTime < popUpDuration)
 			{
-				popUpTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				popUpTime += Time.unscaledDeltaTime;
 				float popupfCoeff = popUpTime / popUpDuration;
 				popupScreen.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, popupfCoeff);
 				yield return null;
@@ -139,9 +144,15 @@ namespace GotchaNow
 			float displayTime = 0f;
 			while (displayTime < displayDuration)
 			{
-				displayTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
 
-				jiggleTime += Time.deltaTime;
+				displayTime += Time.unscaledDeltaTime;
+
+				jiggleTime += Time.unscaledDeltaTime;
 				if(jiggleTime >= jiggleInterval && performedJiggles < jiggleAmount)
 				{
 					jiggleTime -= jiggleInterval;
@@ -157,7 +168,7 @@ namespace GotchaNow
                 
 			acceptPopup?.Invoke();
 			
-			yield return new WaitForSeconds(buttonPressInDuration 
+			yield return new WaitForSecondsRealtime(buttonPressInDuration 
 				+ buttonPressDuration
 				+ buttonPopOutDuration
 				+ buttonPressPopupPopdownDelay);
@@ -165,7 +176,13 @@ namespace GotchaNow
 			float popDownTime = 0f;
 			while (popDownTime < popDownDuration)
 			{
-				popDownTime += Time.deltaTime;
+				if(PauseMenu.Instance.IsPaused)
+				{
+					yield return waitForSeconds;
+					continue;
+				}
+
+				popDownTime += Time.unscaledDeltaTime;
 				float popupfCoeff = 1 - (popDownTime / popDownDuration);
 				popupScreen.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, popupfCoeff);
 				yield return null;

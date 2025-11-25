@@ -17,7 +17,7 @@ namespace GotchaNow
 		}
 
 		// Singleton instance
-		public static PauseMenu PauseMenuInstance { get; private set; }
+		public static PauseMenu Instance { get; private set; }
 
 		[Header("Input Settings")]
 		[SerializeField] private InputActionReference pauseInputAction;
@@ -35,6 +35,7 @@ namespace GotchaNow
 		//Private Variables
 		private MenuState menuState;
 
+		//Public Properties
 		public string MainMenuScene
 		{
 			get
@@ -44,6 +45,14 @@ namespace GotchaNow
 			private set
 			{
 				mainMenuScene = value;
+			}
+		}
+
+		public bool IsPaused
+		{
+			get
+			{
+				return menuState != MenuState.DISABLED;
 			}
 		}
 
@@ -109,8 +118,8 @@ namespace GotchaNow
 				Debug.LogWarning($"Time.timeScale was {Time.timeScale} in MainMenuManager Awake, resetting to 1f");
 				Time.timeScale = 1f;
 			}
-			if (PauseMenuInstance != null) throw new Exception("There are multiple instances of the PauseMenu in the scene!");
-			PauseMenuInstance = this;
+			if (Instance != null) throw new Exception("There are multiple instances of the PauseMenu in the scene!");
+			Instance = this;
 
 			menuState = MenuState.DISABLED;
 
@@ -132,6 +141,8 @@ namespace GotchaNow
 				{
 					case MenuState.DISABLED:
 						if (Time.timeScale != 1) break; //safety check
+						//don't open pause menu if notification menu is open
+						if(NotificationManager.instance.menuOpen) break;
 						//if in gameplay, open pause menu
 						TogglePauseScreen();
 						break;
