@@ -296,8 +296,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1621010090848041948, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621010090848041948, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_RenderShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621010090848041948, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_AntialiasingQuality
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621010090848041948, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_RenderPostProcessing
@@ -314,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 2794815847331848481, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_HDR
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794815847331848481, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2794815847331848481, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_ClearFlags
@@ -1301,8 +1313,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1371407739}
     - target: {fileID: 1625347694959589715, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625347694959589715, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_RendererIndex
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625347694959589715, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_AntialiasingQuality
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1625347694959589715, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_RenderPostProcessing
