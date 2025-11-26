@@ -10,13 +10,24 @@ using GotchaNow;
 public class NotificationManager : MonoBehaviour
 {
     public static NotificationManager instance;
+
+    [Header("Inputs")]
     public InputActionReference upInput;
     public InputActionReference downInput;
     public InputActionReference menuInput;
     private bool upScrolling;
     private bool downScrolling;
+
+    [Header("Variables")]
     public float maxScrollSpeed = 0.1f;
-    public List<GameObject> request = new List<GameObject>();
+    public float openTime = 0.3f;
+    public bool menuOpen = false;
+    private bool menuReady = true;
+    private Vector2 closedSize = new (256.1538f, 51.5f); //new Vector2 (320, 48);
+    private Vector2 openSize = new (256.1538f, 171f+8f); //new Vector2(320, 240);
+
+    [Header("References")]
+    public List<GameObject> request = new ();
     private int selectedRequest = 4;
     public GameObject healRequest;
     public GameObject buffRequest;
@@ -25,15 +36,14 @@ public class NotificationManager : MonoBehaviour
     public GameObject notifMenu;
     public GameObject selector;
     public GameObject buttonSouth;
-    public float openTime = 0.3f;
-    public bool menuOpen = false;
-    private bool menuReady = true;
-    private Vector2 closedSize = new Vector2 (403, 51.5f); //new Vector2 (320, 48);
-    private Vector2 openSize = new Vector2(403, 278.75f); //new Vector2(320, 240);
+    [Space(10)]
     public Image notifBarUI;
     public Image quotaBarUI;
     public TextMeshProUGUI notifPercent;
     public TextMeshProUGUI quotaPercent;
+    [Space(10)]
+    public GameObject Meteor;
+    [Header("Variables")]
     public float quotaFillTime = 0.33f;
     private float chargeTimer = 0;
     public float chargePerSecond = 0.05f;
@@ -41,9 +51,12 @@ public class NotificationManager : MonoBehaviour
     public float notifCharge = 0;
     public float currentQuota = 0;
     public float maxQuota = 0;
-    public GameObject Meteor;
+    
+    [Header("Events")]
     public UnityEvent BuffEnabled;
     public UnityEvent BuffDisabled;
+
+    private readonly List<float> enableTresholds = new ();
 
     void Awake()
     {
@@ -57,7 +70,16 @@ public class NotificationManager : MonoBehaviour
         BuffEnabled = new UnityEvent();
         BuffDisabled = new UnityEvent();   
 
-        // selector.SetActive(false);
+        selector.SetActive(false);
+        request.ForEach(req => req.SetActive(false));
+
+        float enableTresholdTotal = 44.76923f; //initial offset from closed size to first item
+        foreach(GameObject req in request)
+        {
+            RectTransform rt = req.transform as RectTransform;
+            enableTresholdTotal += rt.sizeDelta.y;
+            enableTresholds.Add(enableTresholdTotal);
+        }
     }
 
     void Start()
@@ -140,17 +162,26 @@ public class NotificationManager : MonoBehaviour
             timer += Time.unscaledDeltaTime;
             rt.sizeDelta = Vector2.Lerp(closedSize, openSize, timer / openTime);
 
-            if (!healRequest.activeSelf && rt.sizeDelta.y > 96)
+            // if (!healRequest.activeSelf && rt.sizeDelta.y > 96)
+            // {
+            //     healRequest.SetActive(true);
+            // }
+            // if (!buffRequest.activeSelf && rt.sizeDelta.y > 144)
+            // {
+            //     buffRequest.SetActive(true);
+            // }
+            // if (!meteorRequest.activeSelf && rt.sizeDelta.y > 192)
+            // {
+            //     meteorRequest.SetActive(true);
+            // }
+            for (int i = 0; i < request.Count - 1; i++)
             {
-                healRequest.SetActive(true);
-            }
-            if (!buffRequest.activeSelf && rt.sizeDelta.y > 144)
-            {
-                buffRequest.SetActive(true);
-            }
-            if (!meteorRequest.activeSelf && rt.sizeDelta.y > 192)
-            {
-                meteorRequest.SetActive(true);
+                var requestItem = request[i];
+                Debug.Log("OpenRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
+                if(requestItem.activeSelf) continue;
+                if(rt.sizeDelta.y <= enableTresholds[i]) continue;
+                request[i].SetActive(true);
+
             }
 
             yield return null;
@@ -182,17 +213,25 @@ public class NotificationManager : MonoBehaviour
             timer += Time.unscaledDeltaTime;
             rt.sizeDelta = Vector2.Lerp(openSize, closedSize, timer / openTime);
 
-            if (meteorRequest.activeSelf && rt.sizeDelta.y < 192)
+            // if (meteorRequest.activeSelf && rt.sizeDelta.y < 192)
+            // {
+            //     meteorRequest.SetActive(false);
+            // }
+            // if (buffRequest.activeSelf && rt.sizeDelta.y < 144)
+            // {
+            //     buffRequest.SetActive(false);
+            // }
+            // if (healRequest.activeSelf && rt.sizeDelta.y < 96)
+            // {
+            //     healRequest.SetActive(false);
+            // }
+            for (int i = request.Count - 1; i >= 0; i--)
             {
-                meteorRequest.SetActive(false);
-            }
-            if (buffRequest.activeSelf && rt.sizeDelta.y < 144)
-            {
-                buffRequest.SetActive(false);
-            }
-            if (healRequest.activeSelf && rt.sizeDelta.y < 96)
-            {
-                healRequest.SetActive(false);
+                var requestItem = request[i];
+                Debug.Log("CloseRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
+                if(!requestItem.activeSelf) continue;
+                if(rt.sizeDelta.y >= enableTresholds[i]) continue;
+                request[i].SetActive(false);
             }
 
             yield return null;
@@ -202,7 +241,7 @@ public class NotificationManager : MonoBehaviour
 
         buttonSouth.SetActive(true);
         RectTransform buttonRt = buttonSouth.GetComponent<RectTransform>();
-        buttonRt.anchoredPosition = new Vector3 (-24, -46);//new Vector3(-132, -24, 0);
+        buttonRt.anchoredPosition = new Vector3 (-2.5f, -12);//new Vector3(-132, -24, 0);
     }
 
     private IEnumerator UpScroll()
@@ -222,7 +261,7 @@ public class NotificationManager : MonoBehaviour
             {
                 ScrollRequest("up");
 
-                scrollSpeed = scrollSpeed / 2;
+                scrollSpeed /= 2;
                 if (scrollSpeed < maxScrollSpeed) scrollSpeed = maxScrollSpeed;
 
                 timer = 0;
@@ -251,7 +290,7 @@ public class NotificationManager : MonoBehaviour
             {
                 ScrollRequest("down");
 
-                scrollSpeed = scrollSpeed / 2;
+                scrollSpeed /= 2;
                 if (scrollSpeed < maxScrollSpeed) scrollSpeed = maxScrollSpeed;
 
                 timer = 0;
@@ -371,13 +410,13 @@ public class NotificationManager : MonoBehaviour
     public void ChargeNotifBar(float amount)
     {
         StartCoroutine(UpdateNotifUI(notifCharge, notifCharge + amount));
-        notifCharge = notifCharge + amount;
+        notifCharge += amount;
     }
     
     public void ChargeQuota(float amount)
     {
         StartCoroutine(UpdateQuotaUI(currentQuota, currentQuota+amount));
-        currentQuota = currentQuota + amount;
+        currentQuota += amount;
     }
 
     private IEnumerator UpdateNotifUI(float oldCharge, float newCharge)
