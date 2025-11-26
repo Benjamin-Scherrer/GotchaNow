@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
     private Vector3 enemySpritePos;
     public float atkAnimationTime = 0.4f;
     public float HPdrainTime = 0.2f;
+    public Image renderTexture;
 
     void Awake()
     {
@@ -32,21 +33,24 @@ public class BattleManager : MonoBehaviour
         enemySpritePos = enemySprite.rectTransform.position;
     }
 
-    public IEnumerator SetTimeScale(float newTimeScale, float transitionTime)
+    public IEnumerator SetTimeScale(float newTimeScale, float transitionTime, float newDesaturation)
     {
         float timer = 0;
         float currentTimeScale = Time.timeScale;
+        float currentDesaturation = renderTexture.material.GetFloat("_menuDesaturate");
 
         while(timer < transitionTime)
         {
             timer += Time.unscaledDeltaTime;
             Time.timeScale = Mathf.Lerp(currentTimeScale, newTimeScale, timer/transitionTime);
 
+            renderTexture.material.SetFloat("_menuDesaturate", Mathf.Lerp(currentDesaturation, newDesaturation, timer/transitionTime));
+
             yield return new WaitForSecondsRealtime(0.016f);
         }
 
-        Debug.Log("new TimeScale set");
-        //Time.timeScale = newTimeScale;
+        Time.timeScale = newTimeScale;
+        renderTexture.material.SetFloat("_menuDesaturate", newDesaturation);
     }
 
     public IEnumerator PlayerAttackUI()

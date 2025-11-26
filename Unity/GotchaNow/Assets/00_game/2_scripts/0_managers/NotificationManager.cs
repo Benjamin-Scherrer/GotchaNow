@@ -155,7 +155,7 @@ public class NotificationManager : MonoBehaviour
 
         buttonSouth.SetActive(false);
 
-        StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime));
+        StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime,1f));
         
         while (timer < openTime)
         {
@@ -351,7 +351,7 @@ public class NotificationManager : MonoBehaviour
         if (selectedRequest == 3) //cancel, close menu
         {
             StartCoroutine(CloseRequestMenu());
-            StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime)); //reset timescale   
+            StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f)); //reset timescale   
         }
     }
 
@@ -389,20 +389,20 @@ public class NotificationManager : MonoBehaviour
 
     public void AcceptHeal()
     {
-        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
         
         PlayerBattle.Instance.Heal(50);
     }
 
     public void AcceptBuff()
     {
-        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
 
         BuffEnabled.Invoke();
     }
     public void AcceptMeteor()
     {
-        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime));
+        StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
     }

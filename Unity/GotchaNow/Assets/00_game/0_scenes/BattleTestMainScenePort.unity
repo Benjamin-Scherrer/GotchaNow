@@ -1106,63 +1106,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1838520118833388671, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
   m_PrefabInstance: {fileID: 310996768}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1454011297
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2959628209762574256, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_Name
-      value: AyaMagicRing
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 186.1259
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.09999943
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.97709537
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4543428461542238744, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
 --- !u!224 &1492025055 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -2371,6 +2314,10 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1024377170}
+    - target: {fileID: 3999150944246406479, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
+      propertyPath: renderTexture
+      value: 
+      objectReference: {fileID: 1893921411}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: Meteor
       value: 
@@ -2438,4 +2385,3 @@ SceneRoots:
   - {fileID: 1700967552}
   - {fileID: 1178423850}
   - {fileID: 134352901}
-  - {fileID: 1454011297}
