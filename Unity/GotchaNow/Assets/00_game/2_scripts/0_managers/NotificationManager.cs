@@ -155,7 +155,9 @@ public class NotificationManager : MonoBehaviour
 
         buttonSouth.SetActive(false);
 
+        //stop time, muffle music
         StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime,1f));
+        MusicPlayer.instance.SetLowPassFilter(1f);
         
         while (timer < openTime)
         {
@@ -351,7 +353,9 @@ public class NotificationManager : MonoBehaviour
         if (selectedRequest == 3) //cancel, close menu
         {
             StartCoroutine(CloseRequestMenu());
-            StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f)); //reset timescale   
+
+            StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f)); //reset timescale
+            MusicPlayer.instance.SetLowPassFilter(0f);
         }
     }
 
@@ -390,6 +394,7 @@ public class NotificationManager : MonoBehaviour
     public void AcceptHeal()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        MusicPlayer.instance.SetLowPassFilter(0f);
         
         PlayerBattle.Instance.Heal(50);
     }
@@ -397,12 +402,14 @@ public class NotificationManager : MonoBehaviour
     public void AcceptBuff()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        MusicPlayer.instance.SetLowPassFilter(0f);
 
         BuffEnabled.Invoke();
     }
     public void AcceptMeteor()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        MusicPlayer.instance.SetLowPassFilter(0f);
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
     }

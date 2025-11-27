@@ -101,7 +101,7 @@ public class ProgressionManager : MonoBehaviour
         debugText.text = "gameState : " + gameState + "\nID : " + intermissionID + "\npress N or Start : skip";
 
         EnableIntermissionUI();
-
+        MusicPlayer.instance.PlayIntermissionMusic();
         
 
         if (intermissionID == "intro")
@@ -348,6 +348,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (battleID == "battle1")
         {
+            MusicPlayer.instance.PlayKatoroMusic();
+            
             queen.SetActive(false);
 
             //Beni debug test
@@ -371,6 +373,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (battleID == "battle2trueEndingPath")
         {
+            MusicPlayer.instance.PlayKatoroMusic();
+            
             queen.SetActive(false);
             
             boss.GetComponent<EnemyIntermission>().EndIntermission();
@@ -399,6 +403,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (battleID == "battle2")
         {
+            MusicPlayer.instance.PlayKatoroMusic();
+            
             queen.SetActive(false);
             
             boss.GetComponent<EnemyIntermission>().EndIntermission();
@@ -427,6 +433,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (battleID == "battle3")
         {
+            MusicPlayer.instance.PlayAyaMusic();
+            
             boss.SetActive(false);
 
             queen.GetComponent<QueenEnemy>().enabled = true;

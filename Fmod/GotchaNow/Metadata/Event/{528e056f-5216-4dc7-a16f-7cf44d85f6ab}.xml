@@ -31,6 +31,9 @@
 		<relationship name="timeline">
 			<destination>{bbba688c-0ec7-4ebb-a678-6200ba36c76e}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{c93983a7-a535-484f-9cff-56cf230d4974}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{9a345cac-74c9-408a-8731-e950b397598c}">
 		<relationship name="masterBus">
@@ -73,6 +76,9 @@
 	<object class="EventMixerMaster" id="{448c9fc3-34d1-40cf-81f3-2d356e892732}">
 		<relationship name="automators">
 			<destination>{65e87ef9-36b2-4a05-8d89-b8460cbe299b}</destination>
+		</relationship>
+		<relationship name="modulators">
+			<destination>{b50d21a8-90be-414d-a2f1-61231a90c917}</destination>
 		</relationship>
 		<relationship name="effectChain">
 			<destination>{13c34d29-6657-4738-b3af-964101348288}</destination>
@@ -147,6 +153,23 @@
 		<relationship name="automationCurves">
 			<destination>{6a52e2b6-e9b0-4215-b88c-4c455c677441}</destination>
 		</relationship>
+	</object>
+	<object class="ADSRModulator" id="{b50d21a8-90be-414d-a2f1-61231a90c917}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>240</value>
+		</property>
+		<property name="releaseTime">
+			<value>2400</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{13c34d29-6657-4738-b3af-964101348288}">
 		<relationship name="effects">

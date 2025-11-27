@@ -103,7 +103,7 @@ public class PlayerBattle : MonoBehaviour
     public float buffMult = 1.5f;
     public bool meteorExists = false;
     [Header("Sound FX")]
-    public FMODUnity.EventReference Slash1SFX;
+    public EventReference Slash1SFX;
 
     //colors
     /* public Material defaultMaterial;
@@ -584,7 +584,7 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = slash1.GetComponent<AttackScript>();
 
         animator.SetTrigger("attack1");
-        FMODUnity.RuntimeManager.PlayOneShot(Slash1SFX, transform.position);
+        RuntimeManager.PlayOneShot(Slash1SFX, transform.position);
         
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;

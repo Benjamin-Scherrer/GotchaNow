@@ -33,6 +33,9 @@ public class MainMenu : MonoBehaviour
     [Header("Credits")]
     [SerializeField] private Canvas creditsScreen;
 
+    [Header("MusicPlayer")]
+    [SerializeField] private MainMenuMusicPlayer musicPlayer;
+
     //Private Variables
     private MenuState menuState;
     private List<Canvas> menus;
@@ -54,6 +57,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log($"Start Game, Scene name: {GameSceneName}");
         //Make sure that time is working properly
         Time.timeScale = 1f;
+        musicPlayer.StopTitleScreenMusic();
         SceneManager.LoadScene(GameSceneName);
     }
 

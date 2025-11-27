@@ -16,10 +16,21 @@
 			<value>true</value>
 		</property>
 		<property name="initialValue">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<property name="isExposedRecursively">
 			<value>false</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{50d086e8-f7b7-4305-87f0-6445eefd077d}</destination>
+		</relationship>
+	</object>
+	<object class="SeekModulator" id="{50d086e8-f7b7-4305-87f0-6445eefd077d}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>cursorPosition</value>
+		</property>
+		<property name="speedAscending">
+			<value>2</value>
 		</property>
 	</object>
 </objects>
