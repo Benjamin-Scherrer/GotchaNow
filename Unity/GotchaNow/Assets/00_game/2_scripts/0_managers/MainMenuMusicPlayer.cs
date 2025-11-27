@@ -30,8 +30,8 @@ public class MainMenuMusicPlayer : MonoBehaviour
         }
     }
 
-    public void SetBGMVolume(float value)
+    /* public void SetBGMVolume(float value)
     {
         RuntimeManager.StudioSystem.setParameterByName("bgmVolume", value, false);
-    }
+    } */
 }

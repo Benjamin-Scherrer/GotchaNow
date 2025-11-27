@@ -47,7 +47,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 7575405588105120077}
   MinDistance: 1
   MaxDistance: 20
   Length: 816
@@ -90,10 +91,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638998754185724963
+  lastModified: 638998772942194168
   FileSizes:
   - Name: Desktop
-    Value: 5572320
+    Value: 5572800
   Exists: 1
 --- !u!114 &-3530948546112131396
 MonoBehaviour:
@@ -139,6 +140,30 @@ MonoBehaviour:
   ID:
     data1: 1608947291
     data2: 2590546089
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-2223042111365484998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: parameter:/sfxVolume
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -220,12 +245,13 @@ MonoBehaviour:
   EditorParameters:
   - {fileID: 5052459447620762039}
   - {fileID: -2281187134637955754}
+  - {fileID: -2223042111365484998}
   MasterBanks:
   - {fileID: -4861923069804575134}
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 638998754185750212
+  cacheTime: 638998772942204166
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -328,10 +354,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638998754185750212
+  lastModified: 638998772942204166
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 1114
   Exists: 1
 --- !u!114 &5052459447620762039
 MonoBehaviour:
@@ -414,3 +440,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 146666
+--- !u!114 &7575405588105120077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestSound/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
