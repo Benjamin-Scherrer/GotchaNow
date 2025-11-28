@@ -851,6 +851,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e75a9bf0216864f9c6e632cb6835bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  notificationReady:
+    Guid:
+      Data1: 1123779203
+      Data2: 1195456377
+      Data3: 489840318
+      Data4: -617308209
+    Path: event:/sfx_ui_notificationReady
   openNotifMenu:
     Guid:
       Data1: -557983367
@@ -928,6 +935,27 @@ MonoBehaviour:
       Data3: 475533206
       Data4: -815418359
     Path: event:/sfx_ui_phoneMessage
+  heal:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  buffActivate:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  buffDeactivate:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &720564718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 367140848289092555, guid: bf6a332d0e42c064d8b9b48f5c2fdf41, type: 3}

@@ -870,6 +870,8 @@ public class PlayerBattle : MonoBehaviour
     //REQUESTS
     public void Heal(float hpAmount)
     {
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.heal, transform.position); //play sfx
+        
         if (HP + hpAmount >= maxHP)
         {
             StartCoroutine(BattleManager.instance.UpdatePlayerHP(HP/maxHP, 1));
@@ -883,9 +885,7 @@ public class PlayerBattle : MonoBehaviour
     }
 
     public void EnableBuff()
-    {
-        Debug.Log("buff activated");
-        
+    {   
         buffActive = true;
         StartCoroutine(BuffTimer());
     }
@@ -894,7 +894,10 @@ public class PlayerBattle : MonoBehaviour
     {
         float timer = 0;
 
+        yield return new WaitForSeconds(0.5f);
+
         buffVFX.SetActive(true);
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.buffActivate, transform.position); //play sfx
 
         while (timer < buffTime)
         {
@@ -908,6 +911,7 @@ public class PlayerBattle : MonoBehaviour
     public void DisableBuff()
     {
         buffVFX.SetActive(false);
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.buffDeactivate, transform.position); //play sfx
         
         buffActive = false;
     }

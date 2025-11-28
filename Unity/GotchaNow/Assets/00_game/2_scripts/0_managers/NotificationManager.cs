@@ -432,6 +432,7 @@ public class NotificationManager : MonoBehaviour
     public void ChargeNotifBar(float amount)
     {
         StartCoroutine(UpdateNotifUI(notifCharge, notifCharge + amount));
+        
         notifCharge += amount;
     }
     
@@ -456,6 +457,11 @@ public class NotificationManager : MonoBehaviour
             notifPercent.text = fillPercentage.ToString() + "%";
 
             yield return null;
+        }
+
+        if (oldCharge < 1 && newCharge >= 1)
+        {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.notificationReady, transform.position); //play sfx
         }
 
         notifBarUI.fillAmount = newCharge;

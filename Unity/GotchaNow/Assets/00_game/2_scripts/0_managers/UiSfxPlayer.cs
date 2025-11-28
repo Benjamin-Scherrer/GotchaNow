@@ -4,6 +4,7 @@ using UnityEngine;
 public class UiSfxPlayer : MonoBehaviour
 {
     public static UiSfxPlayer instance;
+    public EventReference notificationReady;
     public EventReference openNotifMenu;
     public EventReference closeNotifMenu;
     public EventReference confirm;
@@ -15,6 +16,9 @@ public class UiSfxPlayer : MonoBehaviour
     public EventReference phoneNotification;
     public EventReference phoneConfirm;
     public EventReference phoneMessage;
+    public EventReference heal;
+    public EventReference buffActivate;
+    public EventReference buffDeactivate;
 
     void Awake()
     {
