@@ -8,7 +8,6 @@ public class MusicPlayer : MonoBehaviour
     public StudioEventEmitter intermissionEmitter;
     public StudioEventEmitter battleKatoroEmitter;
     public StudioEventEmitter battleAyaEmitter;
-    public 
 
     void Awake()
     {

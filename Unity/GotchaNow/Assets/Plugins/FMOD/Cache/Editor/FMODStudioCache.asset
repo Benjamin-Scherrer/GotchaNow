@@ -24,6 +24,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-8603508760593512798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_closeNotifMenu
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_closeNotifMenu
+  Guid:
+    Data1: 1706337384
+    Data2: 1090275188
+    Data3: 721581746
+    Data4: 1538456860
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -288479864002319282}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-5978447359584157383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +80,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 816
+--- !u!114 &-5863690313786487758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_quotaFull/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-5579196980127306140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_scrollDown/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-4973275949155580255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,11 +167,39 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638998772942194168
+  lastModified: 638999302259698098
   FileSizes:
   - Name: Desktop
-    Value: 5572800
+    Value: 5749024
   Exists: 1
+--- !u!114 &-4742059384077242726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_phoneConfirm
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_phoneConfirm
+  Guid:
+    Data1: 269285023
+    Data2: 1341077717
+    Data3: 90005422
+    Data4: -445713001
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1316350169669537447}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2666
 --- !u!114 &-3530948546112131396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +220,54 @@ MonoBehaviour:
   ID:
     data1: 2048098114
     data2: 2463642922
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3491672924908430221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_phoneNotification/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-2828838032597205459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_phoneMessage/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -221,6 +373,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-288479864002319282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_closeNotifMenu/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +418,17 @@ MonoBehaviour:
   - {fileID: 2310538072479516511}
   - {fileID: 7495607544115411832}
   - {fileID: -1548436367513240968}
+  - {fileID: 4503834206230017281}
+  - {fileID: 7531752304574277499}
+  - {fileID: -8603508760593512798}
+  - {fileID: 7944411860300025577}
+  - {fileID: 2496039514434374592}
+  - {fileID: 6680898301104672061}
+  - {fileID: 1695429922447564959}
+  - {fileID: 247105890305103721}
+  - {fileID: -4742059384077242726}
+  - {fileID: 2169253636846479044}
+  - {fileID: 9036305254625872861}
   EditorParameters:
   - {fileID: 5052459447620762039}
   - {fileID: -2281187134637955754}
@@ -251,7 +438,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 638998772942204166
+  cacheTime: 638999302259718171
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -263,6 +450,28 @@ MonoBehaviour:
     index: 3
   - key: event:/bgm_battle_katoro
     index: 4
+  - key: event:/sfx_ui_phoneMessage
+    index: 5
+  - key: event:/sfx_ui_scrollUp
+    index: 6
+  - key: event:/sfx_ui_closeNotifMenu
+    index: 7
+  - key: event:/sfx_ui_phoneNotification
+    index: 8
+  - key: event:/sfx_ui_openNotifMenu
+    index: 9
+  - key: event:/sfx_ui_fillQuota
+    index: 10
+  - key: event:/sfx_ui_quotaFull
+    index: 11
+  - key: event:/sfx_ui_scrollDown
+    index: 12
+  - key: event:/sfx_ui_phoneConfirm
+    index: 13
+  - key: event:/sfx_ui_back
+    index: 14
+  - key: event:/sfx_ui_confirm
+    index: 15
 --- !u!114 &108063291123360185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +496,162 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &247105890305103721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_scrollDown
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_scrollDown
+  Guid:
+    Data1: 660330906
+    Data2: 1246091782
+    Data3: 1954922941
+    Data4: 1894586149
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5579196980127306140}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 666
+--- !u!114 &1277041412407503379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_confirm/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &1316350169669537447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_phoneConfirm/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &1695429922447564959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_quotaFull
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_quotaFull
+  Guid:
+    Data1: -452078718
+    Data2: 1089480920
+    Data3: 9601970
+    Data4: -673906290
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5863690313786487758}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &2073987606706071429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_scrollUp/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &2169253636846479044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_back
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_back
+  Guid:
+    Data1: 639665128
+    Data2: 1273409466
+    Data3: -856378746
+    Data4: -470363644
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8877790186108827517}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &2296419086242562351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,11 +719,91 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638998772942204166
+  lastModified: 638999302259718171
   FileSizes:
   - Name: Desktop
-    Value: 1114
+    Value: 1608
   Exists: 1
+--- !u!114 &2496039514434374592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_openNotifMenu
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_openNotifMenu
+  Guid:
+    Data1: -557983367
+    Data2: 1214941380
+    Data3: 1403682433
+    Data4: 1112092651
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3332159254736662737}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
+--- !u!114 &3332159254736662737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_openNotifMenu/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4503834206230017281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_phoneMessage
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_phoneMessage
+  Guid:
+    Data1: 1140485178
+    Data2: 1328741696
+    Data3: 475533206
+    Data4: -815418359
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2828838032597205459}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2666
 --- !u!114 &5052459447620762039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +828,58 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &6206270019219826200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_fillQuota/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &6680898301104672061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_fillQuota
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_fillQuota
+  Guid:
+    Data1: -2146407811
+    Data2: 1223022866
+    Data3: 905453987
+    Data4: 1021166794
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 6206270019219826200}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &7083727647809412065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +937,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 146666
+--- !u!114 &7531752304574277499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_scrollUp
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_scrollUp
+  Guid:
+    Data1: -243433375
+    Data2: 1124989946
+    Data3: -540473194
+    Data4: -80297210
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2073987606706071429}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 666
 --- !u!114 &7575405588105120077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,3 +989,83 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &7944411860300025577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_phoneNotification
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_phoneNotification
+  Guid:
+    Data1: -1403110029
+    Data2: 1234706821
+    Data3: 692592266
+    Data4: -772462864
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3491672924908430221}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2666
+--- !u!114 &8877790186108827517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_ui_back/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &9036305254625872861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_ui_confirm
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_ui_confirm
+  Guid:
+    Data1: -6723346
+    Data2: 1094538530
+    Data3: -1256527947
+    Data4: -1694629020
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1277041412407503379}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333

@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
@@ -158,6 +159,8 @@ public class NotificationManager : MonoBehaviour
         //stop time, muffle music
         StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime,1f));
         MusicPlayer.instance.SetLowPassFilter(1f);
+
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.openNotifMenu, transform.position); //play sfx
         
         while (timer < openTime)
         {
@@ -310,12 +313,16 @@ public class NotificationManager : MonoBehaviour
         {
             if (selectedRequest > 0) selectedRequest -= 1;
             else selectedRequest = 3;
+
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.scrollUp, transform.position); //play sfx
         }
 
         else if (dir == "down")
         {
             if (selectedRequest < 3) selectedRequest += 1;
             else selectedRequest = 0;
+
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.scrollDown, transform.position); //play sfx
         }
 
         HighlightRequest(selectedRequest);
@@ -340,18 +347,22 @@ public class NotificationManager : MonoBehaviour
     {
         if (selectedRequest == 0) //heal
         {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.confirm, transform.position); //play sfx
             RequestHeal();            
         }
         if (selectedRequest == 1) //buff
         {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.confirm, transform.position); //play sfx
             RequestBuff();          
         }
         if (selectedRequest == 2) //meteor
         {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.confirm, transform.position); //play sfx
             RequestMeteor();           
         }
         if (selectedRequest == 3) //cancel, close menu
         {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.back, transform.position); //play sfx
             StartCoroutine(CloseRequestMenu());
 
             StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f)); //reset timescale
@@ -362,31 +373,29 @@ public class NotificationManager : MonoBehaviour
     private void RequestHeal()
     {
         ChargeNotifBar(-1);
-        ChargeQuota(30);
 
         PopupManager.instance.ShowHealMePopup();
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
 
         StartCoroutine(CloseRequestMenu());
     }
 
     private void RequestBuff()
     {
-        ChargeNotifBar(-1);
-        ChargeQuota(30);
+        ChargeNotifBar(-1);       
 
         PopupManager.instance.ShowBuffMePopup();
-        // AcceptBuff(); //wip
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
 
         StartCoroutine(CloseRequestMenu());
     }
 
     private void RequestMeteor()
     {
-        ChargeNotifBar(-1);
-        ChargeQuota(50);
+        ChargeNotifBar(-1);        
 
         PopupManager.instance.ShowMeteoriteNowPopup();
-        // AcceptMeteor(); //wip
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
 
         StartCoroutine(CloseRequestMenu());
     }
@@ -397,6 +406,8 @@ public class NotificationManager : MonoBehaviour
         MusicPlayer.instance.SetLowPassFilter(0f);
         
         PlayerBattle.Instance.Heal(50);
+
+        ChargeQuota(30);
     }
 
     public void AcceptBuff()
@@ -405,6 +416,8 @@ public class NotificationManager : MonoBehaviour
         MusicPlayer.instance.SetLowPassFilter(0f);
 
         BuffEnabled.Invoke();
+
+        ChargeQuota(30);
     }
     public void AcceptMeteor()
     {
@@ -412,6 +425,8 @@ public class NotificationManager : MonoBehaviour
         MusicPlayer.instance.SetLowPassFilter(0f);
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
+
+        ChargeQuota(50);
     }
 
     public void ChargeNotifBar(float amount)
@@ -454,6 +469,11 @@ public class NotificationManager : MonoBehaviour
         float timer = 0;
         int fillPercentage;
 
+        if (newQuota > oldQuota)
+        {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.fillQuota, transform.position); //play sfx
+        }
+
         while (timer < quotaFillTime)
         {
             timer += Time.deltaTime;
@@ -466,6 +486,11 @@ public class NotificationManager : MonoBehaviour
         }
 
         quotaBarUI.fillAmount = newQuota / maxQuota;
+
+        if (newQuota >= maxQuota)
+        {
+            RuntimeManager.PlayOneShot(UiSfxPlayer.instance.quotaFull, transform.position);
+        } 
 
         //Debug.Log("fillAmount: " + quotaBar.fillAmount);
     }

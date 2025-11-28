@@ -38,6 +38,7 @@ namespace GotchaNow
 			this.buttonPopOutDuration = buttonPopOutDuration;
 			this.buttonPressScale = buttonPressScale;
 			StartCoroutine(AnimateButtonPress());
+			FMODUnity.RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneConfirm, transform.position); //play sfx
 		}
 
 		//PRIVATE METHODS

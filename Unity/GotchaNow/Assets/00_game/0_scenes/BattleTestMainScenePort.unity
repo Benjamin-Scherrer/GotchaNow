@@ -278,6 +278,7 @@ Transform:
   - {fileID: 3281384751022851983}
   - {fileID: 533383456283793120}
   - {fileID: 53394193}
+  - {fileID: 717430487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &165217958 stripped
@@ -806,6 +807,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &717430486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 717430487}
+  - component: {fileID: 717430488}
+  m_Layer: 0
+  m_Name: UiSfxPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &717430487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717430486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 134352901}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &717430488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717430486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e75a9bf0216864f9c6e632cb6835bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  openNotifMenu:
+    Guid:
+      Data1: -557983367
+      Data2: 1214941380
+      Data3: 1403682433
+      Data4: 1112092651
+    Path: event:/sfx_ui_openNotifMenu
+  closeNotifMenu:
+    Guid:
+      Data1: 1706337384
+      Data2: 1090275188
+      Data3: 721581746
+      Data4: 1538456860
+    Path: event:/sfx_ui_closeNotifMenu
+  confirm:
+    Guid:
+      Data1: -6723346
+      Data2: 1094538530
+      Data3: -1256527947
+      Data4: -1694629020
+    Path: event:/sfx_ui_confirm
+  back:
+    Guid:
+      Data1: 639665128
+      Data2: 1273409466
+      Data3: -856378746
+      Data4: -470363644
+    Path: event:/sfx_ui_back
+  scrollUp:
+    Guid:
+      Data1: -243433375
+      Data2: 1124989946
+      Data3: -540473194
+      Data4: -80297210
+    Path: event:/sfx_ui_scrollUp
+  scrollDown:
+    Guid:
+      Data1: 660330906
+      Data2: 1246091782
+      Data3: 1954922941
+      Data4: 1894586149
+    Path: event:/sfx_ui_scrollDown
+  fillQuota:
+    Guid:
+      Data1: -2146407811
+      Data2: 1223022866
+      Data3: 905453987
+      Data4: 1021166794
+    Path: event:/sfx_ui_fillQuota
+  quotaFull:
+    Guid:
+      Data1: -452078718
+      Data2: 1089480920
+      Data3: 9601970
+      Data4: -673906290
+    Path: event:/sfx_ui_quotaFull
+  phoneNotification:
+    Guid:
+      Data1: -1403110029
+      Data2: 1234706821
+      Data3: 692592266
+      Data4: -772462864
+    Path: event:/sfx_ui_phoneNotification
+  phoneConfirm:
+    Guid:
+      Data1: 269285023
+      Data2: 1341077717
+      Data3: 90005422
+      Data4: -445713001
+    Path: event:/sfx_ui_phoneConfirm
+  phoneMessage:
+    Guid:
+      Data1: 1140485178
+      Data2: 1328741696
+      Data3: 475533206
+      Data4: -815418359
+    Path: event:/sfx_ui_phoneMessage
 --- !u!4 &720564718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 367140848289092555, guid: bf6a332d0e42c064d8b9b48f5c2fdf41, type: 3}
