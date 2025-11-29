@@ -10,6 +10,7 @@ public class EnemyProjectileAttack : MonoBehaviour
     private bool attackParried = false;
     public bool isComboAtk = false;
     private EnemyMeteorShot enemyMeteorShot;
+    public bool isMeteorShot = false;
 
     //private GameObject HitBloom;
 
@@ -18,7 +19,10 @@ public class EnemyProjectileAttack : MonoBehaviour
         attackParried = false;
         attackBlocked = false;
 
-        enemyMeteorShot = GetComponent<EnemyMeteorShot>();
+        if (isMeteorShot)
+        {
+            enemyMeteorShot = GetComponent<EnemyMeteorShot>();
+        }   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,7 +74,10 @@ public class EnemyProjectileAttack : MonoBehaviour
                 pb.HitByAttack(damageCalc, knockbackCalc, attackDir, isComboAtk);
             }
 
-            enemyMeteorShot.Hit();
+            if (isMeteorShot)
+            {
+                enemyMeteorShot.Hit();
+            }
         }
     }
 }

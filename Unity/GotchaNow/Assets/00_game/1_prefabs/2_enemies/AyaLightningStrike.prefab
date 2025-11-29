@@ -24344,6 +24344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileAttack
   damage: 20
   knockback: 5
+  isComboAtk: 0
 --- !u!1 &4399369903914227638
 GameObject:
   m_ObjectHideFlags: 0

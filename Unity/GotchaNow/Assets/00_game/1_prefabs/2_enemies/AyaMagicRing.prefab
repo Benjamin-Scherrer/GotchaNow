@@ -4859,9 +4859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b626d5cb414741acbdfa1558f9ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackDelay: 3
-  lifeTime: 5
-  despawnTime: 0.5
+  attackDelay: 1
+  lifeTime: 3
   lightningStrike: {fileID: 444831109968011196, guid: 2abc23070476c74438b6df6854ce515a, type: 3}
   ps1: {fileID: 2594237181829606871}
   ps2: {fileID: 9044911888316983062}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class QueenEnemy : MonoBehaviour
 {
@@ -33,7 +34,14 @@ public class QueenEnemy : MonoBehaviour
     public float meteorShotMotionTime;
     public float meteorShotSpeed;
     public float meteorShotEndingLag;
-    public Vector3 meteorShotOffset;
+    [Header("Horizontal Lightning Shot Attack")]
+    public GameObject horizontalLightningShot;
+    public float horizontalLightningRange;
+    public float horizontalLightningStartupTime;
+    public float horizontalLightningDuration;
+    public float horizontalLightningMotionTime;
+    public float horizontalLightningSpeed;
+    public float horizontalLightningEndingLag;
     [Header("Magic Ring Attack")]
     public GameObject magicRing;
     public float magicRingRange;
@@ -115,8 +123,10 @@ public class QueenEnemy : MonoBehaviour
         //Debug.Log("distance to player: " + distance);
         
         //StartCoroutine(HeavySlash());
-        StartCoroutine(SlashCombo1());
+        //StartCoroutine(SlashCombo1());
         //StartCoroutine(MeteorShot());
+        //StartCoroutine(MagicRing());
+        StartCoroutine(HorizontalLightningShot());
         actionInProgress = true;
     }
 
@@ -601,7 +611,7 @@ public class QueenEnemy : MonoBehaviour
         }
 
         //atkScript.StartAttack(); //enable hitbox
-        Instantiate(meteorShot, transform.position + meteorShotOffset, transform.rotation);
+        Instantiate(meteorShot, transform.position + transform.forward + 1.5f * transform.up, transform.rotation);
         atkTimer = 0;
 
         while (atkTimer < meteorShotDuration)
@@ -616,9 +626,50 @@ public class QueenEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        //atkScript.EndAttack();
+        animator.SetTrigger("endShotAttack");
 
         yield return new WaitForSeconds(meteorShotEndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator HorizontalLightningShot()
+    {
+        //HorizontalLightningAttack atkScript = MeteorShotAttack.GetComponent<HorizontalLightningAttack>();
+
+        actionInProgress = true;
+        animator.SetTrigger("shotAttack");
+
+        float atkTimer = 0;
+
+        while (atkTimer < horizontalLightningStartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        //atkScript.StartAttack(); //enable hitbox
+        GameObject shot = Instantiate(horizontalLightningShot, transform.position + transform.forward + 1.4f * transform.up, transform.rotation, transform);    
+        shot.GetComponent<HorizontalLightningAttack>().lifetime = horizontalLightningDuration;
+        atkTimer = 0;
+
+        while (atkTimer < horizontalLightningDuration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < horizontalLightningMotionTime)
+            {   
+                LookAtPlayer(0.33f);
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        animator.SetTrigger("endShotAttack");
+
+        yield return new WaitForSeconds(horizontalLightningEndingLag); //ending lag
 
         actionInProgress = false;
     }
