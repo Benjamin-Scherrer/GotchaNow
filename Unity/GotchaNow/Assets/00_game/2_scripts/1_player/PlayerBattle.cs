@@ -92,6 +92,7 @@ public class PlayerBattle : MonoBehaviour
     public float dodgeMotionTime = 0.5f;
     public float dodgeInvulnerableTime = 0.2f;
     public float baseKnockback = 2f;
+    public float hitStunTime = 0.8f;
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
     private bool blockReady = true;
@@ -387,7 +388,7 @@ public class PlayerBattle : MonoBehaviour
 
         if (guardActive) //TO DO: IMPROVE (use EnemyAttackBox.attackBlocked)
         {
-            hitStunTimer = 0.4f;
+            hitStunTimer = hitStunTime/2;
 
             /* guardActive = false;
             blockReady = true;
@@ -395,7 +396,7 @@ public class PlayerBattle : MonoBehaviour
         }
         else
         {
-            hitStunTimer = 0.9f;
+            hitStunTimer = hitStunTime;
             animator.SetTrigger("gotHit");
         }
         
