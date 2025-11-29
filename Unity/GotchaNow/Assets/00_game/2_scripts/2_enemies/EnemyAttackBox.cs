@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Runtime.Serialization.Formatters;
+using System.Threading;
 using UnityEngine;
 
 public class EnemyAttackBox : MonoBehaviour
@@ -9,6 +10,7 @@ public class EnemyAttackBox : MonoBehaviour
     public float damage = 30;
     public float movement = 1;
     public float knockback = 10;
+    public bool isComboAtk = false;
     private bool attackBlocked = false;
     private bool attackParried = false;
 
@@ -18,6 +20,11 @@ public class EnemyAttackBox : MonoBehaviour
     {
         attackParried = false;
         attackBlocked = false;
+
+        /* if (enemy != null)
+        {
+            enemy = GetComponentInParent<Enemy>();
+        } */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,15 +69,28 @@ public class EnemyAttackBox : MonoBehaviour
                 if (attackBlocked)
                 {
                     damageCalc = damage / 4;
-                    knockbackCalc = knockback * 0.7f;
+                    //knockbackCalc = knockback * 0.7f;
                     attackBlocked = false;
                     Debug.Log("block");
                 }
 
-                pb.HitByAttack(damageCalc, knockbackCalc, attackDir);
+                pb.HitByAttack(damageCalc, knockbackCalc, attackDir, isComboAtk);
 
                 //hit audio;
             }
         }
+    }
+
+    public IEnumerator ComboAttack(float duration)
+    {
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            timer += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        gameObject.SetActive(false);
     }
 }

@@ -33,6 +33,7 @@ public class QueenEnemy : MonoBehaviour
     public float meteorShotMotionTime;
     public float meteorShotSpeed;
     public float meteorShotEndingLag;
+    public Vector3 meteorShotOffset;
     [Header("Magic Ring Attack")]
     public GameObject magicRing;
     public float magicRingRange;
@@ -41,6 +42,38 @@ public class QueenEnemy : MonoBehaviour
     public float magicRingMotionTime;
     public float magicRingSpeed;
     public float magicRingEndingLag;
+    [Header("Slash Combo 1 Attack")]
+    public GameObject slashCombo1Attack;
+    public float slashCombo1Range;
+    public float slashCombo1StartupTime;
+    public float slashCombo1Duration;
+    public float slashCombo1MotionTime;
+    public float slashCombo1Speed;
+    public float slashCombo1EndingLag;
+    [Header("Slash Combo 2 Attack")]
+    public GameObject slashCombo2Attack;
+    public float slashCombo2Range;
+    public float slashCombo2StartupTime;
+    public float slashCombo2Duration;
+    public float slashCombo2MotionTime;
+    public float slashCombo2Speed;
+    public float slashCombo2EndingLag;
+    [Header("Slash Combo 3 Attack")]
+    public GameObject slashCombo3Attack;
+    public float slashCombo3Range;
+    public float slashCombo3StartupTime;
+    public float slashCombo3Duration;
+    public float slashCombo3MotionTime;
+    public float slashCombo3Speed;
+    public float slashCombo3EndingLag;
+    [Header("Heavy Slash Attack")]
+    public GameObject heavySlashAttack;
+    public float heavySlashRange;
+    public float heavySlashStartupTime;
+    public float heavySlashDuration;
+    public float heavySlashMotionTime;
+    public float heavySlashSpeed;
+    public float heavySlashEndingLag;
     [Header("Parry etc")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
@@ -80,8 +113,10 @@ public class QueenEnemy : MonoBehaviour
     {
         distance = enemy.DistanceCheck(pb.gameObject.transform.position);
         //Debug.Log("distance to player: " + distance);
-
-        StartCoroutine(MagicRing());
+        
+        //StartCoroutine(HeavySlash());
+        StartCoroutine(SlashCombo1());
+        //StartCoroutine(MeteorShot());
         actionInProgress = true;
     }
 
@@ -284,11 +319,276 @@ public class QueenEnemy : MonoBehaviour
         actionInProgress = false;
     }
 
+    private IEnumerator SlashCombo1()
+    {
+        AttackScript atkScript = slashCombo1Attack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+        readyForAttack = false;
+
+        float atkTimer = 0;
+        ResetWalkAnim();
+        animator.SetTrigger("combo1");
+
+        while (atkTimer < slashCombo1StartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(0.5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < slashCombo1Duration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < slashCombo1MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slashCombo1Speed * Time.fixedDeltaTime);
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        //follow-up with combo 2 if in range
+        if (behaviorPhase != "start" && enemy.DistanceCheck(pb.gameObject.transform.position) < slashCombo2Range)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(SlashCombo2());
+                yield break;
+            }
+        }
+
+        yield return new WaitForSeconds(slashCombo1EndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator SlashCombo2()
+    {
+        AttackScript atkScript = slashCombo2Attack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+        readyForAttack = false;
+
+        float atkTimer = 0;
+        ResetWalkAnim();
+        animator.SetTrigger("combo2");
+
+        while (atkTimer < slashCombo2StartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(1.5f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < slashCombo2Duration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < slashCombo2MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slashCombo2Speed * Time.fixedDeltaTime);
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        //follow-up with combo 3 if in range
+        if (behaviorPhase != "start" && enemy.DistanceCheck(pb.gameObject.transform.position) < slashCombo3Range)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(SlashCombo3());
+                yield break;
+            }
+        }
+
+        yield return new WaitForSeconds(slashCombo2EndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator SlashCombo3()
+    {
+        AttackScript atkScript = slashCombo3Attack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+        readyForAttack = false;
+
+        float atkTimer = 0;
+        ResetWalkAnim();
+        animator.SetTrigger("combo3");
+
+        while (atkTimer < slashCombo3StartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(3f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < slashCombo3Duration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < 0.25f)
+            {
+                LookAtPlayer(1.5f);
+            }
+            else if (atkTimer > 0.25f && atkTimer < slashCombo3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slashCombo3Speed * Time.fixedDeltaTime);
+            }
+            else if (atkTimer > slashCombo3MotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * slashCombo3Speed * 0.3f * (slashCombo3Duration/atkTimer) * Time.fixedDeltaTime);
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.EndAttack();
+
+        /* //follow-up with combo 4 if in range
+        if (behaviorPhase != "start" && enemy.DistanceCheck(pb.gameObject.transform.position) < slashCombo3Range)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(SlashCombo3());
+                yield break;
+            }
+        } */
+
+        yield return new WaitForSeconds(slashCombo3EndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+    private IEnumerator HeavySlash()
+    {
+        AttackScript atkScript = heavySlashAttack.GetComponent<AttackScript>();
+
+        actionInProgress = true;
+        readyForAttack = false;
+
+        float atkTimer = 0;
+        ResetWalkAnim();
+        animator.SetTrigger("chargedAttack");
+
+        while (atkTimer < heavySlashStartupTime)
+        {
+            atkTimer += Time.fixedDeltaTime;
+            LookAtPlayer(1.4f);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        atkScript.StartAttack(); //enable hitbox
+        atkTimer = 0;
+
+        while (atkTimer < heavySlashDuration)
+        {
+            atkTimer += Time.fixedDeltaTime;
+
+            if (atkTimer < 0.1f)
+            {
+                LookAtPlayer(1.2f);
+            }
+            else if (atkTimer > 0.1f && atkTimer < heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashSpeed * Time.fixedDeltaTime);
+                LookAtPlayer(1f);
+            }
+            else if (atkTimer > heavySlashMotionTime)
+            {
+                rb.MovePosition(rb.position + transform.forward * heavySlashSpeed * 0.3f * (heavySlashDuration/atkTimer) * Time.fixedDeltaTime);
+                //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
+            }
+
+            if (attackParried)
+            {
+                atkScript.EndAttack();
+                StartCoroutine(AttackParried(2f, parryKnockback));
+                yield break;
+            }
+
+            //atkScript.EndAttack();
+
+            yield return new WaitForFixedUpdate();
+        }
+
+/*         //follow-up with combo 2 if in range
+        if (behaviorPhase != "start" && enemy.DistanceCheck(pb.gameObject.transform.position) < slashCombo2Range)
+        {
+            //check if player is in front of enemy
+            float frontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(pb.gameObject.transform.position));
+
+            if (frontCheck > 0)
+            {
+                StartCoroutine(SlashCombo2());
+                yield break;
+            }
+        } */
+
+        yield return new WaitForSeconds(heavySlashEndingLag); //ending lag
+
+        actionInProgress = false;
+    }
+
+
+
     private IEnumerator MeteorShot()
     {
         //AttackScript atkScript = MeteorShotAttack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        animator.SetTrigger("shotAttack");
 
         float atkTimer = 0;
 
@@ -301,7 +601,7 @@ public class QueenEnemy : MonoBehaviour
         }
 
         //atkScript.StartAttack(); //enable hitbox
-        Instantiate(meteorShot, transform.position + transform.forward, transform.rotation);
+        Instantiate(meteorShot, transform.position + meteorShotOffset, transform.rotation);
         atkTimer = 0;
 
         while (atkTimer < meteorShotDuration)
@@ -328,6 +628,7 @@ public class QueenEnemy : MonoBehaviour
         //AttackScript atkScript = MeteorShotAttack.GetComponent<AttackScript>();
 
         actionInProgress = true;
+        animator.SetTrigger("lightningAttack");
 
         float atkTimer = 0;
 
@@ -355,6 +656,8 @@ public class QueenEnemy : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        animator.SetTrigger("endLightningAttack");
+
         //atkScript.EndAttack();
 
         yield return new WaitForSeconds(magicRingEndingLag); //ending lag
@@ -367,6 +670,8 @@ public class QueenEnemy : MonoBehaviour
         float timer = 0;
         Vector3 parryDir = transform.position - pb.gameObject.transform.position;
         parryDir.y = 0;
+
+        animator.SetTrigger("gotParried");
 
         while (timer < stunTime)
         {
@@ -384,7 +689,16 @@ public class QueenEnemy : MonoBehaviour
         attackParried = false;
         actionInProgress = false;
     }
+
     
+
+    private void ResetWalkAnim()
+    {
+        animator.SetBool("walking", false);
+        animator.SetFloat("motionFwd", 0);
+        animator.SetFloat("motionSide", 0);
+    }
+
     public void EndBattle()
     {
         this.enabled = false;

@@ -28,6 +28,10 @@ public class AttackScript : MonoBehaviour
         {
             StartCoroutine(PlayerHeavyAttack());
         }
+        else if (attackType == "ayaHeavyAttack")
+        {
+            StartCoroutine(AyaHeavyAttack());
+        }
         else
         {
             hitbox.SetActive(true);
@@ -90,6 +94,32 @@ public class AttackScript : MonoBehaviour
         atkBox2.baseDmg = hitbox2Dmg;
         atkBox2.duration = 0.25f;
         hitbox2.SetActive(true);
+    }
+
+    private IEnumerator AyaHeavyAttack()
+    {
+        float timer = 0;
+
+        EnemyAttackBox atkBox1 = hitbox.GetComponent<EnemyAttackBox>();
+        EnemyAttackBox atkBox2 = hitbox2.GetComponent<EnemyAttackBox>();
+
+        while (timer < windupTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        hitbox.SetActive(true);
+        StartCoroutine(atkBox1.ComboAttack(0.3f));
+
+        while (timer < windup2Time)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        hitbox2.SetActive(true);
+        StartCoroutine(atkBox2.ComboAttack(0.25f));
     }
 
     void EndBattle() //triggered through event

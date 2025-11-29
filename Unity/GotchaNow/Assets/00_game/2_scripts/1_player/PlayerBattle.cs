@@ -44,6 +44,7 @@ public class PlayerBattle : MonoBehaviour
 
     [HideInInspector] public bool hitStun = false;
     [HideInInspector] public float hitStunTimer = 0f;
+    private bool hitCheck = false;
 
     //public so enemies can check player state
     [HideInInspector] public bool actionInProgress = false;
@@ -141,6 +142,7 @@ public class PlayerBattle : MonoBehaviour
         
         actionInProgress = false;
         hitStun = false;
+        hitCheck = false;
 
         buffActive = false;
         guardActive = false;
@@ -374,7 +376,7 @@ public class PlayerBattle : MonoBehaviour
     }
 
     //collision w enemy attack
-    public void HitByAttack(float dmg, float atkKnockback, Vector3 attackDir)
+    public void HitByAttack(float dmg, float atkKnockback, Vector3 attackDir, bool isComboAtk)
     {
         if (invulnerable)
         {
@@ -383,12 +385,12 @@ public class PlayerBattle : MonoBehaviour
         
         if (buffActive) HP -= dmg * 0.5f;
         else HP -= dmg;
-        
+
         hitStun = true;
 
         if (guardActive) //TO DO: IMPROVE (use EnemyAttackBox.attackBlocked)
         {
-            hitStunTimer = hitStunTime/2;
+            hitStunTimer = hitStunTime/3;
 
             /* guardActive = false;
             blockReady = true;
@@ -399,8 +401,8 @@ public class PlayerBattle : MonoBehaviour
             hitStunTimer = hitStunTime;
             animator.SetTrigger("gotHit");
         }
-        
-        StartCoroutine(Knockback(atkKnockback, attackDir));
+
+        StartCoroutine(Knockback(atkKnockback, attackDir, isComboAtk));
 
         //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
 
@@ -408,16 +410,33 @@ public class PlayerBattle : MonoBehaviour
         StartCoroutine(bm.UpdatePlayerHP((HP + dmg) / maxHP, HP / maxHP));
     }
 
-    private IEnumerator Knockback(float atkKnockback, Vector3 attackDir)
-    {
+    private IEnumerator Knockback(float atkKnockback, Vector3 attackDir, bool isComboAtk)
+    {     
         float timer = 0;
         float knockback = atkKnockback;
-        StartCoroutine(Invulnerability(0.75f));
-        //GetComponent<MeshRenderer>().material = hitstunMaterial;
+
+        hitCheck = true;
+
+        if (!isComboAtk)
+        {
+            StartCoroutine(Invulnerability(0.7f));
+        }
+
+        //delay hitCheck bool reset to make sure existing coroutine can get interrupted
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        hitCheck = false; 
 
         while (timer < hitStunTimer)
         {
             timer += Time.fixedDeltaTime;
+
+            if (hitCheck) //stop coroutine if another attack hits
+            {
+                hitCheck = false;
+                yield break;
+            }
             
             if (timer < hitStunTimer/2)
             {
@@ -799,7 +818,7 @@ public class PlayerBattle : MonoBehaviour
             }
             else if (atkTimer > heavySlashMotionTime)
             {
-                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * 0.3f * (slash3Duration/atkTimer) * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + transform.forward * heavySlashfMovement * 0.3f * (heavySlashDuration/atkTimer) * Time.fixedDeltaTime);
                 //transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + moveDir, 0.5f));
             }
 

@@ -8,7 +8,7 @@ public class MagicRingAttack : MonoBehaviour
 {
     public float attackDelay;
     public float lifeTime;
-    public float despawnTime;
+    //public float despawnTime;
     public GameObject lightningStrike;
     public ParticleSystem ps1;
     public ParticleSystem ps2;
