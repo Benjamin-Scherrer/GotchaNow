@@ -243,6 +243,11 @@ namespace GotchaNow
 			messageScript.SetMessageText(messageData.MessageContent);
 
 			messageScript.Written = true;
+
+			// Play sound effect
+			FMODUnity.RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneMessage, transform.position);
+			Debug.Log("ShowMessageAnimation | Playing message received sound effect.");
+
 			// Here you can add animation code if needed
 			while (elapsedTime < popUpDuration)
 			{
