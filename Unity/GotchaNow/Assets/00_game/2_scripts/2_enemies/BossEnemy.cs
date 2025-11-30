@@ -282,10 +282,10 @@ public class BossEnemy : MonoBehaviour
     //MOVEMENT FUNCTIONS
     private void LookAtPlayer(float speedMult)
     {
-        Vector3 pVector = pb.gameObject.transform.position - rb.position;
+        Vector3 pVector = pb.gameObject.transform.position - transform.position;
         pVector.y = 0;
 
-        transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + pVector.normalized, turnSpeed * speedMult));
+        transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + pVector.normalized, turnSpeed * speedMult));
     }
 
     private void WalkTowardsPlayer(float speedMult)

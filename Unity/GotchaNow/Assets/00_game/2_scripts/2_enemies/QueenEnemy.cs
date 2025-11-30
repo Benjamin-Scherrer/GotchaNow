@@ -82,9 +82,16 @@ public class QueenEnemy : MonoBehaviour
     public float heavySlashMotionTime;
     public float heavySlashSpeed;
     public float heavySlashEndingLag;
+    [Header("Backdash")]
+    public float backdashMaxOffCenter;
+    public float backdashStartupTime;
+    public float backdashDuration;
+    public float backdashSpeed;
+    public float backdashEndingLag;
     [Header("Parry etc")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
+    public Transform arenaCenter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -126,17 +133,19 @@ public class QueenEnemy : MonoBehaviour
         //StartCoroutine(SlashCombo1());
         //StartCoroutine(MeteorShot());
         //StartCoroutine(MagicRing());
-        StartCoroutine(HorizontalLightningShot());
+        //StartCoroutine(HorizontalLightningShot());
+        LookAtPlayer(5f);
+        StartCoroutine(Backdash());
         actionInProgress = true;
     }
 
     //MOVEMENT FUNCTIONS
     private void LookAtPlayer(float speedMult)
     {
-        Vector3 pVector = pb.gameObject.transform.position - rb.position;
+        Vector3 pVector = pb.gameObject.transform.position - transform.position;
         pVector.y = 0;
 
-        transform.LookAt(Vector3.Lerp(rb.position + transform.forward, rb.position + pVector.normalized, turnSpeed * speedMult));
+        transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + pVector.normalized, turnSpeed * speedMult));
     }
 
     private void WalkTowardsPlayer(float speedMult)
@@ -300,34 +309,56 @@ public class QueenEnemy : MonoBehaviour
         }        
     }
 
-    private IEnumerator Attack1()
+    private IEnumerator Backdash()
     {
-        AttackScript atkScript = attack1.GetComponent<AttackScript>();
+        
+        //put elsewhere!!
+        float centerFrontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(arenaCenter.transform.position));
+        float playerFrontCheck = Vector3.Dot(Vector3.forward, transform.InverseTransformPoint(PlayerBattle.Instance.transform.position));
 
-        atkScript.StartAttack(); //enable hitbox
+        Debug.Log(centerFrontCheck + " " + playerFrontCheck);
 
-        float atkTimer = 0;
-
-        while (atkTimer < attack1Duration)
+        if (centerFrontCheck > 0 || playerFrontCheck < 0)
         {
-            atkTimer += Time.deltaTime;
+            yield return new WaitForSeconds(backdashEndingLag);
+            actionInProgress = false;
+            
+            yield break;
+        }
+        
+        float timer = 0;
+        Vector3 newPosition = arenaCenter.transform.position - (PlayerBattle.Instance.transform.position-arenaCenter.transform.position).normalized * backdashMaxOffCenter;
+        newPosition.y = 2.5f;
 
-            if (attackParried)
-            {
-                atkScript.EndAttack();
-                StartCoroutine(AttackParried(2f, parryKnockback));
-                yield break;
-            }
+        actionInProgress = true;
+        ResetWalkAnim();
+        animator.SetTrigger("backdash");
 
-            yield return null;
+        while (timer < backdashStartupTime)
+        {
+            timer += Time.fixedDeltaTime;
+            LookAtPlayer(1.25f);
+
+            yield return new WaitForFixedUpdate();
         }
 
-        atkScript.EndAttack();
+        while (timer < backdashDuration)
+        {
+            timer += Time.fixedDeltaTime;
 
-        yield return new WaitForSeconds(attack1EndingLag); //ending lag
+            Vector3 direction = newPosition - transform.position;
+
+            LookAtPlayer(1.5f);
+            rb.MovePosition(rb.position + direction * backdashSpeed * Time.fixedDeltaTime);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(backdashEndingLag);
 
         actionInProgress = false;
     }
+
 
     private IEnumerator SlashCombo1()
     {
@@ -590,8 +621,6 @@ public class QueenEnemy : MonoBehaviour
 
         actionInProgress = false;
     }
-
-
 
     private IEnumerator MeteorShot()
     {
