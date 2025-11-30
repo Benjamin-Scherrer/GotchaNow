@@ -36,7 +36,7 @@ public class EnemyMeteorShot : MonoBehaviour
                 direction.y = 0;
             }
 
-            transform.position = transform.position + speed * Time.fixedDeltaTime * Vector3.Lerp(transform.forward,direction,turnSpeed);
+            transform.position = transform.position + speed * Time.fixedDeltaTime * Vector3.Lerp(transform.forward,direction,turnSpeed).normalized;
 
             yield return new WaitForFixedUpdate();
         } 

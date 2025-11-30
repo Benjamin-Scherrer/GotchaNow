@@ -5053,8 +5053,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ff7ccc9d1383f408c7c874862cb768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 20
+  damage: 10
   knockback: 3
+  isComboAtk: 0
+  isMeteorShot: 1
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!114 &4896741185564211834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5067,8 +5070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68454c3486ea3a4497335ae42e47f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 10
-  turnSpeed: 1.5
+  speed: 7.5
+  turnSpeed: 1.25
   lifeTime: 3
   explosion: {fileID: 2807761945309584882, guid: cd64ef0d0516c374c8da0704aeb7da22, type: 3}
 --- !u!1 &8724097921859423864

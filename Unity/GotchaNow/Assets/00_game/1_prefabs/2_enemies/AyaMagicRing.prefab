@@ -4859,12 +4859,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b626d5cb414741acbdfa1558f9ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackDelay: 1
+  attackDelay: 0.75
   lifeTime: 3
   lightningStrike: {fileID: 444831109968011196, guid: 2abc23070476c74438b6df6854ce515a, type: 3}
   ps1: {fileID: 2594237181829606871}
   ps2: {fileID: 9044911888316983062}
   ps3: {fileID: 3709848003921149738}
+  trackingTarget: {fileID: 0}
+  spawner: 0
+  minion: {fileID: 6387449519428849930, guid: e18277303eb21bc44b0f18f8fddeb60a, type: 3}
 --- !u!1 &4819159580905487173
 GameObject:
   m_ObjectHideFlags: 0

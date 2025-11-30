@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 using System.Collections;
 
 public class EnemyProjectileAttack : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnemyProjectileAttack : MonoBehaviour
     public bool isComboAtk = false;
     private EnemyMeteorShot enemyMeteorShot;
     public bool isMeteorShot = false;
+    public VisualEffect hitGlow;
 
     //private GameObject HitBloom;
 
@@ -69,6 +71,13 @@ public class EnemyProjectileAttack : MonoBehaviour
                     knockbackCalc = knockback * 0.7f;
                     attackBlocked = false;
                     Debug.Log("block");
+                    
+                    VisualEffect smallGlow = Instantiate(hitGlow, transform.position, Quaternion.identity);
+                    smallGlow.transform.localScale = Vector3.one * 0.5f;
+                }
+                else
+                {
+                    Instantiate(hitGlow, transform.position, Quaternion.identity);
                 }
 
                 pb.HitByAttack(damageCalc, knockbackCalc, attackDir, isComboAtk);

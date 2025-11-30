@@ -1,7 +1,9 @@
 using System.Collections;
+//using System.Numerics;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyAttackBox : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class EnemyAttackBox : MonoBehaviour
     public bool isComboAtk = false;
     private bool attackBlocked = false;
     private bool attackParried = false;
+    public VisualEffect hitGlow;
 
     //private GameObject HitBloom;
 
@@ -72,6 +75,13 @@ public class EnemyAttackBox : MonoBehaviour
                     //knockbackCalc = knockback * 0.7f;
                     attackBlocked = false;
                     Debug.Log("block");
+                    
+                    VisualEffect smallGlow = Instantiate(hitGlow, transform.position, Quaternion.identity);
+                    smallGlow.transform.localScale = Vector3.one * 0.5f;
+                }
+                else
+                {
+                    Instantiate(hitGlow, transform.position, Quaternion.identity);
                 }
 
                 pb.HitByAttack(damageCalc, knockbackCalc, attackDir, isComboAtk);

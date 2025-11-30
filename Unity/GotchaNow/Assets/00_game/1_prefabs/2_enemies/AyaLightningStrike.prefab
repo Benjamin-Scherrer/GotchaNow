@@ -24345,6 +24345,8 @@ MonoBehaviour:
   damage: 20
   knockback: 5
   isComboAtk: 0
+  isMeteorShot: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &4399369903914227638
 GameObject:
   m_ObjectHideFlags: 0

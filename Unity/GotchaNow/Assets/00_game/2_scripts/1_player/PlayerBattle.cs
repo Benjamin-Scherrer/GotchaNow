@@ -99,6 +99,7 @@ public class PlayerBattle : MonoBehaviour
     private bool blockReady = true;
     public BlockHitbox blockHitbox;
     [HideInInspector] public bool parrySuccessful = false;
+    public GameObject healVFX;
     public bool buffActive = false;
     public GameObject buffVFX;
     public float buffTime;
@@ -891,6 +892,7 @@ public class PlayerBattle : MonoBehaviour
     public void Heal(float hpAmount)
     {
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.heal, transform.position); //play sfx
+        Instantiate(healVFX, transform.position - transform.up * 0.5f, Quaternion.identity);
         
         if (HP + hpAmount >= maxHP)
         {

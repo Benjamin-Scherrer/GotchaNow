@@ -5169,8 +5169,8 @@ Transform:
   m_GameObject: {fileID: 828506714490014281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0488, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0.0428, z: -0}
+  m_LocalScale: {x: 0.05, y: 0.035, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6002171348173322165}
@@ -5191,7 +5191,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828506714490014281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5246,10 +5246,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
   enemy: {fileID: 5712592161349418803}
   attackScript: {fileID: 2635788142426938911}
-  damage: 15
+  damage: 10
   movement: 2
   knockback: 1
   isComboAtk: 1
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!136 &8705641516428060537
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11167,6 +11168,7 @@ MonoBehaviour:
   movement: 4
   knockback: 3
   isComboAtk: 1
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!136 &132612960012914512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11322,6 +11324,7 @@ MonoBehaviour:
   movement: 1
   knockback: 4
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &2016660825110137838
 GameObject:
   m_ObjectHideFlags: 0
@@ -11351,8 +11354,8 @@ Transform:
   m_GameObject: {fileID: 2016660825110137838}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0106976805, y: 0.12765925, z: -0.99176043, w: -3.637979e-10}
-  m_LocalPosition: {x: 0.00003, y: -0.01248, z: -0.00327}
-  m_LocalScale: {x: 0.019999998, y: 0.014999999, z: 0.020000001}
+  m_LocalPosition: {x: 0, y: -0.0098, z: -0.0026}
+  m_LocalScale: {x: 0.015, y: 0.011, z: 0.015}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1828457566705343195}
@@ -11373,7 +11376,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016660825110137838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 0
@@ -11451,10 +11454,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
   enemy: {fileID: 5712592161349418803}
   attackScript: {fileID: 2635788142426938911}
-  damage: 20
+  damage: 10
   movement: 1
-  knockback: 4
+  knockback: 9
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &2198714896593389822
 GameObject:
   m_ObjectHideFlags: 0
@@ -21936,6 +21940,7 @@ MonoBehaviour:
   movement: 2
   knockback: 1
   isComboAtk: 1
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!136 &3441916211792381874
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28140,6 +28145,7 @@ MonoBehaviour:
   movement: 1
   knockback: 3
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &5389354446905820771
 GameObject:
   m_ObjectHideFlags: 0
@@ -28632,10 +28638,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackBox
   enemy: {fileID: 5712592161349418803}
   attackScript: {fileID: 2636275179771784539}
-  damage: 10
+  damage: 5
   movement: 2
   knockback: 1
   isComboAtk: 1
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!136 &8756656255381621454
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -34093,6 +34100,7 @@ MonoBehaviour:
   movement: 1
   knockback: 2.5
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &6953860609601087160
 GameObject:
   m_ObjectHideFlags: 0
@@ -34277,6 +34285,7 @@ MonoBehaviour:
   movement: 1
   knockback: 8
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &7095998278833254837
 GameObject:
   m_ObjectHideFlags: 0
@@ -34566,6 +34575,7 @@ MonoBehaviour:
   movement: 1
   knockback: 4.5
   isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &7521026387161078646
 GameObject:
   m_ObjectHideFlags: 0
@@ -54317,6 +54327,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4098522541392449614}
     - target: {fileID: 1042826294177169535, guid: f8f5a12b4069b8d46b9e115f3532cf86, type: 3}
+      propertyPath: healVFX
+      value: 
+      objectReference: {fileID: 4949912937204111140, guid: 1e0d6bf201db14c438fe372adbc7f938, type: 3}
+    - target: {fileID: 1042826294177169535, guid: f8f5a12b4069b8d46b9e115f3532cf86, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 4519265379347072738}
@@ -54849,9 +54863,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2959628209762574256, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: walkSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShot
       value: 
       objectReference: {fileID: 7125078387867469232, guid: cd9e3218799103746b1a08416603d7e5, type: 3}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: arenaCenter
+      value: 
+      objectReference: {fileID: 4735812733996385991}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: strafeSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: backdashSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: magicRingRange
       value: 25
@@ -54866,15 +54896,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: heavySlashSpeed
-      value: 10
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShotRange
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShotSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: backdashDuration
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: heavySlashAttack
@@ -54882,31 +54916,35 @@ PrefabInstance:
       objectReference: {fileID: 25736067503504954}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1Range
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1Speed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo2Range
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo2Speed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo3Range
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo3Speed
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: backdashEndingLag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: magicRingDuration
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1Attack
@@ -54926,11 +54964,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: magicRingEndingLag
-      value: 1.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShotDuration
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: specialAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: backdashStartupTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: heavySlashEndingLag
@@ -54942,7 +54988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShotEndingLag
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1Duration
@@ -54957,8 +55003,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: backdashMaxOffCenter
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: heavySlashMotionTime
       value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: magicRingMinDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: magicRingStartupTime
@@ -54970,11 +55024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1EndingLag
-      value: 0.7
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo2EndingLag
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo3EndingLag
@@ -54983,6 +55037,10 @@ PrefabInstance:
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: heavySlashStartupTime
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: meteorShotMinDistance
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: meteorShotStartupTime
@@ -55001,8 +55059,12 @@ PrefabInstance:
       value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: specialAttackDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo1StartupTime
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: slashCombo2StartupTime
@@ -55013,16 +55075,28 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: specialAttackEndingLag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningShot
       value: 
       objectReference: {fileID: 444831109968011196, guid: 76045bde81b7b02479204ba4da59ba3b, type: 3}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: specialAttackMotionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningRange
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: specialAttackStartupTime
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningDuration
@@ -55035,6 +55109,10 @@ PrefabInstance:
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningMotionTime
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: horizontalLightningMinDistance
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 984686572051453909, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: horizontalLightningStartupTime
@@ -55119,6 +55197,14 @@ PrefabInstance:
     - target: {fileID: 8447720315563161504, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884807295219160700, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: HP
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884807295219160700, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
+      propertyPath: maxHP
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1511547316367573265, guid: 8820063362a59d74ca0ccbd1125e521c, type: 3}
@@ -56007,6 +56093,10 @@ PrefabInstance:
       propertyPath: damage
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5365194927567028256, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
+      propertyPath: hitGlow
+      value: 
+      objectReference: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
     - target: {fileID: 5365194927567028256, guid: 052838a5b58c5f74f92c7267e2008524, type: 3}
       propertyPath: knockback
       value: 6

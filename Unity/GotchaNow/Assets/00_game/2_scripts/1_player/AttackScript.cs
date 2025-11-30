@@ -40,10 +40,12 @@ public class AttackScript : MonoBehaviour
 
     public void EndAttack()
     {
+        StopAllCoroutines();
         hitbox.SetActive(false);
         
         if (hitbox2 != null)
         {
+            Debug.Log("deactivating both hitboxes");
             hitbox2.SetActive(false);
         }
     }

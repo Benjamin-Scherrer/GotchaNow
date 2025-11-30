@@ -183,6 +183,8 @@ MonoBehaviour:
   damage: 15
   movement: 1
   knockback: 4.5
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &3861738565974333636
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +316,8 @@ MonoBehaviour:
   damage: 10
   movement: 1
   knockback: 2
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &4100115548676896657
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +643,8 @@ MonoBehaviour:
   damage: 15
   movement: 1
   knockback: 6
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &6387449519428849930
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +713,6 @@ MonoBehaviour:
   HP: 100
   knockback: 0
   proximity: 0
-  bm: {fileID: 0}
   pm: {fileID: 0}
   nm: {fileID: 0}
   isLockOnTarget: 0
@@ -954,6 +959,8 @@ MonoBehaviour:
   damage: 10
   movement: 1
   knockback: 6
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &6613084862317557370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1196,8 @@ MonoBehaviour:
   damage: 10
   movement: 1
   knockback: 2.5
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &6974149841956407459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1382,8 @@ MonoBehaviour:
   damage: 10
   movement: 1
   knockback: 2
+  isComboAtk: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1001 &1172287952655946079
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24244,7 +24244,7 @@ Transform:
   m_GameObject: {fileID: 3763887536351460062}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24269,8 +24269,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
-  m_Height: 20
+  m_Radius: 0.5
+  m_Height: 18
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &3093375456037807968
@@ -24341,10 +24341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ff7ccc9d1383f408c7c874862cb768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileAttack
-  damage: 20
+  damage: 10
   knockback: 5
   isComboAtk: 0
   isMeteorShot: 0
+  hitGlow: {fileID: 1402418825264571720, guid: fa74ba10228649945acc7716aa437371, type: 3}
 --- !u!1 &4399369903914227638
 GameObject:
   m_ObjectHideFlags: 0

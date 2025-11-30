@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7513996299649215085}
   - component: {fileID: 1492269668522294942}
   - component: {fileID: 4455512917553303345}
+  - component: {fileID: -3385843467471671618}
   m_Layer: 0
   m_Name: Healing
   m_TagString: Untagged
@@ -117,3 +118,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-3385843467471671618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949912937204111140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2e71757d70494489bd4f5a8280289e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticleScript
+  lifetime: 2

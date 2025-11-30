@@ -40,16 +40,11 @@ public class AttackBox : MonoBehaviour
             float damageCalc = damage;
             float knockbackCalc = knockback;
 
-            /* GameObject dmgNumber = Instantiate(other.GetComponent<Enemy>().dmgNumbers, other.transform.position, Quaternion.identity);
-            dmgNumber.GetComponentInChildren<TextMesh>().text = damageCalc.ToString(); */
-
             enemy.HitByAttack(damageCalc, knockbackCalc);
 
             Instantiate(hitGlow, transform.position, Quaternion.identity);
 
             //hit audio;
-
-            //HitBloom.gameObject.GetComponent<HitBloom>().hitCheck = true;
         }
     }
 
