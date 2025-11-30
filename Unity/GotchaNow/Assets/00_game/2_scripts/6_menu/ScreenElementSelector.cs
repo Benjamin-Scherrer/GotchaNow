@@ -115,6 +115,11 @@ namespace GotchaNow
 					selectedButton.onClick.Invoke();
                 }
                     
+				if(selectedSelectable is Slider slider)
+				{
+					Debug.Log("Focusing slider " + slider);
+					slider.value = ((slider.value + 0.1f) % slider.maxValue) + slider.minValue;
+				}
 			}
 		}
 
@@ -183,6 +188,14 @@ namespace GotchaNow
 				return;
 			}
 
+			//Differentiate between Slider and other Selectables
+			if (selectedSelectable is Slider slider 
+			&& (Mathf.Abs(navigationInput.x) - Mathf.Abs(navigationInput.y) > 0))
+			{
+				SliderAdjustment(slider, navigationInput);
+				return;
+			}
+
 			// get Closest Selectable in direction
 			Selectable selectable = null;
 			float distance = float.MaxValue;
@@ -248,6 +261,17 @@ namespace GotchaNow
 		{
 			selectable.OnDeselect(null);
 			selectable.OnPointerExit(null);
+		}
+
+		private void SliderAdjustment(Slider slider, Vector2 navigationInput)
+		{
+			float adjustment = Mathf.Sign(navigationInput.x) * (slider.maxValue - slider.minValue) * 0.1f;
+			SliderAdjustment(slider, adjustment);
+		}
+
+		private void SliderAdjustment(Slider slider, float adjustment)
+		{
+			slider.value = Mathf.Clamp(slider.value + adjustment, slider.minValue, slider.maxValue);
 		}
 	}
 }
