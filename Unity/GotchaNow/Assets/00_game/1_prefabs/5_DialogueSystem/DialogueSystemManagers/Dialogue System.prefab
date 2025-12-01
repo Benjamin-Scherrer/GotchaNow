@@ -53,7 +53,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1851353415986813201, guid: cddc6c7c60e7316439d45cc2baa0952b, type: 3}
   disabledButtonPrefab: {fileID: 1851353415986813201, guid: f052b6a0606a3f747b3ccfac2cd3c684, type: 3}
   buttonsParent: {fileID: 0}
-  buttonOffset: {x: 20, y: 20}
+  buttonOffset: {x: 0, y: 12}
   numberOfColumns: 1
   dialogueBubble: {fileID: 0}
 --- !u!114 &7044367008953306730

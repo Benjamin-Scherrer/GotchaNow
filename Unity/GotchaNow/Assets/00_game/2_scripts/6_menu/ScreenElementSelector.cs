@@ -253,7 +253,7 @@ namespace GotchaNow
 
 		private void SelectSelectable(Selectable selectable)
 		{
-			selectable.Select();
+			selectable.OnSelect(null);
 			selectable.OnPointerEnter(null);
 
 			if(selectable.TryGetComponent(out ButtonTextHider buttonTextHider))

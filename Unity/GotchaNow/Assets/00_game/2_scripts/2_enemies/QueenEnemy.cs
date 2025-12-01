@@ -1187,12 +1187,14 @@ public class QueenEnemy : MonoBehaviour
 
     public IEnumerator GotHit(float atkKnockback)
     {
+        // if(ProgressionManager.instance.gameState == "intermission") yield break;
+
         gotHit = true;
         Debug.Log("got hit");
 
         float timer = 0f;
         float knockback = atkKnockback;
-
+    
         Vector3 attackDir = transform.position - pb.gameObject.transform.position;
         attackDir.y = 0;
 

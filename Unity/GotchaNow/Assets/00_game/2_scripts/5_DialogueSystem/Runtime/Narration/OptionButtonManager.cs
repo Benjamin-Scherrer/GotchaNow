@@ -40,10 +40,12 @@ namespace GotchaNow
 					foreach (Button btn in _buttonReferences)
 					{
 						if (btn.gameObject.name == "Button_DefaultDisabled(Clone)") continue;
+						// DeselectButton(btn);
 						_activeButtonReferences.Add(btn);
 					}
 					selectedButtonIndex = Mathf.Clamp(selectedButtonIndex, 0, _activeButtonReferences.Count - 1);
 
+					Debug.Log("Initializing selection to button index " + selectedButtonIndex + " ID:" + _activeButtonReferences[selectedButtonIndex].GetInstanceID());
 					HighlightButton(_activeButtonReferences[selectedButtonIndex]);
 				}
 			}
@@ -86,6 +88,10 @@ namespace GotchaNow
 			selectedButtonIndex = 0;
 			if (_activeButtonReferences != null && _activeButtonReferences.Count > 0)
 			{
+				foreach (Button btn in _activeButtonReferences)
+				{
+					DeselectButton(btn);
+				}
 				HighlightButton(_activeButtonReferences[selectedButtonIndex]);
 			}
 
@@ -208,15 +214,21 @@ namespace GotchaNow
 		private void HighlightButton(Button buttonToHighlight)
 		{
 			// SanityCheck();
-			buttonToHighlight.Select();
+			Debug.Log("Highlighting button " + buttonToHighlight.gameObject.name + " ID:" + buttonToHighlight.GetInstanceID());
+			buttonToHighlight.OnSelect(null);
 			buttonToHighlight.OnPointerEnter(null);
+
+			buttonToHighlight.transform.localScale = Vector3.one;
 		}
 
 		private void DeselectButton(Button buttonToDeselect)
 		{
 			// SanityCheck();
+			Debug.Log("Deselecting button " + buttonToDeselect.gameObject.name + " ID:" + buttonToDeselect.GetInstanceID());
 			buttonToDeselect.OnDeselect(null);
 			buttonToDeselect.OnPointerExit(null);
+
+			buttonToDeselect.transform.localScale = Vector3.one * 0.9f;
 		}
 
 		// private void SanityCheck()
