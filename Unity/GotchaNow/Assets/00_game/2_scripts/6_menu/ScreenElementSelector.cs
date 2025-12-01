@@ -255,12 +255,22 @@ namespace GotchaNow
 		{
 			selectable.Select();
 			selectable.OnPointerEnter(null);
+
+			if(selectable.TryGetComponent(out ButtonTextHider buttonTextHider))
+			{
+				buttonTextHider.ShowButtonText();
+			}
 		}
 
 		private void DeselectSelectable(Selectable selectable)
 		{
 			selectable.OnDeselect(null);
 			selectable.OnPointerExit(null);
+
+			if(selectable.TryGetComponent(out ButtonTextHider buttonTextHider))
+			{
+				buttonTextHider.HideButtonText();
+			}
 		}
 
 		private void SliderAdjustment(Slider slider, Vector2 navigationInput)

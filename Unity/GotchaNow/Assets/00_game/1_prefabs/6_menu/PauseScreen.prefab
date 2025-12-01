@@ -668,11 +668,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8108795027078991934}
   m_SourcePrefab: {fileID: 100100000, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
 --- !u!224 &2433545191960029083 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 4853864547210545176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8060347461259607512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 4853864547210545176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8108795027078991934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060347461259607512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3df2b8171097074a9f40d2c9a285ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ButtonTextHider
+  textGameObject: {fileID: 8802691423461311815}
+--- !u!1 &8802691423461311815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4140238662817467743, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 4853864547210545176}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &9144785260350503015 stripped
@@ -680,7 +706,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 4853864547210545176}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8060347461259607512}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -829,24 +855,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6673126521539572256}
   m_SourcePrefab: {fileID: 100100000, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
 --- !u!224 &3382630794434918240 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 5505739238880893155}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6982883942989671715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 5505739238880893155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6673126521539572256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982883942989671715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3df2b8171097074a9f40d2c9a285ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ButtonTextHider
+  textGameObject: {fileID: 8438977737816675772}
 --- !u!114 &8204706409311332508 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 5505739238880893155}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6982883942989671715}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &8438977737816675772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4140238662817467743, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 5505739238880893155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6282531479964180170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1108,11 +1160,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3776443033759375098}
   m_SourcePrefab: {fileID: 100100000, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
 --- !u!224 &233107753340247424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7104943412511240067, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 7036309438907019779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5558991694785316803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3206702958251177408, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
+  m_PrefabInstance: {fileID: 7036309438907019779}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3776443033759375098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558991694785316803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3df2b8171097074a9f40d2c9a285ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ButtonTextHider
+  textGameObject: {fileID: 6399873486417117020}
+--- !u!1 &6399873486417117020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4140238662817467743, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 7036309438907019779}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6634179998220829308 stripped
@@ -1120,7 +1198,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4446365273325547647, guid: 7ed89bf406d00504099c5f0ef5f91f9f, type: 3}
   m_PrefabInstance: {fileID: 7036309438907019779}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5558991694785316803}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
