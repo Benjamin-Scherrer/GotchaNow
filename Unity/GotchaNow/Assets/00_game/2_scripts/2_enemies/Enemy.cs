@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyType == "queen")
         {
-            //StartCoroutine(GetComponent<QueenEnemy>().GotHit(atkKnockback));
+            StartCoroutine(GetComponent<QueenEnemy>().GotHit(atkKnockback));
         }
 
         //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);

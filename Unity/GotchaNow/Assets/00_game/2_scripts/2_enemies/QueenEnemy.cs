@@ -101,6 +101,9 @@ public class QueenEnemy : MonoBehaviour
     [Header("Parry etc")]
     public bool attackParried = false;
     public float parryKnockback = 10f;
+    private bool gotHit = false;
+    public float hitTime = 0.1f;
+    public float baseKnockback = 1f;
     public Transform arenaCenter;
     public TextMeshProUGUI debugText;
 
@@ -1180,6 +1183,33 @@ public class QueenEnemy : MonoBehaviour
 
         attackParried = false;
         actionInProgress = false;
+    }
+
+    public IEnumerator GotHit(float atkKnockback)
+    {
+        gotHit = true;
+        Debug.Log("got hit");
+
+        float timer = 0f;
+        float knockback = atkKnockback;
+
+        Vector3 attackDir = transform.position - pb.gameObject.transform.position;
+        attackDir.y = 0;
+
+        while (timer < hitTime)
+        {
+            timer += Time.fixedDeltaTime;
+            
+            if (knockback > 0)
+            {
+                rb.MovePosition(rb.position + attackDir.normalized * knockback * baseKnockback * Time.fixedDeltaTime);
+                knockback = Mathf.Lerp(atkKnockback,0,4*timer/hitTime);
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        gotHit = false;
     }
 
     private void ResetWalkAnim()

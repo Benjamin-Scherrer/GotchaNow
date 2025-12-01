@@ -53,8 +53,8 @@ public class Meteor : MonoBehaviour
 
         PlayerBattle.Instance.meteorExists = false;
 
-        PlayerBattle.Instance.lockedOn = false;
-        PlayerBattle.Instance.LockOn();
+        //PlayerBattle.Instance.lockedOn = false;
+        //PlayerBattle.Instance.LockOn();
 
         Destroy(this.gameObject);
     }
@@ -66,6 +66,8 @@ public class Meteor : MonoBehaviour
             Debug.Log("hit");
             
             Enemy enemy = other.GetComponent<Enemy>();
+
+            lockOnTarget.targetEnemy = other.gameObject;
 
             float damageCalc = damage;
             float knockbackCalc = knockback;

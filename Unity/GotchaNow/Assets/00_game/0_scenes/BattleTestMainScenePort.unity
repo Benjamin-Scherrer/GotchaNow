@@ -397,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5059116493863776504, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5394640495693611894, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -642,6 +642,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 448212762401177060, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
   m_PrefabInstance: {fileID: 1178423850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &681292410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4735812733996385991, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+  m_PrefabInstance: {fileID: 1700967552}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &706321030 stripped
 MonoBehaviour:
@@ -1364,9 +1369,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1371407739}
     - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: debugText
       value: 
       objectReference: {fileID: 88498120}
+    - target: {fileID: 4152413813003959962, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: baseKnockback
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: nm
       value: 
@@ -1906,9 +1919,17 @@ PrefabInstance:
       value: intermission
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
+      propertyPath: arenaCenter
+      value: 
+      objectReference: {fileID: 681292410}
+    - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: sendNotifUI
       value: 
       objectReference: {fileID: 310996772}
+    - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
+      propertyPath: minionSpawner
+      value: 
+      objectReference: {fileID: 2959628209762574256, guid: f9050ba75d7188843a68b21dc0423ffe, type: 3}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: bossSpawnPoint
       value: 

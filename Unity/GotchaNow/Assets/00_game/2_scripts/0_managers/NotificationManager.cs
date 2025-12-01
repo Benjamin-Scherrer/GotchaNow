@@ -52,6 +52,10 @@ public class NotificationManager : MonoBehaviour
     public float notifCharge = 0;
     public float currentQuota = 0;
     public float maxQuota = 0;
+    public float healQuota = 10f;
+    public float buffQuota = 15f;
+    public float meteorQuota = 40f;
+
     
     [Header("Events")]
     public UnityEvent BuffEnabled;
@@ -407,7 +411,7 @@ public class NotificationManager : MonoBehaviour
         
         PlayerBattle.Instance.Heal(50);
 
-        ChargeQuota(30);
+        ChargeQuota(healQuota);
     }
 
     public void AcceptBuff()
@@ -417,7 +421,7 @@ public class NotificationManager : MonoBehaviour
 
         BuffEnabled.Invoke();
 
-        ChargeQuota(30);
+        ChargeQuota(buffQuota);
     }
     public void AcceptMeteor()
     {
@@ -426,7 +430,7 @@ public class NotificationManager : MonoBehaviour
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);
 
-        ChargeQuota(50);
+        ChargeQuota(meteorQuota);
     }
 
     public void ChargeNotifBar(float amount)

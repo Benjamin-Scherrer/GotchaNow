@@ -30,8 +30,11 @@ public class ProgressionManager : MonoBehaviour
     public GameObject boss;
     public GameObject minion;
     public GameObject queen;
-    public Transform bossSpawnPoint;
-    public Transform queenSpawnPoint;
+    public GameObject minionSpawner;
+    public Vector3 playerSpawnPoint;
+    public Vector3 bossSpawnPoint;
+    public Vector3 queenSpawnPoint;
+    public Transform arenaCenter;
     private bool skipReady = true;
     public UnityEvent EndBattleEvent;
 
@@ -116,9 +119,9 @@ public class ProgressionManager : MonoBehaviour
             queen.SetActive(true);
             boss.SetActive(false);
 
-            Vector3 spawnPoint = queenSpawnPoint.position;
+            queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);          
 
-            queen.transform.position = spawnPoint;
+            queen.transform.position = queenSpawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
@@ -141,12 +144,14 @@ public class ProgressionManager : MonoBehaviour
 
             boss.SetActive(true);
 
-            Vector3 spawnPoint = bossSpawnPoint.position;
+            bossSpawnPoint = arenaCenter.position + new Vector3(3,2,8);
+            queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);
 
-            boss.transform.position = spawnPoint;
+            boss.transform.position = bossSpawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
-            queen.transform.position = spawnPoint + new Vector3(8, 0, 1);
+            //queen.transform.position = queenSpawnPoint;
+            //queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
              //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -206,14 +211,11 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nwhat do you think you're doing\ni will have to step in";
 
-            Vector3 spawnPoint = bossSpawnPoint.position;
+            //Vector3 spawnPoint = bossSpawnPoint.position;
 
-            boss.transform.position = spawnPoint + new Vector3(0, 0, 2);
+            //boss.transform.position = spawnPoint + new Vector3(0, 0, 2);
 
             queen.SetActive(true);
-
-            queen.transform.position = spawnPoint;
-            queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -359,9 +361,13 @@ public class ProgressionManager : MonoBehaviour
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = bossSpawnPoint.position;
-            boss.transform.position = spawnPoint;
+            bossSpawnPoint = arenaCenter.position + new Vector3(0,2,8);
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-8);
+
+            boss.transform.position = bossSpawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            player.transform.position = playerSpawnPoint;
 
             boss.GetComponent<Enemy>().isMainEnemy = true;
 
@@ -380,20 +386,30 @@ public class ProgressionManager : MonoBehaviour
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = bossSpawnPoint.position;
-            boss.transform.position = spawnPoint;
+            bossSpawnPoint = arenaCenter.position + new Vector3(0,2,8);
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-8);
+
+            boss.transform.position = bossSpawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            player.transform.position = playerSpawnPoint;
 
             boss.GetComponent<Enemy>().isMainEnemy = true;
 
-            GameObject minion1 = Instantiate(minion);
+            GameObject spawnRing1 = Instantiate(minionSpawner, arenaCenter.position + Vector3.up * 4 + Vector3.right * 4, transform.rotation);
+            spawnRing1.GetComponent<MagicRingAttack>().spawner = true;
+
+            GameObject spawnRing2 = Instantiate(minionSpawner, arenaCenter.position + Vector3.up * 4 - Vector3.right * 4, transform.rotation);
+            spawnRing2.GetComponent<MagicRingAttack>().spawner = true;
+
+/*             GameObject minion1 = Instantiate(minion);
             GameObject minion2 = Instantiate(minion);
 
             minion1.transform.position = spawnPoint + new Vector3(-4, 4, 0);
             minion1.transform.eulerAngles = new Vector3(0, 180, 0);
 
             minion2.transform.position = spawnPoint + new Vector3(4, 4, 0);
-            minion2.transform.eulerAngles = new Vector3(0, 180, 0);
+            minion2.transform.eulerAngles = new Vector3(0, 180, 0); */
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();
@@ -410,20 +426,21 @@ public class ProgressionManager : MonoBehaviour
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = bossSpawnPoint.position;
-            boss.transform.position = spawnPoint;
+            bossSpawnPoint = arenaCenter.position + new Vector3(0,2,8);
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-8);
+
+            boss.transform.position = bossSpawnPoint;
             boss.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            player.transform.position = playerSpawnPoint;
 
             boss.GetComponent<Enemy>().isMainEnemy = true;
 
-            GameObject minion1 = Instantiate(minion);
-            GameObject minion2 = Instantiate(minion);
+            GameObject spawnRing1 = Instantiate(minionSpawner, arenaCenter.position + Vector3.up * 4 + Vector3.right * 4, transform.rotation);
+            spawnRing1.GetComponent<MagicRingAttack>().spawner = true;
 
-            minion1.transform.position = spawnPoint + new Vector3(-6, 0, 0);
-            minion1.transform.eulerAngles = new Vector3(0, 180, 0);
-
-            minion2.transform.position = spawnPoint + new Vector3(6, 0, 0);
-            minion2.transform.eulerAngles = new Vector3(0, 180, 0);
+            GameObject spawnRing2 = Instantiate(minionSpawner, arenaCenter.position + Vector3.up * 4 - Vector3.right * 4, transform.rotation);
+            spawnRing2.GetComponent<MagicRingAttack>().spawner = true;
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();
@@ -442,9 +459,13 @@ public class ProgressionManager : MonoBehaviour
 
             queen.GetComponent<Enemy>().StartBattle();
 
-            Vector3 spawnPoint = queenSpawnPoint.position;
-            queen.transform.position = spawnPoint;
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,8);
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-8);
+
+            queen.transform.position = queenSpawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            player.transform.position = playerSpawnPoint;
 
             queen.GetComponent<Enemy>().isMainEnemy = true;
 
