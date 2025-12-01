@@ -117,10 +117,14 @@ public class ProgressionManager : MonoBehaviour
             nm.FullReset();
             
             queen.SetActive(true);
-            boss.SetActive(false);
+            boss.SetActive(true);
 
+            bossSpawnPoint = arenaCenter.position + new Vector3(3,2,8);
             queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);          
-
+            
+            boss.transform.position = bossSpawnPoint;
+            boss.transform.eulerAngles = new Vector3(0, 180, 0);
+            
             queen.transform.position = queenSpawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 

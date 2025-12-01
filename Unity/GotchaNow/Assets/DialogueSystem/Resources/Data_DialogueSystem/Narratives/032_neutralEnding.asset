@@ -52,7 +52,7 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 235.5, y: 200}
+    position: {x: 236, y: 200}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
