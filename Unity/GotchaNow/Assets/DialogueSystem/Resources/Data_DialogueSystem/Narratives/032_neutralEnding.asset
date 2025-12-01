@@ -15,6 +15,9 @@ MonoBehaviour:
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 6841681a-36ab-4eb4-833a-f4714f07fefd
+  - <BaseNodeGuid>k__BackingField: 6841681a-36ab-4eb4-833a-f4714f07fefd
+    <PortName>k__BackingField: ...
     <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
@@ -26,14 +29,31 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: this is neutralEnding
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: '<event:gameEnd>
+
+        <event:skipThroughAll>
+
+        END'
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 280, y: 200}
+    position: {x: 721, y: 200}
     transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 6841681a-36ab-4eb4-833a-f4714f07fefd
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Uo, looks like you're getting benched.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 235.5, y: 200}
+    transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0

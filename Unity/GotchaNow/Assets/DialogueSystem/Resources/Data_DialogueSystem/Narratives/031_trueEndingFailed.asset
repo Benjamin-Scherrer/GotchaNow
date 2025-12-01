@@ -16,6 +16,9 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
     <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: afff0a2c-cc50-4b9a-8ca6-b0553b80c0d2
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -26,20 +29,20 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
+    - <CharacterName>k__BackingField: Aya
       <Content>k__BackingField: 'See, you are weak. '
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
+    - <CharacterName>k__BackingField: Aya
       <Content>k__BackingField: 'You thought you could be something special, someone
         better, morally superior. '
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
+    - <CharacterName>k__BackingField: Aya
       <Content>k__BackingField: But you are part of this system, you are designed
         to exploit.
       <HideCharacter>k__BackingField: 0
@@ -53,6 +56,23 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     position: {x: 280, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: afff0a2c-cc50-4b9a-8ca6-b0553b80c0d2
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:neutralEnding>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 924, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

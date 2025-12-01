@@ -1725,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 6966562308447738215, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: ikigaiTournamentImage
       value: 
-      objectReference: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
+      objectReference: {fileID: 21300000, guid: fa0f535574985c0469775d1c3bf5fd8c, type: 3}
     - target: {fileID: 6966562308447738215, guid: 2a2f8208044876645b07b5d4b170d9b1, type: 3}
       propertyPath: kingBobBackgroundImage
       value: 
@@ -1936,7 +1936,7 @@ PrefabInstance:
       objectReference: {fileID: 778820612}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: intermissionID
-      value: preSecretBoss
+      value: neutralEnding
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint

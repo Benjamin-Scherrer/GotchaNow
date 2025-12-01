@@ -13,6 +13,14 @@ namespace GotchaNow
 			ProgressionManager.instance.StartBattle(id);
 		}
 
+
+		public void StartIntermission(String id) //disable battle controls, disable enemies
+		{
+			// Debug.Log("Starting Intermission: " + id);
+			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
+			ProgressionManager.instance.StartIntermission(id);
+		}
+		
 		public void SkipThroughAll() //for UnityEvent use
 		{
 			if (NarrativeController.Instance == null) throw new System.Exception("NarrativeController instance is null");
