@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5528345529314956206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64, y: -4}
-  m_SizeDelta: {x: 262.33334, y: 16}
+  m_AnchoredPosition: {x: 64, y: -38}
+  m_SizeDelta: {x: 220, y: -52}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3227846249600634721
 CanvasRenderer:
@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'DEFAULT MESSAGE TEXT
-
-'
+  m_text: DEFAULT MESSAGE TEXT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be774899d8c500549a0d7205fe599bc4, type: 2}
   m_sharedMaterial: {fileID: 284640793110267829, guid: be774899d8c500549a0d7205fe599bc4, type: 2}
@@ -323,7 +321,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 64, y: -24}
-  m_SizeDelta: {x: 274.33334, y: 12}
+  m_SizeDelta: {x: 220, y: 12}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4876450320182320401
 CanvasRenderer:
@@ -592,10 +590,5 @@ MonoBehaviour:
   messageSenderName: {fileID: 8118354031437706020}
   messageSenderAvatar: {fileID: 6578291885505832176}
   messageText: {fileID: 3241057083344030378}
-  messageFoldedHeight: 88
-  messageUnfoldedHeight: 88
-  imageMargin: 6
-  textMargin: 12
-  messageFoldingCoef: 1
   GettingSwipedAway: 0
   Written: 0

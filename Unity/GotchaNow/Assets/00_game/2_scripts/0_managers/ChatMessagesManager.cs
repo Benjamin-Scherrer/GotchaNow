@@ -349,7 +349,7 @@ namespace GotchaNow
 					messageRect.anchoredPosition.x,
 					yOffset
 				);
-				yOffset -= currentMessage.getHeight + messageSpacing;
+				yOffset -= currentMessage.GetHeight + messageSpacing;
 			}
 		}
 	}

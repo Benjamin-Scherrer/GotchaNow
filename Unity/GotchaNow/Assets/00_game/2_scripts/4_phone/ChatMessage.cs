@@ -15,21 +15,20 @@ namespace GotchaNow
 		[SerializeField] private TextMeshProUGUI messageText;
 		// [SerializeField] private RectTransform scalingRectTransform;
 
-		[Header("Variables")]
-		[SerializeField] private float messageFoldedHeight = 88f; //previously 32f
-		[SerializeField] private float messageUnfoldedHeight = 88f; //previously 64f
-		[SerializeField] private float imageMargin = 12f;
-		[SerializeField] private float textMargin = 12f;
-		[SerializeField] private float messageFoldingCoef = 1.0f;
+		// [Header("Variables")]
+		// [SerializeField] private float messageFoldedHeight = 88f; //previously 32f
+		// [SerializeField] private float messageUnfoldedHeight = 88f; //previously 64f
+		// [SerializeField] private float imageMargin = 12f;
+		// [SerializeField] private float textMargin = 12f;
+		// [SerializeField] private float messageFoldingCoef = 1.0f;
 
 		public bool GettingSwipedAway = false;
 
 		public bool Written = false;
 
 		//PUBLIC PROPERTIES
-		public float getHeight => Mathf.Lerp(messageFoldedHeight, messageUnfoldedHeight, messageFoldingCoef);
-		// public float getHeight => (scalingRectTransform != null) ? scalingRectTransform.rect.height : 0f;
-		// public Vector2 getLossyScale => (scalingRectTransform != null) ? scalingRectTransform.lossyScale : Vector2.one;
+		// public float getHeight => Mathf.Lerp(messageFoldedHeight, messageUnfoldedHeight, messageFoldingCoef);
+		public float GetHeight => 88f; // Fixed height for now
 
 		//PUBLIC METHODS
 		public void InitializeMessage(ChatMessageData messageData, Sprite senderImage, Sprite senderBackgroundImage)
@@ -72,6 +71,7 @@ namespace GotchaNow
 			{
 				throw new System.Exception("messageTextUI is not assigned in ChatMessage.");
 			}
+			
 			backgroundImage.sprite = senderBackgroundImage;
 			messageSenderName.text = messageData.GetSenderName;
 			messageSenderAvatar.sprite = senderImage;
