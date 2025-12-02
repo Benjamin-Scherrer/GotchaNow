@@ -1357,6 +1357,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: preBattle1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: trueEnding
       value: 
       objectReference: {fileID: 11400000, guid: e15e704fa349f15468edb8dae81f4254, type: 2}
@@ -1407,10 +1411,14 @@ PrefabInstance:
     - target: {fileID: 2729784233353256894, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: e0036475ba0cd764cb7d5d5e4438738b, type: 2}
     - target: {fileID: 2729784233353256894, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729784233353256894, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: preBattle1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2729784233353256894, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: intermission1
@@ -1460,6 +1468,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 6051385552235239961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b611a356b9b3ab4880bcd8311c3759a, type: 2}
     - target: {fileID: 6051385552235239961, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: preBattle1
       value: 
@@ -1915,7 +1927,7 @@ PrefabInstance:
       objectReference: {fileID: 96308152}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleID
-      value: battle1
+      value: battle3
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleUI
@@ -1947,7 +1959,7 @@ PrefabInstance:
       objectReference: {fileID: 778820612}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: intermissionID
-      value: intermission1TrueEndingPath
+      value: intro
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint
@@ -2100,6 +2112,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1448524059}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
+      propertyPath: buffQuota
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
+      propertyPath: healQuota
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: notifMenu
       value: 
       objectReference: {fileID: 310996772}
@@ -2145,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 1767981982}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: chargePerSecond
-      value: 0.05
+      value: 0.066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
