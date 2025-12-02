@@ -91,6 +91,7 @@ public class NotificationManager : MonoBehaviour
     {
         notifCharge = 0;
         currentQuota = 0;
+        
         ChargeNotifBar(0);
         ChargeQuota(0);
     }
@@ -508,7 +509,14 @@ public class NotificationManager : MonoBehaviour
     public void StartBattle()
     {
         notifCharge = 0;
-        ChargeNotifBar(0);
+
+        notifBarUI.fillAmount = 0;
+        notifPercent.text = "0%";
+
+        quotaBarUI.fillAmount = currentQuota/maxQuota;
+        
+        int fillPercentage = (int)(quotaBarUI.fillAmount * 100);
+        quotaPercent.text = fillPercentage.ToString() + "%";
     }
     
     public void FullReset()

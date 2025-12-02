@@ -108,6 +108,11 @@ public class BossEnemy : MonoBehaviour
     {
         pb = PlayerBattle.Instance;
 
+        StartBattle();
+    }
+
+    public void StartBattle()
+    {   
         eyeColor = defaultEyeColor;
         gemColor = defaultGemColor;
 

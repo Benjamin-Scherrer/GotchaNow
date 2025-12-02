@@ -108,14 +108,6 @@ public class PlayerBattle : MonoBehaviour
     [Header("Sound FX")]
     public EventReference Slash1SFX;
 
-    //colors
-    /* public Material defaultMaterial;
-    public Material dodgeMaterial;
-    public Material hitstunMaterial; */
-
-    /* private GameObject VFXBlur;
-    private GameObject HitBloom; */
-
     private void Awake()
     {
         Instance = this;
@@ -138,24 +130,7 @@ public class PlayerBattle : MonoBehaviour
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCanceled;
 
-        //reset stats & bools
-        HP = maxHP;
-        
-        actionInProgress = false;
-        hitStun = false;
-        hitCheck = false;
-
-        buffActive = false;
-        guardActive = false;
-        invulnerable = false;
-
-        slash1Queued = false;
-        slash2Queued = false;
-        slash3Queued = false;
-        dodgeQueued = false;
-
-        /* input.Player.CameraControl.performed += OnCameraPerformed;
-        input.Player.CameraControl.canceled += OnCameraCanceled; */
+        StartBattle();
     }
 
     private void OnDisable()
@@ -175,21 +150,28 @@ public class PlayerBattle : MonoBehaviour
         NotificationManager.instance.BuffDisabled.AddListener(DisableBuff);
     }
 
+    public void StartBattle()
+    {
+        HP = maxHP;
+        
+        actionInProgress = false;
+        hitStun = false;
+        hitCheck = false;
+
+        buffActive = false;
+        guardActive = false;
+        invulnerable = false;
+
+        slash1Queued = false;
+        slash2Queued = false;
+        slash3Queued = false;
+        dodgeQueued = false;
+    }
+
     private void Update()
     {
         //check left analog
         stickPosition = new Vector2(moveVector.x, moveVector.y);
-
-        //DEBUG
-        if (input.Player.Down.IsPressed())
-        {
-            //bm.SetTimeScale(1f);
-        }
-
-        if (input.Player.Up.IsPressed())
-        {
-            //bm.SetTimeScale(0.01f);
-        }
 
         //re-enable moves
         if (!slashReady)
@@ -262,12 +244,16 @@ public class PlayerBattle : MonoBehaviour
         //player death
         if (HP <= 0)
         {
-            if (death) return;
-            death = true;
+            ProgressionManager.instance.StartIntermission("gameOver");
+            EndBattle();
+            
+            //if (death) return;
+            //death = true;
 
-            //GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<BoxCollider>().enabled = false;
-            OnDeath?.Invoke();
+
+            //OnDeath?.Invoke();
+            
+            
         }
 
         if (death == true)

@@ -25,6 +25,7 @@ public class ProgressionManager : MonoBehaviour
 
     public GameObject battleUI;
     public GameObject sendNotifUI;
+    public NotificationManager notificationManager;
     public TextMeshProUGUI debugText;
     public GameObject player;
     public GameObject boss;
@@ -117,12 +118,16 @@ public class ProgressionManager : MonoBehaviour
             nm.FullReset();
             
             queen.SetActive(true);
-            boss.SetActive(false);
+            boss.SetActive(true);
 
-            queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);          
+            queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);   
+            bossSpawnPoint = arenaCenter.position + new Vector3(3,2,8);       
 
             queen.transform.position = queenSpawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            boss.transform.position = bossSpawnPoint;
+            boss.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -304,15 +309,31 @@ public class ProgressionManager : MonoBehaviour
 
         if (intermissionID == "gameOver") //lost battle (any)
         {
+            EndBattleEvent.Invoke();
+            
             nextState = "intermission";
             nextID = "intro";
 
             debugText.text += "\n\nyou died";
 
+            GameOver.instance.GameOverBench();
+
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+
+            boss.SetActive(false); //debug
+            queen.SetActive(false); //debug
+
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
-            intermissionDialogue.Interact();
+            //intermissionDialogue.Interact();
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();
@@ -333,6 +354,7 @@ public class ProgressionManager : MonoBehaviour
         EnableBattleUI();
 
         player.GetComponent<PlayerBattle>().enabled = true;
+        player.GetComponent<PlayerBattle>().StartBattle();
         player.GetComponent<PlayerIntermission>().enabled = false;
 
         //End intermission dialogue if still active
@@ -353,10 +375,7 @@ public class ProgressionManager : MonoBehaviour
             MusicPlayer.instance.PlayKatoroMusic();
             
             queen.SetActive(false);
-
-            //Beni debug test
             boss.SetActive(true);
-            //test end
 
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
@@ -382,6 +401,7 @@ public class ProgressionManager : MonoBehaviour
             MusicPlayer.instance.PlayKatoroMusic();
             
             queen.SetActive(false);
+            boss.SetActive(true);
             
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
@@ -422,6 +442,7 @@ public class ProgressionManager : MonoBehaviour
             MusicPlayer.instance.PlayKatoroMusic();
             
             queen.SetActive(false);
+            boss.SetActive(true);
             
             boss.GetComponent<EnemyIntermission>().EndIntermission();
             boss.GetComponent<Enemy>().StartBattle();
@@ -453,10 +474,10 @@ public class ProgressionManager : MonoBehaviour
             MusicPlayer.instance.PlayAyaMusic();
             
             boss.SetActive(false);
+            queen.SetActive(true);
 
             queen.GetComponent<QueenEnemy>().enabled = true;
             //queen.GetComponent<EnemyIntermission>().enabled = false;
-
             queen.GetComponent<Enemy>().StartBattle();
 
             queenSpawnPoint = arenaCenter.position + new Vector3(0,2,8);
@@ -580,15 +601,19 @@ public class ProgressionManager : MonoBehaviour
 
     private void EnableBattleUI()
     {
+        notificationManager.enabled = true;
+        
         sendNotifUI.SetActive(true);
         battleUI.SetActive(true);
-
+        
         nm.StartBattle();
         StartCoroutine(bm.UpdatePlayerHP(0, 1));
     }
 
     private void EnableIntermissionUI()
     {
+        notificationManager.enabled = false;
+        
         sendNotifUI.SetActive(false);
         battleUI.SetActive(false);
     }

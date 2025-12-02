@@ -12,36 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
   m_Name: 000_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
-  <NodeLinks>k__BackingField:
-  - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
-    <PortName>k__BackingField: Next
-    <TargetNodeGuid>k__BackingField: a305f564-c22b-4370-9e31-3d1654ed8ea4
+  <NodeLinks>k__BackingField: []
   <DialogueNodeData>k__BackingField:
-  - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+  - guid: 37da6246-fab3-48a1-ae6e-9380af63faf4
     dialogue: []
     position: {x: 100, y: 200}
     transitionNode: 0
     entryPoint: 1
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: a305f564-c22b-4370-9e31-3d1654ed8ea4
-    dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "Hey, new girl! \nWelcome to your first day."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "Get used to your new work space a little. \nWork
-        is starting soon."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 242.5, y: 200}
-    transitionNode: 1
-    entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   <PathToCheckpoint>k__BackingField: 

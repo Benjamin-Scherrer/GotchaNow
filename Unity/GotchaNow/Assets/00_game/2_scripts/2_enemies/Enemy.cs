@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
 
             if (HP <= 0)
             {
+                GameOver.instance.quotaState = nm.currentQuota;
                 pm.EndBattle(nm.currentQuota, nm.maxQuota); //update game state
             }
         }
