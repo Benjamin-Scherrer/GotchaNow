@@ -39,6 +39,7 @@ public class GameOver : MonoBehaviour
 
         screenOverlay.SetActive(true);
         quotaScreen.SetActive(true);
+        benchScreen.SetActive(false);
 
         //activate buttons
         bottomBar.SetActive(true);
@@ -49,6 +50,7 @@ public class GameOver : MonoBehaviour
         gameObject.SetActive(true);
 
         screenOverlay.SetActive(true);
+        quotaScreen.SetActive(false);
         benchScreen.SetActive(true);
 
         //activate buttons
