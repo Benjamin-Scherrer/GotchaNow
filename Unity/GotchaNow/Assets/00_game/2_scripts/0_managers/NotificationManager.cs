@@ -530,7 +530,8 @@ public class NotificationManager : MonoBehaviour
     {
         //placeholder
         
-        ProgressionManager.instance.StartIntermission("gameOver");
+        // ProgressionManager.instance.StartIntermission("gameOver");
+        GameOver.instance.GameOverQuota();
         PlayerBattle.Instance.EndBattle();
     }
     

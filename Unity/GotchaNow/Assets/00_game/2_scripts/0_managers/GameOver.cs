@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     [Header("References")]
     public static GameOver instance;
     //public string currentBattle;
+
     public GameObject screenOverlay;
     public GameObject quotaScreen;
     public GameObject benchScreen;
@@ -35,6 +36,7 @@ public class GameOver : MonoBehaviour
 
     public void GameOverQuota()
     {
+        Debug.Log("GameOverQuota called");
         gameObject.SetActive(true);
 
         screenOverlay.SetActive(true);
@@ -47,6 +49,7 @@ public class GameOver : MonoBehaviour
 
     public void GameOverBench()
     {
+        Debug.Log("GameOverBench called");
         gameObject.SetActive(true);
 
         screenOverlay.SetActive(true);
