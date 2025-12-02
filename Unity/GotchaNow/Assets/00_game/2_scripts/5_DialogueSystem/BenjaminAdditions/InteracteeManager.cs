@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace GotchaNow
 {
+	[DefaultExecutionOrder(-100)]
 	public class InteracteeManager : MonoBehaviour
 	{
 		public static InteracteeManager Instance { get; private set; }
@@ -11,7 +12,8 @@ namespace GotchaNow
 		[Header("References")]
 		[SerializeField] private Interactor interactor;
 
-		private readonly List<InteractableDialogue> interactables = new();
+		[SerializeField] private List<InteractableDialogue> interactables = new();
+
 		private void Awake()
 		{
 			if (Instance != null) throw new System.Exception("Multiple InteracteeManagers in scene.");
@@ -20,15 +22,19 @@ namespace GotchaNow
 
 		public void RegisterInteractable(InteractableDialogue interactable)
 		{
-			// Register the interactable
+			// Debug.Log("Trying to register interactable: " + interactable.name);
 			if(interactables.Contains(interactable)) throw new System.Exception("Interactable already registered.");
+			// Debug.Log("Registering interactable: " + interactable.name);
+			// Register the interactable
 			interactables.Add(interactable);
 		}
 
 		public void UnregisterInteractable(InteractableDialogue interactable)
 		{
-			// Unregister the interactable
+			// Debug.Log("Trying to unregister interactable: " + interactable.name);
 			if (!interactables.Contains(interactable)) throw new System.Exception("Interactable not registered.");
+			// Debug.Log("Unregistering interactable: " + interactable.name);
+			// Unregister the interactable
 			interactables.Remove(interactable);
 		}
 
@@ -53,6 +59,7 @@ namespace GotchaNow
 
 		public void PrepareForInteraction()
 		{
+			// Debug.Log("Preparing for interaction...");
 			if (interactor == null) throw new System.Exception("Interactor not assigned.");
 			interactor.PrepareInteraction();
 

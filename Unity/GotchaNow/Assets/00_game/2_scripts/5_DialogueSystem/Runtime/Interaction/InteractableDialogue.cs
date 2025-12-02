@@ -6,6 +6,7 @@ using DialogueSystem.Runtime.Narration;
 namespace GotchaNow
 {
     [RequireComponent(typeof(DialogueSelector))]
+    [DefaultExecutionOrder(-10)]
     public class InteractableDialogue : DialogueMonoBehaviour
     {
         [Header("Hint")]
@@ -45,6 +46,7 @@ namespace GotchaNow
         // private void Update() => SkipDialogueWithInput();
         public void PrepareInteraction()
         {
+            Debug.Log("Preparing interaction for Gameobject: " + gameObject.name);
             narrativeScriptableObject = dialogueSelector.GetNarrativeScriptableObject();
         }
         
