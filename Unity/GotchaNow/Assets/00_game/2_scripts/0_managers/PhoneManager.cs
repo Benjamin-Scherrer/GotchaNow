@@ -4,9 +4,9 @@ using UnityEssentials;
 
 namespace GotchaNow
 {
-	public class PhoneJiggler : MonoBehaviour
+	public class PhoneManager : MonoBehaviour
 	{
-		public static PhoneJiggler Instance;
+		public static PhoneManager Instance;
 
 		[Header("References")]
 		[SerializeField] private RectTransform phoneTransform;
