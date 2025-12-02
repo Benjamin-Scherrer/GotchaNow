@@ -12,13 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
   m_Name: 000_Intro
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
-  <NodeLinks>k__BackingField: []
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 5aa1c173-fef3-491c-85f9-f0f3eada6c3c
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: be3c5da8-5ccd-460d-8d3f-016840275e45
+  - <BaseNodeGuid>k__BackingField: be3c5da8-5ccd-460d-8d3f-016840275e45
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 4f5f7be4-077b-4276-9dd9-73c3b88756b9
   <DialogueNodeData>k__BackingField:
-  - guid: 37da6246-fab3-48a1-ae6e-9380af63faf4
+  - guid: 5aa1c173-fef3-491c-85f9-f0f3eada6c3c
     dialogue: []
     position: {x: 100, y: 200}
     transitionNode: 0
     entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: be3c5da8-5ccd-460d-8d3f-016840275e45
+    dialogue:
+    - <CharacterName>k__BackingField: ok
+      <Content>k__BackingField: blablablba
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 237.5, y: 213.5}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 4f5f7be4-077b-4276-9dd9-73c3b88756b9
+    dialogue:
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: '<event:gameOverBench>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 512.5, y: 188}
+    transitionNode: 1
+    entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   <PathToCheckpoint>k__BackingField: 

@@ -31,6 +31,18 @@ namespace GotchaNow
 			}
 		}
 
+		public void GameOverBench()
+		{
+			if (NarrativeController.Instance == null) throw new System.Exception("NarrativeController instance is null");
+			GameOver.instance.GameOverBench();
+		}
+
+		public void GameOverQuota()
+		{
+			if (NarrativeController.Instance == null) throw new System.Exception("NarrativeController instance is null");
+			GameOver.instance.GameOverQuota();
+		}
+
 		public void EnablePhoneView()
 		{
 			PhoneViewController.instance.EnablePhoneView();
