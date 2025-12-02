@@ -1356,13 +1356,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: trueEnding
+      value: 
+      objectReference: {fileID: 11400000, guid: e15e704fa349f15468edb8dae81f4254, type: 2}
+    - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: neutralEnding
+      value: 
+      objectReference: {fileID: 11400000, guid: 72694110ad1b55042a9369e8fbf0e4fa, type: 2}
+    - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: trueEndingFailed
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c39c41fd3abfec4f9e04afd17edbae9, type: 2}
+    - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: quotaFilledAyaBattle
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e94ca698ed20de40a13dc944a920cd6, type: 2}
     - target: {fileID: 1666725977272678699, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2476346654219344423, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: hitboxDmg
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2729784233353256894, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: intro
@@ -1823,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 96308152}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleID
-      value: battle2
+      value: battle3
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: battleUI
@@ -2053,7 +2069,7 @@ PrefabInstance:
       objectReference: {fileID: 1767981982}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: chargePerSecond
-      value: 0.066
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

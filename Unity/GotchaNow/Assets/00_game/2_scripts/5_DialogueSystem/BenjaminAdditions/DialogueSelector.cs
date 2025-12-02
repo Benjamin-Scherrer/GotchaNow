@@ -19,6 +19,7 @@ namespace GotchaNow
 		[SerializeField] protected DialogueContainer trueEndingFailed;
 		[SerializeField] protected DialogueContainer neutralEnding;
 		[SerializeField] protected DialogueContainer badEnding;
+		[SerializeField] protected DialogueContainer quotaFilledAyaBattle;
 		[SerializeField] protected DialogueContainer gameOver;
 
 		[Header("Battle Dialogues")]
@@ -68,6 +69,7 @@ namespace GotchaNow
                 "trueEndingFailed" => trueEndingFailed,
                 "neutralEnding" => neutralEnding,
                 "badEnding" => badEnding,
+				"quotaFilledAyaBattle" => quotaFilledAyaBattle,
                 "gameOver" => gameOver,
                 _ => throw new System.Exception("Invalid intermission ID: " + intermissionID),
             };

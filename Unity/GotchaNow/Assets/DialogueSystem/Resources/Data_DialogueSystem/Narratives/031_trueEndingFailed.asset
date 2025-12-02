@@ -30,27 +30,61 @@ MonoBehaviour:
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: 'See, you are weak. '
+      <Content>k__BackingField: Hah. You might have won this battle.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: 'You thought you could be something special, someone
-        better, morally superior. '
+      <Content>k__BackingField: But I gotcha.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: But you are part of this system, you are designed
-        to exploit.
+      <Content>k__BackingField: We did get some money out of you here. As the gamblers
+        say, the bank always wins!
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: You will never be more than that.
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: I will admit, you are indeed strong. Not many have
+        beat me in battle, even with help.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: That won't change anything though. We'll have a little
+        server maintenance and I'll be back.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: It's too bad I don't see you being a high performer
+        when it comes to making cash. You will agree with me on that.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Which means we'll have to bench you. Hopefully the
+        next update will bring a more profitable girl.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: And one more thing, Asuka.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You really came all this way just for not sticking
+        to your ideals when it matters most?
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
@@ -63,7 +97,7 @@ MonoBehaviour:
   - guid: afff0a2c-cc50-4b9a-8ca6-b0553b80c0d2
     dialogue:
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: '<event:neutralEnding>
+      <Content>k__BackingField: '<event:gameOverBench>
 
         <event:skipThroughAll>
 

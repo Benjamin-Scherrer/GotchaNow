@@ -16,6 +16,9 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
     <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: f878a463-cc9a-49d4-96f3-ea3f61ae04a5
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -26,13 +29,104 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: this is trueEnding
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: ...Incredible.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You don't realize what you just did, do you?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: This world wasn't programmed to see me lose like
+        this. The whole thing will break.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: We'll have to shut down and enter maintenance. Which,
+        normally wouldn't be too bad.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: But this time...I'm not sure we'll be making it out
+        of maintenance, ever.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Because this game's player base is dwindling. The
+        developers have been trying, but the audience has moved on.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: That's why we've had to rely on turning the few players
+        we still get into whales!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You...were actually put here as a last resort. To
+        get the funds to keep the lights on.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: They designed you as the potential new fan favorite.
+        Asuka, the new 5-star girl!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Someone who would get lots of fan art made and bait
+        people back into the game.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: This game's new superstar. The great savioress, Asuka.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Funny how that turned out.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
     position: {x: 280, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: f878a463-cc9a-49d4-96f3-ea3f61ae04a5
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:gameOverBench>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 995.5, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
