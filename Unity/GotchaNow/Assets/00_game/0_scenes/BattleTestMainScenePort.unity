@@ -407,6 +407,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -903,6 +907,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1640702575904615670, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
   m_PrefabInstance: {fileID: 1178423850}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1169637308 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3031034816130376114, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+  m_PrefabInstance: {fileID: 1178423850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1178423850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -911,10 +920,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 164226060660178836, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -127.99997
-      objectReference: {fileID: 0}
     - target: {fileID: 1704594504894473568, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_Name
       value: PhonePrefab
@@ -957,10 +962,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6555223344257709267, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7341962478823678924, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1652,6 +1653,16 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!198 &1930866224 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 230350480095798648, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+  m_PrefabInstance: {fileID: 1178423850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2122776287 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 667956653184918608, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+  m_PrefabInstance: {fileID: 1178423850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136412624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3298211652176939402, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
@@ -1717,6 +1728,18 @@ PrefabInstance:
       propertyPath: popupParent
       value: 
       objectReference: {fileID: 1492025055}
+    - target: {fileID: 4200448564202755013, guid: f83f0af17da68ee48bfe5b184eccacea, type: 3}
+      propertyPath: 'popupParticles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2122776287}
+    - target: {fileID: 4200448564202755013, guid: f83f0af17da68ee48bfe5b184eccacea, type: 3}
+      propertyPath: 'popupParticles.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1930866224}
+    - target: {fileID: 4200448564202755013, guid: f83f0af17da68ee48bfe5b184eccacea, type: 3}
+      propertyPath: 'popupParticles.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1169637308}
     - target: {fileID: 4231605969958262823, guid: f83f0af17da68ee48bfe5b184eccacea, type: 3}
       propertyPath: messageOverlay
       value: 

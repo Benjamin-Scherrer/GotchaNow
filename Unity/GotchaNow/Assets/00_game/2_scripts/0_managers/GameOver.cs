@@ -17,10 +17,18 @@ public class GameOver : MonoBehaviour
     {
         instance = this;
         quotaState = 0;
+
+        gameObject.SetActive(false);
+
+        screenOverlay.SetActive(false);
+        benchScreen.SetActive(false);
+        quotaScreen.SetActive(false);
     }
 
     public void GameOverQuota()
     {
+        gameObject.SetActive(true);
+
         screenOverlay.SetActive(true);
         quotaScreen.SetActive(true);
 
@@ -29,6 +37,8 @@ public class GameOver : MonoBehaviour
 
     public void GameOverBench()
     {
+        gameObject.SetActive(true);
+        
         screenOverlay.SetActive(true);
         benchScreen.SetActive(true);
 

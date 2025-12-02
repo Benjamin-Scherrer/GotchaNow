@@ -22,6 +22,7 @@ namespace GotchaNow
 
 		[Header("References")]
 		[SerializeField] private Transform popupParent;
+		[SerializeField] private ParticleSystem[] popupParticles;
 
 		[Header("Variables")]
 		[Header("Popup Animation Settings")]
@@ -42,29 +43,22 @@ namespace GotchaNow
 		[SerializeField] private float buttonPressScale = 0.9f;
 		[SerializeField] private float buttonPressPopupPopdownDelay = 0.1f;
 
-		private void Awake()
+
+		//PUBLIC
+		public void EnableParticles()
+        {
+			foreach(ParticleSystem ps in popupParticles)
+			{
+				ps.gameObject.SetActive(true);
+			}
+        }
+
+		public void DisableParticles()
 		{
-			if (healMePopupPrefab == null)
+			foreach(ParticleSystem ps in popupParticles)
 			{
-				throw new Exception("Heal Me Popup is not assigned in PopupManager.");
+				ps.gameObject.SetActive(false);
 			}
-			if (buffMePopupPrefab == null)
-			{
-				throw new Exception("Buff Me Popup is not assigned in PopupManager.");
-			}
-			if (meteoriteNowPopupPrefab == null)
-			{
-				throw new Exception("Meteorite Now Popup is not assigned in PopupManager.");
-			}
-			if(popupParent == null)
-			{
-				throw new Exception("Popup Parent is not assigned in PopupManager.");
-			}
-			if (instance != null)
-            {
-				throw new Exception("Multiple instances of PopupManager detected. There should only be one instance of PopupManager in the scene.");
-            }
-			instance = this;
 		}
 
 		public void ShowHealMePopup()
@@ -92,6 +86,32 @@ namespace GotchaNow
 		}
 
 		//PRIVATE
+		private void Awake()
+		{
+			if (healMePopupPrefab == null)
+			{
+				throw new Exception("Heal Me Popup is not assigned in PopupManager.");
+			}
+			if (buffMePopupPrefab == null)
+			{
+				throw new Exception("Buff Me Popup is not assigned in PopupManager.");
+			}
+			if (meteoriteNowPopupPrefab == null)
+			{
+				throw new Exception("Meteorite Now Popup is not assigned in PopupManager.");
+			}
+			if(popupParent == null)
+			{
+				throw new Exception("Popup Parent is not assigned in PopupManager.");
+			}
+			if (instance != null)
+            {
+				throw new Exception("Multiple instances of PopupManager detected. There should only be one instance of PopupManager in the scene.");
+            }
+			instance = this;
+
+			DisableParticles();
+		}
 		// private void Start()
 		// {
 		// 	// Example usage

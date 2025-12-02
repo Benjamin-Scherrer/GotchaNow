@@ -85,6 +85,8 @@ public class NotificationManager : MonoBehaviour
             enableTresholdTotal += rt.sizeDelta.y;
             enableTresholds.Add(enableTresholdTotal);
         }
+
+        buttonSouth.SetActive(false);
     }
 
     void Start()
@@ -155,6 +157,7 @@ public class NotificationManager : MonoBehaviour
         selectedRequest = 3;
 
         menuOpen = true;
+        PopupManager.instance.EnableParticles();
 
         RectTransform rt = notifMenu.GetComponent<RectTransform>();
         rt.sizeDelta = closedSize;
@@ -210,6 +213,7 @@ public class NotificationManager : MonoBehaviour
     {
         float timer = 0;
         menuOpen = false;
+        PopupManager.instance.DisableParticles();
 
         RectTransform rt = notifMenu.GetComponent<RectTransform>();
         rt.sizeDelta = openSize;
@@ -473,6 +477,8 @@ public class NotificationManager : MonoBehaviour
 
         fillPercentage = (int)(newCharge * 100);
         notifPercent.text = fillPercentage.ToString() + "%";
+
+        buttonSouth.SetActive(newCharge >= 1);
     }
 
     public IEnumerator UpdateQuotaUI(float oldQuota, float newQuota)

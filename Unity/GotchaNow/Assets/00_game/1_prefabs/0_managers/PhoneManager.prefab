@@ -206,6 +206,10 @@ MonoBehaviour:
   buffMePopupPrefab: {fileID: 274303994880341787, guid: e9c3974edf2e179428e0f9d942b7ec53, type: 3}
   meteoriteNowPopupPrefab: {fileID: 333623584209776845, guid: dc818f0403b915941a105a8ae29e4185, type: 3}
   popupParent: {fileID: 0}
+  popupParticles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   popUpDuration: 0.1
   displayDuration: 3
   popDownDuration: 0.1

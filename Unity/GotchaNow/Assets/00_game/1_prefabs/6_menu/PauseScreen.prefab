@@ -104,6 +104,8 @@ MonoBehaviour:
   - {fileID: 8204706409311332508}
   - {fileID: 6634179998220829308}
   - {fileID: 4808972461077552511}
+  - {fileID: 8778267892860168573}
+  - {fileID: 6329365574760874243}
   startingButton: {fileID: 9144785260350503015}
 --- !u!1 &1529426588880480945
 GameObject:
@@ -1001,6 +1003,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7872040395119264813, guid: f5349d5958df58d4f9166672f916b4bc, type: 3}
   m_PrefabInstance: {fileID: 6282531479964180170}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6329365574760874243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 64850763205844937, guid: f5349d5958df58d4f9166672f916b4bc, type: 3}
+  m_PrefabInstance: {fileID: 6282531479964180170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &8778267892860168573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3378444347201353655, guid: f5349d5958df58d4f9166672f916b4bc, type: 3}
+  m_PrefabInstance: {fileID: 6282531479964180170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &7036309438907019779
 PrefabInstance:
   m_ObjectHideFlags: 0
