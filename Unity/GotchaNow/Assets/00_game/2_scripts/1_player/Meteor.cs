@@ -85,4 +85,9 @@ public class Meteor : MonoBehaviour
             falling = false;
         }
     }
+
+    void EndBattle() //triggered through event
+    {
+        Destroy(this.gameObject);
+    }
 }

@@ -24,7 +24,9 @@ public class EnemyProjectileAttack : MonoBehaviour
         if (isMeteorShot)
         {
             enemyMeteorShot = GetComponent<EnemyMeteorShot>();
-        }   
+        }
+
+        ProgressionManager.instance.EndBattleEvent.AddListener(EndBattle);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -88,5 +90,10 @@ public class EnemyProjectileAttack : MonoBehaviour
                 enemyMeteorShot.Hit();
             }
         }
+    }
+
+    void EndBattle() //triggered through event
+    {
+        Destroy(this.gameObject);
     }
 }

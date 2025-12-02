@@ -291,15 +291,31 @@ public class ProgressionManager : MonoBehaviour
 
         if (intermissionID == "badEnding") //won 2nd battle with full quota
         {
+            EndBattleEvent.Invoke();
+            
             nextState = "intermission";
             nextID = "intro";
 
             debugText.text += "\n\nyou're our new top employee. incredible work";
 
+            GameOver.instance.GameOverQuota();
+
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+
+            boss.SetActive(false); //debug
+            queen.SetActive(false); //debug
+
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
-            intermissionDialogue.Interact();
+            //intermissionDialogue.Interact();
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();
@@ -421,15 +437,6 @@ public class ProgressionManager : MonoBehaviour
 
             GameObject spawnRing2 = Instantiate(minionSpawner, arenaCenter.position + Vector3.up * 4 - Vector3.right * 4, transform.rotation);
             spawnRing2.GetComponent<MagicRingAttack>().spawner = true;
-
-/*             GameObject minion1 = Instantiate(minion);
-            GameObject minion2 = Instantiate(minion);
-
-            minion1.transform.position = spawnPoint + new Vector3(-4, 4, 0);
-            minion1.transform.eulerAngles = new Vector3(0, 180, 0);
-
-            minion2.transform.position = spawnPoint + new Vector3(4, 4, 0);
-            minion2.transform.eulerAngles = new Vector3(0, 180, 0); */
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();

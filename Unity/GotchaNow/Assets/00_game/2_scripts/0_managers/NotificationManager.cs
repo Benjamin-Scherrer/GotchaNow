@@ -498,9 +498,10 @@ public class NotificationManager : MonoBehaviour
 
         quotaBarUI.fillAmount = newQuota / maxQuota;
 
-        if (newQuota >= maxQuota)
+        if (newQuota >= maxQuota) //QUOTA FULL
         {
             RuntimeManager.PlayOneShot(UiSfxPlayer.instance.quotaFull, transform.position);
+            QuotaFilled();
         } 
 
         //Debug.Log("fillAmount: " + quotaBar.fillAmount);
@@ -517,6 +518,14 @@ public class NotificationManager : MonoBehaviour
         
         int fillPercentage = (int)(quotaBarUI.fillAmount * 100);
         quotaPercent.text = fillPercentage.ToString() + "%";
+    }
+
+    public void QuotaFilled()
+    {
+        //placeholder
+        
+        ProgressionManager.instance.StartIntermission("gameOver");
+        PlayerBattle.Instance.EndBattle();
     }
     
     public void FullReset()
