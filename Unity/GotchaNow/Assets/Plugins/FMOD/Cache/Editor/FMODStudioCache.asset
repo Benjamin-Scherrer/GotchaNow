@@ -239,7 +239,7 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639000133160258499
+  lastModified: 639002234573795363
   FileSizes:
   - Name: Desktop
     Value: 5897216
@@ -542,7 +542,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 639000133160278551
+  cacheTime: 639002234573795363
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639000133160278551
+  lastModified: 639002234573795363
   FileSizes:
   - Name: Desktop
     Value: 1798

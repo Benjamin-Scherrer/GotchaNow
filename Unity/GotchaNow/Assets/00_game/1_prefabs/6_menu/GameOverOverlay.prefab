@@ -233,6 +233,8 @@ MonoBehaviour:
   screenOverlay: {fileID: 6971105813072527684}
   quotaScreen: {fileID: 5592126804790041130}
   benchScreen: {fileID: 2852681398956186756}
+  bottomBar: {fileID: 2241939764132313073}
+  mainMenuSceneName: MainMenuScene
   quotaState: 0
 --- !u!114 &1106978040923531867
 MonoBehaviour:

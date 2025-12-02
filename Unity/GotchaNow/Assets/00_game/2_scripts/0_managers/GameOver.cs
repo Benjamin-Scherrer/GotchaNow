@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    [Header("References")]
     public static GameOver instance;
     //public string currentBattle;
     public GameObject screenOverlay;
     public GameObject quotaScreen;
     public GameObject benchScreen;
+    [SerializeField] private GameObject bottomBar;
+    [SerializeField] private string mainMenuSceneName = "MainMenuScene";
+
+    [HideInInspector]
     public float quotaState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +28,9 @@ public class GameOver : MonoBehaviour
         screenOverlay.SetActive(false);
         benchScreen.SetActive(false);
         quotaScreen.SetActive(false);
+
+        //deactivate buttons
+        bottomBar.SetActive(false);
     }
 
     public void GameOverQuota()
@@ -33,25 +41,30 @@ public class GameOver : MonoBehaviour
         quotaScreen.SetActive(true);
 
         //activate buttons
+        bottomBar.SetActive(true);
     }
 
     public void GameOverBench()
     {
         gameObject.SetActive(true);
-        
+
         screenOverlay.SetActive(true);
         benchScreen.SetActive(true);
 
         //activate buttons
+        bottomBar.SetActive(true);
     }
 
     public void RetryBattle()
     {
+        gameObject.SetActive(false);
+        
         screenOverlay.SetActive(false);
         benchScreen.SetActive(false);
         quotaScreen.SetActive(false);
 
         //deactivate buttons
+        bottomBar.SetActive(false);
 
         NotificationManager.instance.currentQuota = quotaState;
         ProgressionManager.instance.StartBattle(ProgressionManager.instance.battleID);
@@ -59,12 +72,19 @@ public class GameOver : MonoBehaviour
 
     public void GoToTitle()
     {
-        screenOverlay.SetActive(false);
-        benchScreen.SetActive(false);
-        quotaScreen.SetActive(false);
+        // gameObject.SetActive(false);
 
-        quotaState = 0;
+        // screenOverlay.SetActive(false);
+        // benchScreen.SetActive(false);
+        // quotaScreen.SetActive(false);
+
+        //deactivate buttons
+        bottomBar.SetActive(false);
+
+        // quotaState = 0;
 
         //switch scene
+
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }
