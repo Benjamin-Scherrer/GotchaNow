@@ -26,16 +26,41 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "Listen... i think you didn't understand your job
-        here. \nYou are here to obey and do your job. "
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Uhm...so. Listen.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: You better get some money next fight or there will
-        be consequences.
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: I don't think you get it yet.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: As a reminder, this is not about proving your skill
+        in battle or anything like that.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: We have a job to do here. That is, extracting money!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You still have a battle to go. Make sure to fill
+        up your Quota if you wanna keep working here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Otherwise, we'll have to bench you in favor of better
+        performers.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

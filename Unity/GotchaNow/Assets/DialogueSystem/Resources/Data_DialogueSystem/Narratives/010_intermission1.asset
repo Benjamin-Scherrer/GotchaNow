@@ -26,15 +26,28 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: I see you're getting the hang of it, but you should
-        get even more.
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Not bad. You're getting the hang of it, sweetie!
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: Maybe next fight try the meteor limited edition request.
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: That was a decent first showing out there! You can
+        certainly hold your own.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Some more requests to go to fill up that quota, but
+        I trust in you to get there.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Let me know when you're ready for your second shift.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:

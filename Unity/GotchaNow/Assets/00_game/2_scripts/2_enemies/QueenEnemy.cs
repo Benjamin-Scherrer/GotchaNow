@@ -145,11 +145,11 @@ public class QueenEnemy : MonoBehaviour
         debugText.text += "\nHP: " + enemy.HP + "/" + enemy.maxHP; 
         
         //set moves on new phase
-        if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.9))
+        if (behaviorPhase == "start" && (enemy.HP/enemy.maxHP < 0.85))
         {            
             behaviorPhase = "phase1";
 
-            specialAttackReady = true;
+            //specialAttackReady = true;
 
             availableAttacks.Clear();
             availableAttacks.Add("slashCombo");

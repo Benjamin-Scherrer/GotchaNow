@@ -878,7 +878,7 @@ public class PlayerBattle : MonoBehaviour
     public void Heal(float hpAmount)
     {
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.heal, transform.position); //play sfx
-        Instantiate(healVFX, transform.position - transform.up * 0.5f, Quaternion.identity);
+        Instantiate(healVFX, transform.position - transform.up * 0.5f, Quaternion.identity, this.transform);
         
         if (HP + hpAmount >= maxHP)
         {

@@ -12,13 +12,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
   m_Name: 210_Intermission_Queen
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
-  <NodeLinks>k__BackingField: []
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: f5ae3417-56ac-4eea-85d9-f4b3cfefe45e
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 70b66b5a-9c0f-40c4-98a8-2d880498e765
+  - <BaseNodeGuid>k__BackingField: 70b66b5a-9c0f-40c4-98a8-2d880498e765
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 4ae2aad2-a864-4967-9996-6dc3acb0547b
+  - <BaseNodeGuid>k__BackingField: 4ae2aad2-a864-4967-9996-6dc3acb0547b
+    <PortName>k__BackingField: Let's go!
+    <TargetNodeGuid>k__BackingField: 59107f01-45cd-4982-a4ea-36dcdd3061c5
+  - <BaseNodeGuid>k__BackingField: 59107f01-45cd-4982-a4ea-36dcdd3061c5
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: d6817cb3-e213-4923-aee9-2692eddf31c8
+  - <BaseNodeGuid>k__BackingField: 4ae2aad2-a864-4967-9996-6dc3acb0547b
+    <PortName>k__BackingField: Just one moment.
+    <TargetNodeGuid>k__BackingField: 5fb364a2-b392-4e73-a188-df59322fd30d
   <DialogueNodeData>k__BackingField:
   - guid: f5ae3417-56ac-4eea-85d9-f4b3cfefe45e
     dialogue: []
     position: {x: 100, y: 200}
     transitionNode: 0
     entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 70b66b5a-9c0f-40c4-98a8-2d880498e765
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Just so you know, Katoro will have some support on
+        his side this time.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: But really, that makes your job simpler. More reason
+        to send out these requests!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 302, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 4ae2aad2-a864-4967-9996-6dc3acb0547b
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: So, you ready?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 801, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 5fb364a2-b392-4e73-a188-df59322fd30d
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Fine.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1316.5, y: 372.5}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 59107f01-45cd-4982-a4ea-36dcdd3061c5
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Give it your all! That quota is waiting to be filled!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1316.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: d6817cb3-e213-4923-aee9-2692eddf31c8
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:battle2>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1644.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
   <PathToCheckpoint>k__BackingField: 

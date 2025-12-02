@@ -16,42 +16,12 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
     <TargetNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-  - <BaseNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
-    <PortName>k__BackingField: I like your design
-    <TargetNodeGuid>k__BackingField: 543b1261-5b81-4d73-bad8-7421c77ae014
-  - <BaseNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
-    <PortName>k__BackingField: That makes sense
-    <TargetNodeGuid>k__BackingField: d1a59df4-d2dd-44e1-9303-a491e72cc219
-  - <BaseNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-    <PortName>k__BackingField: Whats the probability of me getting benched?
-    <TargetNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
-  - <BaseNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-    <PortName>k__BackingField: How can I prevent being benched?
-    <TargetNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
-  - <BaseNodeGuid>k__BackingField: 9509a531-e094-40f9-9d38-679161360b2c
-    <PortName>k__BackingField: How can i prevent being benched?
-    <TargetNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
-  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
-    <PortName>k__BackingField: Whats being benched?
-    <TargetNodeGuid>k__BackingField: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-  - <BaseNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
-    <PortName>k__BackingField: ...
-    <TargetNodeGuid>k__BackingField: 80089607-5377-488b-8de8-f68b5b61f999
-  - <BaseNodeGuid>k__BackingField: 543b1261-5b81-4d73-bad8-7421c77ae014
-    <PortName>k__BackingField: Output
-    <TargetNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-  - <BaseNodeGuid>k__BackingField: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
-    <PortName>k__BackingField: I'll try not to get benched then.
-    <TargetNodeGuid>k__BackingField: 315c34a3-225c-43c7-bb9f-7dd7ab8407ff
   - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: ...
+    <PortName>k__BackingField: Got advice?
     <TargetNodeGuid>k__BackingField: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
   - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: Do you not fight that much?
-    <TargetNodeGuid>k__BackingField: 152f7072-88c6-4b06-9166-9c38cae3db22
-  - <BaseNodeGuid>k__BackingField: 1fb45fbd-0041-474f-80d6-726fe2a7c249
-    <PortName>k__BackingField: It's ok it's for show anyway no?
-    <TargetNodeGuid>k__BackingField: 55b4a541-f105-46f9-b23d-b61c4e63c508
+    <PortName>k__BackingField: What's up?
+    <TargetNodeGuid>k__BackingField: 1ec5c792-9681-4fdb-a5df-5c6bf2117da6
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -60,238 +30,74 @@ MonoBehaviour:
     entryPoint: 1
     isCheckpoint: 0
     disableAlreadyChosenOptions: 0
-  - guid: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: '<event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 901, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 152f7072-88c6-4b06-9166-9c38cae3db22
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'No, Since our victims only see a limited view of
-        this fight.
-
-'
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: I guess I'm not interesting enough. Maybe it's my
-        design, you know.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 756, y: 481.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 731bd0cf-7a9f-48f7-9f31-a4836d59569f
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'Oh you just get replaced.
-
-        You know, the
-        player is constantly buying more lootboxes.
-
-'
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: They will eventually get a character they like better
-        and then you will not be played anymore.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: As a Boss I can't get permanently benched but you...
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: Maybe.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1207, y: 887.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 9509a531-e094-40f9-9d38-679161360b2c
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: There a pitty system that ensures even the unluckiest
-        player gets something good eventually.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: So the probability is high.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1657.5, y: 1082.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 55b4a541-f105-46f9-b23d-b61c4e63c508
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Yeah that's true.\LWe normally just chill here in
-        the arena."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Not really much going on. \nBut it's more exciting
-        than being benched."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 756, y: 911.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 543b1261-5b81-4d73-bad8-7421c77ae014
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Really, wow!\LNobody told me that before."
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: "I mean you are gorgeous. \nI mean objectively...\L"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "Maybe I'll get a visual upgrade someday.\nAnd I'll
-        look just as pretty as you.\L"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1207, y: 322}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: d1a59df4-d2dd-44e1-9303-a491e72cc219
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: '<event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1207, y: 704}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 80089607-5377-488b-8de8-f68b5b61f999
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: '<event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 1207, y: 1355}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 30daee1b-9b16-4c62-95bd-c5ffc94826fc
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'I guess just keep the player hooked,
-
-        so
-        the pitty system doesn''t even activate'
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 2099, y: 911.5}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 315c34a3-225c-43c7-bb9f-7dd7ab8407ff
-    dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: '<event:skipThroughAll>
-
-        END'
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 2551, y: 911.5}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
   - guid: 1fb45fbd-0041-474f-80d6-726fe2a7c249
     dialogue:
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: 'Hi nice to meet you! I''m the floor boss here.
-
-'
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Hello co-worker. Aya seems satisfied. Good for you.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: I'm sorry if I hit you too hard. I didn't mean it.
-        It's just been a while, you know.
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    - <CharacterName>k__BackingField: Boss
-      <Content>k__BackingField: "I can be a little slower next time or something.
-        \n"
-      <HideCharacter>k__BackingField: 0
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 295, y: 200}
+    position: {x: 301, y: 200}
     transitionNode: 0
     entryPoint: 0
     isCheckpoint: 0
-    disableAlreadyChosenOptions: 1
+    disableAlreadyChosenOptions: 0
+  - guid: 4d6c77ef-3a19-470a-b5ac-52d628e6d09c
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: There will be some guys on my side on the next round.
+        They are smaller than me, so do not worry.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: While you are beating them up, look at their eye.
+        Red eyes mean they can not take much more.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Try to take the little guys out before fighting me
+        or it could get overwhelming for you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Oh, and when your camera is locked on, you can SWITCH
+        TARGETS. Makes it easier to focus.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 905, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 1ec5c792-9681-4fdb-a5df-5c6bf2117da6
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: You know how to fight. A bit. That is good. But you
+        are a bit helpless.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: I hope I do not hurt you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 905, y: 427.5}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
   <PathToCheckpoint>k__BackingField: 
   <IsNarrativeEndReached>k__BackingField: 0
   <StartFromPreviousNarrativePath>k__BackingField: 1
