@@ -1973,6 +1973,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1767981984}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
+      propertyPath: meteorQuota
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: notifPercent
       value: 
       objectReference: {fileID: 214569254}
@@ -1990,7 +1994,7 @@ PrefabInstance:
       objectReference: {fileID: 1767981982}
     - target: {fileID: 5263033206273792843, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: chargePerSecond
-      value: 0.033
+      value: 0.066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

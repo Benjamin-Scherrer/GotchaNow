@@ -18,6 +18,8 @@ public class Meteor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {        
+        ProgressionManager.instance.EndBattleEvent.AddListener(EndBattle);
+        
         lockOnTarget = LockOnTarget.instance;
         targetEnemy = BattleManager.instance.activeEnemy[0];
 
