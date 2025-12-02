@@ -16,6 +16,9 @@ MonoBehaviour:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
     <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 2430de72-9054-4332-beed-920c60d3714b
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -26,22 +29,51 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
     dialogue:
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: 'Yes, yes,
-
-        YEEEEEES!'
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Asuka! Oh, excellent!
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: Queen
-      <Content>k__BackingField: "I am unstoppable. \nYou did it.\nYou depleted his
-        bank account."
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You're really good at this. I see you turning lots
+        of players into whales in the future!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Thanks to you, we might actually see some record
+        profit numbers. Amazing!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: With girls like you, we can really keep this game
+        running for a long time.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
     position: {x: 280, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 2430de72-9054-4332-beed-920c60d3714b
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:gameOverQuota>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 850, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0

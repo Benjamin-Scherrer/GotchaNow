@@ -298,7 +298,7 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou're our new top employee. incredible work";
 
-            GameOver.instance.GameOverQuota();
+            //GameOver.instance.GameOverQuota();
 
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
             {   
@@ -315,7 +315,7 @@ public class ProgressionManager : MonoBehaviour
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
-            //intermissionDialogue.Interact();
+            intermissionDialogue.Interact();
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();
@@ -332,7 +332,7 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou died";
 
-            GameOver.instance.GameOverBench();
+            //GameOver.instance.GameOverBench();
 
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
             {   
@@ -349,7 +349,7 @@ public class ProgressionManager : MonoBehaviour
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
-            //intermissionDialogue.Interact();
+            intermissionDialogue.Interact();
 
             //Start Chat Message History
             ChatMessagesManager.Instance.DisplayMessageHistory();

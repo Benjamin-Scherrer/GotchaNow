@@ -15,13 +15,10 @@ MonoBehaviour:
   <NodeLinks>k__BackingField:
   - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     <PortName>k__BackingField: Next
-    <TargetNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-  - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    <PortName>k__BackingField: TRY AGAIN
     <TargetNodeGuid>k__BackingField: 78b4b932-4c8a-4492-a45a-e0d193dd8856
-  - <BaseNodeGuid>k__BackingField: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    <PortName>k__BackingField: RETUTRN TO MAIN MENUE
-    <TargetNodeGuid>k__BackingField: e07f132f-0c63-4bb9-b864-af2378328bf1
+  - <BaseNodeGuid>k__BackingField: 78b4b932-4c8a-4492-a45a-e0d193dd8856
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 17fb7090-3888-4844-ba72-2cf2394be44e
   <DialogueNodeData>k__BackingField:
   - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
     dialogue: []
@@ -32,39 +29,51 @@ MonoBehaviour:
     disableAlreadyChosenOptions: 0
   - guid: 78b4b932-4c8a-4492-a45a-e0d193dd8856
     dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: //RETURN TO INTRO
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 702, y: 200}
-    transitionNode: 1
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: 3f5ee17d-07b6-48fe-aea7-b11b0f637621
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: YOU DIED
-      <HideCharacter>k__BackingField: 1
-      <DialogueEvent>k__BackingField:
-        m_PersistentCalls:
-          m_Calls: []
-    position: {x: 223, y: 200}
-    transitionNode: 0
-    entryPoint: 0
-    isCheckpoint: 0
-    disableAlreadyChosenOptions: 0
-  - guid: e07f132f-0c63-4bb9-b864-af2378328bf1
-    dialogue:
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: //RETURN TO MAIN MENUE
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Now that's sad.
       <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    position: {x: 702, y: 333}
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: It's really not that hard. The players will actually
+        PAY you not to die.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: We have no use for girls who can't even stay alive.
+        Sorry, Asuka, you won't make it here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: And to think that we actually had high expectations
+        of you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 304, y: 196}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 17fb7090-3888-4844-ba72-2cf2394be44e
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:gameOverBench>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 888, y: 200}
     transitionNode: 1
     entryPoint: 0
     isCheckpoint: 0
