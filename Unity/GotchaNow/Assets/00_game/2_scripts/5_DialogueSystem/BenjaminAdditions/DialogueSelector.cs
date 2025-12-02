@@ -39,6 +39,7 @@ namespace GotchaNow
 
         public DialogueContainer GetNarrativeScriptableObject()
 		{
+			Debug.Log("Getting narrative scriptable object for Gameobject: " + gameObject.name);
 			if(enabled == false)
 			{
 				// Debug.Log("DialogueSelector is disabled.");
@@ -55,6 +56,7 @@ namespace GotchaNow
 
 		private DialogueContainer IntermissionDialogue()
 		{
+			Debug.Log("Selecting intermission dialogue for Gameobject: " + gameObject.name);
 			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
 			string intermissionID = ProgressionManager.instance.intermissionID;
 
@@ -77,6 +79,7 @@ namespace GotchaNow
 		
 		private DialogueContainer BattleDialogue()
 		{
+			Debug.Log("Selecting battle dialogue for Gameobject: " + gameObject.name);
 			if (ProgressionManager.instance == null) throw new System.Exception("ProgressionManager instance is null");
 			string battleID = ProgressionManager.instance.battleID;
 
