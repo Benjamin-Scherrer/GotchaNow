@@ -122,6 +122,9 @@ namespace GotchaNow
 			Debug.Log("Popup instantiated: " + popupScreen.name);
 			// Here you can add animation code if needed
 
+			//Jiggle phone
+			PhoneManager.Instance.JigglePhone();
+
 			float popUpTime = 0f;
 
 			while (popUpTime < popUpDuration)

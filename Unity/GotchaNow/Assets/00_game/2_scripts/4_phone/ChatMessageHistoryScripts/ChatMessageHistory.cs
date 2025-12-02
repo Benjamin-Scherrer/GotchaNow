@@ -14,11 +14,11 @@ namespace GotchaNow
 
 		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Simple)]
 		[SerializeField] private ChatMessageDataViewer chatMessageDataViewer;
-		// [SerializeField] private ChatMessageData[] chatMessages;
-		// [SerializeField] private bool test1;
 
 		[ShowIf("chatMessageHistoryType", ChatMessageHistoryType.Conglomerate)]
 		[SerializeField] private ChatMessageHistoryWrapper chatMessageHistoryWrapper;
+		[SerializeField] private bool triggerVibrationOnMessageFire = false;
+
 		
 		private bool inUse = false;
 		// PROPERTIES
@@ -110,6 +110,8 @@ namespace GotchaNow
 				}
 			} 
 		}
+
+		public bool TriggerVibrationOnMessageFire { get => triggerVibrationOnMessageFire;}
 
 		// METHODS
 		public void ResetAmountFired()

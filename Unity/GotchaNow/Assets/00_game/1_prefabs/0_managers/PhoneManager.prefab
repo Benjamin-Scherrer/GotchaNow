@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435435767819679764}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 393.8161, y: -32.07895, z: -1.80728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   phoneTransform: {fileID: 0}
   jiggleOscillations: 3
   jiggleDuration: 0.2
-  jiggleIntensity: 1
+  jiggleIntensity: 0.5
 --- !u!1 &6863218698359617541
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   popUpDuration: 0.1
   displayDuration: 3
   popDownDuration: 0.1
-  jiggleInterval: 0.5
+  jiggleInterval: 0.8
   jiggleAmount: 3
   jiggleDuration: 0.1
   jiggleIntensity: 5

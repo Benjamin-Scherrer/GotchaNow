@@ -1585,7 +1585,7 @@ MonoBehaviour:
   - {fileID: 1183423146}
   - {fileID: 8899493816243493119}
   - {fileID: 58480340}
-  startingButton: {fileID: 2014369097}
+  startingButton: {fileID: 1184759829}
 --- !u!224 &7292406300963458033 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7872040395119264813, guid: f5349d5958df58d4f9166672f916b4bc, type: 3}

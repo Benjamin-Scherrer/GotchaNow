@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace GotchaNow
 {
@@ -30,6 +31,19 @@ namespace GotchaNow
 		[SerializeField] private List<ChatMessage> activeMessages = new();
 
 		//PUBLIC
+		public void DisplayMessageHistoryWithCallback(Action onComplete)
+		{
+			Debug.Log("Trying to display message history with callback.");
+			ChatMessageHistory messageHistory = messageSelector.GetChatMessageHistory();
+			if (messageHistory == null)
+			{
+				Debug.Log("No ChatMessageHistory found to display.");
+				onComplete?.Invoke();
+				return;
+			}
+			Debug.Log("Displaying message history with callback.");
+			StartCoroutine(QueueChatMessageHistoryWithCallBack(messageHistory, onComplete));
+		}
 		public void DisplayMessageHistory()
 		{
 			Debug.Log("Trying to display message history.");
@@ -74,6 +88,12 @@ namespace GotchaNow
 
 			Instance = this;
 		}
+
+		private IEnumerator QueueChatMessageHistoryWithCallBack(ChatMessageHistory chatMessageHistory,Action fn)
+        {
+            yield return StartCoroutine(QueueChatMessageHistory(chatMessageHistory));
+			fn?.Invoke();
+        }
 
 		private IEnumerator QueueChatMessageHistory(ChatMessageHistory chatMessageHistory)
 		{
@@ -132,7 +152,8 @@ namespace GotchaNow
 				float delayTillNext = messageData.DelayTillNext;
 				float displayDuration = messageData.DisplayDuration;
 				// Debug.Log(indentation + output + "Displaying message with delay: " + delayTillNext + " and duration: " + displayDuration);
-				StartCoroutine(ShowMessageAnimation(messageData, displayDuration));
+				bool triggerVibration = chatMessageHistory.TriggerVibrationOnMessageFire;
+				StartCoroutine(ShowMessageAnimation(messageData, displayDuration, triggerVibration));
 				if(activeMessages.Count >= swipeTreshold)
 				{
 					StartCoroutine(SwipeCascade());
@@ -185,7 +206,8 @@ namespace GotchaNow
 			}
         }
 
-		private IEnumerator ShowMessageAnimation(ChatMessageData messageData, float displayDuration = float.MaxValue)
+		private IEnumerator ShowMessageAnimation(ChatMessageData messageData, 
+			float displayDuration = float.MaxValue, bool triggerVibration = false)
 		{
 			WaitForSecondsRealtime waitForSeconds = new(1f);
 
@@ -211,7 +233,6 @@ namespace GotchaNow
 			RectTransform messageRect = messageScript.transform as RectTransform;
 			RectTransform spawnRect = messageSpawnPoint as RectTransform;
 			// RectTransform goalRect = messageGoal as RectTransform;
-
 
 			//Set initial position
 			messageRect.anchoredPosition = spawnRect.anchoredPosition;
@@ -248,7 +269,7 @@ namespace GotchaNow
 			FMODUnity.RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneMessage, transform.position);
 			Debug.Log("ShowMessageAnimation | Playing message received sound effect.");
 			// Jiggle phone
-			PhoneManager.Instance.JigglePhone();
+			if(triggerVibration) PhoneManager.Instance.JigglePhone();
 
 			// Here you can add animation code if needed
 			while (elapsedTime < popUpDuration)

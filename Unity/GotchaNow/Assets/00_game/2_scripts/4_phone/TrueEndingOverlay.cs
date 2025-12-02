@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,22 @@ namespace GotchaNow
 		[SerializeField] private float popUpTime;
 		// x: moveTime, y: position, z: delay
 		[SerializeField] private Vector3[] chatBoxVariables;
+
+
+		// PUBLIC
+		public void ActivateTrueEndingPhoneOverlayWithCallback(Action onComplete)
+		{
+			ProgressionManager progressionManager = ProgressionManager.instance;
+			bool check1 = progressionManager != null;
+			bool check2 = progressionManager.gameState == "intermission";
+			bool check3 = progressionManager.intermissionID == "trueEnding";
+			if(!(check1 && check2 && check3))
+			{
+				onComplete?.Invoke();
+				return;
+			}
+			StartCoroutine(StartOverlayAnimationWithCallback(onComplete));
+		}
 
 		public void ActivateTrueEndingPhoneOverlay()
         {
@@ -40,6 +57,12 @@ namespace GotchaNow
 			// Test start:
 			// StartCoroutine(StartOverlayAnimation());
         }
+
+		private IEnumerator StartOverlayAnimationWithCallback(Action onComplete)
+		{
+			yield return StartCoroutine(StartOverlayAnimation());
+			onComplete?.Invoke();
+		}
 
 		private IEnumerator StartOverlayAnimation()
 		{
