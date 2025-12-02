@@ -49,12 +49,12 @@ MonoBehaviour:
   meteoriteNowPopupPrefab: {fileID: 333623584209776845, guid: dc818f0403b915941a105a8ae29e4185, type: 3}
   popupParent: {fileID: 0}
   popUpDuration: 0.1
-  displayDuration: 5
+  displayDuration: 3
   popDownDuration: 0.1
-  jiggleInterval: 1
+  jiggleInterval: 0.5
   jiggleAmount: 3
   jiggleDuration: 0.1
-  jiggleIntensity: 3
+  jiggleIntensity: 5
   buttonPressInDuration: 0.1
   buttonPressDuration: 0.2
   buttonPopOutDuration: 0.1

@@ -50,7 +50,7 @@ MonoBehaviour:
   messageParent: {fileID: 0}
   messageSpawnPoint: {fileID: 0}
   popUpDuration: 0.1
-  messageSpacing: 12
+  messageSpacing: 1
   swipeAwayDuration: 0.5
   swipeTreshold: 5
   activeMessages: []
@@ -93,17 +93,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28326817b4bbc1f4bab87bc25718db9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageImageSelector
-  kingBobImage: {fileID: 0}
-  kingBobBackgroundImage: {fileID: 0}
-  honeyBearImage: {fileID: 0}
-  honeyBearBackgroundImage: {fileID: 0}
-  ceilingFanEnthusastImage: {fileID: 0}
-  ceilingFanEnthusastBackgroundImage: {fileID: 0}
-  turtleHerderImage: {fileID: 0}
-  turtleHerderBackgroundImage: {fileID: 0}
-  mumImage: {fileID: 0}
-  mumBackgroundImage: {fileID: 0}
-  ikigaiTournamentImage: {fileID: 0}
-  ikigaiTournamentBackgroundImage: {fileID: 0}
-  bankImage: {fileID: 0}
-  bankBackgroundImage: {fileID: 0}
+  kingBobImage: {fileID: 21300000, guid: e454ccc4ef5390641ae37263410eeb36, type: 3}
+  kingBobBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  honeyBearImage: {fileID: 21300000, guid: bcc2bc92586886e458b44f4988bdb9a6, type: 3}
+  honeyBearBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  ceilingFanEnthusastImage: {fileID: 21300000, guid: 172531696d12a7445b431df4d1895379, type: 3}
+  ceilingFanEnthusastBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  turtleHerderImage: {fileID: 21300000, guid: dde91cea58a54694e812db4b7c6c1103, type: 3}
+  turtleHerderBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  mumImage: {fileID: 21300000, guid: f7376ed48a672814ebe2b7e96285c148, type: 3}
+  mumBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  ikigaiTournamentImage: {fileID: 21300000, guid: fa0f535574985c0469775d1c3bf5fd8c, type: 3}
+  ikigaiTournamentBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  bankImage: {fileID: 21300000, guid: c6f756c0f773f04429f24bebb5597860, type: 3}
+  bankBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
