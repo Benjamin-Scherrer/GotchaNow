@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 namespace GotchaNow
@@ -71,6 +72,8 @@ namespace GotchaNow
 
 		public void ShowBuffMePopup()
 		{
+			if(!buffMePopupPrefab) throw new Exception("No buff me prefab");
+			if(!NotificationManager.instance) throw new Exception("WTF");
 			StartCoroutine(ShowPopupAnimation(buffMePopupPrefab, () =>
             {
                 NotificationManager.instance.AcceptBuff();
@@ -149,11 +152,12 @@ namespace GotchaNow
 
 			while (popUpTime < popUpDuration)
 			{
-				if(PauseMenu.Instance.IsPaused)
+				/* if(PauseMenu.Instance.IsPaused)
 				{
+					Debug.Log("Waiting for unpause");
 					yield return waitForSeconds;
 					continue;
-				}
+				} */
 
 				popUpTime += Time.unscaledDeltaTime;
 				float popupfCoeff = popUpTime / popUpDuration;
@@ -167,11 +171,12 @@ namespace GotchaNow
 			float displayTime = 0f;
 			while (displayTime < displayDuration)
 			{
-				if(PauseMenu.Instance.IsPaused)
+				/* if(PauseMenu.Instance.IsPaused)
 				{
+					Debug.Log("Waiting for unpause 2");
 					yield return waitForSeconds;
 					continue;
-				}
+				} */
 
 				displayTime += Time.unscaledDeltaTime;
 
@@ -199,11 +204,12 @@ namespace GotchaNow
 			float popDownTime = 0f;
 			while (popDownTime < popDownDuration)
 			{
-				if(PauseMenu.Instance.IsPaused)
+				/* if(PauseMenu.Instance.IsPaused)
 				{
+					Debug.Log("Waiting for unpause3");
 					yield return waitForSeconds;
 					continue;
-				}
+				} */
 
 				popDownTime += Time.unscaledDeltaTime;
 				float popupfCoeff = 1 - (popDownTime / popDownDuration);

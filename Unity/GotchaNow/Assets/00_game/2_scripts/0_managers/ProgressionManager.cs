@@ -1,7 +1,7 @@
 using GotchaNow;
 using NUnit.Framework;
 using System.Collections;
-using System.Diagnostics;
+//using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -106,7 +106,6 @@ public class ProgressionManager : MonoBehaviour
 
         EnableIntermissionUI();
         MusicPlayer.instance.PlayIntermissionMusic();
-        
 
         if (intermissionID == "intro")
         {   
@@ -289,7 +288,7 @@ public class ProgressionManager : MonoBehaviour
             return; 
         }
 
-        if (intermissionID == "badEnding") //won 2nd battle with full quota
+        if (intermissionID == "badEnding") //fullQuota
         {
             EndBattleEvent.Invoke();
             
@@ -323,6 +322,38 @@ public class ProgressionManager : MonoBehaviour
             return;
         }
 
+        if (intermissionID == "quotaFilledAyaBattle") //fullQuota
+        {
+            EndBattleEvent.Invoke();
+            
+            nextState = "intermission";
+            nextID = "intro";
+
+            debugText.text += "\n\nso you changed your mind after all.";
+
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+
+            boss.SetActive(false); //debug
+            queen.SetActive(false); //debug
+
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
+            return;
+        }
+
         if (intermissionID == "gameOver") //lost battle (any)
         {
             EndBattleEvent.Invoke();
@@ -331,6 +362,41 @@ public class ProgressionManager : MonoBehaviour
             nextID = "intro";
 
             debugText.text += "\n\nyou died";
+
+            //GameOver.instance.GameOverBench();
+
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+
+            boss.SetActive(false); //debug
+            queen.SetActive(false); //debug
+
+            //Dialogue Update
+            InteracteeManager.Instance.PrepareForInteraction();
+            //Force start dialogue
+            intermissionDialogue.Interact();
+
+            //Start Chat Message History
+            ChatMessagesManager.Instance.DisplayMessageHistory();
+
+            return;
+        }
+
+        if (intermissionID == "gameOverAyaBattle") //lost battle AYA
+        {
+            EndBattleEvent.Invoke();
+            
+            nextState = "intermission";
+            nextID = "intro";
+
+            Debug.Log("game over aya battle");
+            debugText.text += "\n\nloser.";
 
             //GameOver.instance.GameOverBench();
 

@@ -191,7 +191,7 @@ public class NotificationManager : MonoBehaviour
             for (int i = 0; i < request.Count - 1; i++)
             {
                 var requestItem = request[i];
-                Debug.Log("OpenRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
+                //Debug.Log("OpenRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
                 if(requestItem.activeSelf) continue;
                 if(rt.sizeDelta.y <= enableTresholds[i]) continue;
                 request[i].SetActive(true);
@@ -243,7 +243,7 @@ public class NotificationManager : MonoBehaviour
             for (int i = request.Count - 1; i >= 0; i--)
             {
                 var requestItem = request[i];
-                Debug.Log("CloseRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
+                //Debug.Log("CloseRequest - Checking " + requestItem.name + ". SizeDelta.y: " + rt.sizeDelta.y + ", Treshold: " + enableTresholds[i]);
                 if(!requestItem.activeSelf) continue;
                 if(rt.sizeDelta.y >= enableTresholds[i]) continue;
                 request[i].SetActive(false);
@@ -387,7 +387,7 @@ public class NotificationManager : MonoBehaviour
 
         PopupManager.instance.ShowHealMePopup();
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
-
+        
         StartCoroutine(CloseRequestMenu());
     }
 
@@ -533,9 +533,16 @@ public class NotificationManager : MonoBehaviour
 
     public void QuotaFilled()
     {
-        //placeholder
-        
-        ProgressionManager.instance.StartIntermission("badEnding");
+
+        if (ProgressionManager.instance.battleID == "battle3")
+        {
+            ProgressionManager.instance.StartIntermission("quotaFilledAyaBattle");
+        }
+        else
+        {
+            ProgressionManager.instance.StartIntermission("badEnding");
+        }
+
         //GameOver.instance.GameOverQuota();
         PlayerBattle.Instance.EndBattle();
     }

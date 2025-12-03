@@ -244,15 +244,23 @@ public class PlayerBattle : MonoBehaviour
         //player death
         if (HP <= 0)
         {
-            ProgressionManager.instance.StartIntermission("gameOver");
+            if (ProgressionManager.instance.gameState == "battle" && ProgressionManager.instance.battleID == "battle3")
+            {
+                Debug.Log("trigger game over aya battle");
+                ProgressionManager.instance.StartIntermission("gameOverAyaBattle");
+            }
+            else 
+            {
+                Debug.Log("trigger game over");
+                ProgressionManager.instance.StartIntermission("gameOver");
+            }
+
             EndBattle();
             
             //if (death) return;
             //death = true;
 
-
             //OnDeath?.Invoke();
-            
             
         }
 
