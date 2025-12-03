@@ -20,7 +20,7 @@ MonoBehaviour:
     chatMessages:
     - typingPreview: 4
       senderName: 4
-      messageContent: Hey! I just got a notification that my credid card was billed
+      messageContent: Hey! I just got a notification that my credit card was billed
         a huge amount.
       delayTillNext: 5
       messageLifetime: 8
@@ -31,3 +31,4 @@ MonoBehaviour:
       messageLifetime: 8
   chatMessageHistoryWrapper:
     conglomerateHistories: []
+  triggerVibrationOnMessageFire: 0
