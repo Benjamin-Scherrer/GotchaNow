@@ -23,7 +23,7 @@ namespace GotchaNow
 		public void RegisterInteractable(InteractableDialogue interactable)
 		{
 			// Debug.Log("Trying to register interactable: " + interactable.name);
-			if(interactables.Contains(interactable)) throw new System.Exception("Interactable already registered.");
+			if(interactables.Contains(interactable)) return; //throw new System.Exception("Interactable already registered.");
 			// Debug.Log("Registering interactable: " + interactable.name);
 			// Register the interactable
 			interactables.Add(interactable);
@@ -32,7 +32,7 @@ namespace GotchaNow
 		public void UnregisterInteractable(InteractableDialogue interactable)
 		{
 			// Debug.Log("Trying to unregister interactable: " + interactable.name);
-			if (!interactables.Contains(interactable)) throw new System.Exception("Interactable not registered.");
+			if (!interactables.Contains(interactable)) return; //throw new System.Exception("Interactable not registered.");
 			// Debug.Log("Unregistering interactable: " + interactable.name);
 			// Unregister the interactable
 			interactables.Remove(interactable);
@@ -40,7 +40,7 @@ namespace GotchaNow
 
 		public InteractableDialogue GetInteractableDialogue(Vector3 position, float maxDistance)
 		{
-			// Debug.Log("Searching for interactables...");
+			Debug.Log("Searching for interactables. Count: " + interactables.Count);
 			float closestDistance = float.MaxValue;
 			InteractableDialogue closestInteractable = null;
 			foreach (var interactable in interactables)
