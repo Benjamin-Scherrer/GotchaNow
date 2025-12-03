@@ -97,6 +97,7 @@ public class PlayerBattle : MonoBehaviour
     public bool invulnerable = false;
     [HideInInspector] public bool dodgeSuccessful = false;
     private bool blockReady = true;
+    public float blockMinTime = 0.15f;
     public BlockHitbox blockHitbox;
     [HideInInspector] public bool parrySuccessful = false;
     public GameObject healVFX;
@@ -500,8 +501,7 @@ public class PlayerBattle : MonoBehaviour
 
     private IEnumerator StartBlock()
     {
-        float timer = 0;
-        float blockMinTime = 0.2f;
+        float timer = 0; 
         
         guardActive = true;
 

@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282222006322349382, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SkipOnDrop
@@ -1454,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1247925922434904594, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: parryWindow
-      value: 0.2
+      value: 0.225
       objectReference: {fileID: 0}
     - target: {fileID: 1324679394528082244, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: intro
@@ -2076,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: battle
+      value: intermission
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: arenaCenter
@@ -2096,7 +2096,7 @@ PrefabInstance:
       objectReference: {fileID: 778820612}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: intermissionID
-      value: quotaFilledAyaBattle
+      value: intro
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint
