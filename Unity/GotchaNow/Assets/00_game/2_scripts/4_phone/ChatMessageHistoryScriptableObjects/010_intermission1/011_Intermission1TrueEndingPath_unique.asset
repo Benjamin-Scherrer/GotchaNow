@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
   m_Name: 011_Intermission1TrueEndingPath_unique
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  messageDataType: 0
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 0
   chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
     chatMessages:
     - typingPreview: 2
       senderName: 1
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Hiiiiii, wanna go to the upcoming party.
+      messageContent: "are you ok? Haven\u2019t heard from you in a while"
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 1
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: I've heard Turtle talk about it.
+      messageContent: did you hear about the party this weekend?
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 1
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Can we go together?
+      messageContent: what if we would go there together?
       delayTillNext: 3
       messageLifetime: 5
-    - typingPreview: 2
+    - typingPreview: 3
       senderName: 1
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: 'I mean as a date >.< '
+      messageContent: as in together together like a date?
       delayTillNext: 3
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories: []
+  triggerVibrationOnMessageFire: 0
