@@ -352,11 +352,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 814953279646580346, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 814953279646580346, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1334128706927184610, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -416,19 +416,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3690282960755518907, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3882494434102549656, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3882494434102549656, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3882494434102549656, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4251724233000333997, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_IsActive
@@ -452,11 +452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394640495693611894, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5394640495693611894, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5715639820153585280, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: Game
@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282222006322349382, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SkipOnDrop
@@ -532,15 +532,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650120979539692663, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8650120979539692663, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650120979539692663, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1516,10 +1516,6 @@ PrefabInstance:
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 2476346654219344423, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      propertyPath: hitboxDmg
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2689300265432424183, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: damage
       value: 15
@@ -2080,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: intermission
+      value: battle
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: arenaCenter

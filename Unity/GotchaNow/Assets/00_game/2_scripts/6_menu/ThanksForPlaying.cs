@@ -5,6 +5,8 @@ namespace GotchaNow
 {
 	public class ThanksForPlaying : MonoBehaviour
 	{
+		public static ThanksForPlaying Instance;
+
 		[Header("References")]
 		[SerializeField] private string mainMenuSceneName = "MainMenuScene";
 
@@ -23,6 +25,9 @@ namespace GotchaNow
 		private void Awake()
         {
             gameObject.SetActive(false);
+			
+			if(Instance != null) throw new System.Exception("Multiple ThanksForPlaying instances detected!");
+			Instance = this;
         }
 	}
 }
