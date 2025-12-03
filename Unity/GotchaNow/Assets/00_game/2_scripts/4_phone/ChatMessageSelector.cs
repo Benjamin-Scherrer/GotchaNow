@@ -14,7 +14,9 @@ namespace GotchaNow
 		[SerializeField] protected ChatMessageHistory trueEndingFailed;
 		[SerializeField] protected ChatMessageHistory neutralEnding;
 		[SerializeField] protected ChatMessageHistory badEnding;
+		[SerializeField] protected ChatMessageHistory quotaFilledAyaBattle;
 		[SerializeField] protected ChatMessageHistory gameOver;
+		[SerializeField] protected ChatMessageHistory gameOverAyaBattle;
 
 		[Header("Battle Dialogues")]
 		[SerializeField] protected ChatMessageHistory tutorial;
@@ -56,7 +58,9 @@ namespace GotchaNow
                 "trueEndingFailed" => trueEndingFailed,
                 "neutralEnding" => neutralEnding,
                 "badEnding" => badEnding,
+				"quotaFilledAyaBattle" => quotaFilledAyaBattle,
                 "gameOver" => gameOver,
+				"gameOverAyaBattle" => gameOverAyaBattle,
                 _ => throw new System.Exception("Invalid intermission ID: " + intermissionID),
             };
         }
