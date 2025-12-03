@@ -67,8 +67,7 @@ namespace GotchaNow
 		private IEnumerator StartOverlayAnimation()
 		{
 			Debug.Log("Starting True Ending Overlay Coroutine");
-			//Debug
-			yield return new WaitForSecondsRealtime(5f);
+			// TODO: Grey out game screen and show true ending phone overlay
 
 			trueEndingOverlay.SetActive(true);
 			RectTransform trueEndingRect = trueEndingOverlay.GetComponent<RectTransform>();
@@ -113,6 +112,8 @@ namespace GotchaNow
 				float delay = chatBoxVariable.z;
 				yield return new WaitForSecondsRealtime(delay);
 			}
+
+			ThanksForPlaying.Instance.ShowThanksScreen();
 		}
 	}
 }
