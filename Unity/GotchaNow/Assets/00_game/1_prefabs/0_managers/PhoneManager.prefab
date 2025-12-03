@@ -71,11 +71,13 @@ MonoBehaviour:
   intermission1: {fileID: 11400000, guid: b8ef7e71206d6c643bb60f169c6c82a7, type: 2}
   intermission1TrueEndingPath: {fileID: 11400000, guid: 30a74bc0eb4d62e4d86289aaef2a2825, type: 2}
   preSecretBoss: {fileID: 11400000, guid: 45882e24fd4299a47b69313f99420d22, type: 2}
-  trueEnding: {fileID: 11400000, guid: afe3a3405a523ce4fb46cc797f311bac, type: 2}
+  trueEnding: {fileID: 0}
   trueEndingFailed: {fileID: 0}
   neutralEnding: {fileID: 11400000, guid: 50c3c3f2145c2694eab8b11be8dc6299, type: 2}
   badEnding: {fileID: 11400000, guid: e4f662a0814e468468b8312996c49c25, type: 2}
+  quotaFilledAyaBattle: {fileID: 0}
   gameOver: {fileID: 11400000, guid: abbb299328cf9424fb52e94dd39d7193, type: 2}
+  gameOverAyaBattle: {fileID: 0}
   tutorial: {fileID: 0}
   battle1: {fileID: 11400000, guid: 4a3d1358bbf7dce4696952a81730454a, type: 2}
   battle2: {fileID: 11400000, guid: 8c9e6060f26891d4db6a11267881ddc6, type: 2}
@@ -211,9 +213,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   popUpDuration: 0.1
-  displayDuration: 3
+  displayDuration: 2.5
   popDownDuration: 0.1
-  jiggleInterval: 0.8
+  jiggleInterval: 0.6
   jiggleAmount: 3
   jiggleDuration: 0.1
   jiggleIntensity: 5
@@ -270,9 +272,8 @@ MonoBehaviour:
   messageOverlay: {fileID: 0}
   popUpTime: 0.5
   chatBoxVariables:
-  - {x: 0, y: -100, z: 2}
-  - {x: 0, y: -100, z: 0.4}
-  - {x: 1, y: 15, z: 2}
-  - {x: 0.2, y: 54, z: 5}
-  - {x: 0.2, y: 92, z: 2}
-  - {x: 0.2, y: 130, z: 4}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.5, y: 320, z: 2}
+  - {x: 0.2, y: 360, z: 3}
+  - {x: 0.2, y: 396, z: 2}
+  - {x: 0.2, y: 433, z: 5}

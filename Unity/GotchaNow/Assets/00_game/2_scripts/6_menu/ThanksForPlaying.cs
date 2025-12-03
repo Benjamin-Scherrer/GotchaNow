@@ -29,6 +29,7 @@ namespace GotchaNow
 			gameObject.SetActive(true);
 			foreach (GameObject go in disableGameObjects)
 			{
+				if(!go) continue;
 				go.SetActive(false);
 			}	
 		}

@@ -117,7 +117,7 @@ MonoBehaviour:
   - guid: f878a463-cc9a-49d4-96f3-ea3f61ae04a5
     dialogue:
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: '<event:gameOverBench>
+      <Content>k__BackingField: '<event:trueEndingPhoneOverlay>
 
         <event:skipThroughAll>
 

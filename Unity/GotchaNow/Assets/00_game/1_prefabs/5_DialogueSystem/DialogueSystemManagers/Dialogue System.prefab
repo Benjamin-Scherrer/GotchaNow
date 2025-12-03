@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac6f951f0a1417fa3edb50a73b450fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTyperPace: 0.013
+  defaultTyperPace: 0.015
 --- !u!114 &3636829067758995821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 577f6cbf657bac94a88dd2879c4a3ee9, type: 2}
   - {fileID: 11400000, guid: eb068e3cb2788e04d87748e7b965f668, type: 2}
   - {fileID: 11400000, guid: e03ddcbfcfe450644ab0906ff76d7cda, type: 2}
+  - {fileID: 11400000, guid: 0faba3982622ab34fb5fc61905fcc612, type: 2}
   defaultCharacterData: {fileID: 11400000, guid: a1fb6b12dfc84004496280234d98e3d5, type: 2}
 --- !u!114 &1977219144382408722
 MonoBehaviour:

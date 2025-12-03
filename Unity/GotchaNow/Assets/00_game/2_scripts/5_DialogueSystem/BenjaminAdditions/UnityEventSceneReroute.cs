@@ -43,6 +43,11 @@ namespace GotchaNow
 			GameOver.instance.GameOverQuota();
 		}
 
+		public void TrueEndingPhoneOverlay()
+		{
+			if (NarrativeController.Instance == null) throw new System.Exception("NarrativeController instance is null");			
+			TrueEndingOverlay.Instance.ActivateTrueEndingPhoneOverlay();
+		}
 		public void EnablePhoneView()
 		{
 			PhoneViewController.instance.EnablePhoneView();
