@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 
 public class Enemy : MonoBehaviour
 {
