@@ -145,6 +145,7 @@ namespace GotchaNow
 						if(NotificationManager.instance.menuOpen) break;
 						//if in gameplay, open pause menu
 						TogglePauseScreen();
+						ToggleControlsScreen();
 						break;
 					case MenuState.PAUSEMENU:
 						//if in pause menu, close pause menu
