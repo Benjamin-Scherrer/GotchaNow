@@ -271,6 +271,8 @@ MonoBehaviour:
   damage: 30
   movement: 1
   knockback: 2
+  isComboAtk: 0
+  hitGlow: {fileID: 0}
 --- !u!1 &8723845907211444357
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +386,6 @@ MonoBehaviour:
   HP: 100
   knockback: 0
   proximity: 0
-  bm: {fileID: 0}
   pm: {fileID: 0}
   nm: {fileID: 0}
   isLockOnTarget: 0
@@ -403,11 +404,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   model: {fileID: 0}
-  attack1: {fileID: 7457683999866399940}
-  attack1Duration: 1
-  attack1EndingLag: 0.5
+  animator: {fileID: 0}
+  walkSpeed: 3
+  strafeSpeed: 2
+  turnSpeed: 0.3
+  ShoulderBashAttack: {fileID: 0}
+  shoulderBashRange: 0
+  shoulderBashStartupTime: 0
+  shoulderBashDuration: 0
+  shoulderBashMotionTime: 0
+  shoulderBashSpeed: 0
+  shoulderBashEndingLag: 0
+  ClawSwipeAttack: {fileID: 0}
+  clawSwipeRange: 0
+  clawSwipeStartupTime: 0
+  clawSwipeDuration: 0
+  clawSwipeMotionTime: 0
+  clawSwipeSpeed: 0
+  clawSwipeEndingLag: 0
+  HammerJumpAttack: {fileID: 0}
+  hammerJumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hammerJumpRange: 0
+  hammerJumpStartupTime: 0
+  hammerJumpAirTime: 0
+  hammerJumpYPos: 0
+  hammerJumpHeight: 0
+  hammerJumpSpeed: 0
+  hammerJumpDuration: 0
+  hammerJumpEndingLag: 0
+  HammerSpinAttack: {fileID: 0}
+  hammerSpinRange: 0
+  hammerSpinStartupTime: 0
+  hammerSpinDuration: 0
+  hammerSpinMotionTime: 0
+  hammerSpinSpeed: 0
+  hammerSpinEndingLag: 0
+  HammerCombo1Attack: {fileID: 0}
+  hammerCombo1Range: 0
+  hammerCombo1StartupTime: 0
+  hammerCombo1Duration: 0
+  hammerCombo1MotionTime: 0
+  hammerCombo1Speed: 0
+  hammerCombo1EndingLag: 0
+  HammerCombo2Attack: {fileID: 0}
+  hammerCombo2Range: 0
+  hammerCombo2StartupTime: 0
+  hammerCombo2Duration: 0
+  hammerCombo2MotionTime: 0
+  hammerCombo2Speed: 0
+  hammerCombo2EndingLag: 0
   attackParried: 0
   parryKnockback: 10
+  hitTime: 0.1
+  baseKnockback: 1
+  eyeRenderer: {fileID: 0}
+  gemRenderer: {fileID: 0}
+  defaultEyeColor: {r: 0, g: 0, b: 0, a: 0}
+  defaultGemColor: {r: 0, g: 0, b: 0, a: 0}
+  gemExplosion: {fileID: 0}
+  debugText: {fileID: 0}
 --- !u!114 &8911018270287030116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +490,34 @@ PrefabInstance:
     m_TransformParent: {fileID: 524258618249133185}
     m_Modifications:
     - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312898093525345945, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -445,22 +533,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueMonoBehavior_Interactee_Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
-      propertyPath: intro
-      value: 
-      objectReference: {fileID: 11400000, guid: e0036475ba0cd764cb7d5d5e4438738b, type: 2}
-    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
-      propertyPath: preBattle1
-      value: 
-      objectReference: {fileID: 11400000, guid: 07afa10e934988d44a7abb688aabb553, type: 2}
-    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
-      propertyPath: intermission1
-      value: 
-      objectReference: {fileID: 11400000, guid: 68394f4309128804cb354d5bdd39b996, type: 2}
-    - target: {fileID: 7663135760587661079, guid: 83ca8fb904a969146b9cd3367a7ee6f0, type: 3}
-      propertyPath: intermission1TrueEndingPath
-      value: 
-      objectReference: {fileID: 11400000, guid: 3e043ffb2ad18144aa3b62dee2d7ac7d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

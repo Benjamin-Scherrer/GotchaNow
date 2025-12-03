@@ -281,6 +281,11 @@ Transform:
   - {fileID: 523694528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &145955539 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6910714989675836108, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+  m_PrefabInstance: {fileID: 1700967552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &214569253 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7408362157871898270, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
@@ -1205,6 +1210,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1838520118833388671, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
   m_PrefabInstance: {fileID: 310996768}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1471210862 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 345881446579127072, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+  m_PrefabInstance: {fileID: 1700967552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1492025055 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 580097037580821622, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -1440,6 +1450,22 @@ PrefabInstance:
       propertyPath: intermission1TrueEndingPath
       value: 
       objectReference: {fileID: 11400000, guid: ed78981ef8d234b4595690d5c4e0f38c, type: 2}
+    - target: {fileID: 1435699671104332827, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: targetCameras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435699671104332827, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'targetCameras.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1471210862}
+    - target: {fileID: 1435699671104332827, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'targetCameras.Array.data[1]'
+      value: 
+      objectReference: {fileID: 145955539}
+    - target: {fileID: 1639116909710573672, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1666725977272678699, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1448,6 +1474,10 @@ PrefabInstance:
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2397826244073234516, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2512230109650123932, guid: 560ec86cf334c8d48b1a0e77c3e92864, type: 2}
     - target: {fileID: 2689300265432424183, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: damage
       value: 15
@@ -1476,6 +1506,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3856875768660560138, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_renderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3943544603079937037, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
       value: 
@@ -1495,6 +1529,10 @@ PrefabInstance:
     - target: {fileID: 4450831799996272425, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: damage
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4872493778876828845, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: m_renderer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5712592161349418803, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: HP
@@ -1544,6 +1582,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6295532099227756019, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2512230109650123932, guid: 560ec86cf334c8d48b1a0e77c3e92864, type: 2}
     - target: {fileID: 6807946603397202496, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1596,6 +1638,18 @@ PrefabInstance:
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
+    - target: {fileID: 7346587514041508284, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: targetCameras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346587514041508284, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'targetCameras.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1471210862}
+    - target: {fileID: 7346587514041508284, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: 'targetCameras.Array.data[1]'
+      value: 
+      objectReference: {fileID: 145955539}
     - target: {fileID: 8140138118928480247, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: bm
       value: 
@@ -1607,7 +1661,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2148702544680478404, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2503271934697944479, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7766821227149812579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6099452634210644024, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
 --- !u!1 &1700967553 stripped
 GameObject:
@@ -2015,7 +2081,7 @@ PrefabInstance:
       objectReference: {fileID: 778820612}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: intermissionID
-      value: neutralEnding
+      value: intro
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint
