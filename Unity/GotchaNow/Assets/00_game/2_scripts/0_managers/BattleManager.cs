@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance;
+    [Header("References")]
     public List<GameObject> activeEnemy = new List<GameObject>();
     public Text debugText;
     public Image playerSprite;
@@ -21,6 +22,10 @@ public class BattleManager : MonoBehaviour
     public float atkAnimationTime = 0.4f;
     public float HPdrainTime = 0.2f;
     public Image renderTexture;
+
+    public TMPro.TextMeshProUGUI enemyNameText;
+
+    [Header("Ressources")]
     public Sprite katoroSprite;
     public Sprite ayaSprite;
 
@@ -40,10 +45,12 @@ public class BattleManager : MonoBehaviour
     {
         if (enemyType == "boss")
         {
+            enemyNameText.text = "Katoro";
             enemySprite.sprite = katoroSprite;
         }
         else if (enemyType == "queen")
         {
+            enemyNameText.text = "Aya";
             enemySprite.sprite = ayaSprite;
         }
     }

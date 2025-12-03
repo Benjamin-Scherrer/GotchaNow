@@ -452,6 +452,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -1668,6 +1672,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9128107049300792660, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
   m_PrefabInstance: {fileID: 310996768}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787772663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1481465000300970525, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+  m_PrefabInstance: {fileID: 1178423850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1838509920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3822638651409960899, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
@@ -2029,7 +2044,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: intermission
+      value: battle
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: arenaCenter
@@ -2197,6 +2212,10 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1024377170}
+    - target: {fileID: 3999150944246406479, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
+      propertyPath: enemyNameText
+      value: 
+      objectReference: {fileID: 1787772663}
     - target: {fileID: 3999150944246406479, guid: 75b80a0999163e342a261cdc99dfed19, type: 3}
       propertyPath: renderTexture
       value: 
