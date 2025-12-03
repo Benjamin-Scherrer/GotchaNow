@@ -548,10 +548,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 7039312856226327246}
     m_Modifications:
     - target: {fileID: 1459377226392221011, guid: ceab9fa3ff9a56247b9d20fb10999a71, type: 3}
-      propertyPath: disableObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459377226392221011, guid: ceab9fa3ff9a56247b9d20fb10999a71, type: 3}
       propertyPath: 'disableObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 3690282960755518907}

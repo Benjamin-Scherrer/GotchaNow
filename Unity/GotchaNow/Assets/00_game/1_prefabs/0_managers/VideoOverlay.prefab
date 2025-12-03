@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.StartGameWhenVideoIsOver
   move: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  click: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  click: {fileID: 4657502302588718867, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   videoPreview: {fileID: 6827488837917504862}
   videoPlayer: {fileID: 9144517760630085638}
   managers: {fileID: 0}

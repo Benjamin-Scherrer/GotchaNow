@@ -642,7 +642,8 @@ MonoBehaviour:
   defeatedScreen: {fileID: 2852681398956186756}
   neutralEndingScreen: {fileID: 7470046630147881755}
   mainMenuSceneName: MainMenuScene
-  disableObjects: []
+  disableObjects:
+  - {fileID: 0}
   quotaState: 0
 --- !u!114 &1106978040923531867
 MonoBehaviour:
@@ -659,7 +660,7 @@ MonoBehaviour:
   movement: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   up: {fileID: 2411907206095950430, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   down: {fileID: 7476244043514120974, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  submit: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  submit: {fileID: 4657502302588718867, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   maxScrollSpeed: 0.1
   selectablesReferences:
   - {fileID: 2396925243104626059}

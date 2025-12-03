@@ -439,22 +439,6 @@ PrefabInstance:
       propertyPath: managers
       value: 
       objectReference: {fileID: 134352900}
-    - target: {fileID: 6275039684632428014, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275039684632428014, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_TargetCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275039684632428014, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_AudioOutputMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6275039684632428014, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_TargetCamera3DLayout
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
@@ -465,10 +449,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
@@ -1661,19 +1641,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2148702544680478404, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 2503271934697944479, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 7766821227149812579, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6099452634210644024, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
 --- !u!1 &1700967553 stripped
 GameObject:
