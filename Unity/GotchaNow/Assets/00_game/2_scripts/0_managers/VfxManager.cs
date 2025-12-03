@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 public class VfxManager : MonoBehaviour
 {
@@ -12,6 +16,7 @@ public class VfxManager : MonoBehaviour
     [Header("Default Skybox Settings")]
     public Color defaultTint;
     public float defaultExposure;
+    public Volume fxVolume;
 
     void Awake()
     {
@@ -24,6 +29,8 @@ public class VfxManager : MonoBehaviour
         skyboxRotation = 0;
 
         skybox.SetFloat("_Rotation", skyboxRotation);
+
+        StartCoroutine(SetDOF(1000,0,false));
     }
 
     // Update is called once per frame
@@ -56,5 +63,29 @@ public class VfxManager : MonoBehaviour
             skybox.SetFloat("_Exposure", Mathf.Lerp(flashExposure, currentExposure, timer/attackTime));
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public IEnumerator SetDOF(float newValue, float time, bool enable)
+    {
+        float timer = 0;
+
+        DepthOfField dof;
+        fxVolume.profile.TryGet(out dof);
+
+        if (enable) dof.active = true;
+
+        float currentValue = dof.gaussianEnd.value;
+        Debug.Log(currentValue);
+
+        while (timer < time)
+        {
+            timer += Time.unscaledTime;
+            dof.gaussianEnd.value = Mathf.Lerp(currentValue, newValue, timer/time);
+
+            yield return new WaitForSecondsRealtime(0.16f);
+        }
+
+        dof.gaussianEnd.value = newValue;
+        if (!enable) dof.active = false;
     }
 }

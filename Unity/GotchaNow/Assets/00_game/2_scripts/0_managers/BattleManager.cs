@@ -21,6 +21,8 @@ public class BattleManager : MonoBehaviour
     public float atkAnimationTime = 0.4f;
     public float HPdrainTime = 0.2f;
     public Image renderTexture;
+    public Sprite katoroSprite;
+    public Sprite ayaSprite;
 
     void Awake()
     {
@@ -29,8 +31,21 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
+        renderTexture.material.SetFloat("_menuDesaturate", 0);
         playerSpritePos = playerSprite.rectTransform.position;
         enemySpritePos = enemySprite.rectTransform.position;
+    }
+
+    public void SetEnemySprite(string enemyType)
+    {
+        if (enemyType == "boss")
+        {
+            enemySprite.sprite = katoroSprite;
+        }
+        else if (enemyType == "queen")
+        {
+            enemySprite.sprite = ayaSprite;
+        }
     }
 
     public IEnumerator SetTimeScale(float newTimeScale, float transitionTime, float newDesaturation)

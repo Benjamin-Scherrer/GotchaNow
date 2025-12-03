@@ -166,6 +166,7 @@ public class NotificationManager : MonoBehaviour
 
         //stop time, muffle music
         StartCoroutine(BattleManager.instance.SetTimeScale(0f,openTime,1f));
+        StartCoroutine(VfxManager.instance.SetDOF(25, 2*openTime, true));
         MusicPlayer.instance.SetLowPassFilter(1f);
 
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.openNotifMenu, transform.position); //play sfx
@@ -375,6 +376,7 @@ public class NotificationManager : MonoBehaviour
             StartCoroutine(CloseRequestMenu());
 
             StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f)); //reset timescale
+            StartCoroutine(VfxManager.instance.SetDOF(1000, 2*openTime, false));
             MusicPlayer.instance.SetLowPassFilter(0f);
         }
     }
@@ -412,6 +414,7 @@ public class NotificationManager : MonoBehaviour
     public void AcceptHeal()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        StartCoroutine(VfxManager.instance.SetDOF(1000, 2*openTime, false));
         MusicPlayer.instance.SetLowPassFilter(0f);
         
         PlayerBattle.Instance.Heal(50);
@@ -422,6 +425,7 @@ public class NotificationManager : MonoBehaviour
     public void AcceptBuff()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        StartCoroutine(VfxManager.instance.SetDOF(1000, 2*openTime, false));
         MusicPlayer.instance.SetLowPassFilter(0f);
 
         BuffEnabled.Invoke();
@@ -431,6 +435,7 @@ public class NotificationManager : MonoBehaviour
     public void AcceptMeteor()
     {
         StartCoroutine(BattleManager.instance.SetTimeScale(1f,openTime,0f));
+        StartCoroutine(VfxManager.instance.SetDOF(1000, 2*openTime, false));
         MusicPlayer.instance.SetLowPassFilter(0f);
 
         Instantiate(Meteor, new Vector3 (200,90,0), Quaternion.identity);

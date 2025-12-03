@@ -144,6 +144,11 @@ public class Enemy : MonoBehaviour
         HP = maxHP;
         StartCoroutine(BattleManager.instance.UpdateEnemyHP(0, 1));
 
+        if (enemyType == "queen" || enemyType == "boss")
+        {
+            BattleManager.instance.SetEnemySprite(enemyType);
+        }
+
         if (!BattleManager.instance.activeEnemy.Contains(this.gameObject))
         {
             BattleManager.instance.AddToEnemyList(this.gameObject);
