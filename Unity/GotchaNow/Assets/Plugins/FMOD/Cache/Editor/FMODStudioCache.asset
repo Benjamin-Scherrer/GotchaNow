@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9025683806810571489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_slash2/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-8613907033830348163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +76,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &-8544534642342011019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_hit/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-8329503772593456898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +148,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-7665440256844323234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_slash1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_slash1
+  Guid:
+    Data1: 801142493
+    Data2: 1185949218
+    Data3: 1752524416
+    Data4: 1785073036
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3254278379568923224}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-5978447359584157383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +300,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-4930199875380578377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_block
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_block
+  Guid:
+    Data1: -108442695
+    Data2: 1113421254
+    Data3: -1434547273
+    Data4: 231875021
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4780771968837492316}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-4861923069804575134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,10 +343,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639000133160258499
+  lastModified: 639003806325446778
   FileSizes:
   - Name: Desktop
-    Value: 5897216
+    Value: 5928096
   Exists: 1
 --- !u!114 &-4742059384077242726
 MonoBehaviour:
@@ -272,6 +376,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2666
+--- !u!114 &-4088361133780844098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_slash3
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_slash3
+  Guid:
+    Data1: -1577476388
+    Data2: 1110339969
+    Data3: 639292808
+    Data4: 1785672113
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4127239781948087427}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-3797573653836368699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +480,58 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-3254278379568923224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_slash1/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3073837626706646665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_hit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_hit
+  Guid:
+    Data1: 982021004
+    Data2: 1302161352
+    Data3: 1694300058
+    Data4: 1581486441
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -8544534642342011019}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-2828838032597205459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +556,86 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-2659437635301331833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_heavyslash/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-2430487686719717879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_parrySuccessful
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_parrySuccessful
+  Guid:
+    Data1: -1205618257
+    Data2: 1088397580
+    Data3: 2011750788
+    Data4: -1126422964
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7679801969568494310}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
+--- !u!114 &-2408059145952220595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_blockSuccessful
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_blockSuccessful
+  Guid:
+    Data1: -1045189160
+    Data2: 1125877039
+    Data3: -1480911214
+    Data4: 215312324
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4269087714802661018}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &-2281187134637955754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +684,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-2136966948325353815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_heavyslashCharge
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_heavyslashCharge
+  Guid:
+    Data1: -103620483
+    Data2: 1286406195
+    Data3: -328377156
+    Data4: -1347806335
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1649201170944745533}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &-1548436367513240968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +825,16 @@ MonoBehaviour:
   - {fileID: 1692510471616106943}
   - {fileID: 6024900673045299813}
   - {fileID: -3797573653836368699}
+  - {fileID: 1877626618112764138}
+  - {fileID: 6580530658363285362}
+  - {fileID: 6376048318337675089}
+  - {fileID: -2136966948325353815}
+  - {fileID: -3073837626706646665}
+  - {fileID: -2430487686719717879}
+  - {fileID: -4930199875380578377}
+  - {fileID: -2408059145952220595}
+  - {fileID: -4088361133780844098}
+  - {fileID: -7665440256844323234}
   EditorParameters:
   - {fileID: 5052459447620762039}
   - {fileID: -2281187134637955754}
@@ -542,7 +844,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 639000133160278551
+  cacheTime: 639003806325467141
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -584,6 +886,26 @@ MonoBehaviour:
     index: 18
   - key: event:/sfx_ui_buffActivate
     index: 19
+  - key: event:/sfx_asuka_slash2
+    index: 20
+  - key: event:/sfx_asuka_heavyslash
+    index: 21
+  - key: event:/sfx_asuka_roll
+    index: 22
+  - key: event:/sfx_asuka_heavyslashCharge
+    index: 23
+  - key: event:/sfx_asuka_hit
+    index: 24
+  - key: event:/sfx_asuka_parrySuccessful
+    index: 25
+  - key: event:/sfx_asuka_block
+    index: 26
+  - key: event:/sfx_asuka_blockSuccessful
+    index: 27
+  - key: event:/sfx_asuka_slash3
+    index: 28
+  - key: event:/sfx_asuka_slash1
+    index: 29
 --- !u!114 &108063291123360185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +1006,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &1649201170944745533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_heavyslashCharge/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1692510471616106943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +1086,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &1877626618112764138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_slash2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_slash2
+  Guid:
+    Data1: 1825551894
+    Data2: 1078675406
+    Data3: -108791873
+    Data4: 822510883
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -9025683806810571489}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &2073987606706071429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,7 +1217,7 @@ MonoBehaviour:
   - {fileID: 2296419086242562351}
   MinDistance: 1
   MaxDistance: 20
-  Length: 128625
+  Length: 99000
 --- !u!114 &2356189799062267114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,10 +1233,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639000133160278551
+  lastModified: 639003806325467141
   FileSizes:
   - Name: Desktop
-    Value: 1798
+    Value: 2244
   Exists: 1
 --- !u!114 &2496039514434374592
 MonoBehaviour:
@@ -944,6 +1318,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &4127239781948087427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_slash3/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4269087714802661018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_blockSuccessful/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &4503834206230017281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +1394,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2666
+--- !u!114 &4626339917618730413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_roll/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4780771968837492316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_block/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &5052459447620762039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,6 +1542,62 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &6376048318337675089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_roll
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_roll
+  Guid:
+    Data1: -1585634447
+    Data2: 1117674717
+    Data3: -75627382
+    Data4: 1501645339
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4626339917618730413}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
+--- !u!114 &6580530658363285362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_asuka_heavyslash
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_asuka_heavyslash
+  Guid:
+    Data1: -1517177044
+    Data2: 1116127132
+    Data3: 1232031160
+    Data4: 222057558
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2659437635301331833}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1333
 --- !u!114 &6680898301104672061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,6 +1722,30 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/TestSound/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7679801969568494310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_asuka_parrySuccessful/sfxVolume
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: sfxVolume
   StudioPath: 

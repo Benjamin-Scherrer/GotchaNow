@@ -241,6 +241,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3241705715623692318, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
   m_PrefabInstance: {fileID: 1700967552}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &96308159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96308152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -103620483
+      Data2: 1286406195
+      Data3: -328377156
+      Data4: -1347806335
+    Path: event:/sfx_asuka_heavyslashCharge
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &134352900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,12 +1378,216 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Path
+      value: event:/sfx_asuka_hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: rollSFX.Path
+      value: event:/sfx_asuka_roll
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: baseKnockback
       value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSFX.Path
+      value: event:/sfx_asuka_block
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1SFX.Path
+      value: event:/sfx_asuka_slash1
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash2SFX.Path
+      value: event:/sfx_asuka_slash2
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash3SFX.Path
+      value: event:/sfx_asuka_slash3
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data1
+      value: 982021004
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data2
+      value: 1302161352
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data3
+      value: 1694300058
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data4
+      value: 1581486441
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashSFX.Path
+      value: event:/sfx_asuka_heavyslash
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: rollSFX.Guid.Data1
+      value: -1585634447
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: rollSFX.Guid.Data2
+      value: 1117674717
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: rollSFX.Guid.Data3
+      value: -75627382
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: rollSFX.Guid.Data4
+      value: 1501645339
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSFX.Guid.Data1
+      value: -108442695
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSFX.Guid.Data2
+      value: 1113421254
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSFX.Guid.Data3
+      value: -1434547273
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSFX.Guid.Data4
+      value: 231875021
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX
+      value: 
+      objectReference: {fileID: 96308159}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1SFX.Guid.Data1
+      value: 801142493
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1SFX.Guid.Data2
+      value: 1185949218
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1SFX.Guid.Data3
+      value: 1752524416
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash1SFX.Guid.Data4
+      value: 1785073036
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash2SFX.Guid.Data1
+      value: 1825551894
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash2SFX.Guid.Data2
+      value: 1078675406
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash2SFX.Guid.Data3
+      value: -108791873
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash2SFX.Guid.Data4
+      value: 822510883
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash3SFX.Guid.Data1
+      value: -1577476388
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash3SFX.Guid.Data2
+      value: 1110339969
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash3SFX.Guid.Data3
+      value: 639292808
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: slash3SFX.Guid.Data4
+      value: 1785672113
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: dodgeInvulnerableTime
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSuccessfulSFX.Path
+      value: event:/sfx_asuka_blockSuccessful
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: parrySuccessfulSFX.Path
+      value: event:/sfx_asuka_parrySuccessful
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX.Path
+      value: event:/sfx_asuka_heavyslashCharge
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashSFX.Guid.Data1
+      value: -1517177044
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashSFX.Guid.Data2
+      value: 1116127132
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashSFX.Guid.Data3
+      value: 1232031160
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashSFX.Guid.Data4
+      value: 222057558
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSuccessfulSFX.Guid.Data1
+      value: -1045189160
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSuccessfulSFX.Guid.Data2
+      value: 1125877039
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSuccessfulSFX.Guid.Data3
+      value: -1480911214
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: blockSuccessfulSFX.Guid.Data4
+      value: 215312324
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: parrySuccessfulSFX.Guid.Data1
+      value: -1205618257
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: parrySuccessfulSFX.Guid.Data2
+      value: 1088397580
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: parrySuccessfulSFX.Guid.Data3
+      value: 2011750788
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: parrySuccessfulSFX.Guid.Data4
+      value: -1126422964
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX.Guid.Data1
+      value: -103620483
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX.Guid.Data2
+      value: 1286406195
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX.Guid.Data3
+      value: -328377156
+      objectReference: {fileID: 0}
+    - target: {fileID: 410610115482049418, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: heavySlashChargeSFX.Guid.Data4
+      value: -1347806335
       objectReference: {fileID: 0}
     - target: {fileID: 523328363231513572, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: nm
@@ -1495,6 +1730,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3943544603079937037, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: skipAction
+      value: 
+      objectReference: {fileID: 4657502302588718867, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3943544603079937037, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: interactAction
+      value: 
+      objectReference: {fileID: 4657502302588718867, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 3943544603079937037, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
       value: 
       objectReference: {fileID: 1371407739}
@@ -1565,6 +1808,26 @@ PrefabInstance:
     - target: {fileID: 6251703899130633667, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291641043189868005, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Path
+      value: event:/sfx_asuka_hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291641043189868005, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data1
+      value: 982021004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291641043189868005, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data2
+      value: 1302161352
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291641043189868005, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data3
+      value: 1694300058
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291641043189868005, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      propertyPath: hitSFX.Guid.Data4
+      value: 1581486441
       objectReference: {fileID: 0}
     - target: {fileID: 6295532099227756019, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1645,7 +1908,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3241705715623692318, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 96308159}
   m_SourcePrefab: {fileID: 100100000, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
 --- !u!1 &1700967553 stripped
 GameObject:
@@ -2044,7 +2310,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: battle
+      value: intermission
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: arenaCenter

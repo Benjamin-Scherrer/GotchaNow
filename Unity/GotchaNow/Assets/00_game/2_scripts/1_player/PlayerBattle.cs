@@ -107,7 +107,15 @@ public class PlayerBattle : MonoBehaviour
     public float buffMult = 1.5f;
     public bool meteorExists = false;
     [Header("Sound FX")]
-    public EventReference Slash1SFX;
+    public EventReference slash1SFX;
+    public EventReference slash2SFX;
+    public EventReference slash3SFX;
+    public EventReference heavySlashSFX;
+    public EventReference rollSFX;
+    public EventReference blockSFX;
+    public EventReference blockSuccessfulSFX;
+    public EventReference parrySuccessfulSFX;
+    public StudioEventEmitter heavySlashChargeSFX;
 
     private void Awake()
     {
@@ -369,6 +377,7 @@ public class PlayerBattle : MonoBehaviour
     public void ParrySuccessful()
     {
         blockHitbox.ParryVFX();
+        RuntimeManager.PlayOneShot(parrySuccessfulSFX, transform.position);
     }
 
     //collision w enemy attack
@@ -388,6 +397,8 @@ public class PlayerBattle : MonoBehaviour
         {
             hitStunTimer = hitStunTime/3;
 
+            RuntimeManager.PlayOneShot(blockSuccessfulSFX, transform.position);
+
             /* guardActive = false;
             blockReady = true;
             blockBox.GetComponent<BlockScript>().EndBlock(); */
@@ -395,7 +406,9 @@ public class PlayerBattle : MonoBehaviour
         else
         {
             hitStunTimer = hitStunTime;
+
             animator.SetTrigger("gotHit");
+            //RuntimeManager.PlayOneShot(gotHitSFX, transform.position);
         }
 
         StartCoroutine(Knockback(atkKnockback, attackDir, isComboAtk));
@@ -508,6 +521,8 @@ public class PlayerBattle : MonoBehaviour
         animator.SetTrigger("guard");
         animator.SetBool("guarding", true);
 
+        RuntimeManager.PlayOneShot(blockSFX, transform.position);
+
         while (timer < blockMinTime)
         {
             timer += Time.deltaTime;
@@ -550,7 +565,8 @@ public class PlayerBattle : MonoBehaviour
         invulnerable = true;
 
         animator.SetTrigger("dodge");
-        //model.GetComponent<Renderer>().material.color = Color.yellow; //debug
+
+        RuntimeManager.PlayOneShot(rollSFX, transform.position);
 
         while (timer < dodgeTime)
         {
@@ -599,7 +615,7 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = slash1.GetComponent<AttackScript>();
 
         animator.SetTrigger("attack1");
-        RuntimeManager.PlayOneShot(Slash1SFX, transform.position);
+        RuntimeManager.PlayOneShot(slash1SFX, transform.position);
         
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -660,6 +676,7 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = slash2.GetComponent<AttackScript>();
 
         animator.SetTrigger("attack2");
+        RuntimeManager.PlayOneShot(slash2SFX, transform.position);
 
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -720,6 +737,7 @@ public class PlayerBattle : MonoBehaviour
         AttackScript atkScript = slash3.GetComponent<AttackScript>();
 
         animator.SetTrigger("attack3");
+        RuntimeManager.PlayOneShot(slash3SFX, transform.position);
 
         atkScript.StartAttack(); //enable hitbox
         float atkTimer = 0;
@@ -753,12 +771,15 @@ public class PlayerBattle : MonoBehaviour
     private IEnumerator HeavySlashCharge()
     {
         float chgTimer = 0;
+
         animator.SetTrigger("chargeHeavy");
         animator.SetBool("charging", true);
+        
+        heavySlashChargeSFX.Play();
 
         while (chgTimer < heavySlashChargeTime)
         {
-            chgTimer += Time.deltaTime;
+            chgTimer += Time.fixedDeltaTime;
 
             if (chgTimer > heavySlashChargeTime / 2)
             {
@@ -767,7 +788,8 @@ public class PlayerBattle : MonoBehaviour
 
             if (!input.Player.Attack2.IsPressed())
             {
-                model.GetComponent<Renderer>().material.color = Color.white; //debug
+                heavySlashChargeSFX.Stop();
+
                 if (chgTimer > heavySlashChargeTime / 2) //lower power attack before full charge
                 {
                     StartCoroutine(HeavySlash(0.5f + 0.25f * (chgTimer / heavySlashChargeTime)));
@@ -783,7 +805,7 @@ public class PlayerBattle : MonoBehaviour
                 }
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         StartCoroutine(HeavySlash(1)); //full power charge attack
@@ -797,6 +819,7 @@ public class PlayerBattle : MonoBehaviour
         atkScript.StartAttack(); //enable hitbox
 
         animator.SetTrigger("heavyAttack");
+        RuntimeManager.PlayOneShot(heavySlashSFX, transform.position);
 
         /* AttackBox atkBox = heavySlash.GetComponentInChildren<AttackBox>();
         float baseDmg = atkBox.damage;

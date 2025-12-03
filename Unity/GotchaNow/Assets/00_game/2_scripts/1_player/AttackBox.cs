@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using System.Collections;
 using System.Threading;
@@ -13,8 +14,7 @@ public class AttackBox : MonoBehaviour
     public float knockback = 10;
     public float buffMult = 1.5f;
     public VisualEffect hitGlow;
-
-    //private GameObject HitBloom;
+    public EventReference hitSFX;
 
     void OnEnable()
     {
@@ -44,7 +44,7 @@ public class AttackBox : MonoBehaviour
 
             Instantiate(hitGlow, transform.position, Quaternion.identity);
 
-            //hit audio;
+            RuntimeManager.PlayOneShot(hitSFX, transform.position);
         }
     }
 
