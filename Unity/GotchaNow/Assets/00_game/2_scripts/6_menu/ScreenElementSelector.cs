@@ -69,6 +69,17 @@ namespace GotchaNow
 				{
 					selectedSelectable = startingButton;
 				}
+                else
+                {
+                    foreach(Selectable s in selectablesReferences)
+                    {
+                        if(s == null) continue;
+						if(s.gameObject.activeInHierarchy == false) continue;
+						if(s.enabled == false) continue;
+						selectedSelectable = s;
+						break;
+                    }
+                }
 
 				foreach (Selectable s in selectablesReferences)
 				{

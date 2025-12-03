@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using GotchaNow;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -11,9 +13,12 @@ public class GameOver : MonoBehaviour
 
     public GameObject screenOverlay;
     public GameObject quotaScreen;
-    public GameObject benchScreen;
-    [SerializeField] private GameObject bottomBar;
+    public GameObject defeatedScreen;
+    public GameObject neutralEndingScreen;
+    // [SerializeField] private GameObject bottomBar;
     [SerializeField] private string mainMenuSceneName = "MainMenuScene";
+    [Space]
+    [SerializeField] private List<GameObject> disableObjects;
 
     [HideInInspector]
     public float quotaState;
@@ -27,11 +32,11 @@ public class GameOver : MonoBehaviour
         gameObject.SetActive(false);
 
         screenOverlay.SetActive(false);
-        benchScreen.SetActive(false);
+        defeatedScreen.SetActive(false);
         quotaScreen.SetActive(false);
 
         //deactivate buttons
-        bottomBar.SetActive(false);
+        // bottomBar.SetActive(false);
     }
 
     public void GameOverQuota()
@@ -41,42 +46,107 @@ public class GameOver : MonoBehaviour
 
         screenOverlay.SetActive(true);
         quotaScreen.SetActive(true);
-        benchScreen.SetActive(false);
+        defeatedScreen.SetActive(false);
+        neutralEndingScreen.SetActive(false);
 
         //activate buttons
-        bottomBar.SetActive(true);
+        // bottomBar.SetActive(true);
+
+        // Disable
+        foreach(var o in disableObjects)
+        {
+            if(!o) continue;
+            o.SetActive(false);
+        }
     }
 
-    public void GameOverBench()
+    public void GameOverDefeated()
     {
-        Debug.Log("GameOverBench called");
+        Debug.Log("GameOverDefeated called");
         gameObject.SetActive(true);
 
         screenOverlay.SetActive(true);
         quotaScreen.SetActive(false);
-        benchScreen.SetActive(true);
+        defeatedScreen.SetActive(true);
+        neutralEndingScreen.SetActive(false);
 
         //activate buttons
-        bottomBar.SetActive(true);
+        // bottomBar.SetActive(true);
+
+        // Disable
+        foreach(var o in disableObjects)
+        {
+            if(!o) continue;
+            o.SetActive(false);
+        }
+    }
+
+    public void GameOverNeutralEnding()
+    {
+        Debug.Log("GameOverNeutralEnding called");
+        gameObject.SetActive(true);
+
+        screenOverlay.SetActive(true);
+        quotaScreen.SetActive(false);
+        defeatedScreen.SetActive(false);
+        neutralEndingScreen.SetActive(true);
+
+        //activate buttons
+        // bottomBar.SetActive(true);
+
+        // Disable
+        foreach(var o in disableObjects)
+        {
+            if(!o) continue;
+            o.SetActive(false);
+        }
     }
 
     public void RetryBattle()
     {
+        // Enable
+        foreach(var o in disableObjects)
+        {
+            if(!o) continue;
+            o.SetActive(true);
+        }
+
         gameObject.SetActive(false);
         
         screenOverlay.SetActive(false);
-        benchScreen.SetActive(false);
+        defeatedScreen.SetActive(false);
         quotaScreen.SetActive(false);
 
         //deactivate buttons
-        bottomBar.SetActive(false);
+        // bottomBar.SetActive(false);
 
         NotificationManager.instance.currentQuota = quotaState;
         ProgressionManager.instance.StartBattle(ProgressionManager.instance.battleID);
     }
 
+    public void GoToThanksForPlaying()
+    {
+        gameObject.SetActive(false);
+
+        screenOverlay.SetActive(false);
+        defeatedScreen.SetActive(false);
+        quotaScreen.SetActive(false);
+
+        //deactivate buttons
+        // bottomBar.SetActive(false);
+
+        ThanksForPlaying.Instance.ShowThanksScreen();
+    }
+
     public void GoToTitle()
     {
+        // Enable
+        // foreach(var o in disableObjects)
+        // {
+        //     if(!o) continue;
+        //     o.SetActive(true);
+        // }
+
         // gameObject.SetActive(false);
 
         // screenOverlay.SetActive(false);
@@ -84,7 +154,7 @@ public class GameOver : MonoBehaviour
         // quotaScreen.SetActive(false);
 
         //deactivate buttons
-        bottomBar.SetActive(false);
+        // bottomBar.SetActive(false);
 
         // quotaState = 0;
 

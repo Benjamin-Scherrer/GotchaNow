@@ -450,26 +450,6 @@ PrefabInstance:
       propertyPath: m_TargetCamera3DLayout
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6282222006322349382, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_SkipOnDrop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 7eadbfb815d307f4db92b390b3a9ed75, type: 2}
-    - target: {fileID: 6420258314592257537, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
-      propertyPath: m_AudioOutputMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6553034899361672637, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_Name
       value: VisualCompositing
@@ -2035,7 +2015,7 @@ PrefabInstance:
       objectReference: {fileID: 778820612}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: intermissionID
-      value: intro
+      value: neutralEnding
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: queenSpawnPoint
