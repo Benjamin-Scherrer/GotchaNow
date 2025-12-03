@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -111,6 +109,8 @@ public class Enemy : MonoBehaviour
             else if (enemyType == "queen")
             {
                 GetComponent<QueenEnemy>().EndBattle();
+                GetComponent<AyaIntermission>().isDefeated = true;
+                GetComponent<EnemyIntermission>().enabled = true;
             }
         }
     }

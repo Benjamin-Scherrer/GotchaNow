@@ -121,6 +121,8 @@ namespace DialogueSystem.Runtime.Narration
         
             var startNode = GetStartNode();
             StartNewDialogue(startNode);
+
+            PlayerIntermission.Instance.isInDialogue = true;
         }
 
         private NarrativeNode GetStartNode()
@@ -304,6 +306,8 @@ namespace DialogueSystem.Runtime.Narration
         
         private void FinishDialogue()
         {
+            PlayerIntermission.Instance.isInDialogue = false;
+            
             //FIX
             // Debug.Log("Dialogue finished");
             UnsetNarrativeEvents();

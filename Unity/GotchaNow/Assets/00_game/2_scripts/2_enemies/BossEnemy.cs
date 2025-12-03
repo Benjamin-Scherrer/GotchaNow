@@ -1,13 +1,8 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using System.Xml;
 using TMPro;
-using Unity.Properties;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class BossEnemy : MonoBehaviour
 {
@@ -96,6 +91,13 @@ public class BossEnemy : MonoBehaviour
     public Color defaultGemColor;
     public GameObject gemExplosion;
     public TextMeshProUGUI debugText;
+    [Header("Sound FX")]
+    public EventReference windupClawSwipe;
+    public EventReference windupCombo1;
+    public EventReference windupCombo2;
+    public EventReference windupJump;
+    public EventReference windupShoulderBash;
+    public EventReference windupSpin;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -472,6 +474,8 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("ShoulderAttack");
 
+        RuntimeManager.PlayOneShot(windupShoulderBash, transform.position);
+
         while (atkTimer < shoulderBashStartupTime)
         {
             atkTimer += Time.fixedDeltaTime;
@@ -536,6 +540,8 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("ClawAttack");
 
+        RuntimeManager.PlayOneShot(windupClawSwipe, transform.position);
+
         while (atkTimer < clawSwipeStartupTime)
         {
             atkTimer += Time.fixedDeltaTime;
@@ -584,6 +590,8 @@ public class BossEnemy : MonoBehaviour
         float atkTimer = 0;
         ResetWalkAnim();
         animator.SetTrigger("JumpAttack");
+
+        RuntimeManager.PlayOneShot(windupJump, transform.position);
 
         while (atkTimer < hammerJumpStartupTime)
         {
@@ -645,6 +653,8 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("SpinAttack");
 
+        RuntimeManager.PlayOneShot(windupSpin, transform.position);
+
         while (atkTimer < hammerSpinStartupTime)
         {
             atkTimer += Time.fixedDeltaTime;
@@ -701,6 +711,8 @@ public class BossEnemy : MonoBehaviour
         float atkTimer = 0;
         ResetWalkAnim();
         animator.SetTrigger("Combo1");
+
+        RuntimeManager.PlayOneShot(windupCombo1, transform.position);
 
         while (atkTimer < hammerCombo1StartupTime)
         {
@@ -761,6 +773,8 @@ public class BossEnemy : MonoBehaviour
 
         float atkTimer = 0;
         animator.SetTrigger("Combo2");
+
+        RuntimeManager.PlayOneShot(windupCombo2, transform.position);
 
         while (atkTimer < hammerCombo2StartupTime)
         {

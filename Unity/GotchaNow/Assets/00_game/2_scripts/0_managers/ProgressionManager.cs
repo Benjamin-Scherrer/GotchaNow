@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections;
 //using System.Diagnostics;
 using TMPro;
+using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -12,7 +13,7 @@ using UnityEngine.UI;
 public class ProgressionManager : MonoBehaviour
 {
     public static ProgressionManager instance;
-    public InputActionReference skipInput;
+    //public InputActionReference skipInput;
     private BattleManager bm;
     private NotificationManager nm;
     public string gameState;
@@ -36,7 +37,7 @@ public class ProgressionManager : MonoBehaviour
     public Vector3 bossSpawnPoint;
     public Vector3 queenSpawnPoint;
     public Transform arenaCenter;
-    private bool skipReady = true;
+    //private bool skipReady = true;
     public UnityEvent EndBattleEvent;
 
     void Awake()
@@ -64,7 +65,7 @@ public class ProgressionManager : MonoBehaviour
         }
     }
 
-    void Update()
+    /* void Update()
     {
         if (gameState == "intermission")
         {
@@ -83,9 +84,9 @@ public class ProgressionManager : MonoBehaviour
                 skipReady = true;
             }
         }
-    }
+    } */
     
-    private void Skip(string state, string id) //debug function. skip to next state
+    /* private void Skip(string state, string id) //debug function. skip to next state
     {
         if (state == "intermission")
         {
@@ -95,7 +96,7 @@ public class ProgressionManager : MonoBehaviour
         {
             StartBattle(id);
         }
-    }
+    } */
 
     public void StartIntermission(string id) //disable battle controls, story scenes
     {
@@ -239,7 +240,9 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\ngame world deleted. user can't connect to server";
 
-            queen.SetActive(false);
+            queen.GetComponent<AyaIntermission>().Defeated();
+
+            //queen.SetActive(false);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -549,6 +552,7 @@ public class ProgressionManager : MonoBehaviour
             boss.SetActive(false);
             queen.SetActive(true);
 
+            queen.GetComponent<AyaIntermission>().EndIntermission();
             queen.GetComponent<QueenEnemy>().enabled = true;
             //queen.GetComponent<EnemyIntermission>().enabled = false;
             queen.GetComponent<Enemy>().StartBattle();

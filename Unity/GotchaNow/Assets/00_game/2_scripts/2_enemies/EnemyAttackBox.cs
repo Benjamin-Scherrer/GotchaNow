@@ -71,7 +71,7 @@ public class EnemyAttackBox : MonoBehaviour
             {
                 if (attackBlocked)
                 {
-                    damageCalc = damage / 4;
+                    damageCalc = damage / 5;
                     //knockbackCalc = knockback * 0.7f;
                     attackBlocked = false;
                     Debug.Log("block");

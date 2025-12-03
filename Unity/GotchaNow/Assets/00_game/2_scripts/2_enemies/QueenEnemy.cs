@@ -1221,6 +1221,12 @@ public class QueenEnemy : MonoBehaviour
 
     public void EndBattle()
     {
+        StopAllCoroutines();
+        ResetWalkAnim();
+        
+        GetComponent<AyaIntermission>().enabled = true;
+        GetComponent<AyaIntermission>().Defeated();
+        
         this.enabled = false;
     }
 }

@@ -44,7 +44,10 @@ public class AttackBox : MonoBehaviour
 
             Instantiate(hitGlow, transform.position, Quaternion.identity);
 
-            RuntimeManager.PlayOneShot(hitSFX, transform.position);
+            if(!hitSFX.IsNull)
+            {
+                RuntimeManager.PlayOneShot(hitSFX, transform.position);
+            }
         }
     }
 

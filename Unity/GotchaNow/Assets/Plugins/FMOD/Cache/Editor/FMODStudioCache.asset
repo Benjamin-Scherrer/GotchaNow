@@ -176,6 +176,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &-6308830479826067894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupCombo1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupCombo1
+  Guid:
+    Data1: 1586032064
+    Data2: 1229260248
+    Data3: -2023191419
+    Data4: -168648229
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 459548276844967128}
+  MinDistance: 1
+  MaxDistance: 50
+  Length: 1666
 --- !u!114 &-5978447359584157383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,10 +371,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639003806325446778
+  lastModified: 639003888556239352
   FileSizes:
   - Name: Desktop
-    Value: 5928096
+    Value: 6076960
   Exists: 1
 --- !u!114 &-4742059384077242726
 MonoBehaviour:
@@ -432,6 +460,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &-3725070884997067478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupClawSwipe/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-3530948546112131396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +887,12 @@ MonoBehaviour:
   - {fileID: -2408059145952220595}
   - {fileID: -4088361133780844098}
   - {fileID: -7665440256844323234}
+  - {fileID: 572144250041077600}
+  - {fileID: 4521668466497358620}
+  - {fileID: 4543889075730152109}
+  - {fileID: 2194661391132867847}
+  - {fileID: -6308830479826067894}
+  - {fileID: 5154975181019731785}
   EditorParameters:
   - {fileID: 5052459447620762039}
   - {fileID: -2281187134637955754}
@@ -844,7 +902,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 639003806325467141
+  cacheTime: 639003888556264258
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -906,6 +964,18 @@ MonoBehaviour:
     index: 28
   - key: event:/sfx_asuka_slash1
     index: 29
+  - key: event:/sfx_katoro_windupCombo2
+    index: 30
+  - key: event:/sfx_katoro_windupClawSwipe
+    index: 31
+  - key: event:/sfx_katoro_windupJump
+    index: 32
+  - key: event:/sfx_katoro_windupShoulderBash
+    index: 33
+  - key: event:/sfx_katoro_windupCombo1
+    index: 34
+  - key: event:/sfx_katoro_windupSpin
+    index: 35
 --- !u!114 &108063291123360185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,6 +1028,58 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 666
+--- !u!114 &459548276844967128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupCombo1/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &572144250041077600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupCombo2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupCombo2
+  Guid:
+    Data1: 893172993
+    Data2: 1182138403
+    Data3: -1454025579
+    Data4: 392036890
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 9078281853624053479}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1666
 --- !u!114 &1277041412407503379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,6 +1288,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &2194661391132867847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupShoulderBash
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupShoulderBash
+  Guid:
+    Data1: -1997813135
+    Data2: 1097236532
+    Data3: 1485349564
+    Data4: 1584573614
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5022093821606887654}
+  MinDistance: 1
+  MaxDistance: 50
+  Length: 3000
 --- !u!114 &2296419086242562351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,10 +1383,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639003806325467141
+  lastModified: 639003888556264258
   FileSizes:
   - Name: Desktop
-    Value: 2244
+    Value: 2526
   Exists: 1
 --- !u!114 &2496039514434374592
 MonoBehaviour:
@@ -1366,6 +1516,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &4290801942445967915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupSpin/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &4503834206230017281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,6 +1567,62 @@ MonoBehaviour:
   - {fileID: -2828838032597205459}
   MinDistance: 1
   MaxDistance: 20
+  Length: 2666
+--- !u!114 &4521668466497358620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupClawSwipe
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupClawSwipe
+  Guid:
+    Data1: -2055311317
+    Data2: 1120302847
+    Data3: 995468443
+    Data4: 153257126
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3725070884997067478}
+  MinDistance: 1
+  MaxDistance: 50
+  Length: 1333
+--- !u!114 &4543889075730152109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupJump
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupJump
+  Guid:
+    Data1: -961525154
+    Data2: 1176704255
+    Data3: -1437367889
+    Data4: -1572158545
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8600251811605785469}
+  MinDistance: 1
+  MaxDistance: 50
   Length: 2666
 --- !u!114 &4626339917618730413
 MonoBehaviour:
@@ -1442,6 +1672,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &5022093821606887654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupShoulderBash/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &5052459447620762039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1466,6 +1720,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &5154975181019731785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_katoro_windupSpin
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_katoro_windupSpin
+  Guid:
+    Data1: -2087617587
+    Data2: 1147359967
+    Data3: -2037196642
+    Data4: -2114676717
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 4290801942445967915}
+  MinDistance: 1
+  MaxDistance: 50
+  Length: 2000
 --- !u!114 &6024900673045299813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,6 +2069,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2666
+--- !u!114 &8600251811605785469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupJump/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &8877790186108827517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,3 +2145,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &9078281853624053479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_katoro_windupCombo2/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
