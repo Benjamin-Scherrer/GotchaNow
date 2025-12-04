@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using JetBrains.Annotations;
 using Unity.Mathematics;
@@ -12,11 +13,14 @@ public class EnemyMeteorShot : MonoBehaviour
     private Vector3 direction;
     public GameObject explosion;
     private EnemyProjectileAttack enemyProjectileAttack;
+    public EventReference meteorSFX;
     
     void OnEnable()
     {
         enemyProjectileAttack = GetComponent<EnemyProjectileAttack>();
         playerTransform = PlayerBattle.Instance.gameObject.transform;
+
+        RuntimeManager.PlayOneShot(meteorSFX, transform.position);
 
         StartCoroutine(Move());
     }

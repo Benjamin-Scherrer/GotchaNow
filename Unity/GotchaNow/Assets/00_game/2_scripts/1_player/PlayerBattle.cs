@@ -114,6 +114,7 @@ public class PlayerBattle : MonoBehaviour
     public EventReference rollSFX;
     public EventReference blockSFX;
     public EventReference blockSuccessfulSFX;
+    public EventReference gotHitSFX;
     public EventReference parrySuccessfulSFX;
     public StudioEventEmitter heavySlashChargeSFX;
 
@@ -257,11 +258,13 @@ public class PlayerBattle : MonoBehaviour
             {
                 Debug.Log("trigger game over aya battle");
                 ProgressionManager.instance.StartIntermission("gameOverAyaBattle");
+                //StartCoroutine(ProgressionManager.instance.StartBattleRoutine());
             }
             else 
             {
                 Debug.Log("trigger game over");
                 ProgressionManager.instance.StartIntermission("gameOver");
+                //StartCoroutine(ProgressionManager.instance.StartBattleRoutine());
             }
 
             EndBattle();
@@ -408,7 +411,7 @@ public class PlayerBattle : MonoBehaviour
             hitStunTimer = hitStunTime;
 
             animator.SetTrigger("gotHit");
-            //RuntimeManager.PlayOneShot(gotHitSFX, transform.position);
+            RuntimeManager.PlayOneShot(gotHitSFX, transform.position);
         }
 
         StartCoroutine(Knockback(atkKnockback, attackDir, isComboAtk));
@@ -809,7 +812,9 @@ public class PlayerBattle : MonoBehaviour
         }
 
         StartCoroutine(HeavySlash(1)); //full power charge attack
+
         animator.SetBool("charging", false);
+        heavySlashChargeSFX.Stop();
     }
 
     private IEnumerator HeavySlash(float chgAmount)
@@ -963,6 +968,8 @@ public class PlayerBattle : MonoBehaviour
 
         animator.SetFloat("runIntensity", 0);
         animator.SetBool("charging", false);
+
+        heavySlashChargeSFX.Stop();
         
         if (lockedOn)
         {

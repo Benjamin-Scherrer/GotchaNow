@@ -31,6 +31,7 @@ public class VfxManager : MonoBehaviour
         skybox.SetFloat("_Rotation", skyboxRotation);
 
         StartCoroutine(SetDOF(1000,0,false));
+        StartCoroutine(SetBloom(0.5f,0));
     }
 
     // Update is called once per frame
@@ -69,13 +70,12 @@ public class VfxManager : MonoBehaviour
     {
         float timer = 0;
 
-        DepthOfField dof;
-        fxVolume.profile.TryGet(out dof);
+        fxVolume.profile.TryGet(out DepthOfField dof);
 
         if (enable) dof.active = true;
 
         float currentValue = dof.gaussianEnd.value;
-        Debug.Log(currentValue);
+        //Debug.Log(currentValue);
 
         while (timer < time)
         {
@@ -87,5 +87,24 @@ public class VfxManager : MonoBehaviour
 
         dof.gaussianEnd.value = newValue;
         if (!enable) dof.active = false;
+    }
+
+    public IEnumerator SetBloom(float newValue, float time)
+    {
+        float timer = 0;
+
+        fxVolume.profile.TryGet(out Bloom bloom);
+
+        float currentValue = bloom.intensity.value;
+
+        while (timer < time)
+        {
+            timer += Time.unscaledTime;
+            bloom.intensity.value = Mathf.Lerp(currentValue, newValue, timer/time);
+
+            yield return new WaitForSecondsRealtime(0.016f);
+        }
+
+        bloom.intensity.value = newValue;
     }
 }

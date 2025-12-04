@@ -14540,6 +14540,13 @@ MonoBehaviour:
   lifetime: 2
   hitboxSpawnDelay: 0.8
   despawnTime: 0.2
+  lightningSFX:
+    Guid:
+      Data1: 1524873537
+      Data2: 1231059113
+      Data3: 752113823
+      Data4: 1209508477
+    Path: event:/sfx_lightning
 --- !u!1 &1021034827636906339
 GameObject:
   m_ObjectHideFlags: 0

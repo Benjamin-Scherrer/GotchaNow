@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using System.Collections;
 using Unity.Mathematics;
@@ -17,6 +18,7 @@ public class MagicRingAttack : MonoBehaviour
     public Transform trackingTarget;
     public bool spawner = false;
     public GameObject minion;
+    public EventReference magicRingSFX;
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class MagicRingAttack : MonoBehaviour
         {
             transform.position = new Vector3 (transform.position.x, rch.point.y, transform.position.z);
         }
+
+        RuntimeManager.PlayOneShot(magicRingSFX, transform.position);
 
         if (spawner)
         {

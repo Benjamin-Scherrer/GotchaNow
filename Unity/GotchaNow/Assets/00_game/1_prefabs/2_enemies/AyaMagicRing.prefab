@@ -4868,6 +4868,13 @@ MonoBehaviour:
   trackingTarget: {fileID: 0}
   spawner: 0
   minion: {fileID: 6387449519428849930, guid: e18277303eb21bc44b0f18f8fddeb60a, type: 3}
+  magicRingSFX:
+    Guid:
+      Data1: 576683441
+      Data2: 1123741842
+      Data3: -427310447
+      Data4: -1146971395
+    Path: event:/sfx_magicRing
 --- !u!1 &4819159580905487173
 GameObject:
   m_ObjectHideFlags: 0

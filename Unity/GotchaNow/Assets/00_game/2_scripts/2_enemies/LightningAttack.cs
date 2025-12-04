@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class LightningAttack : MonoBehaviour
     public Vector3 hitboxMaxSize;
     public float lightningSize;
     public ParticleSystem ps;
+    public EventReference lightningSFX;
     void Start()
     {
         //hitboxCollider = hitbox.GetComponent<CapsuleCollider>();
@@ -20,6 +22,7 @@ public class LightningAttack : MonoBehaviour
         main.startSizeX = lightningSize;
 
         StartCoroutine(LightningStrike());
+        RuntimeManager.PlayOneShot(lightningSFX, transform.position);
     }
 
     private IEnumerator LightningStrike()

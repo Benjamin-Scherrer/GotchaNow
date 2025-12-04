@@ -20,39 +20,41 @@ MonoBehaviour:
     chatMessages:
     - typingPreview: 2
       senderName: 2
-      messageContent: Hey, you up?
+      messageContent: i know u on ur phone man
       delayTillNext: 5
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
-      messageContent: How are you doing?
+      messageContent: where u at
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
-      messageContent: Was nice seeing ya yesterday.
+      messageContent: come hang out bro
       delayTillNext: 6
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
-      messageContent: Haven't seen you in a while.
+      messageContent: could go for a kebab now
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
-      messageContent: Heyoo my turtle
+      messageContent: Yo, want to hop on voice chat?
       delayTillNext: 4
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
-      messageContent: Wanna hang out?
+      messageContent: We found a new co-op game, you'll like it.
       delayTillNext: 5
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
-      messageContent: Up for a team quest?
+      messageContent: Come hang out online at least if you don't feel like going
+        out.
       delayTillNext: 2
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories:
     - {fileID: 0}
+  triggerVibrationOnMessageFire: 0

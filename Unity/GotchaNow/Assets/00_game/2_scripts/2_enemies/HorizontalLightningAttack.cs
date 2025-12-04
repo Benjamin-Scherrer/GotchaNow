@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class HorizontalLightningAttack : MonoBehaviour
     public float lifetime = 2f;
     public float hitboxSpawnDelay = 0.5f;
     public float despawnTime = 0.2f;
+    public EventReference lightningSFX;
 
     void OnEnable()
     {
@@ -17,6 +19,7 @@ public class HorizontalLightningAttack : MonoBehaviour
         flare.SetActive(true);
 
         StartCoroutine(Fire());
+        RuntimeManager.PlayOneShot(lightningSFX, transform.position);
     }
 
     // Update is called once per frame

@@ -49,6 +49,8 @@ public class GameOver : MonoBehaviour
         defeatedScreen.SetActive(false);
         neutralEndingScreen.SetActive(false);
 
+        MusicPlayer.instance.PlayGameOverMusic();
+
         //activate buttons
         // bottomBar.SetActive(true);
 
@@ -70,6 +72,8 @@ public class GameOver : MonoBehaviour
         defeatedScreen.SetActive(true);
         neutralEndingScreen.SetActive(false);
 
+        MusicPlayer.instance.PlayGameOverMusic();
+
         //activate buttons
         // bottomBar.SetActive(true);
 
@@ -90,6 +94,8 @@ public class GameOver : MonoBehaviour
         quotaScreen.SetActive(false);
         defeatedScreen.SetActive(false);
         neutralEndingScreen.SetActive(true);
+
+        MusicPlayer.instance.PlayGameOverMusic();
 
         //activate buttons
         // bottomBar.SetActive(true);
@@ -159,7 +165,8 @@ public class GameOver : MonoBehaviour
         // quotaState = 0;
 
         //switch scene
-
+        
+        MusicPlayer.instance.StopMusic();
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }

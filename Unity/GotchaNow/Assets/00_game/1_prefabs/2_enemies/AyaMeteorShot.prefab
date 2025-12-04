@@ -5074,6 +5074,13 @@ MonoBehaviour:
   turnSpeed: 1.25
   lifeTime: 3
   explosion: {fileID: 2807761945309584882, guid: cd64ef0d0516c374c8da0704aeb7da22, type: 3}
+  meteorSFX:
+    Guid:
+      Data1: -575706031
+      Data2: 1170414377
+      Data3: -1401169495
+      Data4: -1177283414
+    Path: event:/sfx_meteorShot
 --- !u!1 &8724097921859423864
 GameObject:
   m_ObjectHideFlags: 0

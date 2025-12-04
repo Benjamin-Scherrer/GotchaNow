@@ -92,12 +92,18 @@ public class BossEnemy : MonoBehaviour
     public GameObject gemExplosion;
     public TextMeshProUGUI debugText;
     [Header("Sound FX")]
-    public EventReference windupClawSwipe;
-    public EventReference windupCombo1;
-    public EventReference windupCombo2;
-    public EventReference windupJump;
-    public EventReference windupShoulderBash;
-    public EventReference windupSpin;
+    public EventReference windupClawSwipeSFX;
+    public EventReference windupCombo1SFX;
+    public EventReference windupCombo2SFX;
+    public EventReference windupJumpSFX;
+    public EventReference windupShoulderBashSFX;
+    public EventReference windupSpinSFX;
+    public EventReference clawSwipeSFX;
+    public EventReference combo1SFX;
+    public EventReference combo2SFX;
+    public EventReference jumpSFX;
+    public StudioEventEmitter shoulderBashSFX;
+    public StudioEventEmitter spinSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -115,6 +121,9 @@ public class BossEnemy : MonoBehaviour
 
     public void StartBattle()
     {   
+        spinSFX.Stop();
+        shoulderBashSFX.Stop();
+        
         eyeColor = defaultEyeColor;
         gemColor = defaultGemColor;
 
@@ -474,7 +483,7 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("ShoulderAttack");
 
-        RuntimeManager.PlayOneShot(windupShoulderBash, transform.position);
+        RuntimeManager.PlayOneShot(windupShoulderBashSFX, transform.position);
 
         while (atkTimer < shoulderBashStartupTime)
         {
@@ -485,6 +494,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        shoulderBashSFX.Play();
+
         atkTimer = 0;
 
         while (atkTimer < shoulderBashDuration)
@@ -499,6 +510,8 @@ public class BossEnemy : MonoBehaviour
             if (attackParried)
             {
                 atkScript.EndAttack();
+                shoulderBashSFX.Stop();
+
                 StartCoroutine(AttackParried(2f, parryKnockback));
                 yield break;
             }
@@ -508,8 +521,8 @@ public class BossEnemy : MonoBehaviour
 
         atkScript.EndAttack();
 
-        Debug.Log("End Shoulder Bash");
         animator.SetTrigger("ShoulderEnd");
+        shoulderBashSFX.Stop();
 
         //follow-up with claw swipe
         if (behaviorPhase == "phase2" && enemy.DistanceCheck(pb.gameObject.transform.position) < clawSwipeRange)
@@ -540,7 +553,7 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("ClawAttack");
 
-        RuntimeManager.PlayOneShot(windupClawSwipe, transform.position);
+        RuntimeManager.PlayOneShot(windupClawSwipeSFX, transform.position);
 
         while (atkTimer < clawSwipeStartupTime)
         {
@@ -551,6 +564,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(clawSwipeSFX, transform.position);
+        
         atkTimer = 0;
 
         while (atkTimer < clawSwipeDuration)
@@ -591,7 +606,7 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("JumpAttack");
 
-        RuntimeManager.PlayOneShot(windupJump, transform.position);
+        RuntimeManager.PlayOneShot(windupJumpSFX, transform.position);
 
         while (atkTimer < hammerJumpStartupTime)
         {
@@ -619,6 +634,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(jumpSFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < hammerJumpDuration)
@@ -653,7 +670,7 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("SpinAttack");
 
-        RuntimeManager.PlayOneShot(windupSpin, transform.position);
+        RuntimeManager.PlayOneShot(windupSpinSFX, transform.position);
 
         while (atkTimer < hammerSpinStartupTime)
         {
@@ -664,6 +681,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        spinSFX.Play();
+
         atkTimer = 0;
 
         Vector3 moveDir = rb.position + transform.forward;
@@ -686,7 +705,9 @@ public class BossEnemy : MonoBehaviour
             if (attackParried)
             {
                 atkScript.EndAttack();
+                spinSFX.Stop();
                 StartCoroutine(AttackParried(2f, parryKnockback));
+                
                 yield break;
             }
 
@@ -695,6 +716,8 @@ public class BossEnemy : MonoBehaviour
 
         atkScript.EndAttack();
         animator.SetTrigger("SpinEnd");
+
+        spinSFX.Stop();
 
         yield return new WaitForSeconds(hammerSpinEndingLag); //ending lag
 
@@ -712,7 +735,7 @@ public class BossEnemy : MonoBehaviour
         ResetWalkAnim();
         animator.SetTrigger("Combo1");
 
-        RuntimeManager.PlayOneShot(windupCombo1, transform.position);
+        RuntimeManager.PlayOneShot(windupCombo1SFX, transform.position);
 
         while (atkTimer < hammerCombo1StartupTime)
         {
@@ -723,6 +746,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(combo1SFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < hammerCombo1Duration)
@@ -774,7 +799,7 @@ public class BossEnemy : MonoBehaviour
         float atkTimer = 0;
         animator.SetTrigger("Combo2");
 
-        RuntimeManager.PlayOneShot(windupCombo2, transform.position);
+        RuntimeManager.PlayOneShot(windupCombo2SFX, transform.position);
 
         while (atkTimer < hammerCombo2StartupTime)
         {
@@ -785,6 +810,8 @@ public class BossEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(combo2SFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < hammerCombo2Duration)
@@ -885,12 +912,13 @@ public class BossEnemy : MonoBehaviour
     
     public void EndBattle()
     {
-        /* AttackScript atkScript = attack1.GetComponent<AttackScript>();
-        atkScript.EndAttack(); */
         StopAllCoroutines();
         
         ResetWalkAnim();
         animator.SetTrigger("GotParried"); //placeholder for death anim
+
+        spinSFX.Stop();
+        shoulderBashSFX.Stop();
 
         GameObject explosion = Instantiate(gemExplosion, transform.position, Quaternion.Euler(-90,0,0));
         explosion.transform.localScale *= 2;

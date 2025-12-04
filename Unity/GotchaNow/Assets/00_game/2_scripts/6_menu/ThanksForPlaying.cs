@@ -27,6 +27,7 @@ namespace GotchaNow
 		public void ShowThanksScreen()
 		{
 			gameObject.SetActive(true);
+
 			foreach (GameObject go in disableGameObjects)
 			{
 				if(!go) continue;
@@ -101,6 +102,7 @@ namespace GotchaNow
 
 		private void ReturnToMainMenu()
 		{
+			MusicPlayer.instance.StopMusic();
 			SceneManager.LoadScene(mainMenuSceneName);
 		}
 	}

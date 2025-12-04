@@ -63,7 +63,7 @@ MonoBehaviour:
   - guid: 17fb7090-3888-4844-ba72-2cf2394be44e
     dialogue:
     - <CharacterName>k__BackingField: Aya
-      <Content>k__BackingField: '<event:gameOverBench>
+      <Content>k__BackingField: '<event:gameOverDefeated>
 
         <event:skipThroughAll>
 

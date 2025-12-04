@@ -20,23 +20,24 @@ MonoBehaviour:
     chatMessages:
     - typingPreview: 0
       senderName: 11
-      messageContent: Payment declined
+      messageContent: Payment Declined. Insufficient Funds.
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 0
       senderName: 11
-      messageContent: Payment declined
+      messageContent: Payment Declined. Insufficient Funds.
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 0
       senderName: 11
-      messageContent: Payment declined
+      messageContent: Payment Declined. Insufficient Funds.
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 0
       senderName: 11
-      messageContent: New payment method added
+      messageContent: New payment method successfully added.
       delayTillNext: 3
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories: []
+  triggerVibrationOnMessageFire: 0

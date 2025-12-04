@@ -287,11 +287,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -2122994591
-      Data2: 1275952257
-      Data3: -250624856
-      Data4: 1070732227
-    Path: event:/bgm_title
+      Data1: 1044759078
+      Data2: 1285903883
+      Data3: -139790976
+      Data4: 1516450663
+    Path: event:/bgm_titleScreen_final
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
