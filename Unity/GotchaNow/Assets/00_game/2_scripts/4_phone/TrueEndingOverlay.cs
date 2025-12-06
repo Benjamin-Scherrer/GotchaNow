@@ -43,7 +43,10 @@ namespace GotchaNow
             {
                 return;
             }
+			Debug.Log("is this being called?");
+			
 			StartCoroutine(StartOverlayAnimation());
+			StartCoroutine(VfxManager.instance.SetBloom(10000,5f));
 		}
 
 		// PRIVATE

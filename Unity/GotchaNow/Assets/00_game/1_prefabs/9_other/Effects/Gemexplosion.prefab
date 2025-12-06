@@ -4854,4 +4854,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2e71757d70494489bd4f5a8280289e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticleScript
-  lifetime: 6
+  lifetime: 4

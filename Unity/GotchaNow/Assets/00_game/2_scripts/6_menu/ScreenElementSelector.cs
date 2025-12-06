@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEssentials;
 
 namespace GotchaNow
 {
@@ -106,14 +107,17 @@ namespace GotchaNow
 			if (selectablesReferences == null || selectablesReferences.Count == 0) enabled = false;
 
 			// Get navigation direction.
+			//if (movement.action.ReadValue<Vector2>().normalized.magnitude > 0.25f)
 			navigationInput = movement.action.ReadValue<Vector2>();
-			navigationInput.y += up.action.ReadValue<float>() - down.action.ReadValue<float>();
-			navigationInput.Normalize();
+			//navigationInput.y += up.action.ReadValue<float>() - down.action.ReadValue<float>();
+			//navigationInput.Normalize();
 
-			if (navigationInput.magnitude != 0 && !navigating)
+			if (navigationInput.magnitude > 0.75f && !navigating)
 			{
+				if (navigationInput.x.Abs() >= navigationInput.y.Abs()) navigationInput.y = 0;
+				else if (navigationInput.y.Abs() > navigationInput.x.Abs()) navigationInput.x = 0;
 				StartCoroutine(Navigate());
-				// Debug.Log("Navigation started");
+				Debug.Log("Navigation started" + navigationInput.magnitude);
 			}
 
 			//submit
@@ -146,7 +150,7 @@ namespace GotchaNow
 
 			while (navigating)
 			{
-				if (navigationInput.magnitude == 0)
+				if (navigationInput.magnitude < 0.5f)
 				{
 					navigating = false;
 					// Debug.Log("Navigation stopped");

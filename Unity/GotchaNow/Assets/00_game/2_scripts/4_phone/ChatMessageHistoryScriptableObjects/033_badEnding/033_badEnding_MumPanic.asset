@@ -20,13 +20,13 @@ MonoBehaviour:
     chatMessages:
     - typingPreview: 4
       senderName: 4
-      messageContent: Hey! I just got a notification that my credit card was billed
-        a huge amount.
+      messageContent: Bob You Need To Help Me I Got A Strange Notification From The
+        Bank
       delayTillNext: 5
       messageLifetime: 8
     - typingPreview: 1
       senderName: 4
-      messageContent: . Do you know what's up?
+      messageContent: Do You Know How To Stop Hackers. Please Call
       delayTillNext: 2
       messageLifetime: 8
   chatMessageHistoryWrapper:

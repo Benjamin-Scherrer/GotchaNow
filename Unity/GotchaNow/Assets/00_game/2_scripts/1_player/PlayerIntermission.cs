@@ -16,6 +16,7 @@ public class PlayerIntermission : MonoBehaviour
     private Vector2 stickPosition;
     [HideInInspector] public bool actionInProgress = false;
     public float moveSpeed = 5;
+    public bool isInDialogue = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -38,6 +39,8 @@ public class PlayerIntermission : MonoBehaviour
         input.Enable();
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCanceled;
+
+        //isInDialogue = false;
 
         /* input.Player.CameraControl.performed += OnCameraPerformed;
         input.Player.CameraControl.canceled += OnCameraCanceled; */
@@ -63,7 +66,15 @@ public class PlayerIntermission : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveCharacter(stickPosition);
+        if (isInDialogue)
+        {
+            animator.SetFloat("runIntensity", 0);
+        }
+        
+        if (!isInDialogue)
+        {
+            moveCharacter(stickPosition);
+        }
     }
 
     private void moveCharacter(Vector2 direction) //movement

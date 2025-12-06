@@ -1,18 +1,14 @@
+using FMODUnity;
 using GotchaNow;
-using NUnit.Framework;
 using System.Collections;
-//using System.Diagnostics;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class ProgressionManager : MonoBehaviour
 {
     public static ProgressionManager instance;
-    public InputActionReference skipInput;
+    //public InputActionReference skipInput;
     private BattleManager bm;
     private NotificationManager nm;
     public string gameState;
@@ -36,8 +32,12 @@ public class ProgressionManager : MonoBehaviour
     public Vector3 bossSpawnPoint;
     public Vector3 queenSpawnPoint;
     public Transform arenaCenter;
-    private bool skipReady = true;
+    //private bool skipReady = true;
     public UnityEvent EndBattleEvent;
+    public float endBattleTime;
+    public float startBattleBloomTime;
+    public EventReference jingle1SFX;
+    public EventReference jingle2SFX;
 
     void Awake()
     {
@@ -64,7 +64,7 @@ public class ProgressionManager : MonoBehaviour
         }
     }
 
-    void Update()
+    /* void Update()
     {
         if (gameState == "intermission")
         {
@@ -83,9 +83,9 @@ public class ProgressionManager : MonoBehaviour
                 skipReady = true;
             }
         }
-    }
+    } */
     
-    private void Skip(string state, string id) //debug function. skip to next state
+    /* private void Skip(string state, string id) //debug function. skip to next state
     {
         if (state == "intermission")
         {
@@ -95,7 +95,7 @@ public class ProgressionManager : MonoBehaviour
         {
             StartBattle(id);
         }
-    }
+    } */
 
     public void StartIntermission(string id) //disable battle controls, story scenes
     {
@@ -109,6 +109,8 @@ public class ProgressionManager : MonoBehaviour
 
         if (intermissionID == "intro")
         {   
+            StartCoroutine(VfxManager.instance.SetBloom(0.5f,0f));
+            
             nextState = "intermission";
             nextID = "preBattle1";
 
@@ -119,14 +121,18 @@ public class ProgressionManager : MonoBehaviour
             queen.SetActive(true);
             boss.SetActive(true);
 
-            queenSpawnPoint = arenaCenter.position + new Vector3(-3,2,8);   
-            bossSpawnPoint = arenaCenter.position + new Vector3(3,2,8);       
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);   
+            bossSpawnPoint = arenaCenter.position + new Vector3(8,2,10);       
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
 
             queen.transform.position = queenSpawnPoint;
             queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             boss.transform.position = bossSpawnPoint;
-            boss.transform.eulerAngles = new Vector3(0, 180, 0);
+            boss.transform.eulerAngles = new Vector3(0, 210, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -176,6 +182,20 @@ public class ProgressionManager : MonoBehaviour
             debugText.text += "\n\nyou should make the user spend some money";
 
             queen.SetActive(true);
+            boss.SetActive(true);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);   
+            bossSpawnPoint = arenaCenter.position + new Vector3(8,2,10);       
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            boss.transform.position = bossSpawnPoint;
+            boss.transform.eulerAngles = new Vector3(0, 210, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -196,6 +216,20 @@ public class ProgressionManager : MonoBehaviour
             debugText.text += "\n\nyou're a good employee.\nkeep going, squeeze that user'";
 
             queen.SetActive(true);
+            boss.SetActive(true);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);   
+            bossSpawnPoint = arenaCenter.position + new Vector3(8,2,10);       
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            boss.transform.position = bossSpawnPoint;
+            boss.transform.eulerAngles = new Vector3(0, 210, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -220,6 +254,16 @@ public class ProgressionManager : MonoBehaviour
             //boss.transform.position = spawnPoint + new Vector3(0, 0, 2);
 
             queen.SetActive(true);
+            boss.SetActive(false);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0); 
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -239,7 +283,22 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\ngame world deleted. user can't connect to server";
 
-            queen.SetActive(false);
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            queen.GetComponent<QueenEnemy>().enabled = false;
+            queen.GetComponent<AyaIntermission>().Defeated();
+
+            //queen.SetActive(false);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -259,6 +318,21 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou may have defeated me but not capitalism";
 
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+            
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            queen.GetComponent<QueenEnemy>().enabled = false;
+            queen.GetComponent<AyaIntermission>().Defeated();
+
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
@@ -277,7 +351,28 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\ndecent job. we got a new paying user thanks to you\nmight have to replace you with someone better tho";
 
-             //Dialogue Update
+            for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
+            {   
+                if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
+                {
+                    bm.activeEnemy[i].GetComponent<MinionEnemy>().EndBattle();
+                    i -= 1;
+                }
+            }
+            
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
             //Force start dialogue
             intermissionDialogue.Interact();
@@ -297,8 +392,6 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou're our new top employee. incredible work";
 
-            //GameOver.instance.GameOverQuota();
-
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
             {   
                 if (bm.activeEnemy[i].GetComponent<Enemy>().enemyType == "minion")
@@ -308,8 +401,19 @@ public class ProgressionManager : MonoBehaviour
                 }
             }
 
-            boss.SetActive(false); //debug
-            queen.SetActive(false); //debug
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
+
+            //GameOver.instance.GameOverQuota();            
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -340,8 +444,19 @@ public class ProgressionManager : MonoBehaviour
                 }
             }
 
-            boss.SetActive(false); //debug
-            queen.SetActive(false); //debug
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            queen.GetComponent<QueenEnemy>().enabled = false;
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -363,6 +478,8 @@ public class ProgressionManager : MonoBehaviour
 
             debugText.text += "\n\nyou died";
 
+            StartCoroutine(VfxManager.instance.SetBloom(0.5f,1f));
+
             //GameOver.instance.GameOverBench();
 
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
@@ -374,8 +491,17 @@ public class ProgressionManager : MonoBehaviour
                 }
             }
 
-            boss.SetActive(false); //debug
-            queen.SetActive(false); //debug
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -398,6 +524,8 @@ public class ProgressionManager : MonoBehaviour
             Debug.Log("game over aya battle");
             debugText.text += "\n\nloser.";
 
+            StartCoroutine(VfxManager.instance.SetBloom(0.5f,1f));
+
             //GameOver.instance.GameOverBench();
 
             for (int i = 0; i < bm.activeEnemy.Count; i++) //deactivate minions
@@ -409,8 +537,19 @@ public class ProgressionManager : MonoBehaviour
                 }
             }
 
-            boss.SetActive(false); //debug
-            queen.SetActive(false); //debug
+            queen.SetActive(true);
+            boss.SetActive(false);
+
+            queen.GetComponent<QueenEnemy>().enabled = false;
+
+            playerSpawnPoint = arenaCenter.position + new Vector3(0,2,-4);  
+            queenSpawnPoint = arenaCenter.position + new Vector3(0,2,0);
+
+            player.transform.position = playerSpawnPoint;
+            player.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            queen.transform.position = queenSpawnPoint;
+            queen.transform.eulerAngles = new Vector3(0, 180, 0);
 
             //Dialogue Update
             InteracteeManager.Instance.PrepareForInteraction();
@@ -433,6 +572,7 @@ public class ProgressionManager : MonoBehaviour
 
         debugText.text = "gameState : " + gameState + "\nID : " + battleID;
 
+        StartCoroutine(StartBattleRoutine());
         EnableBattleUI();
 
         player.GetComponent<PlayerBattle>().enabled = true;
@@ -549,6 +689,7 @@ public class ProgressionManager : MonoBehaviour
             boss.SetActive(false);
             queen.SetActive(true);
 
+            queen.GetComponent<AyaIntermission>().EndIntermission();
             queen.GetComponent<QueenEnemy>().enabled = true;
             //queen.GetComponent<EnemyIntermission>().enabled = false;
             queen.GetComponent<Enemy>().StartBattle();
@@ -689,5 +830,50 @@ public class ProgressionManager : MonoBehaviour
         
         sendNotifUI.SetActive(false);
         battleUI.SetActive(false);
+    }
+
+    public IEnumerator EndBattleRoutine(float achievedQuota, float goalQuota)
+    {
+        Debug.Log("endbattleroutine?");
+        Debug.Log("wya?");
+
+        float timer = 0;
+
+        RuntimeManager.PlayOneShot(jingle1SFX, transform.position);
+
+        while (timer < endBattleTime)
+        {
+            timer += Time.fixedDeltaTime;
+
+            if (timer > endBattleTime - endBattleTime/8)
+            {
+                StartCoroutine(VfxManager.instance.SetBloom(1000,endBattleTime/2));
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        RuntimeManager.PlayOneShot(jingle2SFX, transform.position);
+
+        StartCoroutine(VfxManager.instance.SetBloom(0.5f,endBattleTime/6));
+        EndBattle(achievedQuota, goalQuota);
+    }
+
+    public IEnumerator StartBattleRoutine()
+    {
+        Debug.Log("startbattlebloom");
+        
+        float timer = 0;
+
+        while (timer < startBattleBloomTime)
+        {
+            timer += Time.fixedDeltaTime;
+
+            StartCoroutine(VfxManager.instance.SetBloom(1000,startBattleBloomTime/2));
+
+            yield return new WaitForSecondsRealtime(0.016f);
+        }
+
+        StartCoroutine(VfxManager.instance.SetBloom(0.5f,startBattleBloomTime));
     }
 }

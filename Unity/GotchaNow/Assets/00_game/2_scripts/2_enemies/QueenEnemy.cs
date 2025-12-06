@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -106,6 +107,10 @@ public class QueenEnemy : MonoBehaviour
     public float baseKnockback = 1f;
     public Transform arenaCenter;
     public TextMeshProUGUI debugText;
+    public EventReference slash1SFX;
+    public EventReference slash2SFX;
+    public EventReference slash3SFX;
+    public EventReference heavySlashSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -683,6 +688,8 @@ public class QueenEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(slash1SFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < slashCombo1Duration)
@@ -744,6 +751,8 @@ public class QueenEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(slash2SFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < slashCombo2Duration)
@@ -805,6 +814,8 @@ public class QueenEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(slash3SFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < slashCombo3Duration)
@@ -862,6 +873,8 @@ public class QueenEnemy : MonoBehaviour
         }
 
         atkScript.StartAttack(); //enable hitbox
+        RuntimeManager.PlayOneShot(heavySlashSFX, transform.position);
+
         atkTimer = 0;
 
         while (atkTimer < heavySlashDuration)
@@ -1221,6 +1234,11 @@ public class QueenEnemy : MonoBehaviour
 
     public void EndBattle()
     {
+        StopAllCoroutines();
+        ResetWalkAnim();
+        
+        GetComponent<AyaIntermission>().enabled = true;
+        
         this.enabled = false;
     }
 }

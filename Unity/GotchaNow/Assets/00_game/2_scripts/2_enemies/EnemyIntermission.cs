@@ -6,6 +6,7 @@ public class EnemyIntermission : MonoBehaviour
     private Enemy enemy;
     private PlayerIntermission pi;
     public GameObject model;
+    public Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -16,17 +17,15 @@ public class EnemyIntermission : MonoBehaviour
 
     void OnEnable()
     {
-        pi = PlayerIntermission.Instance;   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        pi = PlayerIntermission.Instance;
         
+        animator.SetTrigger("startIntermission");
     }
 
     public void EndIntermission()
     {
+        animator.SetTrigger("endIntermission");
+        
         GetComponent<BossEnemy>().enabled = true;
         this.enabled = false;
     }

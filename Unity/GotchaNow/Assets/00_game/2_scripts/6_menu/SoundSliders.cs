@@ -121,7 +121,12 @@ namespace GotchaNow
 			{
 				VolumeControl.SFXVolume = volumeSave.SFXVolume;
 				VolumeControl.MusicVolume = volumeSave.MusicVolume;
-			}			
+			}
+            else
+            {
+                VolumeControl.SFXVolume = 1f;
+				VolumeControl.MusicVolume = 0.8f;
+            }	
 		}
 	}
 }

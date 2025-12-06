@@ -14541,6 +14541,13 @@ MonoBehaviour:
   hitboxMaxSize: {x: 6, y: 6, z: 6}
   lightningSize: 5
   ps: {fileID: 2016059437726361319}
+  lightningSFX:
+    Guid:
+      Data1: 1524873537
+      Data2: 1231059113
+      Data3: 752113823
+      Data4: 1209508477
+    Path: event:/sfx_lightning
 --- !u!1 &1021034827636906339
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public NotificationManager nm;
     public bool isLockOnTarget = false;
     public bool isMainEnemy = false;
+    public bool alreadyDead = false;
 
     [HideInInspector] public bool hit = false;
 
@@ -39,15 +40,10 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {    
-        BattleManager.instance.RemoveFromEnemyList(this.gameObject);
-    }
-
-    private void FixedUpdate()
-    {
-        /* if (HP <= 0) //check if alive
+        if (BattleManager.instance != null)
         {
-            //Destroy(gameObject);
-        } */
+            BattleManager.instance.RemoveFromEnemyList(this.gameObject);
+        }
     }
 
     public void HitByAttack(float dmg, float atkKnockback)
@@ -69,22 +65,16 @@ public class Enemy : MonoBehaviour
             StartCoroutine(GetComponent<QueenEnemy>().GotHit(atkKnockback));
         }
 
-        //Debug.Log("Damage: " + dmg + " , HP: " + HP + "/" + maxHP);
-
         if (isMainEnemy)
         {
             StartCoroutine(BattleManager.instance.PlayerAttackUI());
             StartCoroutine(BattleManager.instance.UpdateEnemyHP((HP + dmg) / maxHP, HP / maxHP));
-
-            if (HP <= 0)
-            {
-                GameOver.instance.quotaState = nm.currentQuota;
-                pm.EndBattle(nm.currentQuota, nm.maxQuota); //update game state
-            }
         }
-        
-        if (HP <= 0)
+
+        if (HP <= 0 && !alreadyDead)
         {
+            alreadyDead = true;
+
             if (PlayerBattle.Instance.lockedOn == true) // TO DO : update to consider meteor
             {
                 PlayerBattle.Instance.lockedOn = false;
@@ -93,24 +83,28 @@ public class Enemy : MonoBehaviour
                 Debug.Log("lockingOff");
             }
             
-            if (enemyType == "boss")
+            if (enemyType == "minion")
             {
-                GetComponent<BossEnemy>().EndBattle();
-                GetComponent<EnemyIntermission>().enabled = true;
-            }
-
-            else if (enemyType == "minion")
-            {
-                BattleManager.instance.RemoveFromEnemyList(this.gameObject);
                 Debug.Log("removing");
+                BattleManager.instance.RemoveFromEnemyList(this.gameObject);
                 GetComponent<MinionEnemy>().Death();
             }
-            
-            else if (enemyType == "queen")
+
+            if (isMainEnemy)
             {
-                GetComponent<QueenEnemy>().EndBattle();
+                if (enemyType == "boss")
+                {
+                    GetComponent<BossEnemy>().EndBattle();
+                }
+                else if (enemyType == "queen")
+                {
+                    GetComponent<QueenEnemy>().EndBattle();
+                }
+
+                GameOver.instance.quotaState = nm.currentQuota;
+                StartCoroutine(ProgressionManager.instance.EndBattleRoutine(nm.currentQuota, nm.maxQuota)); //update game state
             }
-        }
+        } 
     }
 
     public void AttackParried()
@@ -142,9 +136,16 @@ public class Enemy : MonoBehaviour
         HP = maxHP;
         StartCoroutine(BattleManager.instance.UpdateEnemyHP(0, 1));
 
+        alreadyDead = false;
+
         if (enemyType == "queen" || enemyType == "boss")
         {
             BattleManager.instance.SetEnemySprite(enemyType);
+        }
+
+        if (enemyType == "boss")
+        {
+            GetComponent<BossEnemy>().StartBattle();
         }
 
         if (!BattleManager.instance.activeEnemy.Contains(this.gameObject))

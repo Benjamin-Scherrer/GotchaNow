@@ -5,7 +5,7 @@
 			<value>sfx_katoro_shoulderBash</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{10f1261b-b6fb-440d-9719-f546b7168fce}</destination>
@@ -32,6 +32,9 @@
 		<relationship name="timeline">
 			<destination>{6f03bd06-9246-442e-bea0-3908f8e6de4e}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{c93983a7-a535-484f-9cff-56cf230d4974}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{e6a2ce74-a017-4367-87ca-76177b7e9ef8}">
 		<relationship name="masterBus">
@@ -39,6 +42,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{85e5f4ce-a9c8-444f-93ad-de0a97304264}">
+		<relationship name="modules">
+			<destination>{3625018a-3d2c-4803-a290-451d064fe2ef}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{d3366d4d-1552-4d11-a172-278bce779ff3}</destination>
 		</relationship>
@@ -54,14 +60,24 @@
 			<destination>{6042eb70-8c90-4442-bbf9-c921c14d838e}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{dc8bfa18-4017-4975-8d02-6c8bec904e10}" />
-	<object class="MarkerTrack" id="{757dc5bf-62cc-4a54-a019-0a12ef0264e6}" />
-	<object class="Timeline" id="{6f03bd06-9246-442e-bea0-3908f8e6de4e}">
-		<property name="isProxyEnabled">
-			<value>false</value>
+	<object class="EventAutomatableProperties" id="{dc8bfa18-4017-4975-8d02-6c8bec904e10}">
+		<property name="maximumDistance">
+			<value>50</value>
 		</property>
 	</object>
+	<object class="MarkerTrack" id="{757dc5bf-62cc-4a54-a019-0a12ef0264e6}" />
+	<object class="Timeline" id="{6f03bd06-9246-442e-bea0-3908f8e6de4e}">
+		<relationship name="modules">
+			<destination>{3625018a-3d2c-4803-a290-451d064fe2ef}</destination>
+		</relationship>
+		<relationship name="markers">
+			<destination>{829280a4-3dfc-41ad-b453-da54e9ab6d76}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{d3366d4d-1552-4d11-a172-278bce779ff3}">
+		<relationship name="modulators">
+			<destination>{92c5f7b8-ade4-4635-a249-b3efc4eabb88}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{d260f7f4-b912-46cb-bbc5-b4c3404682bc}</destination>
 		</relationship>
@@ -72,18 +88,77 @@
 			<destination>{e6a2ce74-a017-4367-87ca-76177b7e9ef8}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{3625018a-3d2c-4803-a290-451d064fe2ef}">
+		<property name="length">
+			<value>1.6666666666666667</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{1cfee126-fa2d-4c26-a2d9-3fcd3752eca2}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{89dd366e-9908-4b85-87de-a4ce1d8eedc0}">
 		<relationship name="effects">
 			<destination>{20e53b89-065f-42db-80b3-847c5f08d971}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{09ded731-be0a-4d30-b672-f5c3d723924f}" />
+	<object class="LoopRegion" id="{829280a4-3dfc-41ad-b453-da54e9ab6d76}">
+		<property name="position">
+			<value>0.18159806295399522</value>
+		</property>
+		<property name="length">
+			<value>1.4850686037126715</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{6f03bd06-9246-442e-bea0-3908f8e6de4e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{757dc5bf-62cc-4a54-a019-0a12ef0264e6}</destination>
+		</relationship>
+	</object>
+	<object class="ADSRModulator" id="{92c5f7b8-ade4-4635-a249-b3efc4eabb88}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>260</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.429262608</value>
+		</property>
+		<property name="holdTime">
+			<value>460</value>
+		</property>
+		<property name="decayTime">
+			<value>759.487183</value>
+		</property>
+		<property name="decayShape">
+			<value>-0.581209362</value>
+		</property>
+		<property name="sustainValue">
+			<value>-2.34444046</value>
+		</property>
+		<property name="releaseTime">
+			<value>420</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{d260f7f4-b912-46cb-bbc5-b4c3404682bc}">
 		<relationship name="effects">
 			<destination>{a77422f6-8a04-4d5a-8b7d-8074e36aef78}</destination>
+			<destination>{f1a3bda7-0daa-4738-9bb0-49447064584c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{88983073-716f-4104-8e0a-d37c0093c5c1}" />
 	<object class="MixerBusFader" id="{20e53b89-065f-42db-80b3-847c5f08d971}" />
 	<object class="MixerBusFader" id="{a77422f6-8a04-4d5a-8b7d-8074e36aef78}" />
+	<object class="SpatialiserEffect" id="{f1a3bda7-0daa-4738-9bb0-49447064584c}" />
 </objects>

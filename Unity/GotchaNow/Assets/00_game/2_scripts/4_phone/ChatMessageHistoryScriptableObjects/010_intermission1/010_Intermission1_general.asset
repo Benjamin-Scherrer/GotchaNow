@@ -12,44 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
   m_Name: 010_Intermission1_general
   m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
-  messageDataType: 0
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 0
   chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
     chatMessages:
     - typingPreview: 2
       senderName: 2
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Yoooo, you guy heard the party this weekend?
+      messageContent: party dis weeknd !! u guys going?
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 3
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
       messageContent: Yeee
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: You guys going?
-      delayTillNext: 3
-      messageLifetime: 5
-    - typingPreview: 2
-      senderName: 0
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Naw gotta grind the new event in Ikigai Tournament.
-      delayTillNext: 3
-      messageLifetime: 5
-    - typingPreview: 2
-      senderName: 3
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Same
+      messageContent: turtle my goat
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 2
       senderName: 2
-      senderAvatar: {fileID: 21300000, guid: 251b93f48901fdc4b8b37a414f2f9f04, type: 3}
-      messageContent: Leaving me hanging lmao.
+      messageContent: how bout u bob
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: stop bedrotting man
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: That guy is Not coming
       delayTillNext: 3
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories: []
+  triggerVibrationOnMessageFire: 0

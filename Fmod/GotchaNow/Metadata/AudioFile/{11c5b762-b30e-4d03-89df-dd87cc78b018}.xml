@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{11c5b762-b30e-4d03-89df-dd87cc78b018}">
+		<property name="assetPath">
+			<value>sfx_katoro_windupShoulderBash.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1dc6e11-e83e-4527-a73e-3c6f4bf0f4c4}</destination>
+		</relationship>
+	</object>
+</objects>

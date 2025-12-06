@@ -20,29 +20,33 @@ MonoBehaviour:
     chatMessages:
     - typingPreview: 0
       senderName: 10
-      messageContent: WOW! 50% OFF NOW!
+      messageContent: Asuka has joined Ikigai Tournament! Deluxe Wishing Star packs
+        25% off now!
       delayTillNext: 4
       messageLifetime: 5
     - typingPreview: 0
       senderName: 10
-      messageContent: BUY BUY BUY!
+      messageContent: Get 75% off on your next Wishing Star!
       delayTillNext: 3
       messageLifetime: 5
     - typingPreview: 0
       senderName: 10
-      messageContent: BOST NOW 200% Extra XP!
+      messageContent: Boost Up! Double XP Weekend active now!
       delayTillNext: 5
       messageLifetime: 5
     - typingPreview: 0
       senderName: 10
-      messageContent: YOU'RE WINNING!
+      messageContent: The Meteor Shower Festival Event is starting this weekend!
+        Do not miss it!
       delayTillNext: 2
       messageLifetime: 5
     - typingPreview: 0
       senderName: 10
-      messageContent: KEEP ON GOING!
+      messageContent: Cute and delicious! Get the limited Ikigai Tournament Burger
+        at Mc Doll Land now!
       delayTillNext: 4
       messageLifetime: 5
   chatMessageHistoryWrapper:
     conglomerateHistories:
     - {fileID: 0}
+  triggerVibrationOnMessageFire: 0

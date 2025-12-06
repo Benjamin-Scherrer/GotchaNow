@@ -40,7 +40,7 @@ namespace GotchaNow
 
 		public InteractableDialogue GetInteractableDialogue(Vector3 position, float maxDistance)
 		{
-			Debug.Log("Searching for interactables. Count: " + interactables.Count);
+			// Debug.Log("Searching for interactables. Count: " + interactables.Count);
 			float closestDistance = float.MaxValue;
 			InteractableDialogue closestInteractable = null;
 			foreach (var interactable in interactables)
