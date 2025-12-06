@@ -40,7 +40,10 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {    
-        BattleManager.instance.RemoveFromEnemyList(this.gameObject);
+        if (BattleManager.instance != null)
+        {
+            BattleManager.instance.RemoveFromEnemyList(this.gameObject);
+        }
     }
 
     public void HitByAttack(float dmg, float atkKnockback)

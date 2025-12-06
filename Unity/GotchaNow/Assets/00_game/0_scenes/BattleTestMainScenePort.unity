@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7285751839810496384, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: startingButton
+      value: 
+      objectReference: {fileID: 1007985689}
     - target: {fileID: 8650120979539692663, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1157,6 +1161,17 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1007985689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3573923900836535254, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+  m_PrefabInstance: {fileID: 310996768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &1024377170 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4741847884149937822, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
@@ -2160,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 687509239895466793, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 985863867186657495, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: narrativeController
@@ -2292,7 +2307,7 @@ PrefabInstance:
       objectReference: {fileID: 676526664}
     - target: {fileID: 3479124769564142742, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3561913004998054745, guid: 3fbfb2c73980e3648a356c8eaafcfa22, type: 3}
       propertyPath: m_Enabled
