@@ -13,6 +13,7 @@ namespace GotchaNow
 		[SerializeField] private string mainMenuSceneName = "MainMenuScene";
 
 		[SerializeField] private List<GameObject> dontDestroyOnLoadObjects;
+		[SerializeField] private ShootScreenBuffer shootScreenBuffer;
 
 		[Header("References")]
 		[SerializeField] private Image backgroundImage;
@@ -44,6 +45,7 @@ namespace GotchaNow
 				yield return null;
 			}
 
+			Debug.Log("Starting splash screen");
 			SplashScreen.Begin();
 			SplashScreen.Draw();
 
@@ -55,15 +57,25 @@ namespace GotchaNow
 				yield return null;
 			}
 
+			Debug.Log("Splashscreen finished");
+
 			while (!process.isDone)
 			{
 				yield return null;
 			}
 
+			Debug.Log("Loading finished");
+
+			// yield return shootScreenBuffer.ShootScreen(); 
+			// Doesn't work causes screen flicker. 
+			// Solution was to just have the second camera always active. 
+
 			foreach (GameObject obj in dontDestroyOnLoadObjects)
 			{
 				Destroy(obj);
 			}
+
+			Debug.Log("Destroyed dontdestroyonload objects");
 		}
 
 		private IEnumerator LightenBackground()

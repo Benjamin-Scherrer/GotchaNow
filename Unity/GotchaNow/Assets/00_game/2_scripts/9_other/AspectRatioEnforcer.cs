@@ -26,13 +26,13 @@ namespace GotchaNow
 			{ // Screen is taller than target (letterbox needs to be used here)
 				Rect letterbox = new(0, (1f - scaleHeight) * 0.5f, 1f, 1f / scaleWidth);
 				cam.rect = letterbox;
-				Debug.Log("Applying letterbox: " + cam.rect);
+				// Debug.Log("Applying letterbox: " + cam.rect);
 			}
 			else
 			{ // Screen is wider than target (pillarbox needs to be used here)
 				Rect pillarbox = new((1f - scaleWidth) * 0.5f, 0, 1f / scaleHeight, 1f);
 				cam.rect = pillarbox;
-				Debug.Log("Applying pillarbox: " + cam.rect);
+				// Debug.Log("Applying pillarbox: " + cam.rect);
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace GotchaNow
 		{
 			if (lastScreenAspectRatio != screenAspectRatio && screenAspectRatio != targetAspectRatio)
 			{
-				Debug.Log("Camera aspectr ration: " + screenAspectRatio + ", goal: " + targetAspectRatio);
+				// Debug.Log("Camera aspectr ration: " + screenAspectRatio + ", goal: " + targetAspectRatio);
 				AdjustCameraRect();
 				lastScreenAspectRatio = screenAspectRatio;
 			}
