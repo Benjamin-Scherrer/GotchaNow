@@ -142,8 +142,9 @@ namespace GotchaNow
 					case MenuState.DISABLED:
 						if (Time.timeScale != 1) break; //safety check
 						//don't open pause menu if notification menu is open
-						if(NotificationManager.instance == null) 
-							throw new Exception("NotificationManager instance is null, cannot check if menu is open");
+
+						if(NotificationManager.instance == null) break;
+							// throw new Exception("NotificationManager instance is null, cannot check if menu is open");
 						if(NotificationManager.instance.menuOpen) break;
 						//if in gameplay, open pause menu
 						TogglePauseScreen();
@@ -160,7 +161,6 @@ namespace GotchaNow
 					default:
 						break;
 				}
-				
 			}
 		}
 	}

@@ -53,6 +53,9 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 7642372403868698600}
   m_PlaneDistance: 90
+  m_RenderMode: 1
+  m_Camera: {fileID: 7642372403868698600}
+  m_PlaneDistance: 90
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -143,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -151,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalRotation.z
@@ -163,11 +166,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 820900034157380294, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951446348026154154, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951446348026154154, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+      propertyPath: orthographic size
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795631802414951011, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795631802414951011, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
+      propertyPath: orthographic size
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9219916454450984795, guid: 0a94385563b1dc643a0ae2d403d852b6, type: 3}
       propertyPath: m_Name
