@@ -232,6 +232,13 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Oh, and if you need to know the controls, press START
+        or ESC to open the pause menu.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
       <Content>k__BackingField: Come talk to me again when you're ready. I have full
         trust in you, honey!
       <HideCharacter>k__BackingField: 0

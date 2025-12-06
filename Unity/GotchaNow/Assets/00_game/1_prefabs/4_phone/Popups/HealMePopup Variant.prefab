@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368003407092126313, guid: f45d3ffb346d51943a34db4a11c19fe2, type: 3}
       propertyPath: m_text
-      value: Your fighter is hurt! Quick heal her so your effort isn't wasted!
+      value: "\nYour fighter is hurt! \n\nSend out a heal so her effort isn't wasted!"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

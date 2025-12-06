@@ -816,7 +816,8 @@ public class ProgressionManager : MonoBehaviour
     private void EnableBattleUI()
     {
         notificationManager.enabled = true;
-        
+        NotificationManager.instance.unpausing = false;
+
         sendNotifUI.SetActive(true);
         battleUI.SetActive(true);
         

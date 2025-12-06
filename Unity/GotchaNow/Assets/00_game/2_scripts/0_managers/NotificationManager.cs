@@ -18,6 +18,7 @@ public class NotificationManager : MonoBehaviour
     public InputActionReference menuInput;
     private bool upScrolling;
     private bool downScrolling;
+    public bool unpausing = false;
 
     [Header("Variables")]
     public float maxScrollSpeed = 0.1f;
@@ -65,6 +66,7 @@ public class NotificationManager : MonoBehaviour
 
     void Awake()
     {
+        unpausing = false;
         instance = this;
 
         request.Add(healRequest);
@@ -100,7 +102,7 @@ public class NotificationManager : MonoBehaviour
 
     void Update()
     {
-        if (menuInput.action.IsPressed() && menuReady)
+        if (menuInput.action.IsPressed() && menuReady && !PauseMenu.Instance.IsPaused && !unpausing)
         {
             if (!menuOpen && notifCharge >= 1)
             {
@@ -553,5 +555,14 @@ public class NotificationManager : MonoBehaviour
         currentQuota = 0;
         ChargeNotifBar(0);
         ChargeQuota(0);
+    }
+
+    public IEnumerator Unpausing()
+    {
+        unpausing = true;
+
+        yield return new WaitForSecondsRealtime(0.25f);
+
+        unpausing = false;
     }
 }

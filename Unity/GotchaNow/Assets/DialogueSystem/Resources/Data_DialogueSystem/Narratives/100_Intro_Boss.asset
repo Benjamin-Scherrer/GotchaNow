@@ -117,6 +117,13 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: And don't forget to check the controls. You can find
+        them in the pause menu. Just press START or ESC.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
     position: {x: 1194, y: 202}
     transitionNode: 1
     entryPoint: 0

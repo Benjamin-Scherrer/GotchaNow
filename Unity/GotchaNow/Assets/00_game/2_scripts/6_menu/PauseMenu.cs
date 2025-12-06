@@ -70,12 +70,18 @@ namespace GotchaNow
 					menuState = MenuState.DISABLED;
 					Time.timeScale = 1f; //resume time
 					pauseMenuScreen.gameObject.SetActive(false);
+
+					StartCoroutine(NotificationManager.instance.Unpausing());
+					
 					break;
 				case MenuState.CONTROLS:
 					//if in controls screen, go back to pause menu
 					menuState = MenuState.DISABLED;
 					controlsScreen.gameObject.SetActive(false);
 					pauseMenuScreen.gameObject.SetActive(false);
+
+					StartCoroutine(NotificationManager.instance.Unpausing());
+
 					Time.timeScale = 1f; //resume time
 					break;
 				default:
@@ -104,6 +110,7 @@ namespace GotchaNow
 		public void QuitGameSession()//button based
 		{
 			Debug.Log($"Quit Game Session, Scene name: {MainMenuScene}");
+			MusicPlayer.instance.StopMusic();
 			//Make sure that time is working properly
 			Time.timeScale = 1f;
 			SceneManager.LoadScene(MainMenuScene);
