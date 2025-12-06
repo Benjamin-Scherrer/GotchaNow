@@ -117,7 +117,7 @@ namespace GotchaNow
 				if (navigationInput.x.Abs() >= navigationInput.y.Abs()) navigationInput.y = 0;
 				else if (navigationInput.y.Abs() > navigationInput.x.Abs()) navigationInput.x = 0;
 				StartCoroutine(Navigate());
-				Debug.Log("Navigation started" + navigationInput.magnitude);
+				Debug.Log("Navigation started " + navigationInput.magnitude);
 			}
 
 			//submit
@@ -196,7 +196,7 @@ namespace GotchaNow
 		//Scroll 
 		private void ScrollRequest(Vector2 navigationInput)
 		{
-			// Debug.Log("Scroll Request received with input " + navigationInput);
+			 Debug.Log("Scroll Request received with input " + navigationInput);
 			if (selectablesReferences.Count == 1)
 			{
 				SelectSelectable(selectablesReferences[0]);
@@ -243,7 +243,7 @@ namespace GotchaNow
 				// Debug.Log("Selectable " + sel.gameObject.name + " is within angle threshold with angle " + a);
 
 				if (a == angle && distanceToSelectable >= distance) continue;
-				// Debug.Log("Selectable " + sel.gameObject.name + " is the closest selectable so far with distance " + distanceToSelectable);
+				//  Debug.Log("Selectable " + sel.gameObject.name + " is the closest selectable so far with distance " + distanceToSelectable);
 
 				angle = a;
 				distance = distanceToSelectable;
@@ -251,8 +251,8 @@ namespace GotchaNow
 			}
 			if (selectable == null) return;
 			// SanityCheck();
-			// Debug.Log("Scrolling " + navigationInput + " to selectable " + selectable);
-			// Debug.DrawLine(selectedSelectable.transform.position, selectable.transform.position, Color.green, 2f);
+			//  Debug.Log("Scrolling " + navigationInput + " to selectable " + selectable);
+			//  Debug.DrawLine(selectedSelectable.transform.position, selectable.transform.position, Color.green, 2f);
 
 			// Smoothly scroll to the new selectable
 			DeselectSelectable(selectedSelectable);
