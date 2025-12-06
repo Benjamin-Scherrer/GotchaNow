@@ -611,6 +611,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -3007,7 +3011,7 @@ PrefabInstance:
       objectReference: {fileID: 310996770}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: gameState
-      value: battle
+      value: intro
       objectReference: {fileID: 0}
     - target: {fileID: 130016153562109270, guid: 5ae4f0a0033edbe40838f26adae743e8, type: 3}
       propertyPath: skipInput
