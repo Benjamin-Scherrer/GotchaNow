@@ -22,6 +22,8 @@ namespace GotchaNow
 		[SerializeField] private UnityEngine.UI.Button uiSkipButton;
 		private bool buttonSelected = false;
 
+		private Vector2 previousMoveInput = Vector2.zero;
+
 		// PRIVATE
 		private void Awake()
 		{
@@ -46,7 +48,7 @@ namespace GotchaNow
 			// Debug.Log("Video time: " + videoPlayer.time);  
 			if (ui.activeInHierarchy == false)
             {
-				if(move.action.WasPerformedThisFrame() || click.action.WasPerformedThisFrame())
+				if(MoveCheck() || click.action.WasPerformedThisFrame())
 				{
 					ui.SetActive(true);
 					return;
@@ -57,7 +59,7 @@ namespace GotchaNow
             {
 				if(buttonSelected == false)
 				{
-					if (move.action.WasPerformedThisFrame())
+					if (MoveCheck())
 					{
 						uiSkipButton.OnDeselect(null);
 						uiSkipButton.OnPointerExit(null);
@@ -77,7 +79,7 @@ namespace GotchaNow
 				}
                 if (buttonSelected)
                 {
-                    if (move.action.WasPerformedThisFrame())
+                    if (MoveCheck())
 					{
 						uiSkipButton.OnDeselect(null);
 						uiSkipButton.OnPointerExit(null);
@@ -93,6 +95,24 @@ namespace GotchaNow
                 }
 			}
         }
+
+		private bool MoveCheck()
+		{
+			// Debug.Log("MoveCheck | previousMoveInput: " + previousMoveInput + " | currentMoveInput: " + move.action.ReadValue<Vector2>());
+			if(previousMoveInput.magnitude > 0 && move.action.WasPerformedThisFrame()) return false;
+			// Debug.Log("Passed first check");
+			if(move.action.ReadValue<Vector2>().magnitude == 0)
+			{
+				// Debug.Log("MoveCheck | Move input magnitude is zero");
+				previousMoveInput = Vector2.zero;
+				return false;
+			}
+			// Debug.Log("Passed second check");
+			if(!move.action.WasPerformedThisFrame()) return false;
+			// Debug.Log("Passed third check");
+			previousMoveInput = move.action.ReadValue<Vector2>();
+			return true;
+		}
 
 		private void StartVideo(VideoPlayer vp)
 		{
