@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4251724233000333997, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5394640495693611894, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -613,6 +617,14 @@ PrefabInstance:
     - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278293923250826300, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374996991734523844, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650120979539692663, guid: db8082b8a1120744d93a8ae330f7679b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1197,6 +1209,18 @@ PrefabInstance:
     - target: {fileID: 1704594504894473568, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_Name
       value: PhonePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675553273385530093, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6555223344257709267, guid: 515161ad68a7b71489bba9859f1132eb, type: 3}
       propertyPath: m_LocalPosition.x
