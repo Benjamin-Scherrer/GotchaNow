@@ -389,6 +389,7 @@ public class NotificationManager : MonoBehaviour
 
         PopupManager.instance.ShowHealMePopup();
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.voHealRequest, transform.position);
         
         StartCoroutine(CloseRequestMenu());
     }
@@ -399,6 +400,7 @@ public class NotificationManager : MonoBehaviour
 
         PopupManager.instance.ShowBuffMePopup();
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.voBuffRequest, transform.position);
 
         StartCoroutine(CloseRequestMenu());
     }
@@ -409,6 +411,7 @@ public class NotificationManager : MonoBehaviour
 
         PopupManager.instance.ShowMeteoriteNowPopup();
         RuntimeManager.PlayOneShot(UiSfxPlayer.instance.phoneNotification, transform.position); //play sfx
+        RuntimeManager.PlayOneShot(UiSfxPlayer.instance.voMeteorRequest, transform.position);
 
         StartCoroutine(CloseRequestMenu());
     }

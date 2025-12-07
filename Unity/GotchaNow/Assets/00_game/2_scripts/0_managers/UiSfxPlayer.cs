@@ -19,6 +19,9 @@ public class UiSfxPlayer : MonoBehaviour
     public EventReference heal;
     public EventReference buffActivate;
     public EventReference buffDeactivate;
+    public EventReference voHealRequest;
+    public EventReference voBuffRequest;
+    public EventReference voMeteorRequest;
 
     void Awake()
     {

@@ -571,10 +571,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639007095638093288
+  lastModified: 639007455836924960
   FileSizes:
   - Name: Desktop
-    Value: 8728416
+    Value: 8836672
   Exists: 1
 --- !u!114 &-4742059384077242726
 MonoBehaviour:
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 639007095638128450
+  cacheTime: 639007455836944981
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
@@ -1686,7 +1686,7 @@ MonoBehaviour:
   - {fileID: 742697353082247707}
   MinDistance: 1
   MaxDistance: 20
-  Length: 666
+  Length: 4500
 --- !u!114 &742697353082247707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639007095638128450
+  lastModified: 639007455836944981
   FileSizes:
   - Name: Desktop
     Value: 3442
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   - {fileID: -3325446463196590170}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 4500
 --- !u!114 &4626339917618730413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   - {fileID: -7382199335331069458}
   MinDistance: 1
   MaxDistance: 20
-  Length: 666
+  Length: 4500
 --- !u!114 &5979911040082276903
 MonoBehaviour:
   m_ObjectHideFlags: 0
