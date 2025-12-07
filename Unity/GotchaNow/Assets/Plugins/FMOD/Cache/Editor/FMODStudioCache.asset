@@ -48,30 +48,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-8613907033830348163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_battle_katoro/bgmVolume
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: bgmVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2048098114
-    data2: 2463642922
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-8603508760593512798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +224,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
+--- !u!114 &-7382199335331069458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_vo_meteorRequest/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-6528629094394111256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,30 +528,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-4973275949155580255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_battle_katoro/lowPassFilter
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: lowPassFilter
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1608947291
-    data2: 2590546089
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-4930199875380578377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,34 +571,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639004174504566358
+  lastModified: 639007095638093288
   FileSizes:
   - Name: Desktop
-    Value: 14296992
-  Exists: 1
---- !u!114 &-4744000790592288160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/sfx_deathLaugh/sfxVolume
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: sfxVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 1429261606
-    data2: 2454470868
-  Type: 0
-  IsGlobal: 1
-  Labels: []
+    Value: 8728416
   Exists: 1
 --- !u!114 &-4742059384077242726
 MonoBehaviour:
@@ -812,30 +764,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-3530948546112131396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_title/bgmVolume
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: bgmVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2048098114
-    data2: 2463642922
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-3491672924908430221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +775,30 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/sfx_ui_phoneNotification/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-3325446463196590170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_vo_healRequest/sfxVolume
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: sfxVolume
   StudioPath: 
@@ -1220,35 +1172,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-1548436367513240968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/bgm_battle_katoro
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/bgm_battle_katoro
-  Guid:
-    Data1: -97654104
-    Data2: 1315571735
-    Data3: 1361804179
-    Data4: 925414448
-  Banks:
-  - {fileID: -4861923069804575134}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -4973275949155580255}
-  - {fileID: -8613907033830348163}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 114162
 --- !u!114 &-1536971600033159985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1277,30 +1200,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 1333
---- !u!114 &-1466025301329634692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_battle_aya/lowPassFilter
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: lowPassFilter
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1608947291
-    data2: 2590546089
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-1037762957007712996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,10 +1345,6 @@ MonoBehaviour:
   - {fileID: -4861923069804575134}
   EditorEvents:
   - {fileID: -5978447359584157383}
-  - {fileID: 7083727647809412065}
-  - {fileID: 2310538072479516511}
-  - {fileID: 7495607544115411832}
-  - {fileID: -1548436367513240968}
   - {fileID: 4503834206230017281}
   - {fileID: 7531752304574277499}
   - {fileID: -8603508760593512798}
@@ -1499,10 +1394,12 @@ MonoBehaviour:
   - {fileID: 1376473500106735942}
   - {fileID: 2201602401082634665}
   - {fileID: -5964728070293992543}
-  - {fileID: 6488959261060918200}
   - {fileID: 160463955782338395}
   - {fileID: -3887056180274333953}
   - {fileID: 3040881192421864161}
+  - {fileID: 691201175800168046}
+  - {fileID: 4546401337941667344}
+  - {fileID: 5872721914030531834}
   EditorParameters:
   - {fileID: 5052459447620762039}
   - {fileID: -2281187134637955754}
@@ -1512,148 +1409,120 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2356189799062267114}
   cacheVersion: 131849
-  cacheTime: 639004174504595150
+  cacheTime: 639007095638128450
   SerializableEventsDict:
   - key: event:/TestSound
     index: 0
-  - key: event:/bgm_title
-    index: 1
-  - key: event:/bgm_intermission
-    index: 2
-  - key: event:/bgm_battle_aya
-    index: 3
-  - key: event:/bgm_battle_katoro
-    index: 4
   - key: event:/sfx_ui_phoneMessage
-    index: 5
+    index: 1
   - key: event:/sfx_ui_scrollUp
-    index: 6
+    index: 2
   - key: event:/sfx_ui_closeNotifMenu
-    index: 7
+    index: 3
   - key: event:/sfx_ui_phoneNotification
-    index: 8
+    index: 4
   - key: event:/sfx_ui_openNotifMenu
-    index: 9
+    index: 5
   - key: event:/sfx_ui_fillQuota
-    index: 10
+    index: 6
   - key: event:/sfx_ui_quotaFull
-    index: 11
+    index: 7
   - key: event:/sfx_ui_scrollDown
-    index: 12
+    index: 8
   - key: event:/sfx_ui_phoneConfirm
-    index: 13
+    index: 9
   - key: event:/sfx_ui_back
-    index: 14
+    index: 10
   - key: event:/sfx_ui_confirm
-    index: 15
+    index: 11
   - key: event:/sfx_ui_buffDeactivate
-    index: 16
+    index: 12
   - key: event:/sfx_ui_notificationReady
-    index: 17
+    index: 13
   - key: event:/sfx_ui_heal
-    index: 18
+    index: 14
   - key: event:/sfx_ui_buffActivate
-    index: 19
+    index: 15
   - key: event:/sfx_asuka_slash2
-    index: 20
+    index: 16
   - key: event:/sfx_asuka_heavyslash
-    index: 21
+    index: 17
   - key: event:/sfx_asuka_roll
-    index: 22
+    index: 18
   - key: event:/sfx_asuka_heavyslashCharge
-    index: 23
+    index: 19
   - key: event:/sfx_asuka_hit
-    index: 24
+    index: 20
   - key: event:/sfx_asuka_parrySuccessful
-    index: 25
+    index: 21
   - key: event:/sfx_asuka_block
-    index: 26
+    index: 22
   - key: event:/sfx_asuka_blockSuccessful
-    index: 27
+    index: 23
   - key: event:/sfx_asuka_slash3
-    index: 28
+    index: 24
   - key: event:/sfx_asuka_slash1
-    index: 29
+    index: 25
   - key: event:/sfx_katoro_windupCombo2
-    index: 30
+    index: 26
   - key: event:/sfx_katoro_windupClawSwipe
-    index: 31
+    index: 27
   - key: event:/sfx_katoro_windupJump
-    index: 32
+    index: 28
   - key: event:/sfx_katoro_windupShoulderBash
-    index: 33
+    index: 29
   - key: event:/sfx_katoro_windupCombo1
-    index: 34
+    index: 30
   - key: event:/sfx_katoro_windupSpin
-    index: 35
+    index: 31
   - key: event:/bgm_battleKatoro_final
-    index: 36
+    index: 32
   - key: event:/sfx_katoro_jump
-    index: 37
+    index: 33
   - key: event:/bgm_titleScreen_final
-    index: 38
+    index: 34
   - key: event:/sfx_katoro_shoulderBash
-    index: 39
+    index: 35
   - key: event:/bgm_battleAya_final
-    index: 40
+    index: 36
   - key: event:/bgm_intermission_final
-    index: 41
+    index: 37
   - key: event:/sfx_katoro_hammerCombo1
-    index: 42
+    index: 38
   - key: event:/sfx_katoro_hammerCombo2
-    index: 43
+    index: 39
   - key: event:/sfx_katoro_spinAttack
-    index: 44
+    index: 40
   - key: event:/sfx_katoro_clawSwipe
-    index: 45
+    index: 41
   - key: event:/sfx_aya_slash2
-    index: 46
+    index: 42
   - key: event:/sfx_aya_slash3
-    index: 47
+    index: 43
   - key: event:/sfx_aya_heavySlash
-    index: 48
+    index: 44
   - key: event:/sfx_aya_slash1
-    index: 49
+    index: 45
   - key: event:/sfx_lightning
-    index: 50
+    index: 46
   - key: event:/sfx_meteorShot
-    index: 51
+    index: 47
   - key: event:/sfx_playerHurt
-    index: 52
+    index: 48
   - key: event:/sfx_magicRing
-    index: 53
-  - key: event:/sfx_deathLaugh
-    index: 54
+    index: 49
   - key: event:/sfx_jingle1
-    index: 55
+    index: 50
   - key: event:/bgm_gameOver
-    index: 56
+    index: 51
   - key: event:/sfx_jingle2
-    index: 57
---- !u!114 &108063291123360185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_battle_aya/bgmVolume
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: bgmVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2048098114
-    data2: 2463642922
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
+    index: 52
+  - key: event:/sfx_vo_buffRequest
+    index: 53
+  - key: event:/sfx_vo_healRequest
+    index: 54
+  - key: event:/sfx_vo_meteorRequest
+    index: 55
 --- !u!114 &118071758241546724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,6 +1659,58 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 1666
+--- !u!114 &691201175800168046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_vo_buffRequest
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_vo_buffRequest
+  Guid:
+    Data1: 1059101190
+    Data2: 1262560080
+    Data3: -619274624
+    Data4: 173854936
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 742697353082247707}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 666
+--- !u!114 &742697353082247707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/sfx_vo_buffRequest/sfxVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: sfxVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 1429261606
+    data2: 2454470868
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1205889453953587565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,58 +2084,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 1632
---- !u!114 &2296419086242562351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/bgm_intermission/bgmVolume
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: bgmVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 2048098114
-    data2: 2463642922
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &2310538072479516511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/bgm_intermission
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/bgm_intermission
-  Guid:
-    Data1: 1385039215
-    Data2: 1304908310
-    Data3: -193171551
-    Data4: -1409907379
-  Banks:
-  - {fileID: -4861923069804575134}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 2296419086242562351}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 99000
 --- !u!114 &2356189799062267114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2230,10 +2099,10 @@ MonoBehaviour:
   Path: ../../Fmod/GotchaNow/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639004174504595150
+  lastModified: 639007095638128450
   FileSizes:
   - Name: Desktop
-    Value: 3508
+    Value: 3442
   Exists: 1
 --- !u!114 &2474540585947989181
 MonoBehaviour:
@@ -2631,6 +2500,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 2666
+--- !u!114 &4546401337941667344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_vo_healRequest
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_vo_healRequest
+  Guid:
+    Data1: 665286482
+    Data2: 1201070085
+    Data3: 258671783
+    Data4: 1540571160
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3325446463196590170}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4626339917618730413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,6 +2732,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 2000
+--- !u!114 &5872721914030531834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx_vo_meteorRequest
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/sfx_vo_meteorRequest
+  Guid:
+    Data1: -627481975
+    Data2: 1201773028
+    Data3: 712730532
+    Data4: 880625625
+  Banks:
+  - {fileID: -4861923069804575134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7382199335331069458}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 666
 --- !u!114 &5979911040082276903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3011,34 +2936,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1333
---- !u!114 &6488959261060918200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/sfx_deathLaugh
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/sfx_deathLaugh
-  Guid:
-    Data1: 1207308775
-    Data2: 1294378478
-    Data3: 1655952554
-    Data4: -2045592077
-  Banks:
-  - {fileID: -4861923069804575134}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -4744000790592288160}
-  MinDistance: 1
-  MaxDistance: 50
-  Length: 3265
 --- !u!114 &6580530658363285362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3095,34 +2992,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &7083727647809412065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/bgm_title
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/bgm_title
-  Guid:
-    Data1: -2122994591
-    Data2: 1275952257
-    Data3: -250624856
-    Data4: 1070732227
-  Banks:
-  - {fileID: -4861923069804575134}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3530948546112131396}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 55402
 --- !u!114 &7306321416823129790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3147,35 +3016,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &7495607544115411832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/bgm_battle_aya
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/bgm_battle_aya
-  Guid:
-    Data1: -2017652322
-    Data2: 1086594468
-    Data3: 1154305694
-    Data4: -1168493145
-  Banks:
-  - {fileID: -4861923069804575134}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 108063291123360185}
-  - {fileID: -1466025301329634692}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 149400
 --- !u!114 &7531752304574277499
 MonoBehaviour:
   m_ObjectHideFlags: 0
