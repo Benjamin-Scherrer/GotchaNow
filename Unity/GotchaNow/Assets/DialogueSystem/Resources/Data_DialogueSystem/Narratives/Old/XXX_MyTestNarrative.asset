@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: XXX_MyTestNarrative
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 05186c06-3a5e-4fb2-87a1-fdf79477f867
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: caf90cc2-8a78-4ae3-9849-00db7aeca8dc
+  <DialogueNodeData>k__BackingField:
+  - guid: 05186c06-3a5e-4fb2-87a1-fdf79477f867
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: caf90cc2-8a78-4ae3-9849-00db7aeca8dc
+    dialogue:
+    - <CharacterName>k__BackingField: TestMan
+      <Content>k__BackingField: I am the test man. I test the dialogue system.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: TestMan
+      <Content>k__BackingField: Frog frog frog frog frog.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 283, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 1
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

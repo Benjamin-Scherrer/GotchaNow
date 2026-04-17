@@ -4,5 +4,49 @@
 		<property name="name">
 			<value>Master</value>
 		</property>
+		<relationship name="items">
+			<destination>{c78b8c81-4243-4a06-983d-eff66caab789}</destination>
+			<destination>{709699d0-72f4-4a26-8ddf-137ce8bc42a7}</destination>
+			<destination>{edccd055-c4c9-4c58-91fb-55ec11fb3da8}</destination>
+			<destination>{ab8bbe84-1417-4f24-8fd5-c69042ba24e3}</destination>
+			<destination>{fc5ac0c4-390d-4d6d-84c8-cec264a2ce3b}</destination>
+			<destination>{6433e799-891a-47c7-95ad-97d88df11ac5}</destination>
+			<destination>{1888f809-34dd-4b2b-992f-7263d2ec1067}</destination>
+		</relationship>
+	</object>
+	<object class="Tag" id="{c78b8c81-4243-4a06-983d-eff66caab789}">
+		<property name="name">
+			<value>bgm</value>
+		</property>
+	</object>
+	<object class="Tag" id="{709699d0-72f4-4a26-8ddf-137ce8bc42a7}">
+		<property name="name">
+			<value>sfx</value>
+		</property>
+	</object>
+	<object class="Tag" id="{edccd055-c4c9-4c58-91fb-55ec11fb3da8}">
+		<property name="name">
+			<value>asuka</value>
+		</property>
+	</object>
+	<object class="Tag" id="{ab8bbe84-1417-4f24-8fd5-c69042ba24e3}">
+		<property name="name">
+			<value>katoro</value>
+		</property>
+	</object>
+	<object class="Tag" id="{fc5ac0c4-390d-4d6d-84c8-cec264a2ce3b}">
+		<property name="name">
+			<value>ui</value>
+		</property>
+	</object>
+	<object class="Tag" id="{6433e799-891a-47c7-95ad-97d88df11ac5}">
+		<property name="name">
+			<value>phone</value>
+		</property>
+	</object>
+	<object class="Tag" id="{1888f809-34dd-4b2b-992f-7263d2ec1067}">
+		<property name="name">
+			<value>battle</value>
+		</property>
 	</object>
 </objects>

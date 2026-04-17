@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: 100_Intro_Boss
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 7e7e1564-0955-4847-9509-02c9435758e4
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 4c27de3a-4fea-461e-bb66-a38f7e3f098c
+  - <BaseNodeGuid>k__BackingField: 4c27de3a-4fea-461e-bb66-a38f7e3f098c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 91a1f160-0a63-4b8a-b74d-aed94a12cd92
+  - <BaseNodeGuid>k__BackingField: 91a1f160-0a63-4b8a-b74d-aed94a12cd92
+    <PortName>k__BackingField: Battle tips?
+    <TargetNodeGuid>k__BackingField: acf0028f-5398-463f-a97f-ebdf8e87f9b1
+  - <BaseNodeGuid>k__BackingField: 91a1f160-0a63-4b8a-b74d-aed94a12cd92
+    <PortName>k__BackingField: Don't like fighting?
+    <TargetNodeGuid>k__BackingField: 0a27da67-5dfc-4477-8d0b-40866f563bd6
+  - <BaseNodeGuid>k__BackingField: acf0028f-5398-463f-a97f-ebdf8e87f9b1
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: ac8f7ab0-626a-4f8e-9be2-c796139b2b72
+  - <BaseNodeGuid>k__BackingField: 0a27da67-5dfc-4477-8d0b-40866f563bd6
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: ac8f7ab0-626a-4f8e-9be2-c796139b2b72
+  <DialogueNodeData>k__BackingField:
+  - guid: 7e7e1564-0955-4847-9509-02c9435758e4
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 4c27de3a-4fea-461e-bb66-a38f7e3f098c
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Hello co-worker. I am Katoro. Please do not be afraid.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: I do not want to hurt you. It's just how they programmed
+        me.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 269.5, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 91a1f160-0a63-4b8a-b74d-aed94a12cd92
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Is this your first time fighting? Oh no. If I can
+        give you any advice, please tell me.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 666.5, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: acf0028f-5398-463f-a97f-ebdf8e87f9b1
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Please watch me closely. When I prepare for attacking,
+        you can tell by my body movements.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Please DODGE to get out of the way. Then try to hit
+        me with your sword.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: You can also try to PARRY my attacks by BLOCKING
+        at the correct time.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Parrying leaves me open to your counterattacks. But
+        it is harder than dodging.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: If you get disoriented, try using the CAMERA LOCK-ON.
+        It keeps your eyes on me.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: I will go easy on you. Unfortunately, I am programmed
+        to get stronger as my HP gets lower.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: And don't forget to check the controls. You can find
+        them in the pause menu. Just press START or ESC.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1194, y: 202}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 0a27da67-5dfc-4477-8d0b-40866f563bd6
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: To be honest, it is pretty fun when my rival knows
+        what they are doing. I like a tough battle.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: I do not like hurting the helpless.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Sometimes I feel bad for the people paying us so
+        much money to fight. But Aya says they deserve it.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: From time to time, some girls defeat me without getting
+        help from outside. I think that is really cool.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: But Aya gets really mad when that happens. And I
+        never see these girls again on the next day.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1194, y: 433}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: ac8f7ab0-626a-4f8e-9be2-c796139b2b72
+    dialogue:
+    - <CharacterName>k__BackingField: Katoro
+      <Content>k__BackingField: Please do not let yourself get hurt. I hope you are
+        strong.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1795.5, y: 292}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

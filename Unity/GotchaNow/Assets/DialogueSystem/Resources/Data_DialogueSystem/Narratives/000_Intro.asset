@@ -1,0 +1,256 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: 000_Intro
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 5aa1c173-fef3-491c-85f9-f0f3eada6c3c
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: be3c5da8-5ccd-460d-8d3f-016840275e45
+  - <BaseNodeGuid>k__BackingField: be3c5da8-5ccd-460d-8d3f-016840275e45
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 61cdf13b-a7c2-48e8-b6a9-647514e31de1
+  - <BaseNodeGuid>k__BackingField: 61cdf13b-a7c2-48e8-b6a9-647514e31de1
+    <PortName>k__BackingField: Please explain?
+    <TargetNodeGuid>k__BackingField: b07f5fa6-8227-4c1c-a2c6-a36586451d00
+  - <BaseNodeGuid>k__BackingField: 61cdf13b-a7c2-48e8-b6a9-647514e31de1
+    <PortName>k__BackingField: I know everything.
+    <TargetNodeGuid>k__BackingField: f1afe22c-d2e9-49ae-b7b1-9d6c7d70c0a9
+  - <BaseNodeGuid>k__BackingField: b07f5fa6-8227-4c1c-a2c6-a36586451d00
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: f1afe22c-d2e9-49ae-b7b1-9d6c7d70c0a9
+  <DialogueNodeData>k__BackingField:
+  - guid: 5aa1c173-fef3-491c-85f9-f0f3eada6c3c
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: be3c5da8-5ccd-460d-8d3f-016840275e45
+    dialogue:
+    - <CharacterName>k__BackingField: ???
+      <Content>k__BackingField: Hi, nice to meet you! Welcome to Ikigai Tournament!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: ???
+      <Content>k__BackingField: You must be Asuka. Word around town is that a new
+        girl just got implemented into the game.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: My name's Aya! I'm here to represent the developer's
+        interests and onboard newcomers.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Which basically means... I'm your boss around here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Haha, just kidding! We're gonna be best friends!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Unfortunately we'll still have to talk business real
+        quick first.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 236, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 61cdf13b-a7c2-48e8-b6a9-647514e31de1
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Remember your job description, or do you need a refresh?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 800, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: b07f5fa6-8227-4c1c-a2c6-a36586451d00
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: In this game, pretty girls like you fight against
+        big, tough robots.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Market research has proven that this is a very lucrative
+        business.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: For our users, this spectacle is represented as an
+        auto-battler on their phone app.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Which means that you'll do all the fighting while
+        these lazy bums simply watch.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: 'You''ll have to put in some effort not to get crushed.
+        But don''t worry! You''re not completely on your own. '
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: In fact, this is our business model. The loser staring
+        at you is actually our lifeline and source of income.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: During the fight, you can send out requests asking
+        for healing, buffs and special attacks.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Which they have to pay for in real cash, of course.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You get it now? Your job is to...
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: SQUEEZE ALL THEIR MONEY OUT. Haha.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Fun, isn't it? It's also easier than it sounds. You
+        don't have to be that good of a fighter.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Just survive and keep begging for help. They'll pay.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: In fact, make sure NOT to defeat your enemies without
+        sending out some requests.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Free-to-Play users just clog our servers.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1296, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: f1afe22c-d2e9-49ae-b7b1-9d6c7d70c0a9
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Time for your training day to start then! As part
+        of the onboarding process, we need to test your aptitude.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You'll get two battles. Don't get defeated and make
+        sure to fill up your Daily Quota.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: The fights will be against your co-worker Katoro,
+        who is standing right over there.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Why don't you get acquainted before the fight?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Katoro has been here since the release of Ikigai
+        Tournament. He'll have good advice for you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Oh, and if you need to know the controls, press START
+        or ESC to open the pause menu.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Come talk to me again when you're ready. I have full
+        trust in you, honey!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 1900.5, y: 558.5}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

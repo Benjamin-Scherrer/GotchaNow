@@ -1,0 +1,279 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &19984306965234530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8370925693213900844}
+  - component: {fileID: 8868088082750620954}
+  - component: {fileID: 930889634451043282}
+  - component: {fileID: 7313958415743666084}
+  m_Layer: 0
+  m_Name: ChatMessagesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8370925693213900844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19984306965234530}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -393.8161, y: 32.07895, z: 1.80728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3449467105330363861}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8868088082750620954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19984306965234530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc8ec8306c72574f915a393ffe3ea12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessagesManager
+  messagePrefab: {fileID: 5432395057101799634, guid: 6058137e656b4cb40b04904669348d4a, type: 3}
+  messageParent: {fileID: 0}
+  messageSpawnPoint: {fileID: 0}
+  popUpDuration: 0.1
+  messageSpacing: 1
+  swipeAwayDuration: 0.5
+  swipeTreshold: 5
+  activeMessages: []
+--- !u!114 &930889634451043282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19984306965234530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dc0aebba29665469dfaa073dc4931e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageSelector
+  intro: {fileID: 0}
+  preBattle1: {fileID: 11400000, guid: cfe25e0246cfa45478545c1bfff11f4d, type: 2}
+  intermission1: {fileID: 11400000, guid: b8ef7e71206d6c643bb60f169c6c82a7, type: 2}
+  intermission1TrueEndingPath: {fileID: 11400000, guid: 30a74bc0eb4d62e4d86289aaef2a2825, type: 2}
+  preSecretBoss: {fileID: 11400000, guid: 45882e24fd4299a47b69313f99420d22, type: 2}
+  trueEnding: {fileID: 0}
+  trueEndingFailed: {fileID: 0}
+  neutralEnding: {fileID: 11400000, guid: 50c3c3f2145c2694eab8b11be8dc6299, type: 2}
+  badEnding: {fileID: 11400000, guid: e4f662a0814e468468b8312996c49c25, type: 2}
+  quotaFilledAyaBattle: {fileID: 0}
+  gameOver: {fileID: 11400000, guid: abbb299328cf9424fb52e94dd39d7193, type: 2}
+  gameOverAyaBattle: {fileID: 0}
+  tutorial: {fileID: 0}
+  battle1: {fileID: 11400000, guid: 4a3d1358bbf7dce4696952a81730454a, type: 2}
+  battle2: {fileID: 11400000, guid: 8c9e6060f26891d4db6a11267881ddc6, type: 2}
+  battle2trueEndingPath: {fileID: 11400000, guid: abbb299328cf9424fb52e94dd39d7193, type: 2}
+  battle3: {fileID: 11400000, guid: d0c4da89b1fb46d438d31b92c487d7cf, type: 2}
+--- !u!114 &7313958415743666084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19984306965234530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28326817b4bbc1f4bab87bc25718db9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageImageSelector
+  kingBobImage: {fileID: 21300000, guid: e454ccc4ef5390641ae37263410eeb36, type: 3}
+  kingBobBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  honeyBearImage: {fileID: 21300000, guid: bcc2bc92586886e458b44f4988bdb9a6, type: 3}
+  honeyBearBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  ceilingFanEnthusastImage: {fileID: 21300000, guid: 172531696d12a7445b431df4d1895379, type: 3}
+  ceilingFanEnthusastBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  turtleHerderImage: {fileID: 21300000, guid: dde91cea58a54694e812db4b7c6c1103, type: 3}
+  turtleHerderBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  mumImage: {fileID: 21300000, guid: f7376ed48a672814ebe2b7e96285c148, type: 3}
+  mumBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  ikigaiTournamentImage: {fileID: 21300000, guid: fa0f535574985c0469775d1c3bf5fd8c, type: 3}
+  ikigaiTournamentBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+  bankImage: {fileID: 21300000, guid: c6f756c0f773f04429f24bebb5597860, type: 3}
+  bankBackgroundImage: {fileID: 21300000, guid: 725834f732009e24597d575f19c0ebcb, type: 3}
+--- !u!1 &1435435767819679764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3449467105330363861}
+  - component: {fileID: 3112104055376703436}
+  m_Layer: 0
+  m_Name: PhoneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3449467105330363861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435435767819679764}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 393.8161, y: -32.07895, z: -1.80728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8370925693213900844}
+  - {fileID: 5168780714173408706}
+  - {fileID: 9132400915210342839}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3112104055376703436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435435767819679764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99f5e5df235aa540baaf66e00f3876e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.PhoneJiggler
+  phoneTransform: {fileID: 0}
+  jiggleOscillations: 3
+  jiggleDuration: 0.2
+  jiggleIntensity: 0.5
+--- !u!1 &6863218698359617541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5168780714173408706}
+  - component: {fileID: 4200448564202755013}
+  m_Layer: 0
+  m_Name: PopupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5168780714173408706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863218698359617541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -393.8161, y: 32.07895, z: 1.80728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3449467105330363861}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4200448564202755013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863218698359617541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32accb91ab2bb6a4b969de158d74c998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.PopupManager
+  healMePopupPrefab: {fileID: 4687490117530153547, guid: 2a2a7ebd00b34de498888ba20d2781c3, type: 3}
+  buffMePopupPrefab: {fileID: 274303994880341787, guid: e9c3974edf2e179428e0f9d942b7ec53, type: 3}
+  meteoriteNowPopupPrefab: {fileID: 333623584209776845, guid: dc818f0403b915941a105a8ae29e4185, type: 3}
+  popupParent: {fileID: 0}
+  popupParticles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  popUpDuration: 0.1
+  displayDuration: 2.5
+  popDownDuration: 0.1
+  jiggleInterval: 0.6
+  jiggleAmount: 3
+  jiggleDuration: 0.1
+  jiggleIntensity: 5
+  buttonPressInDuration: 0.1
+  buttonPressDuration: 0.2
+  buttonPopOutDuration: 0.1
+  buttonPressScale: 0.8
+  buttonPressPopupPopdownDelay: 0.1
+--- !u!1 &7215990262923416015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9132400915210342839}
+  - component: {fileID: 4231605969958262823}
+  m_Layer: 0
+  m_Name: TrueEndingOverlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9132400915210342839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215990262923416015}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 195.23114, y: 273.27332, z: 77.16522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3449467105330363861}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4231605969958262823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215990262923416015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fb27e52e59d0d48894e61cf14b3e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.TrueEndingOverlay
+  trueEndingOverlay: {fileID: 0}
+  messageOverlay: {fileID: 0}
+  popUpTime: 0.5
+  chatBoxVariables:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.5, y: 320, z: 2}
+  - {x: 0.2, y: 360, z: 3}
+  - {x: 0.2, y: 396, z: 2}
+  - {x: 0.2, y: 433, z: 5}

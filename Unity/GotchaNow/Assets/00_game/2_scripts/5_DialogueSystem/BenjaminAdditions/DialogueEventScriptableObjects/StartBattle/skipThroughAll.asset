@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0431e9d10ee39184e9bb9343d5897b68, type: 3}
+  m_Name: skipThroughAll
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.DialogueEventScriptableObject
+  <EventName>k__BackingField: skipThroughAll
+  <OnDialogueEvent>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848076539789107129, guid: 6459d12eeefd48244b8655d22d4a2a69, type: 3}
+        m_TargetAssemblyTypeName: GotchaNow.UnityEventSceneReroute, Assembly-CSharp
+        m_MethodName: SkipThroughAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: tutorial
+          m_BoolArgument: 0
+        m_CallState: 2

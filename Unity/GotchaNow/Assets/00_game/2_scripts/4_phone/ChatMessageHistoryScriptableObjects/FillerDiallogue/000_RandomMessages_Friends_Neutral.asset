@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: 000_RandomMessages_Friends_Neutral
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 1
+  chatMessageDataViewer:
+    fireMode: 1
+    amountToFire: 2
+    chatMessages:
+    - typingPreview: 2
+      senderName: 2
+      messageContent: i know u on ur phone man
+      delayTillNext: 5
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: where u at
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: come hang out bro
+      delayTillNext: 6
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 2
+      messageContent: could go for a kebab now
+      delayTillNext: 3
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: Yo, want to hop on voice chat?
+      delayTillNext: 4
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: We found a new co-op game, you'll like it.
+      delayTillNext: 5
+      messageLifetime: 5
+    - typingPreview: 2
+      senderName: 3
+      messageContent: Come hang out online at least if you don't feel like going
+        out.
+      delayTillNext: 2
+      messageLifetime: 5
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 0}
+  triggerVibrationOnMessageFire: 0

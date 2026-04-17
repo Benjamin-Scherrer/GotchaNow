@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{f67fe693-43ac-4248-a33e-5f8335cc2675}">
+		<property name="assetPath">
+			<value>temp_bgm_battle_katoro.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>121.9459375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f1dc6e11-e83e-4527-a73e-3c6f4bf0f4c4}</destination>
+		</relationship>
+	</object>
+</objects>

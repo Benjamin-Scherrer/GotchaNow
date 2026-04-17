@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: 031_trueEndingFailed
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Data.DialogueContainer
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+  - <BaseNodeGuid>k__BackingField: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: afff0a2c-cc50-4b9a-8ca6-b0553b80c0d2
+  <DialogueNodeData>k__BackingField:
+  - guid: 2b14ed88-14f8-47d2-a482-74bc2898e75e
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 9e6f961a-2cbe-4cf2-b216-301a6bf3be0c
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Hah. You might have won this battle.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: But I gotcha.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: We did get some money out of you here. As the gamblers
+        say, the bank always wins!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: I will admit, you are indeed strong. Not many have
+        beat me in battle, even with help.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: That won't change anything though. We'll have a little
+        server maintenance and I'll be back.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: It's too bad I don't see you being a high performer
+        when it comes to making cash. You will agree with me on that.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: Which means we'll have to bench you. Hopefully the
+        next update will bring a more profitable girl.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: And one more thing, Asuka.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: You really came all this way just for not sticking
+        to your ideals when it matters most?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 280, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: afff0a2c-cc50-4b9a-8ca6-b0553b80c0d2
+    dialogue:
+    - <CharacterName>k__BackingField: Aya
+      <Content>k__BackingField: '<event:gameOverBench>
+
+        <event:skipThroughAll>
+
+        END'
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 924, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField: []

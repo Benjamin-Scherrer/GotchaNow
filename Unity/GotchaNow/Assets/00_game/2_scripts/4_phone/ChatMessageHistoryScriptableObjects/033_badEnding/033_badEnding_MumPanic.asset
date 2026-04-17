@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: 033_badEnding_MumPanic
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 0
+  messageHistoryOrder: 0
+  chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
+    chatMessages:
+    - typingPreview: 4
+      senderName: 4
+      messageContent: Bob You Need To Help Me I Got A Strange Notification From The
+        Bank
+      delayTillNext: 5
+      messageLifetime: 8
+    - typingPreview: 1
+      senderName: 4
+      messageContent: Do You Know How To Stop Hackers. Please Call
+      delayTillNext: 2
+      messageLifetime: 8
+  chatMessageHistoryWrapper:
+    conglomerateHistories: []
+  triggerVibrationOnMessageFire: 0

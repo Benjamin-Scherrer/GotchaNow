@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ffc1139a260b14aa6957d0ded56703, type: 3}
+  m_Name: 011_Intermission1TrueEndingPath
+  m_EditorClassIdentifier: Assembly-CSharp::GotchaNow.ChatMessageHistory
+  chatMessageHistoryType: 1
+  messageHistoryOrder: 0
+  chatMessageDataViewer:
+    fireMode: 0
+    amountToFire: 0
+    chatMessages: []
+  chatMessageHistoryWrapper:
+    conglomerateHistories:
+    - {fileID: 11400000, guid: cb0dae57e20f46246b3617a019e9ea13, type: 2}
+    - {fileID: 11400000, guid: 8b29b0500e2aa4d4ba59db57eba89968, type: 2}
