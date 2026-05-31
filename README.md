@@ -30,9 +30,10 @@ The game has three endings, with each of them only achievable by clearing certai
 Over the course of the game the audience learns of the consequnces of their actions. Through simulated push notiffications they can follow Bobs social decline and finacial issues due to game addiction. Thanks to the multilinear narration device the players can replay the game and stop finacially exploiting Bob, and help him return to society.
 
 ## Credits
+### Organisation
 Producer: Muriel Ackermann
 
-### Game:
+### Game
 Game Design: 
 Benjamin Scherrer, 
 Mauro Zocoo, 
@@ -52,7 +53,7 @@ Benjamin Scherrer,
 Muriel Ackermann, 
 Mauro Zocco
 
-### Sound:
+### Sound
 Music and Sound Lead: 
 Mauro Zocco
 
