@@ -29,6 +29,9 @@ The game has three endings, with each of them only achievable by clearing certai
 
 Over the course of the game the audience learns of the consequnces of their actions. Through simulated push notiffications they can follow Bobs social decline and finacial issues due to game addiction. Thanks to the multilinear narration device the players can replay the game and stop finacially exploiting Bob, and help him return to society.
 
+## Technical Details
+*Gotcha Now!* was developped on [Unity](https://unity.com/) [6000.2.6f2](https://unity.com/releases/editor/whats-new/6000.2.6f2). Core packages used were the [dialogue system](https://github.com/marcusaasjensen/dialogue-system/tree/main) by [Marcus Aas Jensen](https://github.com/marcusaasjensen). [FMOD](https://www.fmod.com/) is used for dynamic music and mixing. 
+
 ## Credits
 ### Organisation
 Producer: Muriel Ackermann
