@@ -39,7 +39,7 @@ Benjamin Scherrer,
 Mauro Zocoo, 
 Muriel Ackermann
 
-Game Mechanics & Game Mechanics Implementation
+Game Mechanics & Game Mechanics Implementation:
 Mauro Zocco
 
 UI Implementation & Dialogue System:
